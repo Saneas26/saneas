@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instala la app de Saneas en tu móvil</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #3890A4;
+    --teal-dark: #2a6d7c;
+    --teal-light: #e8f5f8;
+    --orange: #F5862E;
+    --orange-light: #fff3eb;
+    --text: #1a2e35;
+    --text-muted: #5a7a85;
+    --border: #d0e8ee;
+    --bg: #f7fbfc;
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow: 0 2px 12px rgba(56,144,164,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 22px;
+    color: var(--teal);
+    letter-spacing: -0.5px;
+  }
+  .logo-dot {
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    margin-bottom: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 52px 24px 44px;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: clamp(26px, 5vw, 38px);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: #ffb380; }
+  .hero p {
+    font-size: 16px;
+    opacity: 0.85;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* SELECTOR DE PLATAFORMA */
+  .platform-section {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 36px 20px 0;
+  }
+  .platform-label {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+  }
+  .platform-tabs {
+    display: flex;
+    gap: 10px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px;
+    box-shadow: var(--shadow);
+  }
+  .tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 12px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .22s;
+  }
+  .tab-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .tab-btn.active {
+    background: var(--teal);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(56,144,164,0.28);
+  }
+  .tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal); }
+
+  /* PROGRESO */
+  .progress-wrap {
+    max-width: 680px;
+    margin: 28px auto 0;
+    padding: 0 20px;
+  }
+  .progress-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .p-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--white);
+    transition: all .28s;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .p-dot.done { background: var(--teal); border-color: var(--teal); color: var(--white); }
+  .p-dot.active { background: var(--orange); border-color: var(--orange); color: var(--white); box-shadow: 0 0 0 4px var(--orange-light); }
+  .p-line {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    transition: background .28s;
+    margin: 0 -1px;
+  }
+  .p-line.done { background: var(--teal); }
+
+  /* TARJETA DE PASO */
+  .card-wrap {
+    max-width: 680px;
+    margin: 22px auto 0;
+    padding: 0 20px;
+  }
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    animation: fadeIn .3s ease;
+  }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-icon svg { width: 24px; height: 24px; stroke: var(--teal); }
+  .card-title { font-family: 'Quicksand', sans-serif; font-size: 19px; color: var(--text); }
+  .card-sub { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+  .card-body { padding: 20px 24px; }
+  .instruction {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .pill {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    border-radius: 6px;
+    padding: 2px 9px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--bg);
+    border-radius: 10px;
+    margin-bottom: 14px;
+  }
+  .check-row svg { width:18px; height:18px; stroke: var(--teal); flex-shrink:0; margin-top:2px; }
+  .check-row p { font-size: 14px; line-height: 1.6; color: var(--text); }
+
+  .tip-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--orange-light);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+  }
+  .tip-box svg { width:18px; height:18px; stroke: var(--orange); flex-shrink:0; margin-top:2px; }
+  .tip-box p { font-size: 13px; line-height: 1.6; color: #7a4010; }
+  .tip-box strong { color: var(--orange); }
+
+  /* FINALIZADO */
+  .finished-card {
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .finished-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: #e6f7f0;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .finished-icon svg { width:34px; height:34px; stroke: #1a9e6b; stroke-width:2.5; }
+  .finished-card h2 { font-family: 'Quicksand', sans-serif; font-size: 24px; margin-bottom: 10px; color: var(--text); }
+  .finished-card p { font-size: 15px; color: var(--text-muted); max-width: 360px; margin: 0 auto; line-height: 1.7; }
+  .restart-btn {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .restart-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* NAVEGACIÓN */
+  .nav-wrap {
+    max-width: 680px;
+    margin: 16px auto 0;
+    padding: 0 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn.primary {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(56,144,164,0.25);
+  }
+  .nav-btn.primary:hover:not(:disabled) { background: var(--teal-dark); border-color: var(--teal-dark); }
+  .nav-btn svg { width:16px; height:16px; stroke: currentColor; }
+  .step-counter { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
+  /* FOOTER */
+  .page-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  .page-footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .hero { padding: 38px 18px 32px; }
+    .card-top { padding: 18px 18px 14px; }
+    .card-body { padding: 16px 18px; }
+    .nav-btn { padding: 11px 16px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo-text">Saneas</span>
+  <div class="logo-dot"></div>
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">Guía rápida</p>
+  <h1>Instala la app de Saneas<br>en tu <span>móvil</span></h1>
+  <p>En menos de 2 minutos la tendrás como una app normal, sin necesidad de buscar el enlace cada vez.</p>
+</div>
+
+<div class="platform-section">
+  <p class="platform-label">¿Qué móvil tienes?</p>
+  <div class="platform-tabs">
+    <button class="tab-btn active" id="tab-android" onclick="switchPlatform('android')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><line x1="9" y1="17" x2="9" y2="17.01"/><line x1="15" y1="17" x2="15" y2="17.01"/><line x1="7" y1="4" x2="5" y2="2"/><line x1="17" y1="4" x2="19" y2="2"/></svg>
+      Android
+    </button>
+    <button class="tab-btn" id="tab-apple" onclick="switchPlatform('apple')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75-.67 3.95-1.7C17.1 18.28 18 16.57 18 14.5c0-2.5-1.5-4.5-3-6s-2-3.5-2-5.5c0 0-1 2-3 3.5S7 10 7 14.5c0 2.07.9 3.78 2.05 4.74C10.25 20.27 11.5 20.94 12 20.94z"/><path d="M12 20.94V22"/></svg>
+      iPhone / iPad
+    </button>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-track" id="progress-track"></div>
+</div>
+
+<div class="card-wrap">
+  <div class="step-card" id="step-card"></div>
+</div>
+
+<div class="nav-wrap">
+  <button class="nav-btn" id="btn-prev" onclick="changeStep(-1)" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Atrás
+  </button>
+  <span class="step-counter" id="step-counter"></span>
+  <button class="nav-btn primary" id="btn-next" onclick="changeStep(1)">
+    Siguiente
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<footer class="page-footer">
+  ¿Tienes dudas? Escríbenos por <a href="https://wa.me/34689806987">WhatsApp</a> · <a href="/">Volver a Saneas</a>
+</footer>
+
+<script>
+const iconWorld = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+const iconMenu = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>`;
+const iconHome = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`;
+const iconEdit = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
+const iconGrid = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`;
+const iconShare = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`;
+const iconCheck = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+const iconBulb = `<svg viewBox="0 0 24 24" fill="none" stroke="#F5862E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>`;
+
+const platforms = {
+  android: [
+    {
+      icon: iconWorld,
+      title: "Abre la app en Chrome",
+      sub: "El navegador verde de Android",
+      body: `<p class="instruction">Abre este enlace: <a href="https://saneas2026.glide.page" target="_blank" style="color:var(--teal);font-weight:600;">saneas2026.glide.page</a> — asegúrate de abrirlo con <span class="pill">Chrome</span>, el navegador con el icono de colores.</p>
+      <div class="check-row">${iconCheck}<p>Verás que la app se abre como una página web. Es normal, así es como funciona. ¡Sigue al siguiente paso!</p></div>`,
+      tip: "Si no tienes Chrome, puedes descargarlo gratis desde la Play Store. Es el icono circular con los colores rojo, amarillo, verde y azul."
+    },
+    {
+      icon: iconMenu,
+      title: "Toca los tres puntitos",
+      sub: "Arriba a la derecha de Chrome",
+      body: `<p class="instruction">Mira la esquina <span class="pill">superior derecha</span> de la pantalla. Verás tres puntitos verticales ⋮ Tócalos con el dedo.</p>
+      <div class="check-row">${iconCheck}<p>Se abrirá un menú con varias opciones. No te preocupes, en el siguiente paso te decimos exactamente cuál tocar.</p></div>`,
+      tip: "Los puntitos están justo al lado de la barra donde aparece la dirección web (la que empieza por https://)."
+    },
+    {
+      icon: iconHome,
+      title: "Toca «Añadir a pantalla de inicio»",
+      sub: "Esta es la opción clave del tutorial",
+      body: `<p class="instruction">Dentro del menú, busca y toca la opción <span class="pill">Añadir a pantalla de inicio</span>.</p>
+      <div class="check-row">${iconCheck}<p>Puede que tengas que deslizar el menú hacia abajo para verla. Está cerca de las opciones de «Compartir».</p></div>`,
+      tip: "En algunos móviles pone «Instalar aplicación» en lugar de «Añadir a pantalla de inicio». Las dos funcionan exactamente igual."
+    },
+    {
+      icon: iconEdit,
+      title: "Ponle nombre y confirma",
+      sub: "El último paso antes de tenerla lista",
+      body: `<p class="instruction">Aparecerá una ventana pequeña con el nombre. Puedes dejarlo como está o escribir <span class="pill">Saneas</span>. Luego toca el botón <span class="pill">Añadir</span>.</p>
+      <div class="check-row">${iconCheck}<p>No hace falta cambiar nada. El nombre es solo para que reconozcas el icono en tu pantalla.</p></div>`,
+      tip: "Si te equivocas con el nombre, no pasa nada. Después puedes mantener el icono pulsado y elegir «Renombrar»."
+    },
+    {
+      icon: iconGrid,
+      title: "¡Ya está en tu pantalla!",
+      sub: "Busca el icono de Saneas en tu móvil",
+      body: `<p class="instruction">Sal de Chrome pulsando el botón de inicio de tu móvil. En tu pantalla principal verás el icono de <span class="pill">Saneas</span> como si fuera una app descargada.</p>
+      <div class="check-row">${iconCheck}<p>Desde ahora, toca ese icono cada vez que quieras entrar. Sin buscar el enlace, sin pasos extra.</p></div>`,
+      tip: "Si no ves el icono, desliza las pantallas hacia los lados. A veces se coloca al final de todas las páginas."
+    }
+  ],
+  apple: [
+    {
+      icon: iconWorld,
+      title: "Abre la app en Safari",
+      sub: "El navegador azul del iPhone",
+      body: `<p class="instruction">Abre este enlace: <a href="https://saneas2026.glide.page" target="_blank" style="color:var(--teal);font-weight:600;">saneas2026.glide.page</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
+      <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
+      tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
+    },
+    {
+      icon: iconShare,
+      title: "Toca el botón de compartir",
+      sub: "La cajita con una flecha hacia arriba",
+      body: `<p class="instruction">En la barra de abajo de Safari verás un icono con <span class="pill">una cajita y una flecha apuntando hacia arriba</span>. Tócalo.</p>
+      <div class="check-row">${iconCheck}<p>Se abrirá un panel grande con muchas opciones de colores. Es el menú de «compartir» del iPhone.</p></div>`,
+      tip: "En iPad este botón está arriba a la derecha, no abajo. Tiene el mismo aspecto: cajita con flecha hacia arriba."
+    },
+    {
+      icon: iconHome,
+      title: "Busca «En pantalla de inicio»",
+      sub: "Desliza el panel hacia abajo para verlo",
+      body: `<p class="instruction">En el panel que se abrió, desliza hacia <span class="pill">abajo</span> hasta encontrar la opción <span class="pill">En pantalla de inicio</span>. Tiene un icono de cuadrado con un símbolo +.</p>
+      <div class="check-row">${iconCheck}<p>Tócalo cuando lo veas. Si no aparece a primera vista, sigue bajando, está casi siempre en la segunda o tercera fila.</p></div>`,
+      tip: "El panel tiene muchas opciones. Ve despacio deslizando con el dedo hacia abajo hasta encontrar exactamente «En pantalla de inicio»."
+    },
+    {
+      icon: iconEdit,
+      title: "Ponle nombre y toca «Añadir»",
+      sub: "Ya casi lo tienes",
+      body: `<p class="instruction">Saldrá una pantalla con el nombre de la app. Puedes cambiarlo a <span class="pill">Saneas</span> si quieres. Cuando estés lista/o, toca el botón azul <span class="pill">Añadir</span> en la esquina superior derecha.</p>
+      <div class="check-row">${iconCheck}<p>Eso es todo. Con ese toque ya queda instalada en tu pantalla de inicio.</p></div>`,
+      tip: "El botón «Añadir» está arriba a la derecha de esa pantalla pequeña. Es de color azul y bastante visible."
+    },
+    {
+      icon: iconGrid,
+      title: "¡Ya tienes tu app en el iPhone!",
+      sub: "Búscala en la pantalla de inicio",
+      body: `<p class="instruction">Sal de Safari pulsando el botón de inicio (o deslizando desde abajo). Verás el icono de <span class="pill">Saneas</span> en tu pantalla, como una app de verdad.</p>
+      <div class="check-row">${iconCheck}<p>Se abrirá a pantalla completa, sin la barra de Safari. A partir de ahora entra siempre desde ahí.</p></div>`,
+      tip: "Si no la encuentras, desliza hacia abajo desde el centro de la pantalla para abrir el buscador y escribe «Saneas»."
+    }
+  ]
+};
+
+let platform = 'android';
+let step = 0;
+
+function switchPlatform(p) {
+  platform = p;
+  step = 0;
+  document.getElementById('tab-android').classList.toggle('active', p === 'android');
+  document.getElementById('tab-apple').classList.toggle('active', p === 'apple');
+  render();
+}
+
+function changeStep(dir) {
+  const total = platforms[platform].length;
+  step = Math.max(0, Math.min(total, step + dir));
+  render();
+}
+
+function render() {
+  const steps = platforms[platform];
+  const total = steps.length;
+
+  // Progress
+  const track = document.getElementById('progress-track');
+  track.innerHTML = '';
+  steps.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'p-dot' + (i < step ? ' done' : (i === step ? ' active' : ''));
+    dot.innerHTML = i < step
+      ? `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>`
+      : (i + 1);
+    track.appendChild(dot);
+    if (i < total - 1) {
+      const line = document.createElement('div');
+      line.className = 'p-line' + (i < step ? ' done' : '');
+      track.appendChild(line);
+    }
+  });
+
+  // Card
+  const card = document.getElementById('step-card');
+  if (step >= total) {
+    card.innerHTML = `
+      <div class="finished-card">
+        <div class="finished-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>¡Ya tienes la app instalada!</h2>
+        <p>Ahora puedes entrar a Saneas directamente desde tu pantalla, como cualquier otra app. Sin buscar enlaces, sin pasos.</p>
+        <button class="restart-btn" onclick="step=0;render()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          Repetir tutorial
+        </button>
+      </div>`;
+  } else {
+    const s = steps[step];
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="step-icon">${s.icon}</div>
+        <div>
+          <div class="card-title">${s.title}</div>
+          <div class="card-sub">${s.sub}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        ${s.body}
+        <div class="tip-box">${iconBulb}<p><strong>Consejo:</strong> ${s.tip}</p></div>
+      </div>`;
+  }
+
+  // Buttons
+  document.getElementById('btn-prev').disabled = step === 0;
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.disabled = step >= total;
+  nextBtn.innerHTML = step >= total - 1 && step < total
+    ? `Finalizar <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>`
+    : `Siguiente <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+  document.getElementById('step-counter').textContent = step < total
+    ? `Paso ${step + 1} de ${total}`
+    : '✓ Completado';
+}
+
+render();
+</script>
+</body>
+</html>
