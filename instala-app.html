@@ -322,6 +322,20 @@
   }
   .page-footer a { color: var(--teal); text-decoration: none; }
 
+  /* SELECTOR VERSIÓN IOS */
+  .ios-picker { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .ios-picker-title { font-family: 'Quicksand', sans-serif; font-size: 18px; color: var(--text); margin-bottom: 4px; text-align: center; }
+  .ios-picker-sub { font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 8px; line-height: 1.6; }
+  .ios-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; transition: all .2s; text-align: left; width: 100%; font-family: 'Manrope', sans-serif; }
+  .ios-option:hover { border-color: var(--teal); background: var(--teal-light); }
+  .ios-option-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+  .ios-option-icon.new { background: #e8f0fe; }
+  .ios-option-icon.old { background: var(--teal-light); }
+  .ios-option-label { font-size: 15px; font-weight: 600; color: var(--text); }
+  .ios-option-desc { font-size: 13px; color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
+  .ios-back { background: none; border: none; color: var(--text-muted); font-size: 13px; font-family: 'Manrope', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; margin-top: 4px; }
+  .ios-back:hover { color: var(--teal); }
+
   @media (max-width: 480px) {
     .hero { padding: 38px 18px 32px; }
     .card-top { padding: 18px 18px 14px; }
@@ -436,7 +450,7 @@ const platforms = {
       tip: "Si no ves el icono, desliza las pantallas hacia los lados. A veces se coloca al final de todas las páginas."
     }
   ],
-  apple: [
+  apple_old: [
     {
       icon: iconWorld,
       title: "Abre la app en Safari",
@@ -448,7 +462,7 @@ const platforms = {
     {
       icon: iconShare,
       title: "Toca el botón de compartir",
-      sub: "La cajita con una flecha hacia arriba",
+      sub: "La cajita con una flecha hacia arriba, en la barra de abajo",
       body: `<p class="instruction">En la barra de abajo de Safari verás un icono con <span class="pill">una cajita y una flecha apuntando hacia arriba</span>. Tócalo.</p>
       <div class="check-row">${iconCheck}<p>Se abrirá un panel grande con muchas opciones de colores. Es el menú de «compartir» del iPhone.</p></div>`,
       tip: "En iPad este botón está arriba a la derecha, no abajo. Tiene el mismo aspecto: cajita con flecha hacia arriba."
@@ -477,32 +491,124 @@ const platforms = {
       <div class="check-row">${iconCheck}<p>Se abrirá a pantalla completa, sin la barra de Safari. A partir de ahora entra siempre desde ahí.</p></div>`,
       tip: "Si no la encuentras, desliza hacia abajo desde el centro de la pantalla para abrir el buscador y escribe «Saneas»."
     }
+  ],
+  apple_new: [
+    {
+      icon: iconWorld,
+      title: "Abre la app en Safari",
+      sub: "El navegador azul del iPhone",
+      body: `<p class="instruction">Abre este enlace: <a href="https://saneas2026.glide.page" target="_blank" style="color:var(--teal);font-weight:600;">saneas2026.glide.page</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
+      <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
+      tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
+    },
+    {
+      icon: iconMenu,
+      title: "Toca los tres puntitos",
+      sub: "A la derecha de la barra de navegación, arriba",
+      body: `<p class="instruction">En iOS 26, Safari tiene tres puntitos <span class="pill">···</span> en la parte derecha de la barra de arriba. Tócalos.</p>
+      <div class="check-row">${iconCheck}<p>Se abrirá un menú pequeño con tres opciones: «Nueva ventana», «Compartir» y «Añadir a pantalla de inicio».</p></div>`,
+      tip: "Son tres puntos horizontales, no verticales. Están en la barra de arriba donde aparece la dirección web, a la derecha."
+    },
+    {
+      icon: iconHome,
+      title: "Toca «Añadir a pantalla de inicio»",
+      sub: "Aparece directamente en el menú, sin más pasos",
+      body: `<p class="instruction">En el menú que se abrió verás directamente la opción <span class="pill">Añadir a pantalla de inicio</span>. Tócala.</p>
+      <div class="check-row">${iconCheck}<p>En iOS 26 es mucho más rápido que antes. No hay que buscar entre muchas opciones, aparece enseguida.</p></div>`,
+      tip: "Si en lugar de «Añadir a pantalla de inicio» ves «Compartir», toca «Compartir» y desde ahí busca la opción en el panel que se abre."
+    },
+    {
+      icon: iconEdit,
+      title: "Ponle nombre y toca «Añadir»",
+      sub: "Ya casi lo tienes",
+      body: `<p class="instruction">Saldrá una pantalla con el nombre de la app. Puedes cambiarlo a <span class="pill">Saneas</span> si quieres. Cuando estés lista/o, toca el botón azul <span class="pill">Añadir</span> en la esquina superior derecha.</p>
+      <div class="check-row">${iconCheck}<p>Eso es todo. Con ese toque ya queda instalada en tu pantalla de inicio.</p></div>`,
+      tip: "El botón «Añadir» está arriba a la derecha de esa pantalla pequeña. Es de color azul y bastante visible."
+    },
+    {
+      icon: iconGrid,
+      title: "¡Ya tienes tu app en el iPhone!",
+      sub: "Búscala en la pantalla de inicio",
+      body: `<p class="instruction">Sal de Safari deslizando desde abajo o pulsando el botón de inicio. Verás el icono de <span class="pill">Saneas</span> en tu pantalla, como una app de verdad.</p>
+      <div class="check-row">${iconCheck}<p>Se abrirá a pantalla completa, sin la barra de Safari. A partir de ahora entra siempre desde ahí.</p></div>`,
+      tip: "Si no la encuentras, desliza hacia abajo desde el centro de la pantalla para abrir el buscador y escribe «Saneas»."
+    }
   ]
 };
 
 let platform = 'android';
+let iosVariant = null; // null = no elegido, 'old' o 'new'
 let step = 0;
 
 function switchPlatform(p) {
   platform = p;
+  iosVariant = null;
   step = 0;
   document.getElementById('tab-android').classList.toggle('active', p === 'android');
   document.getElementById('tab-apple').classList.toggle('active', p === 'apple');
   render();
 }
 
+function selectIosVariant(v) {
+  iosVariant = v;
+  step = 0;
+  render();
+}
+
+function getSteps() {
+  if (platform === 'android') return platforms.android;
+  if (platform === 'apple' && iosVariant === 'old') return platforms.apple_old;
+  if (platform === 'apple' && iosVariant === 'new') return platforms.apple_new;
+  return null;
+}
+
 function changeStep(dir) {
-  const total = platforms[platform].length;
-  step = Math.max(0, Math.min(total, step + dir));
+  const steps = getSteps();
+  if (!steps) return;
+  step = Math.max(0, Math.min(steps.length, step + dir));
   render();
 }
 
 function render() {
-  const steps = platforms[platform];
+  const steps = getSteps();
+  const card = document.getElementById('step-card');
+  const track = document.getElementById('progress-track');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const counter = document.getElementById('step-counter');
+
+  // Si es iPhone y no ha elegido versión → mostrar selector
+  if (platform === 'apple' && !iosVariant) {
+    track.innerHTML = '';
+    counter.textContent = '';
+    btnPrev.disabled = true;
+    btnNext.style.display = 'none';
+    card.innerHTML = `
+      <div class="ios-picker">
+        <div class="ios-picker-title">¿Qué versión de iOS tienes?</div>
+        <p class="ios-picker-sub">Elige según la versión de tu iPhone para ver el tutorial correcto. Si no lo sabes, ve a Ajustes → General → Información → Versión de software.</p>
+        <button class="ios-option" onclick="selectIosVariant('new')">
+          <div class="ios-option-icon new">✦</div>
+          <div>
+            <div class="ios-option-label">iOS 26 o superior</div>
+            <div class="ios-option-desc">Safari tiene tres puntitos ··· en la barra de arriba</div>
+          </div>
+        </button>
+        <button class="ios-option" onclick="selectIosVariant('old')">
+          <div class="ios-option-icon old">◷</div>
+          <div>
+            <div class="ios-option-label">iOS 25 o anterior</div>
+            <div class="ios-option-desc">Safari tiene el botón de compartir (cajita con flecha) abajo</div>
+          </div>
+        </button>
+      </div>`;
+    return;
+  }
+
+  btnNext.style.display = '';
   const total = steps.length;
 
   // Progress
-  const track = document.getElementById('progress-track');
   track.innerHTML = '';
   steps.forEach((_, i) => {
     const dot = document.createElement('div');
@@ -519,7 +625,6 @@ function render() {
   });
 
   // Card
-  const card = document.getElementById('step-card');
   if (step >= total) {
     card.innerHTML = `
       <div class="finished-card">
@@ -528,6 +633,7 @@ function render() {
         </div>
         <h2>¡Ya tienes la app instalada!</h2>
         <p>Ahora puedes entrar a Saneas directamente desde tu pantalla, como cualquier otra app. Sin buscar enlaces, sin pasos.</p>
+        ${platform === 'apple' ? `<button class="ios-back" onclick="iosVariant=null;step=0;render()" style="margin:12px auto 0;justify-content:center;">← Elegir otra versión de iOS</button>` : ''}
         <button class="restart-btn" onclick="step=0;render()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
           Repetir tutorial
@@ -535,6 +641,9 @@ function render() {
       </div>`;
   } else {
     const s = steps[step];
+    const backBtn = (platform === 'apple' && step === 0)
+      ? `<button class="ios-back" onclick="iosVariant=null;step=0;render()">← Cambiar versión de iOS</button>`
+      : '';
     card.innerHTML = `
       <div class="card-top">
         <div class="step-icon">${s.icon}</div>
@@ -546,20 +655,17 @@ function render() {
       <div class="card-body">
         ${s.body}
         <div class="tip-box">${iconBulb}<p><strong>Consejo:</strong> ${s.tip}</p></div>
+        ${backBtn}
       </div>`;
   }
 
-  // Buttons
-  document.getElementById('btn-prev').disabled = step === 0;
-  const nextBtn = document.getElementById('btn-next');
-  nextBtn.disabled = step >= total;
-  nextBtn.innerHTML = step >= total - 1 && step < total
+  btnPrev.disabled = step === 0;
+  btnNext.disabled = step >= total;
+  btnNext.innerHTML = step >= total - 1 && step < total
     ? `Finalizar <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>`
     : `Siguiente <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>`;
 
-  document.getElementById('step-counter').textContent = step < total
-    ? `Paso ${step + 1} de ${total}`
-    : '✓ Completado';
+  counter.textContent = step < total ? `Paso ${step + 1} de ${total}` : '✓ Completado';
 }
 
 render();
