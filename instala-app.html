@@ -81,6 +81,15 @@
     margin: 0 auto;
     line-height: 1.7;
   }
+  .hero-open {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
+    background: var(--white); color: var(--teal); text-decoration: none;
+    font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 17px;
+    padding: 14px 32px; border-radius: 999px; box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+    transition: transform .15s;
+  }
+  .hero-open:hover { transform: translateY(-2px); }
+  .hero-url { margin-top: 12px; font-size: 13px; opacity: 0.8; }
 
   /* SELECTOR DE PLATAFORMA */
   .platform-section {
@@ -357,6 +366,8 @@
   <p class="hero-eyebrow">Guía rápida</p>
   <h1>Instala la app de Saneas<br>en tu <span>móvil</span></h1>
   <p>En menos de 2 minutos la tendrás como una app normal, sin necesidad de buscar el enlace cada vez.</p>
+  <a class="hero-open" href="https://app.saneas.es" target="_blank" rel="noopener">📲 Abrir la app Saneas</a>
+  <div class="hero-url">app.saneas.es</div>
 </div>
 
 <div class="platform-section">
@@ -413,7 +424,7 @@ const platforms = {
       icon: iconWorld,
       title: "Abre la app en Chrome",
       sub: "El navegador verde de Android",
-      body: `<p class="instruction">Abre este enlace: <a href="https://saneas2026.glide.page" target="_blank" style="color:var(--teal);font-weight:600;">saneas2026.glide.page</a> — asegúrate de abrirlo con <span class="pill">Chrome</span>, el navegador con el icono de colores.</p>
+      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Chrome</span>, el navegador con el icono de colores.</p>
       <div class="check-row">${iconCheck}<p>Verás que la app se abre como una página web. Es normal, así es como funciona. ¡Sigue al siguiente paso!</p></div>`,
       tip: "Si no tienes Chrome, puedes descargarlo gratis desde la Play Store. Es el icono circular con los colores rojo, amarillo, verde y azul."
     },
@@ -455,7 +466,7 @@ const platforms = {
       icon: iconWorld,
       title: "Abre la app en Safari",
       sub: "El navegador azul del iPhone",
-      body: `<p class="instruction">Abre este enlace: <a href="https://saneas2026.glide.page" target="_blank" style="color:var(--teal);font-weight:600;">saneas2026.glide.page</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
+      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
       <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
       tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
     },
@@ -497,7 +508,7 @@ const platforms = {
       icon: iconWorld,
       title: "Abre la app en Safari",
       sub: "El navegador azul del iPhone",
-      body: `<p class="instruction">Abre este enlace: <a href="https://saneas2026.glide.page" target="_blank" style="color:var(--teal);font-weight:600;">saneas2026.glide.page</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
+      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
       <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
       tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
     },
