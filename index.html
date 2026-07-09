@@ -227,6 +227,31 @@ nav{
 .caso-fotos.dos .caso-foto img{object-position:center}
 @media(max-width:520px){.caso-fotos.dos{gap:8px}}
 
+/* ── Historia desplegable (Nanny) ── */
+.historia{margin-top:30px;max-width:540px}
+.historia>summary{
+  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  font-weight:800;font-size:16px;color:var(--teal);
+  border:2px solid var(--teal);border-radius:999px;padding:12px 26px;
+  transition:background .2s,color .2s;user-select:none;
+}
+.historia>summary::-webkit-details-marker{display:none}
+.historia>summary::after{content:"▾";font-size:13px;transition:transform .25s}
+.historia[open]>summary{background:var(--teal);color:#fff}
+.historia[open]>summary::after{transform:rotate(180deg)}
+.historia>summary:hover{background:var(--teal);color:#fff}
+.historia-cuerpo{margin-top:22px;animation:histFade .35s ease}
+.historia-cuerpo p{font-size:17px;color:var(--gray);line-height:1.75;margin-bottom:16px}
+.historia-cuerpo p strong{color:var(--text)}
+.historia-cita{
+  border-left:3px solid var(--orange);background:#fff8f2;
+  border-radius:0 12px 12px 0;padding:16px 20px;margin:8px 0 20px;
+  font-style:italic;color:var(--text);line-height:1.7;font-size:16px;
+}
+.historia-cita strong{font-style:normal}
+.historia-cierre{font-size:19px !important;font-weight:800;color:var(--teal) !important}
+@keyframes histFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
 /* ── CÓMO FUNCIONA ── */
 .como-funciona .cards{
   display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
@@ -575,6 +600,19 @@ footer p{font-size:12px;color:#bbb}
             <div class="l">Semanas</div>
           </div>
         </div>
+        <details class="historia">
+          <summary>Leer su historia</summary>
+          <div class="historia-cuerpo">
+            <p>Nanny llegó a Saneas con un objetivo que muchas personas comparten: <strong>dejar atrás el sobrepeso y volver a sentirse bien consigo misma</strong>. Lo que consiguió va mucho más allá de un número en la báscula.</p>
+            <p>No solo perdió 13 kilos: transformó su <strong>composición corporal</strong>, salió del rango de sobrepeso según su <strong>grasa visceral</strong>, y mejoró de dentro hacia fuera —más hidratación celular, más proteína y más masa muscular.</p>
+            <p>Y lo más importante: <strong>aprendió a mantenerse</strong>. Hoy Nanny disfruta de un punto de salud y una calidad de vida que muchas personas desean, sostenido por hábitos que la acompañan cada día —sin permanencia, sin bonos, sin suplementos.</p>
+            <div class="historia-cita">
+              <strong>Oscar:</strong> «El proceso es lento, pero efectivo. Un cuerpo tarda meses en cambiar.»<br>
+              <strong>Nanny:</strong> «Claro que confío en ti, eres la persona que ha cambiado mi vida.»
+            </div>
+            <p class="historia-cierre">¿Y si la próxima historia fuera la tuya?</p>
+          </div>
+        </details>
       </span>
     </div>
     <div class="caso-fotos dos reveal reveal-delay-2">
