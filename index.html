@@ -222,9 +222,10 @@ nav{
 }
 .caso-foto-label.white{color:#fff}
 .caso-foto-label.green{color:#4ade80}
-.caso-fotos.dos{grid-template-columns:1fr 1fr;grid-template-rows:1fr;height:520px}
-.caso-fotos.dos .caso-foto{grid-row:auto}
-@media(max-width:520px){.caso-fotos.dos{grid-template-columns:1fr;grid-template-rows:auto auto;height:auto;gap:12px}.caso-fotos.dos .caso-foto{height:320px}}
+.caso-fotos.dos{grid-template-columns:1fr 1fr;grid-template-rows:auto;height:auto;gap:12px;align-items:start}
+.caso-fotos.dos .caso-foto{grid-row:auto;aspect-ratio:495 / 1073;height:auto}
+.caso-fotos.dos .caso-foto img{object-position:center}
+@media(max-width:520px){.caso-fotos.dos{gap:8px}}
 
 /* ── CÓMO FUNCIONA ── */
 .como-funciona .cards{
