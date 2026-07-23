@@ -489,7 +489,10 @@ footer .logo sup{font-size:11px;font-weight:700;margin-left:1px}
 .fg-card{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:12px 18px 12px 12px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,0.04);transition:transform .15s,box-shadow .15s}
 .fg-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.08)}
 .fg-card img,.fg-card .fg-ico{width:44px;height:44px;border-radius:12px;object-fit:cover;flex:none}
-.fg-card .fg-ico{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.fg-card .fg-ico{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--orange),#d96b1a)}
+.fg-card.pronto{cursor:default}
+.fg-card.pronto:hover{transform:none;box-shadow:0 2px 10px rgba(0,0,0,0.04)}
+.fg-card small.soon{color:var(--orange);font-weight:700}
 .fg-card .fg-ico svg{width:22px;height:22px;stroke:#fff;fill:none}
 .fg-card span.tx{text-align:left}
 .fg-card b{display:block;font-size:14px;font-weight:800;color:var(--text);line-height:1.2}
@@ -985,6 +988,10 @@ footer p{font-size:12px;color:#bbb;margin-top:30px}
     <a class="fg-card" href="https://pordondevoy-saneas.vercel.app" target="_blank" rel="noopener">
       <img src="/assets/img/app-pordondevoy.png" alt="APP Pordondevoy">
       <span class="tx"><b>APP Pordondevoy</b><small>La nueva app del grupo</small></span>
+    </a>
+    <a class="fg-card pronto">
+      <img src="/assets/img/app-laora.png" alt="APP laOra">
+      <span class="tx"><b>APP laOra</b><small class="soon">Muy pronto</small></span>
     </a>
   </div>
   <p>© 2026 Saneas® · Nutrición online personalizada · Todos los derechos reservados</p>
