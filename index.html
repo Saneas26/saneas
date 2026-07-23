@@ -402,6 +402,30 @@ summary::after{
 details[open] summary::after{transform:rotate(45deg)}
 details p{font-size:15px;color:var(--gray);line-height:1.7;margin-top:14px}
 
+/* ── PARA QUIÉN ── */
+.quien-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:56px 0 48px}
+@media(max-width:900px){.quien-cards{grid-template-columns:1fr}}
+.quien-card{
+  background:#f7f9fa;border:1px solid rgba(0,0,0,0.06);
+  border-radius:var(--radius);padding:36px 32px;transition:transform .2s;text-align:left;
+}
+.quien-card:hover{transform:translateY(-4px)}
+.quien-card .ico{font-size:38px;display:block;margin-bottom:16px}
+.quien-card h3{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:10px;color:var(--text)}
+.quien-card p{font-size:16px;color:var(--gray);line-height:1.65;font-weight:500}
+.pat-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:900px;margin:0 auto}
+.pat-chip{
+  font-size:14px;font-weight:700;color:var(--teal-dark);
+  background:rgba(56,144,164,0.09);border:1px solid rgba(56,144,164,0.22);
+  padding:9px 18px;border-radius:999px;white-space:nowrap;
+}
+.medico-nota{
+  max-width:640px;margin:44px auto 0;text-align:center;
+  font-size:15px;font-style:italic;color:var(--gray);font-weight:500;line-height:1.7;
+  border-top:1px solid rgba(0,0,0,0.08);padding-top:24px;
+}
+.medico-nota b{color:var(--text);font-style:normal}
+
 /* ── CTA FINAL ── */
 .cta-final{
   background:var(--teal);padding:180px 40px;
@@ -636,6 +660,47 @@ footer p{font-size:12px;color:#bbb}
     <h2 style="font-size:clamp(30px,4.5vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;color:var(--text);margin-bottom:24px;">No es una dieta.<br>Es alguien que te lleva <span style="color:var(--orange)">hasta el final</span>.</h2>
     <p style="font-size:20px;color:var(--gray);line-height:1.8;margin-bottom:20px;">Saneas no es solo nutrición: es el <strong style="color:var(--text)">método que te acompaña</strong>. Porque no se trata de hacer dietas, se trata de que alguien te guíe y sepa llevarte. Igual que usas Google Maps para ir seguro y no dudar si has cogido el camino correcto, <strong style="color:var(--text)">Saneas es tu GPS hasta el final</strong>.</p>
     <p style="font-size:20px;color:var(--gray);line-height:1.8;"><strong style="color:var(--teal)">Y esto no es una app, ni una inteligencia artificial, ni una web programada. Saneas es real, de carne y hueso.</strong></p>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="section">
+  <div class="container" style="text-align:center">
+    <div class="reveal">
+      <span style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:18px;">Para quién es Saneas</span>
+      <h2 class="section-title">Para personas<br><span style="color:var(--orange)">reales</span>.</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto">No hace falta ser un caso especial para empezar. Y si lo eres, también sabemos acompañarte.</p>
+    </div>
+    <div class="quien-cards">
+      <div class="quien-card reveal"><span class="ico">🙋</span><h3>Personas normales y corrientes</h3><p>Que quieren comer mejor, sentirse bien y dejar de pelearse con la báscula de una vez.</p></div>
+      <div class="quien-card reveal reveal-delay-1"><span class="ico">🏃</span><h3>Deportistas que quieren mejorar</h3><p>Rendimiento, composición corporal y energía: comer como entrenas, sin inventos.</p></div>
+      <div class="quien-card reveal reveal-delay-2"><span class="ico">❤️‍🩹</span><h3>Personas con problemas de salud</h3><p>Te acompañamos a cambiar tus hábitos de alimentación y a ganar calidad de vida, también cuando hay una patología de por medio.</p></div>
+    </div>
+    <div class="reveal">
+      <div class="pat-chips">
+        <span class="pat-chip">Sobrepeso</span>
+        <span class="pat-chip">Obesidad</span>
+        <span class="pat-chip">Hipotiroidismo</span>
+        <span class="pat-chip">Diabetes tipo 2</span>
+        <span class="pat-chip">Prediabetes</span>
+        <span class="pat-chip">Resistencia a la insulina</span>
+        <span class="pat-chip">Colesterol alto</span>
+        <span class="pat-chip">Triglicéridos altos</span>
+        <span class="pat-chip">Hipertensión</span>
+        <span class="pat-chip">Hígado graso</span>
+        <span class="pat-chip">Menopausia</span>
+        <span class="pat-chip">Síndrome metabólico</span>
+        <span class="pat-chip">Ovario poliquístico (SOP)</span>
+        <span class="pat-chip">Ácido úrico · gota</span>
+        <span class="pat-chip">Apnea del sueño</span>
+        <span class="pat-chip">Reflujo y digestiones pesadas</span>
+        <span class="pat-chip">Dolor articular por sobrepeso</span>
+        <span class="pat-chip">Retención de líquidos</span>
+        <span class="pat-chip">Estreñimiento</span>
+        <span class="pat-chip">Ansiedad por la comida</span>
+      </div>
+      <p class="medico-nota"><b>Nosotros no sustituimos a tu médico:</b> te ayudamos a llegar a tu objetivo. Tu médico sigue siendo tu médico; nosotros nos ocupamos de que comas como necesitas.</p>
+    </div>
   </div>
 </section>
 
