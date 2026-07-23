@@ -251,6 +251,37 @@ nav{
 .btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,0.2)}
 .btn-white svg{width:22px;height:22px;fill:var(--teal);flex-shrink:0}
 
+/* ── FORMULARIO DE SOLICITUD ── */
+.solicitud-card{
+  background:#fff;border-radius:var(--radius);padding:44px 44px 36px;
+  max-width:640px;margin:0 auto;text-align:left;
+  box-shadow:0 30px 80px rgba(0,0,0,0.25);position:relative;
+}
+@media(max-width:600px){.solicitud-card{padding:30px 22px}}
+.solicitud-card label{
+  display:block;font-size:13px;font-weight:800;letter-spacing:0.5px;
+  color:var(--gray);text-transform:uppercase;margin-bottom:18px;
+}
+.solicitud-card input,.solicitud-card select,.solicitud-card textarea{
+  display:block;width:100%;margin-top:8px;
+  font-family:'Manrope',sans-serif;font-size:16px;font-weight:600;color:var(--text);
+  padding:14px 16px;border:2px solid rgba(0,0,0,0.1);border-radius:14px;
+  background:#f7f9fa;outline:none;transition:border-color .2s;
+  text-transform:none;letter-spacing:0;resize:vertical;
+}
+.solicitud-card input:focus,.solicitud-card select:focus,.solicitud-card textarea:focus{border-color:var(--teal);background:#fff}
+.solicitud-card .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.solicitud-card .f2{grid-template-columns:1fr}}
+.solicitud-card .btn-orange{border:0;cursor:pointer;font-family:'Manrope',sans-serif;margin-top:6px}
+.solicitud-card .btn-orange:disabled{opacity:.6;cursor:default}
+.sol-msg{font-size:15px;font-weight:700;margin-top:14px;text-align:center}
+.sol-msg.err{color:var(--red)}
+.sol-legal{font-size:12px;color:var(--gray);font-weight:500;margin-top:18px;text-align:center;line-height:1.5}
+.sol-ok{text-align:center;padding:30px 10px}
+.sol-ok .ico{font-size:54px;margin-bottom:14px}
+.sol-ok h3{font-size:26px;font-weight:900;letter-spacing:-0.5px;color:var(--text);margin-bottom:10px}
+.sol-ok p{font-size:17px;color:var(--gray);font-weight:500;line-height:1.6;margin:0}
+
 /* ── FOOTER ── */
 footer{
   background:#f7f9fa;padding:48px 40px;text-align:center;
@@ -278,10 +309,7 @@ footer p{font-size:12px;color:#bbb}
 <!-- NAV -->
 <nav>
   <a class="nav-logo saneas" href="/">Saneas®</a>
-  <a class="nav-wa" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Programa%20de%20Asesor%C3%ADas.">
-    <svg viewBox="0 0 24 24" class="wa-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.134.558 4.133 1.533 5.868L.057 23.887a.75.75 0 0 0 .917.972l6.195-1.597A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.523-5.168-1.43l-.34-.208-3.677.947.983-3.594-.229-.363A9.98 9.98 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-    Quiero saber más
-  </a>
+  <a class="nav-wa" style="background:var(--teal)" href="#solicitud">Quiero ser asesor</a>
 </nav>
 
 <!-- HERO -->
@@ -294,8 +322,8 @@ footer p{font-size:12px;color:#bbb}
         Tú acompañas a las personas. Nosotros ponemos el método, la tecnología y el respaldo profesional.<br>
         <strong>No cobras por captar: cobras cada mes que tu cliente sigue contigo.</strong>
       </div>
-      <a class="btn-orange" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20conocer%20el%20Programa%20de%20Asesor%C3%ADas%20Saneas.">
-        Quiero verlo en 10 minutos →
+      <a class="btn-orange" href="#solicitud">
+        Quiero ser asesor Saneas →
       </a>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
@@ -319,7 +347,7 @@ footer p{font-size:12px;color:#bbb}
       <div class="stat-label">personas acompañadas</div>
     </div>
     <div class="reveal reveal-delay-2">
-      <div class="stat-num">18</div>
+      <div class="stat-num">76</div>
       <div class="stat-label">semanas de método estructurado</div>
     </div>
   </div>
@@ -380,7 +408,7 @@ footer p{font-size:12px;color:#bbb}
     <ul class="check reveal">
       <li>App para tus clientes <small>dieta, seguimiento, registro y comunicación</small></li>
       <li>Tu panel de gestión <small>tus clientes, tus altas, tu facturación</small></li>
-      <li>El método completo de 18 semanas <small>con sus dietas, recetas y listas de la compra</small></li>
+      <li>El método completo de 76 semanas <small>con sus dietas, recetas y listas de la compra</small></li>
       <li>La ficha de entrada con el sistema de seguridad <small>el semáforo que decide por ti</small></li>
       <li>El respaldo del equipo clínico colegiado <small>que firma los casos delicados</small></li>
       <li>Formación inicial y acompañamiento <small>en tus primeros meses</small></li>
@@ -447,16 +475,39 @@ footer p{font-size:12px;color:#bbb}
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-final">
+<!-- SOLICITUD -->
+<section class="cta-final" id="solicitud">
   <div class="reveal">
-    <h2>Diez minutos<br>y lo ves tú mismo.</h2>
-    <p>El siguiente paso no es firmar nada. Es verlo funcionar.</p>
-    <p class="peque">Te enseñamos cómo rellenas la ficha con un cliente y cómo el sistema, solo, frena un caso que no debería arrancar. Si te parece humo, nos lo dices. Si te gusta, hablamos de cómo montarías la tuya.</p>
-    <a class="btn-white" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20ver%20el%20Programa%20de%20Asesor%C3%ADas%20en%2010%20minutos.">
-      <svg viewBox="0 0 24 24" class="wa-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.134.558 4.133 1.533 5.868L.057 23.887a.75.75 0 0 0 .917.972l6.195-1.597A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.523-5.168-1.43l-.34-.208-3.677.947.983-3.594-.229-.363A9.98 9.98 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      Ver el sistema por WhatsApp
-    </a>
+    <h2>Cuéntanos<br>quién eres.</h2>
+    <p>Antes de enseñarte el sistema queremos conocerte un poco.</p>
+    <p class="peque">Rellena esto y te contactamos personalmente. Sin listas de correo, sin llamadas pesadas: una conversación de tú a tú para ver si encajamos.</p>
+    <form class="solicitud-card" id="formSolicitud" onsubmit="return enviarSolicitud(event)">
+      <div class="f2">
+        <label>Nombre*<input id="c_nombre" maxlength="60" required></label>
+        <label>Apellidos*<input id="c_apellidos" maxlength="80" required></label>
+      </div>
+      <div class="f2">
+        <label>Email*<input id="c_email" type="email" maxlength="120" required></label>
+        <label>Teléfono<input id="c_telefono" type="tel" maxlength="20"></label>
+      </div>
+      <label>Tu formación actual*
+        <input id="c_formacion" maxlength="160" placeholder="Ej: TAFAD, grado en CAFD, entrenador personal certificado, enfermería…" required></label>
+      <label>Tu relación con la dietética, la nutrición o la preparación física*
+        <select id="c_relacion" required>
+          <option value="" selected disabled>Elige la que más se acerque…</option>
+          <option>Preparador/a físico o entrenador/a personal</option>
+          <option>Profesional de la salud (enfermería, fisio, farmacia…)</option>
+          <option>Formación en dietética/nutrición sin ejercer</option>
+          <option>Sin formación reglada, pero acompaño a personas</option>
+          <option>Otra</option>
+        </select></label>
+      <label>¿Por qué quieres unirte a Saneas y ser asesor?*
+        <textarea id="c_motivo" rows="4" maxlength="1000" placeholder="Cuéntanoslo con tus palabras. No buscamos redacciones perfectas: buscamos motivos de verdad." required></textarea></label>
+      <input id="c_web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <button class="btn-orange" id="btnSolicitud" type="submit" style="width:100%;justify-content:center">Enviar mi solicitud →</button>
+      <div class="sol-msg" id="solMsg"></div>
+      <div class="sol-legal">Usaremos tus datos únicamente para valorar tu candidatura y ponernos en contacto contigo. Nada de listas ni cesiones.</div>
+    </form>
   </div>
 </section>
 
@@ -506,6 +557,41 @@ const counterObserver = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.5});
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ── Solicitud de candidatura ──
+// Se guarda en la base de Saneas (misma clave publicable que usa la app; solo
+// permite INSERTAR: nadie puede leer las solicitudes desde fuera). El aviso por
+// email sale desde el servidor: ninguna dirección personal viaja en esta página.
+const SOL_URL='https://uisrxztowgdpkxeuznfh.supabase.co/rest/v1/asesores_candidatos';
+const SOL_KEY='sb_publishable_8ybOGHnn9rsMDf57mx-Igw_AVvWK30D';
+async function enviarSolicitud(ev){
+  ev.preventDefault();
+  const v=id=>document.getElementById(id).value.trim();
+  if(v('c_web')){ solOK(); return false; }   // honeypot anti-bots
+  const btn=document.getElementById('btnSolicitud'), msg=document.getElementById('solMsg');
+  btn.disabled=true; btn.textContent='Enviando…'; msg.textContent=''; msg.className='sol-msg';
+  try{
+    const r=await fetch(SOL_URL,{method:'POST',headers:{
+      'apikey':SOL_KEY,'Authorization':'Bearer '+SOL_KEY,
+      'Content-Type':'application/json','Prefer':'return=minimal'
+    },body:JSON.stringify({
+      nombre:v('c_nombre'), apellidos:v('c_apellidos'), email:v('c_email'),
+      telefono:v('c_telefono'), formacion:v('c_formacion'),
+      relacion:v('c_relacion'), motivo:v('c_motivo')
+    })});
+    if(r.status===201){ solOK(); return false; }
+    throw new Error('estado '+r.status);
+  }catch(e){
+    btn.disabled=false; btn.textContent='Enviar mi solicitud →';
+    msg.className='sol-msg err'; msg.textContent='No se pudo enviar. Inténtalo de nuevo en un momento.';
+  }
+  return false;
+}
+function solOK(){
+  document.getElementById('formSolicitud').innerHTML=
+    '<div class="sol-ok"><div class="ico">🤝</div><h3>Recibido. Gracias.</h3>'+
+    '<p>Leemos todas las solicitudes personalmente.<br>Si encajas con lo que buscamos, te contactamos en pocos días.</p></div>';
+}
 </script>
 
 </body>
