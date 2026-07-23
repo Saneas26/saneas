@@ -200,6 +200,32 @@ nav{
   font-size:16px;color:rgba(255,255,255,0.75);margin-top:22px;
   font-style:italic;font-weight:500;line-height:1.6;
 }
+/* modelo a dos columnas: dinero + ahorro, a la misma altura */
+.modelo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;margin-top:56px}
+@media(max-width:900px){.modelo-grid{grid-template-columns:1fr}}
+.modelo-grid .money{margin:0;max-width:none;display:flex;flex-direction:column;justify-content:center}
+.ahorro{
+  background:rgba(63,160,122,0.08);border:1px solid rgba(63,160,122,0.3);
+  border-radius:var(--radius);padding:36px 38px;display:flex;flex-direction:column;justify-content:center;
+}
+@media(max-width:600px){.ahorro{padding:30px 24px}}
+.ahorro h3{font-size:20px;font-weight:900;letter-spacing:-0.5px;color:var(--green);margin-bottom:6px}
+.ahorro .conf{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;font-weight:700;color:var(--text);line-height:1.5;padding:12px 0 14px;border-bottom:1px solid rgba(63,160,122,0.25)}
+.ahorro .conf .tick{color:var(--green);font-weight:900;flex:none}
+.ahorro .fila{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid rgba(63,160,122,0.18)}
+.ahorro .fila .k{font-size:15px;font-weight:600;color:var(--text);line-height:1.4}
+.ahorro .fila .k small{display:block;font-size:12.5px;color:var(--gray);font-weight:500}
+.ahorro .fila .v{font-size:16px;font-weight:800;color:var(--gray);white-space:nowrap;text-decoration:line-through;text-decoration-color:rgba(216,89,58,0.55);text-decoration-thickness:2px}
+.ahorro .total{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-top:16px}
+.ahorro .total .k{font-size:16px;font-weight:900;color:var(--text)}
+.ahorro .total .v{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-1px;color:var(--green)}
+.garantias{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:900px){.garantias{grid-template-columns:1fr}}
+.gar{background:#f7f9fa;border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius);padding:32px 34px}
+.gar .ico{font-size:30px;display:block;margin-bottom:12px}
+.gar h3{font-size:20px;font-weight:800;letter-spacing:-0.4px;margin-bottom:8px}
+.gar p{font-size:16px;color:var(--gray);line-height:1.65;font-weight:500}
+.gar p b{color:var(--text)}
 .honesto{font-size:20px;color:var(--gray);line-height:1.7;margin-top:32px;max-width:760px}
 .honesto b{color:var(--text)}
 
@@ -424,14 +450,30 @@ footer p{font-size:12px;color:#bbb}
       <span class="tag">El modelo</span>
       <h2 class="section-title">Un ingreso que se construye<br>y se sostiene.</h2>
     </div>
-    <div class="money reveal">
-      <div class="row"><span class="k">Tu cliente paga (tarifa fija)</span><span class="v">60 € / mes</span></div>
-      <div class="row"><span class="k">Te quedas tú</span><span class="v orange">20 € / cliente</span></div>
-      <div class="row"><span class="k">Cuota Saneas (sistema + respaldo clínico)</span><span class="v">40 € / cliente</span></div>
-      <div class="row"><span class="k">Entrada única</span><span class="v">480 €</span></div>
-      <div class="big">La entrada se amortiza con tus primeras 12 altas. A partir de ahí, cada cliente activo son 20 € limpios cada mes que sigue contigo.</div>
+    <div class="modelo-grid">
+      <div class="money reveal">
+        <div class="row"><span class="k">Tu cliente paga (tarifa fija)</span><span class="v">60 € / mes</span></div>
+        <div class="row"><span class="k">Te quedas tú</span><span class="v orange">20 € / cliente</span></div>
+        <div class="row"><span class="k">Cuota Saneas (sistema + respaldo clínico)</span><span class="v">40 € / cliente</span></div>
+        <div class="row"><span class="k">Entrada única</span><span class="v">480 €</span></div>
+        <div class="big">La entrada se amortiza con tus primeras 12 altas. A partir de ahí, cada cliente activo son 20 € cada mes que sigue contigo.</div>
+      </div>
+      <div class="ahorro reveal reveal-delay-1">
+        <h3>Y lo que NO tendrás que pagar</h3>
+        <div class="conf"><span class="tick">✓</span><span>Confianza de serie: tus clientes entran a un método que ya funciona, no a un experimento.</span></div>
+        <div class="fila"><span class="k">Gestoría / asesoría fiscal<small>facturación y papeleo, resuelto en el sistema</small></span><span class="v">~50 €/mes</span></div>
+        <div class="fila"><span class="k">Holded (facturación)</span><span class="v">19 €/mes</span></div>
+        <div class="fila"><span class="k">Software de nutricionista<small>tipo Nutrium, DietoPro…</small></span><span class="v">~30 €/mes</span></div>
+        <div class="fila"><span class="k">WhatsApp Business (plataforma)</span><span class="v">~15 €/mes</span></div>
+        <div class="fila"><span class="k">Publicidad en Meta / TikTok<small>lo mínimo para llegar a algún cliente</small></span><span class="v">desde 150 €/mes</span></div>
+        <div class="total"><span class="k">Cada mes te ahorras</span><span class="v">≈ 260 €</span></div>
+      </div>
     </div>
-    <p class="honesto reveal">Seamos honestos: esto no es dinero rápido. Es un ingreso que se construye cliente a cliente y que vive de la <b>constancia</b>, no de la captación. Cuidas bien a tu gente, tu gente se queda, y tu ingreso crece solo. Sin más gastos que tu cuota de autónomo.</p>
+    <div class="garantias">
+      <div class="gar reveal"><span class="ico">🛡️</span><h3>Sin riesgo y sin sorpresas</h3><p>Tu única inversión es la entrada, y es <b>amortizable</b>: hasta que no la amortices, <b>no te cobramos nada más</b>. La parte proporcional de Saneas de las cuotas de tus clientes solo empieza a cobrarse cuando la entrada ya está cubierta — durante tus 12 primeros clientes, nada extra.</p></div>
+      <div class="gar reveal reveal-delay-1"><span class="ico">🧩</span><h3>Sin dejar tu trabajo</h3><p>No te obliga a soltar lo que ya haces: es <b>compatible con tu empleo</b> y puede empezar siendo un sobresueldo que crece a tu ritmo, cliente a cliente.</p></div>
+    </div>
+    <p class="honesto reveal">Seamos honestos: esto no es dinero rápido. Es un ingreso que se construye cliente a cliente y que vive de la <b>constancia</b>, no de la captación. Cuidas bien a tu gente, tu gente se queda, y tu ingreso crece solo. Sin más gastos que tu cuota de autónomo. <span style="font-size:14px;font-style:italic">Ahorros orientativos según precios habituales del mercado español en 2026.</span></p>
   </div>
 </section>
 
