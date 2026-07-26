@@ -77,6 +77,11 @@ Marcas a fecha de este documento: **Saneas** (nutrición) · **Pordondevoy**
   · --text:#17343c · --gray:#6b7b80 · --radius:28px` (una marca nueva puede
   cambiar los colores, no la mecánica).
 - **La marca registrada siempre**: `Marca<sup>®</sup>` con el ® en superíndice.
+- **La palabra Saneas, norma corporativa**: siempre «Saneas» — S mayúscula y el
+  resto en minúsculas, fuente Quicksand Bold, y SOLO en teal o en blanco. El
+  naranja corporativo se reserva para distinguir o para detalles. Nunca en
+  mayúsculas completas (cuidado con `text-transform:uppercase` en títulos) y
+  nunca en color oscuro.
 - **Secciones alternando** fondo blanco y `#f7f9fa`, sin dos seguidas del mismo
   color. Si al insertar una sección se rompe la alternancia, se corrige.
 - **Animaciones**: clase `.reveal` + IntersectionObserver (transición de
@@ -93,7 +98,7 @@ Marcas a fecha de este documento: **Saneas** (nutrición) · **Pordondevoy**
     <a href="https://www.instagram.com/...">Instagram</a>
     <!-- Facebook · YouTube · WhatsApp -->
   </div>
-  <div class="fg-title">El grupo Saneas</div>
+  <div class="fg-title">Grupo <span class="saneas fg-s">Saneas</span></div>
   <div class="fg-grid">
     <a class="fg-card" href="...">
       <img src="/assets/img/app-<marca>.png" alt="APP Marca">
@@ -180,6 +185,11 @@ Los 22 de Saneas como referencia (una marca nueva tendrá menos al empezar):
 ```
 
 ### Convenciones que no se negocian
+- **La app NUNCA gira**: solo vertical, fijado por Oscar. `manifest.json` con
+  `"orientation":"portrait"` + guardián `#rotateGuard` con
+  `@media (orientation:landscape) and (max-height:520px)` (por altura, para
+  cubrir también los iPhone grandes sin bloquear el escritorio). Esto no se
+  quita en ninguna actualización futura.
 - **Versión**: `APP_VERSION = '<Marca>26 vX.Y'` en 01-config + pintor en el
   pie de la app. Cada release sube la versión Y el `?v=` del módulo tocado en
   `index.html` (aunque con `no-store` es redundante, deja rastro).
