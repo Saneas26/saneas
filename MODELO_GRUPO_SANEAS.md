@@ -54,8 +54,8 @@ Por cada marca, **dos repos** en la cuenta `Saneas26` y **dos dominios**:
   enlace y con `<small class="soon">Muy pronto</small>`.
 
 Marcas a fecha de este documento: **Saneas** (nutrición) · **Pordondevoy**
-(pordondevoy-saneas.vercel.app) · **laOra** (relojes, muy pronto) ·
-**CasActiva** (muy pronto).
+(pordondevoy-saneas.vercel.app) · **laOra** (relojes, laora.es) ·
+**Activala** (alquiler, activala.es; antes CasActiva) · **Acumula** (acumula.es).
 
 ---
 
