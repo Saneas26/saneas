@@ -34,6 +34,17 @@ var GrupoSaneas = (function(){
   function todas(){ return MARCAS.concat(CFG.extras||[]); }
   function porId(id){ var l=todas(); for(var i=0;i<l.length;i++) if(l[i].id===id) return l[i]; return null; }
   function src(m){ return m.logo ? (CFG.logos+m.logo) : ''; }
+  // Marcas sin PNG (los sub-productos): baldosa naranja con dos figuras,
+  // una detrás de otra — se entiende de un vistazo que son personas.
+  var SVG_PERSONAS = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" '
+    + 'stroke-linecap="round" stroke-linejoin="round">'
+    + '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>'
+    + '<path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+  function icono(m, clase){
+    return m.logo
+      ? '<img src="'+esc(src(m))+'" alt="" loading="lazy">'
+      : '<span class="'+clase+'">'+SVG_PERSONAS+'</span>';
+  }
 
   // ---- estilos propios: el componente no depende del CSS de la casa ----
   function ponerCSS(){
@@ -75,6 +86,14 @@ var GrupoSaneas = (function(){
         'font-size:15.5px;font-weight:800;text-decoration:none;font-family:inherit;cursor:pointer;margin-bottom:9px}',
       '.gs-ok{display:block;width:100%;background:#fff;color:#3890a4;border:2px solid #3890a4;border-radius:14px;',
         'padding:13px;font-size:15.5px;font-weight:800;font-family:inherit;cursor:pointer}',
+      '.gs-svg{display:inline-flex;align-items:center;justify-content:center;flex:none;',
+        'background:linear-gradient(135deg,#F5862E,#d96b1a);box-shadow:0 3px 10px rgba(16,40,48,.12)}',
+      '.gs-svg-fila{width:52px;height:52px;border-radius:14px}',
+      '.gs-svg-fila svg{width:26px;height:26px}',
+      '.gs-svg-item{width:60px;height:60px;border-radius:16px;box-shadow:0 4px 12px rgba(16,40,48,.16)}',
+      '.gs-svg-item svg{width:30px;height:30px}',
+      '.gs-svg-ficha{width:96px;height:96px;border-radius:24px;box-shadow:0 8px 22px rgba(16,40,48,.2)}',
+      '.gs-svg-ficha svg{width:46px;height:46px}',
       '@media (prefers-reduced-motion:reduce){.gs-panel,.gs-fondo{transition:none}}'
     ].join('');
     document.head.appendChild(c);
@@ -104,7 +123,7 @@ var GrupoSaneas = (function(){
   function menuHTML(){
     return '<div class="gs-tit">Grupo <b>Saneas</b></div>' + todas().map(function(m){
       var aqui = (m.id===CFG.actual);
-      var ico = m.logo ? '<img src="'+esc(src(m))+'" alt="" loading="lazy">' : '';
+      var ico = icono(m,'gs-svg gs-svg-fila');
       var tx = '<span class="gs-tx"><b>'+esc(m.nombre)+(aqui?'<span class="gs-aqui">estás aquí</span>':'')
              + '</b><span>'+esc(m.texto)+'</span></span>';
       return aqui
@@ -122,7 +141,7 @@ var GrupoSaneas = (function(){
   function gridHTML(){
     ponerCSS();
     return '<div class="gs-grid">' + todas().map(function(m){
-      var ico = m.logo ? '<img src="'+esc(src(m))+'" alt="" loading="lazy">' : '';
+      var ico = icono(m,'gs-svg gs-svg-item');
       return '<button type="button" class="gs-item" onclick="GrupoSaneas.ficha(\''+esc(m.id)+'\')">'
            + ico + '<b>'+esc(m.nombre)+'</b></button>';
     }).join('') + '</div>';
@@ -131,7 +150,7 @@ var GrupoSaneas = (function(){
     var m=porId(id); if(!m) return;
     var aqui=(m.id===CFG.actual);
     mostrar('<div class="gs-ficha">'
-      + (m.logo?'<img src="'+esc(src(m))+'" alt="">':'')
+      + icono(m,'gs-svg gs-svg-ficha')
       + '<h3>'+esc(m.nombre)+'</h3><p>'+esc(m.texto)+'</p>'
       + (aqui?'':'<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>')
       + '<button type="button" class="gs-ok" onclick="GrupoSaneas.cerrar()">OK</button></div>');
