@@ -1051,5 +1051,10 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 </script>
 
 <script src="/assets/telemetria.js" defer></script>
+<script src="/assets/js/grupo-saneas.js?v=1.1"></script>
+<script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",extras:[{id:"asesorias",nombre:"Asesora Saneas",url:"/asesorias",texto:"Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca."}]});
+document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");if(!/▾/.test(e.textContent)) e.insertAdjacentHTML("beforeend","<span style=\"font-size:12px;opacity:.8;margin-left:4px;vertical-align:2px\">▾</span>");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
+var _fg=document.querySelector(".fg-grid"); if(_fg) _fg.outerHTML=GrupoSaneas.gridHTML();
+</script>
 </body>
 </html>

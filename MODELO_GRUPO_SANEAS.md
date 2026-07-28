@@ -90,6 +90,41 @@ Marcas a fecha de este documento: **Saneas** (nutrición) · **Pordondevoy**
 - **Sin exageraciones**: cifras reales, comparativas honestas, letra pequeña
   cuando toca (ej. «no sustituimos a tu médico»).
 
+### La publicidad interna del grupo (componente compartido)
+
+**Un solo archivo, idéntico en TODAS las webs y apps del grupo**:
+`grupo-saneas.js` (en el repo web vive en `assets/js/`, en las apps en
+`js/24-grupo-saneas.js`). Trae los datos de las cinco marcas con su
+texto de venta, se pinta sus propios estilos (no depende del CSS de la
+casa) y ofrece dos superficies:
+
+- **Desplegable del logo**: al pulsar el logotipo de arriba a la
+  izquierda, `GrupoSaneas.abrirMenu()` muestra cada marca con su
+  logotipo y su explicación completa. La marca de la propia casa sale
+  con el distintivo «estás aquí» y sin enlace.
+- **Parrilla del pie**: `GrupoSaneas.gridHTML()` devuelve la rejilla de
+  iconos para colocarla donde el cliente más tiempo pasa (en
+  Pordondevoy, por ejemplo, la segunda pantalla). Al pulsar un icono se
+  abre su ficha: logotipo grande, explicación, botón «Ir a <marca>» y
+  botón **OK** para cerrar.
+
+Instalación en una propiedad nueva — copiar el archivo, los cinco PNG de
+192px y añadir:
+```html
+<script src="/assets/js/grupo-saneas.js"></script>
+<script>
+  GrupoSaneas.init({ actual:'<mi-marca>', logos:'/assets/img/' });
+  // el logo abre el menú:
+  document.querySelector('.nav-logo').addEventListener('click', GrupoSaneas.abrirMenu);
+  // y donde vaya el pie:
+  document.getElementById('pieGrupo').innerHTML = GrupoSaneas.gridHTML();
+</script>
+```
+`init` acepta además `extras: [...]` para los sub-productos propios de
+esa marca (así Saneas añade su Programa de Asesorías sin romper la
+unidad del grupo). **Los textos de venta no se tocan por cuenta propia:
+son de Oscar y deben ser los mismos en todas partes.**
+
 ### El pie del grupo (bloque modelo)
 ```html
 <footer>
