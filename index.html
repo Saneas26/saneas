@@ -1051,5 +1051,10 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 </script>
 
 <script src="/assets/telemetria.js" defer></script>
+<script src="/assets/js/grupo-saneas.js?v=1.0"></script>
+<script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",extras:[{id:"asesorias",nombre:"Programa de Asesorías",logo:"app-saneas.png",url:"/asesorias",texto:"Monta tu propia consulta con el método, las herramientas y el respaldo de Saneas."}]});
+document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");if(!/▾/.test(e.textContent)) e.insertAdjacentHTML("beforeend","<span style=\"font-size:12px;opacity:.8;margin-left:4px;vertical-align:2px\">▾</span>");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
+var _fg=document.querySelector(".fg-grid"); if(_fg) _fg.outerHTML=GrupoSaneas.gridHTML();
+</script>
 </body>
 </html>
