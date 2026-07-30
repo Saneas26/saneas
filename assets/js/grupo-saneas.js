@@ -21,17 +21,17 @@ var GrupoSaneas = (function(){
   var MARCAS = [
     // Saneas son DOS fichas: la web (icono teal con todas las letras) y la APP
     // (icono teal con la S sola, que lleva a la pagina de instalacion).
-    { id:'saneas', nombre:'Saneas', logo:'app-saneas-web.png', url:'https://saneas.es',
+    { id:'saneas', nombre:'Saneas', logo:'app-saneas-web.png', url:'https://saneas.es', tipo:'una página web',
       texto:'El método de nutrición con 87% de éxito que ha ayudado a más de 1700 personas, sin pastillas, sin batidos y sin inyecciones. Solo cambiando tus hábitos poco a poco. El GPS de la nutrición que te muestra el camino.' },
-    { id:'saneas-app', nombre:'APP Saneas', logo:'app-saneas-s.png', url:'https://saneas.es/instala-app',
+    { id:'saneas-app', nombre:'APP Saneas', logo:'app-saneas-s.png', url:'https://saneas.es/instala-app', tipo:'una aplicación',
       texto:'Probablemente la mejor APP de nutrición del mercado.' },
-    { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app',
+    { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app', tipo:'una aplicación',
       texto:'En un avión no hay datos ni wifi. Ahora puedes entretenerte y saber por dónde vas, de manera gratuita. Las 20 noticias más importantes del día te acompañan, junto a los principales podcast en español. Con itinerarios a las principales ciudades europeas.' },
-    { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es',
+    { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es', tipo:'una página web',
       texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' },
-    { id:'laora', nombre:'laOra', logo:'app-laora.png', url:'https://laora.es',
+    { id:'laora', nombre:'laOra', logo:'app-laora.png', url:'https://laora.es', tipo:'una página web',
       texto:'La relojería de lujo al precio honesto, sin peajes de marca.' },
-    { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es',
+    { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es', tipo:'una aplicación',
       texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' }
   ];
   var CFG = { actual:'', logos:'img/', extras:[], barra:'.appbar,header' };
@@ -231,7 +231,11 @@ var GrupoSaneas = (function(){
     var m = porId(id); if(!m) return;
     var lado = QRS[id] ? (QRS[id].t + 8) * 6 : 210;   // 6 px por modulo: bordes nitidos
     var svg = qrSVG(id, lado);
-    var texto = 'Te comparto ' + m.nombre + ': ' + m.url;
+    // El mensaje es el mismo que la clienta ve en el desplegable: nombre y
+    // explicacion, que son los textos de Oscar, y debajo el enlace.
+    var texto = 'Hola, hoy quiero compartir contigo ' + (m.tipo || 'algo')
+              + ' que me parece increíble, ' + m.nombre + ': ' + m.texto
+              + '\n\n' + m.url;
     var wa = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(texto);
     mostrar('<div class="gs-ficha">'
       + '<h3>Compartir ' + esc(m.nombre) + '</h3>'
