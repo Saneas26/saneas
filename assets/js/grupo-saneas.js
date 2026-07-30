@@ -47,6 +47,33 @@ var GrupoSaneas = (function(){
     }
     return result;
   }
+  // ---- códigos QR de cada casa, ya calculados ----
+  // Se generan con herramientas/qr_grupo.py (segno) y se pegan aquí: son siete
+  // direcciones fijas, así que no hace falta un codificador en la app. Cada uno
+  // es la matriz en binario, empaquetada en base64, fila a fila.
+  var QRS = {
+    'saneas': {t:25, d:'/i+/wSBQboOrt1AV26ci7BS1B/qq/gEpAGIVtDZY2set+b0QeIh26gpE+Y/KFBpSAnj2cfkAV8R/jaowQXErpX+d0Spa6q93BeWw/jSkgA=='},
+    'saneas-app': {t:29, d:'/m/D/BGOkG6u0Lt0aUXbqcouwVnZB/qqr+AJmABKit2iQQQcy+17Wpip2L329JTyPtFVqCs6YpfqaJcUvQdt0V5L+1IyccfCn+fl/YB/xF/4t2owT4sZups/ldClCK6Dpw8FbNK/5VaJAA=='},
+    'asesorias': {t:29, d:'/h/7/BAqkG6yFLt0ZUXbqKouwVfZB/qqr+AOuABK8rWjzekc8pF7OypnyrGkNZTuBnFV7XqifSEyKKpynQWLAT9FxlISG1/AjfEE+IBoxF/4n2owSU8Zur0/ldBUC66fJx8FHN6/5RatAA=='},
+    'pordondevoy': {t:29, d:'/qr7/BeREG6bJLt1Y4XboD0uwQYdB/qqr+ARTwC3BPpcYWX8TeURzYvyeho2pQZQeb0cvZNy+JRw0pMLFNMtWkumvfJIUE2hRXBu/gB4RH/6KutQU/EbuklPpdXOLm6zqEsExDGv7evVAA=='},
+    'activala': {t:25, d:'/me/wSIQbqaLt0nV26tS7BcVB/qq/gDnAEqmWiZvxoS6dZkoJGm3d35m3kjMRHhzu7brWv4AdUQ/iKoQRpHbq+/t0qee6SuVBdD+/mNjgA=='},
+    'laora': {t:25, d:'/ju/wTsQbpDrt1FF26T67BXFB/qq/gFmAGIfNE4v2sCqX6cGm4xqWwgHTY9NBhopt/j7fPkARER/kqowTBELph+d0tpa6rZ3Bb0w/gzEgA=='},
+    'acumula': {t:25, d:'/iW/wTFQbrbLt0A126r67BTxB/qq/gDwAErHWhClhpan1Y+qtGOhR3+L3kj45nggkjby8f4Ab0Q/kCoQQJH7rw/t0Nue6JOVBWx+/itjgA=='}
+  };
+
+  function qrSVG(id, lado){
+    var q = QRS[id]; if(!q) return '';
+    var bin = atob(q.d), t = q.t, borde = 4, total = t + borde*2, d = '';
+    for(var i=0;i<t*t;i++){
+      if(!((bin.charCodeAt(i>>3) >> (7-(i&7))) & 1)) continue;
+      d += 'M'+((i%t)+borde)+' '+(((i/t)|0)+borde)+'h1v1h-1z';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="'+lado+'" height="'+lado+'" '
+         + 'viewBox="0 0 '+total+' '+total+'" shape-rendering="crispEdges" role="img" '
+         + 'aria-label="Código QR"><rect width="'+total+'" height="'+total+'" fill="#fff"/>'
+         + '<path d="'+d+'" fill="#1a2e35"/></svg>';
+  }
+
   function porId(id){ var l=todas(); for(var i=0;i<l.length;i++) if(l[i].id===id) return l[i]; return null; }
   function src(m){ return m.logo ? (CFG.logos+m.logo) : ''; }
   // Marcas sin PNG (los sub-productos): baldosa naranja con dos figuras,
@@ -88,6 +115,16 @@ var GrupoSaneas = (function(){
       '.gs-fila{display:flex;align-items:flex-start;gap:12px;padding:11px;border-radius:16px;',
         'border:1px solid #e3edef;margin-bottom:9px;text-decoration:none;background:#fff}',
       '.gs-fila:active{background:#f4fafb}',
+      '.gs-fila{flex-wrap:wrap}',
+      '.gs-fila-l{display:flex;align-items:flex-start;gap:12px;flex:1 1 100%;min-width:0;text-decoration:none}',
+      '.gs-comp{margin:6px 0 0 64px;background:#eef6f8;color:#3890a4;border:0;border-radius:9px;',
+        'padding:7px 14px;font-size:13.5px;font-weight:800;cursor:pointer;font-family:inherit}',
+      '.gs-comp:active{background:#dcecf0}',
+      '.gs-comp-ficha{display:block;width:100%;margin:0 0 9px;padding:13px;font-size:15.5px}',
+      '.gs-qr{display:flex;justify-content:center;margin:4px 0 6px}',
+      '.gs-qr svg{border-radius:12px;box-shadow:0 4px 14px rgba(16,40,48,.16)}',
+      '.gs-qr-pie{font-size:14px;color:#3d4f59;margin:0 6px 16px}',
+      '.gs-ir.gs-wa{background:#25D366}',
       '.gs-fila img{width:52px;height:52px;border-radius:14px;object-fit:cover;flex:none;background:#fff;',
         'box-shadow:0 3px 10px rgba(16,40,48,.12)}',
       '.gs-tx{min-width:0;text-align:left}',
@@ -166,9 +203,12 @@ var GrupoSaneas = (function(){
       var ico = icono(m,'gs-svg gs-svg-fila');
       var tx = '<span class="gs-tx"><b>'+esc(m.nombre)+(aqui?'<span class="gs-aqui">estás aquí</span>':'')
              + '</b><span>'+esc(m.texto)+'</span></span>';
-      return aqui
-        ? '<div class="gs-fila">'+ico+tx+'</div>'
-        : '<a class="gs-fila" href="'+esc(m.url)+'" target="_blank" rel="noopener">'+ico+tx+'</a>';
+      var dentro = aqui
+        ? '<div class="gs-fila-l">'+ico+tx+'</div>'
+        : '<a class="gs-fila-l" href="'+esc(m.url)+'" target="_blank" rel="noopener">'+ico+tx+'</a>';
+      return '<div class="gs-fila">' + dentro
+        + '<button type="button" class="gs-comp" onclick="GrupoSaneas.compartir(\''+esc(m.id)+'\')">Compartir</button>'
+        + '</div>';
     }).join('');
   }
   function abrirMenu(){
@@ -186,6 +226,22 @@ var GrupoSaneas = (function(){
            + ico + '<b>'+esc(m.nombre)+'</b></button>';
     }).join('') + '</div>';
   }
+  // ---- compartir: el QR para que lo escaneen delante, o WhatsApp ----
+  function compartir(id){
+    var m = porId(id); if(!m) return;
+    var lado = QRS[id] ? (QRS[id].t + 8) * 6 : 210;   // 6 px por modulo: bordes nitidos
+    var svg = qrSVG(id, lado);
+    var texto = 'Te comparto ' + m.nombre + ': ' + m.url;
+    var wa = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(texto);
+    mostrar('<div class="gs-ficha">'
+      + '<h3>Compartir ' + esc(m.nombre) + '</h3>'
+      + (svg ? '<div class="gs-qr">' + svg + '</div>'
+             + '<p class="gs-qr-pie">Que lo escaneen con la cámara del móvil</p>' : '')
+      + '<a class="gs-ir gs-wa" href="' + esc(wa) + '" target="_blank" rel="noopener">Enviar por WhatsApp</a>'
+      + '<button type="button" class="gs-ok" onclick="GrupoSaneas.ficha(\'' + esc(m.id) + '\')">Volver</button>'
+      + '</div>');
+  }
+
   function ficha(id){
     var m=porId(id); if(!m) return;
     var aqui=(m.id===CFG.actual);
@@ -193,6 +249,7 @@ var GrupoSaneas = (function(){
       + icono(m,'gs-svg gs-svg-ficha')
       + '<h3>'+esc(m.nombre)+'</h3><p>'+esc(m.texto)+'</p>'
       + (aqui?'':'<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>')
+      + '<button type="button" class="gs-comp gs-comp-ficha" onclick="GrupoSaneas.compartir(\''+esc(m.id)+'\')">Compartir</button>'
       + '<button type="button" class="gs-ok" onclick="GrupoSaneas.cerrar()">OK</button></div>');
   }
 
@@ -204,6 +261,6 @@ var GrupoSaneas = (function(){
     if(o.barra!=null)  CFG.barra=o.barra;
     ponerCSS();
   }
-  return { init:init, abrirMenu:abrirMenu, cerrar:cerrar, ficha:ficha,
+  return { init:init, abrirMenu:abrirMenu, cerrar:cerrar, ficha:ficha, compartir:compartir,
            gridHTML:gridHTML, menuHTML:menuHTML, marcas:todas };
 })();
