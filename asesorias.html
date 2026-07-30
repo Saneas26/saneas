@@ -44,6 +44,50 @@ nav{
   border-bottom:1px solid rgba(0,0,0,0.06);
 }
 .nav-logo{font-size:20px;color:var(--text);letter-spacing:-0.3px;text-decoration:none}
+.nav-izq{display:flex;align-items:center;gap:16px;min-width:0}
+.gs-btn{display:inline-flex;flex-direction:column;align-items:center;gap:1px;
+  padding:6px 16px;border-radius:999px;background:#e8f4f7;color:var(--teal);border:0;
+  cursor:pointer;white-space:nowrap;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  transition:background .2s,transform .15s}
+.gs-btn:hover{background:#d7ebf0;transform:translateY(-1px)}
+.gs-btn .gs-btn-l1{font-size:15px;font-weight:600;line-height:1.15}
+.gs-btn .gs-btn-fle{font-size:13px;opacity:.7;margin-left:2px}
+.gs-btn .gs-btn-mas{font-size:11.5px;font-weight:800;letter-spacing:.4px;
+  color:var(--orange);line-height:1.15}
+/* En el movil se aprieta la barra para que la pastilla y el CTA de WhatsApp
+   convivan sin pisarse (a 375px no caben con el relleno de escritorio). */
+@media(max-width:560px){
+  nav{padding:0 16px}
+  .nav-logo{font-size:18px}
+  .nav-izq{gap:8px}
+  .gs-btn{padding:5px 12px}
+  .gs-btn .gs-btn-l1{font-size:13.5px}
+  .gs-btn .gs-btn-mas{font-size:11px}
+  /* el CTA de WhatsApp se aprieta un poco, no se toca su texto */
+  nav .nav-wa{padding:9px 15px;font-size:13px}
+  nav .nav-wa svg{width:16px;height:16px}
+}
+/* Moviles estrechos (360px de Android, 320px del SE viejo): un punto menos
+   de todo, para que la pastilla y el CTA nunca se pisen. */
+@media(max-width:430px){
+  .nav-logo{font-size:17px}
+  .gs-btn{padding:5px 9px}
+  .gs-btn .gs-btn-l1{font-size:12px}
+  .gs-btn .gs-btn-mas{font-size:10.5px}
+  nav .nav-wa{padding:8px 11px;font-size:12px}
+}
+/* Y en los mas estrechos de todos (320px) la pastilla se queda en el icono:
+   sigue estando y se sigue pulsando, pero no le roba sitio al CTA. */
+@media(max-width:345px){
+  nav{padding:0 10px}
+  .nav-logo{font-size:15px}
+  .gs-btn{padding:4px 7px}
+  .gs-btn .gs-btn-l1{font-size:11px}
+  .gs-btn .gs-btn-mas{font-size:10px}
+  nav .nav-wa{padding:7px 9px;font-size:11.5px}
+}
+
 .nav-wa{
   display:inline-flex;align-items:center;gap:8px;
   background:#25D366;color:#fff;text-decoration:none;
@@ -354,7 +398,7 @@ footer p{font-size:12px;color:#bbb;margin-top:30px}
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo saneas" href="/">Saneas®</a>
+  <div class="nav-izq"><a class="nav-logo saneas" href="/">Saneas®</a><button class="gs-btn" onclick="GrupoSaneas.abrirMenu()"><span class="gs-btn-l1"><span class="gs-btn-txt">Grupo Saneas</span> <span class="gs-btn-fle">&#9662;</span></span><span class="gs-btn-mas">despliega</span></button></div>
   <a class="nav-wa" style="background:var(--teal)" href="#solicitud">Quiero ser asesor</a>
 </nav>
 
@@ -685,9 +729,10 @@ function solOK(){
 </script>
 
 <script src="/assets/telemetria.js" defer></script>
-<script src="/assets/js/grupo-saneas.js?v=1.1"></script>
-<script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",extras:[{id:"asesorias",nombre:"Asesora Saneas",url:"/asesorias",texto:"Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca."}]});
-document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");if(!/▾/.test(e.textContent)) e.insertAdjacentHTML("beforeend","<span style=\"font-size:12px;opacity:.8;margin-left:4px;vertical-align:2px\">▾</span>");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
+<script src="/assets/js/grupo-saneas.js?v=1.2"></script>
+<script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",barra:"nav",extras:[{id:"asesorias",nombre:"Asesora Saneas",url:"/asesorias",texto:"Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca."}]});
+/* El logo también abre el grupo, además de la pastilla de la cabecera */
+document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
 var _fg=document.querySelector(".fg-grid"); if(_fg) _fg.outerHTML=GrupoSaneas.gridHTML();
 </script>
 </body>
