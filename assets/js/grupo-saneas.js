@@ -24,7 +24,7 @@ var GrupoSaneas = (function(){
     { id:'saneas', nombre:'Saneas', logo:'app-saneas-web.png', url:'https://saneas.es',
       texto:'El método de nutrición con 87% de éxito que ha ayudado a más de 1700 personas, sin pastillas, sin batidos y sin inyecciones. Solo cambiando tus hábitos poco a poco. El GPS de la nutrición que te muestra el camino.' },
     { id:'saneas-app', nombre:'APP Saneas', logo:'app-saneas-s.png', url:'https://saneas.es/instala-app',
-      texto:'Tu dieta, tu lista de la compra, tus datos de cada semana y tu evolución, en el móvil. Se instala en la pantalla de inicio y funciona como una app.' },
+      texto:'Probablemente la mejor APP de nutrición del mercado.' },
     { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app',
       texto:'En un avión no hay datos ni wifi. Ahora puedes entretenerte y saber por dónde vas, de manera gratuita. Las 20 noticias más importantes del día te acompañan, junto a los principales podcast en español. Con itinerarios a las principales ciudades europeas.' },
     { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es',
