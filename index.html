@@ -43,6 +43,43 @@ nav{
   border-bottom:1px solid rgba(0,0,0,0.06);
 }
 .nav-logo{font-size:20px;color:var(--teal);letter-spacing:-0.3px}
+.nav-izq{display:flex;align-items:center;gap:16px;min-width:0}
+.gs-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;
+  background:#e8f4f7;color:var(--teal);border:0;cursor:pointer;white-space:nowrap;
+  font:600 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  transition:background .2s,transform .15s}
+.gs-btn:hover{background:#d7ebf0;transform:translateY(-1px)}
+.gs-btn .gs-btn-ico{font-size:16px;line-height:1}
+.gs-btn .gs-btn-mas{font-weight:800;letter-spacing:.2px;color:var(--orange)}
+/* En pantallas estrechas cabe el nombre del grupo, no la coletilla; y en el
+   movil se aprieta la barra para que la pastilla y el CTA de WhatsApp
+   convivan sin pisarse (a 375px no caben con el padding de escritorio). */
+@media(max-width:860px){.gs-btn .gs-btn-mas{display:none}}
+@media(max-width:560px){
+  nav{padding:0 16px}
+  .nav-logo{font-size:18px}
+  .nav-izq{gap:8px}
+  .gs-btn{padding:7px 11px;font-size:13.5px;gap:0}
+  .gs-btn .gs-btn-ico{display:none}
+  /* el CTA de WhatsApp se aprieta un poco, no se toca su texto */
+  nav .nav-wa{padding:9px 15px;font-size:13px}
+  nav .nav-wa svg{width:16px;height:16px}
+}
+/* Moviles estrechos (360px de Android, 320px del SE viejo): un punto menos
+   de todo, para que la pastilla y el CTA nunca se pisen. */
+@media(max-width:430px){
+  .nav-logo{font-size:17px}
+  .gs-btn{padding:6px 9px;font-size:12.5px}
+  nav .nav-wa{padding:8px 12px;font-size:12.5px}
+}
+/* Y en los mas estrechos de todos (320px) la pastilla se queda en el icono:
+   sigue estando y se sigue pulsando, pero no le roba sitio al CTA. */
+@media(max-width:345px){
+  .gs-btn{padding:7px 10px}
+  .gs-btn .gs-btn-ico{display:inline;font-size:15px}
+  .gs-btn .gs-btn-txt{display:none}
+}
+
 .nav-wa{
   display:inline-flex;align-items:center;gap:8px;
   background:#25D366;color:#fff;text-decoration:none;
@@ -516,7 +553,7 @@ footer p{font-size:12px;color:#bbb;margin-top:30px}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo saneas">Saneas®</div>
+  <div class="nav-izq"><div class="nav-logo saneas">Saneas®</div><button class="gs-btn" onclick="GrupoSaneas.abrirMenu()"><span class="gs-btn-ico">🤝</span> <span class="gs-btn-txt">Grupo Saneas</span> <span class="gs-btn-mas">despliega</span></button></div>
   <a class="nav-wa" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20información%20sobre%20Saneas.">
     <svg viewBox="0 0 24 24" class="wa-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.134.558 4.133 1.533 5.868L.057 23.887a.75.75 0 0 0 .917.972l6.195-1.597A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.523-5.168-1.43l-.34-.208-3.677.947.983-3.594-.229-.363A9.98 9.98 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
     Empezar ahora
@@ -1051,9 +1088,10 @@ document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(
 </script>
 
 <script src="/assets/telemetria.js" defer></script>
-<script src="/assets/js/grupo-saneas.js?v=1.1"></script>
-<script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",extras:[{id:"asesorias",nombre:"Asesora Saneas",url:"/asesorias",texto:"Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca."}]});
-document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");if(!/▾/.test(e.textContent)) e.insertAdjacentHTML("beforeend","<span style=\"font-size:12px;opacity:.8;margin-left:4px;vertical-align:2px\">▾</span>");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
+<script src="/assets/js/grupo-saneas.js?v=1.2"></script>
+<script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",barra:"nav",extras:[{id:"asesorias",nombre:"Asesora Saneas",url:"/asesorias",texto:"Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca."}]});
+/* El logo también abre el grupo, además de la pastilla de la cabecera */
+document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
 var _fg=document.querySelector(".fg-grid"); if(_fg) _fg.outerHTML=GrupoSaneas.gridHTML();
 </script>
 </body>
