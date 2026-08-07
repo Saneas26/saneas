@@ -3,6 +3,8 @@
    en este navegador, la plataforma (iPhone/Android) y el país, que deduce el
    servidor de la conexión sin guardar la IP. El recuento no es público: solo
    se ve desde el panel privado de Saneas.
+   Además, aquí se cuenta el clic en "Instala la app Saneas" (app saneas_instalar)
+   para medir el embudo web → instalación. Mismo anonimato: solo el identificador.
    Documentación: github.com/Saneas26/pordondevoy → TELEMETRIA.md */
 (function () {
   var APP = "saneas_web";
@@ -26,20 +28,42 @@
     almacen.setItem("gs-dispositivo", id);
   }
 
-  // Una vez al día; y de nuevo ese día si se pasa de navegador a instalada.
-  var marca = new Date().toISOString().slice(0, 10) + (instalada ? "·i" : "·n");
-  if (almacen.getItem("gs-ping") === marca) return;
+  var plataforma = /iphone|ipad|ipod/i.test(navigator.userAgent) ? "iPhone"
+    : (/android/i.test(navigator.userAgent) ? "Android" : "Otro");
 
-  fetch(URL_PING, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      app: APP,
-      dispositivo: id,
-      plataforma: /iphone|ipad|ipod/i.test(navigator.userAgent) ? "iPhone"
-        : (/android/i.test(navigator.userAgent) ? "Android" : "Otro"),
-      instalada: instalada
-    })
-  }).then(function (r) { if (r.ok) almacen.setItem("gs-ping", marca); })
-    .catch(function () {});
+  function ping(app, alGuardar) {
+    fetch(URL_PING, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,   // el aviso llega aunque la página navegue justo después
+      body: JSON.stringify({
+        app: app,
+        dispositivo: id,
+        plataforma: plataforma,
+        instalada: instalada
+      })
+    }).then(function (r) { if (r.ok && alGuardar) alGuardar(); })
+      .catch(function () {});
+  }
+
+  // 1) Visita de la web: una vez al día; de nuevo ese día si pasa a instalada.
+  var marca = new Date().toISOString().slice(0, 10) + (instalada ? "·i" : "·n");
+  if (almacen.getItem("gs-ping") !== marca) {
+    ping(APP, function () { almacen.setItem("gs-ping", marca); });
+  }
+
+  // 2) Clic en "Instala la app Saneas": cubre el CTA de la portada y la tarjeta
+  //    del pie (→ /instala-app) y el botón y enlaces de instala-app
+  //    (→ app.saneas.es). Se avisa en cada clic; el servidor ya deja como mucho
+  //    un apunte por dispositivo y día. keepalive: no frena la navegación.
+  document.addEventListener("click", function (ev) {
+    var el = ev.target;
+    while (el && el.getAttribute && !(el.tagName === "A" && el.getAttribute("href"))) {
+      el = el.parentNode;
+    }
+    if (!el || !el.getAttribute) return;
+    var h = el.getAttribute("href");
+    if (h.indexOf("/instala-app") !== 0 && h.indexOf("https://app.saneas.es") !== 0) return;
+    ping("saneas_instalar");
+  }, true);
 })();
