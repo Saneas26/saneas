@@ -264,7 +264,25 @@ nav{
   letter-spacing:-3px;line-height:1;color:var(--text);margin-bottom:24px;
 }
 .caso-text p{font-size:20px;color:var(--gray);line-height:1.7;margin-bottom:40px}
-.caso-nums{display:flex;gap:40px;flex-wrap:wrap}
+.caso-nums{
+  display:grid;grid-template-columns:repeat(4,auto);
+  justify-content:start;align-items:start;
+  gap:20px 34px;
+}
+/* La flecha es una celda más, alineada con la línea de los números. */
+.caso-flecha{
+  font-size:clamp(26px,2.6vw,34px);color:var(--gray);line-height:1.2;
+  align-self:start;
+}
+/* En cuanto la columna se estrecha, la flecha sobra: los rótulos
+   Inicio / Hoy ya cuentan el antes y el después. */
+@media(max-width:900px){
+  .caso-nums{grid-template-columns:repeat(3,auto)}
+  .caso-flecha{display:none}
+}
+@media(max-width:560px){
+  .caso-nums{grid-template-columns:repeat(2,auto);gap:24px 28px}
+}
 .caso-num-item .n{
   font-size:clamp(36px,4vw,52px);font-weight:900;
   letter-spacing:-2px;line-height:1;
@@ -730,12 +748,12 @@ footer p{font-size:12px;color:#727272;margin-top:30px}
             <div class="n teal">116 kg</div>
             <div class="l">Inicio</div>
           </div>
-          <div class="caso-num-item" style="font-size:32px;color:var(--gray);align-self:center;">→</div>
+          <div class="caso-flecha" aria-hidden="true">→</div>
           <div class="caso-num-item">
             <div class="n orange">67,5 kg</div>
             <div class="l">Hoy</div>
           </div>
-          <div class="caso-num-item" style="margin-left:20px;">
+          <div class="caso-num-item">
             <div class="n teal">61</div>
             <div class="l">Semanas</div>
           </div>
