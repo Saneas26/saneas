@@ -212,7 +212,7 @@ nav{
   letter-spacing:-2.5px;line-height:1.06;color:var(--text);
   margin-bottom:20px;
 }
-.section-sub{font-size:clamp(17px,2vw,22px);color:var(--gray);font-weight:500;margin-bottom:64px}
+.section-sub{font-size:clamp(17px,2vw,22px);color:var(--gray);font-weight:500;margin-bottom:64px;max-width:52ch}
 
 /* ── NO VENDEMOS ── */
 .no-vendemos .cards{
@@ -484,7 +484,7 @@ summary::after{
   transition:transform .2s;line-height:1;
 }
 details[open] summary::after{transform:rotate(45deg)}
-details p{font-size:15px;color:var(--gray);line-height:1.7;margin-top:14px}
+details p{font-size:15px;color:var(--gray);line-height:1.7;margin-top:14px;max-width:54ch}
 
 /* ── PARA QUIÉN ── */
 .quien-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:56px 0 48px}
@@ -504,7 +504,7 @@ details p{font-size:15px;color:var(--gray);line-height:1.7;margin-top:14px}
   padding:9px 18px;border-radius:999px;white-space:nowrap;
 }
 .medico-nota{
-  max-width:640px;margin:44px auto 0;text-align:center;
+  max-width:52ch;margin:44px auto 0;text-align:center;
   font-size:15px;font-style:italic;color:var(--gray);font-weight:500;line-height:1.7;
   border-top:1px solid rgba(0,0,0,0.08);padding-top:24px;
 }
@@ -535,7 +535,7 @@ details p{font-size:15px;color:var(--gray);line-height:1.7;margin-top:14px}
 .cmp-saneas .que small{display:block;font-size:15px;font-weight:500;color:rgba(255,255,255,0.85)}
 .cmp-saneas .cuanto{font-size:clamp(40px,6vw,56px);font-weight:900;letter-spacing:-2px;line-height:1}
 .cmp-saneas .cuanto small{font-size:18px;font-weight:700;letter-spacing:0}
-.cmp-nota{max-width:680px;margin:28px auto 0;font-size:14px;color:var(--gray);font-weight:500;line-height:1.7;font-style:italic}
+.cmp-nota{max-width:52ch;margin:28px auto 0;font-size:14px;color:var(--gray);font-weight:500;line-height:1.7;font-style:italic}
 .cmp-nota b{color:var(--text);font-style:normal}
 
 /* ── CTA FINAL ── */
@@ -585,11 +585,14 @@ footer .logo sup{font-size:11px;font-weight:700;margin-left:1px}
 footer p{font-size:12px;color:#727272;margin-top:30px}
 
 /* ── REVEAL ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(48px);transition:opacity .8s ease,transform .8s ease}
+/* Entrada: ease-out (rápida al entrar, se posa suave). 'ease' es la de
+   por defecto y arranca lenta, que es justo lo contrario de lo que
+   quiere algo que aparece. 48px en 800ms se sentía pesado. */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .35s ease-out,transform .35s ease-out}
 .reveal.show{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
-.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-1{transition-delay:.06s}
+.reveal-delay-2{transition-delay:.12s}
+.reveal-delay-3{transition-delay:.18s}
 
 /* ── WA ICON ── */
 .wa-icon{fill:currentColor}
@@ -824,7 +827,7 @@ footer p{font-size:12px;color:#727272;margin-top:30px}
 
 <!-- MÉTODO · GPS -->
 <section class="section" style="background:#f7f9fa">
-  <div style="max-width:840px;margin:0 auto;text-align:center;padding:0 20px;">
+  <div style="max-width:700px;margin:0 auto;text-align:center;padding:0 20px;">
     <span style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-ui);display:block;margin-bottom:18px;">El método Saneas</span>
     <h2 style="font-size:clamp(30px,4.5vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;color:var(--text);margin-bottom:24px;">No es una dieta.<br>Es alguien que te lleva <span style="color:var(--orange-text)">hasta el final</span>.</h2>
     <p style="font-size:20px;color:var(--gray);line-height:1.8;margin-bottom:20px;">Saneas no es solo nutrición: es el <strong style="color:var(--text)">método que te acompaña</strong>. Porque no se trata de hacer dietas, se trata de que alguien te guíe y sepa llevarte. Igual que usas Google Maps para ir seguro y no dudar si has cogido el camino correcto,<br><strong style="color:var(--text)">Saneas es tu GPS hasta el final</strong>.</p>
