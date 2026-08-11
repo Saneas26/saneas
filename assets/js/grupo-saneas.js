@@ -32,7 +32,9 @@ var GrupoSaneas = (function(){
     { id:'laora', nombre:'laOra', logo:'app-laora.png', url:'https://laora.es', tipo:'una página web',
       texto:'La relojería de lujo al precio honesto, sin peajes de marca.' },
     { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es', tipo:'una aplicación',
-      texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' }
+      texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' },
+    { id:'quemedices', nombre:'¿Qué me dices?', logo:'app-quemedices.png', url:'https://quemedices.vercel.app', tipo:'una aplicación',
+      texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' }
   ];
   var CFG = { actual:'', logos:'img/', extras:[], barra:'.appbar,header' };
   var CSS_PUESTO = false;
@@ -58,7 +60,8 @@ var GrupoSaneas = (function(){
     'pordondevoy': {t:29, d:'/qr7/BeREG6bJLt1Y4XboD0uwQYdB/qqr+ARTwC3BPpcYWX8TeURzYvyeho2pQZQeb0cvZNy+JRw0pMLFNMtWkumvfJIUE2hRXBu/gB4RH/6KutQU/EbuklPpdXOLm6zqEsExDGv7evVAA=='},
     'activala': {t:25, d:'/me/wSIQbqaLt0nV26tS7BcVB/qq/gDnAEqmWiZvxoS6dZkoJGm3d35m3kjMRHhzu7brWv4AdUQ/iKoQRpHbq+/t0qee6SuVBdD+/mNjgA=='},
     'laora': {t:25, d:'/ju/wTsQbpDrt1FF26T67BXFB/qq/gFmAGIfNE4v2sCqX6cGm4xqWwgHTY9NBhopt/j7fPkARER/kqowTBELph+d0tpa6rZ3Bb0w/gzEgA=='},
-    'acumula': {t:25, d:'/iW/wTFQbrbLt0A126r67BTxB/qq/gDwAErHWhClhpan1Y+qtGOhR3+L3kj45nggkjby8f4Ab0Q/kCoQQJH7rw/t0Nue6JOVBWx+/itjgA=='}
+    'acumula': {t:25, d:'/iW/wTFQbrbLt0A126r67BTxB/qq/gDwAErHWhClhpan1Y+qtGOhR3+L3kj45nggkjby8f4Ab0Q/kCoQQJH7rw/t0Nue6JOVBWx+/itjgA=='},
+    'quemedices': {t:29, d:'/h0b/BZbEG6ljLt0AoXbp1UuwRYNB/qqr+AMKAB2PHA3Swr8dPR69cBYUJ7wddP+O6m/2pRvcgg0WHPFzNKLNAkk0ODoUSTM5ynu+wB+XG/5Y2rQVtESugQv9de2h66jalsFhVGv45PRAA=='}
   };
 
   function qrSVG(id, lado){
