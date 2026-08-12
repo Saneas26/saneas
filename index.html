@@ -230,6 +230,10 @@ nav{
   margin-bottom:20px;
 }
 .section-sub{font-size:var(--fs-sub);color:var(--gray);font-weight:500;margin-bottom:64px;max-width:52ch}
+/* Con max-width y sin margen automático, el bloque se pega a la izquierda
+   y el texto se centra DENTRO de ese bloque estrecho: parece descolocado.
+   Las secciones centradas marcan su entradilla con .centrado. */
+.section-sub.centrado{margin-left:auto;margin-right:auto}
 
 /* ── NO VENDEMOS ── */
 .no-vendemos .cards{
@@ -858,7 +862,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
     <div class="reveal">
       <span style="font-size:var(--fs-xs);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-ui);display:block;margin-bottom:18px;">Para quién es Saneas</span>
       <h2 class="section-title">Para personas<br><span style="color:var(--orange-text)">reales</span>.</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto">No hace falta ser un caso especial para empezar. Y si lo eres, también sabemos acompañarte.</p>
+      <p class="section-sub centrado">No hace falta ser un caso especial para empezar. Y si lo eres, también sabemos acompañarte.</p>
     </div>
     <div class="quien-cards">
       <div class="quien-card reveal"><span class="ico">🙋</span><h3>Personas normales y corrientes</h3><p>Que quieren comer mejor, sentirse bien y dejar de pelearse con la báscula de una vez.</p></div>
@@ -899,7 +903,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   <div class="container">
     <div class="reveal" style="text-align:center;">
       <h2 class="section-title">¿Cómo funciona?</h2>
-      <p class="section-sub">Tres pasos. Sin complicaciones.</p>
+      <p class="section-sub centrado">Tres pasos. Sin complicaciones.</p>
     </div>
     <div class="cards reveal reveal-delay-1">
       <div class="cf-card">
@@ -927,7 +931,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
     <div class="reveal">
       <span style="font-size:var(--fs-xs);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-ui);display:block;margin-bottom:18px;">Haz las cuentas</span>
       <h2 class="section-title">Todo esto,<br>por separado.</h2>
-      <p class="section-sub" style="margin:0 auto">Lo que cuesta cada pieza si la contratas por su lado, sin que ninguna se hable con la otra.</p>
+      <p class="section-sub centrado">Lo que cuesta cada pieza si la contratas por su lado, sin que ninguna se hable con la otra.</p>
     </div>
     <div class="cmp-tabla reveal">
       <div class="cmp-fila">
@@ -960,7 +964,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   <div class="container">
     <div class="reveal" style="text-align:center;">
       <h2 class="section-title">Lo que NO tendrás<br>que hacer.</h2>
-      <p class="section-sub">Porque adelgazar ya es bastante difícil.</p>
+      <p class="section-sub centrado">Porque adelgazar ya es bastante difícil.</p>
     </div>
     <div class="sus-cards reveal reveal-delay-1">
       <div class="sus-card">
@@ -1020,7 +1024,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:64px;">
       <h2 class="section-title">Empieza hoy.</h2>
-      <p class="section-sub" style="margin-bottom:0;">Sin permanencia. Sin riesgos.</p>
+      <p class="section-sub centrado" style="margin-bottom:0;">Sin permanencia. Sin riesgos.</p>
     </div>
     <div class="pricing-wrap reveal reveal-delay-1">
 
