@@ -619,34 +619,6 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 .reveal-delay-2{transition-delay:.12s}
 .reveal-delay-3{transition-delay:.18s}
 
-/* ── PRECIO TEMPRANO ──
-   Los planes viven en la pantalla 19 de 24. Quien se convence con el caso
-   de Nanny tenía dieciocho pantallas por delante antes de saber qué cuesta. */
-.precio-antes{padding:96px 40px;background:#fff}
-@media(max-width:600px){.precio-antes{padding:64px 24px}}
-.pa-caja{
-  /* Apilada a propósito, no por flex-wrap: a 860px la proporción queda en
-     2,4:1 y se lee como una tarjeta, no como una franja de 1100 de ancho.
-     Sin borde: sumar filete Y sombra es la señal doble que delata una
-     tarjeta hecha a ojo. Solo elevación. */
-  display:flex;flex-direction:column;align-items:flex-start;gap:28px;
-  max-width:860px;margin:0 auto;
-  background:#f7f9fa;
-  box-shadow:0 12px 34px rgba(23,52,60,0.09);
-  border-radius:var(--radius);padding:44px 48px;
-}
-@media(max-width:700px){.pa-caja{padding:32px 26px;gap:22px}}
-.pa-eyebrow{
-  display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:2px;
-  text-transform:uppercase;color:var(--teal-ui);margin-bottom:10px;
-}
-.pa-cifra{font-size:var(--fs-cifra);font-weight:900;letter-spacing:-2px;line-height:1;color:var(--text)}
-.pa-cifra small{font-size:var(--fs-lg);font-weight:700;color:var(--gray);letter-spacing:0}
-.pa-sub{font-size:var(--fs-md);color:var(--gray);font-weight:500;margin-top:10px}
-.pa-acciones{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.pa-link{font-size:var(--fs-base);color:var(--teal-ui);font-weight:700;text-decoration:none;
-  display:inline-flex;align-items:center;min-height:44px}@media (hover:hover) and (pointer:fine){.pa-link:hover{text-decoration:underline}}
-
 /* ── BARRA DE ACCIÓN EN MÓVIL ──
    Aparece al pasar el hero y se esconde al llegar a los planes, para no
    tapar los botones de verdad. */
@@ -809,8 +781,8 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
         Sin bonos.<br>
         Sin suplementos.
       </div>
-      <a class="btn-orange" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20empezar%20con%20Saneas.">
-        Empezar ahora →
+      <a class="btn-orange" href="#planes">
+        Ver los planes →
       </a>
       <a href="/instala-app" style="display:inline-flex;align-items:center;gap:10px;background:var(--teal-ui);color:#fff;text-decoration:none;font-size:var(--fs-md);font-weight:800;padding:18px 40px;border-radius:999px;letter-spacing:-0.3px;transition:transform .15s;">📲 Instala la app Saneas</a>
       <a href="/asesorias" style="display:inline-flex;align-items:center;gap:10px;background:none;border:2px solid var(--teal);color:var(--teal-ui);text-decoration:none;font-size:var(--fs-base);font-weight:800;padding:14px 32px;border-radius:999px;letter-spacing:-0.3px;transition:transform .15s,background .2s,color .2s;" onmouseover="this.style.background='var(--teal)';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='var(--teal)'">¿Quieres tener tu consulta Saneas?</a>
@@ -967,23 +939,6 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
       <div class="caso-foto">
         <img src="assets/nanny-despues.jpeg" width="498" height="1080" loading="lazy" decoding="async" alt="Nanny Parro hoy">
         <div class="caso-foto-label green">Hoy · fuera del sobrepeso</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRECIO TEMPRANO -->
-<section class="precio-antes">
-  <div class="container">
-    <div class="pa-caja reveal">
-      <div>
-        <span class="pa-eyebrow">Lo que cuesta</span>
-        <div class="pa-cifra">60 €<small>/mes</small></div>
-        <p class="pa-sub">Con seguimiento semanal conmigo. Sin permanencia: cancelas cuando quieras.</p>
-      </div>
-      <div class="pa-acciones">
-        <a class="btn-orange" href="#planes">Ver los planes →</a>
-        <a class="pa-link" href="https://api.whatsapp.com/send?phone=34689806987&amp;text=Hola%20Oscar%2C%20quiero%20empezar%20con%20Saneas.">o cuéntame tu caso por WhatsApp</a>
       </div>
     </div>
   </div>
