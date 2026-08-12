@@ -54,7 +54,7 @@
     --orange: #F5862E;
     --orange-light: #fff3eb;
     --text: #1a2e35;
-    --text-muted: #5a7a85;
+    --text-muted: #56747e;
     --border: #d0e8ee;
     --bg: #f7fbfc;
     --white: #ffffff;
@@ -83,7 +83,7 @@
   .logo-text {
     font-family: 'Quicksand', sans-serif;
     font-size: 22px;
-    color: var(--teal);
+    color: var(--teal-dark);
     letter-spacing: -0.5px;
   }
   .logo-dot {
@@ -124,7 +124,7 @@
   }
   .hero-open {
     display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
-    background: var(--white); color: var(--teal); text-decoration: none;
+    background: var(--white); color: var(--teal-dark); text-decoration: none;
     font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 17px;
     padding: 14px 32px; border-radius: 999px; box-shadow: 0 6px 22px rgba(0,0,0,0.18);
     transition: transform .15s;
@@ -175,11 +175,11 @@
   }
   .tab-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
   .tab-btn.active {
-    background: var(--teal);
+    background: var(--teal-dark);
     color: var(--white);
     box-shadow: 0 2px 8px rgba(56,144,164,0.28);
   }
-  .tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal); }
+  .tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal-dark); }
 
   /* PROGRESO */
   .progress-wrap {
@@ -206,8 +206,8 @@
     position: relative;
     z-index: 1;
   }
-  .p-dot.done { background: var(--teal); border-color: var(--teal); color: var(--white); }
-  .p-dot.active { background: var(--orange); border-color: var(--orange); color: var(--white); box-shadow: 0 0 0 4px var(--orange-light); }
+  .p-dot.done { background: var(--teal-dark); border-color: var(--teal-dark); color: var(--white); }
+  .p-dot.active { background: var(--orange); border-color: var(--orange); color: var(--text); box-shadow: 0 0 0 4px var(--orange-light); }
   .p-line {
     flex: 1;
     height: 3px;
@@ -290,7 +290,7 @@
   }
   .tip-box svg { width:18px; height:18px; stroke: var(--orange); flex-shrink:0; margin-top:2px; }
   .tip-box p { font-size: 13px; line-height: 1.6; color: #7a4010; }
-  .tip-box strong { color: var(--orange); }
+  .tip-box strong { color: #a75b1f; }   /* --orange sobre --orange-light daba 2,31 */
 
   /* FINALIZADO */
   .finished-card {
@@ -323,7 +323,7 @@
     cursor: pointer;
     transition: all .2s;
   }
-  .restart-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .restart-btn:hover { border-color: var(--teal); color: var(--teal-dark); }
 
   /* NAVEGACIÓN */
   .nav-wrap {
@@ -349,10 +349,10 @@
     cursor: pointer;
     transition: all .2s;
   }
-  .nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal); }
+  .nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }
   .nav-btn:disabled { opacity: 0.3; cursor: default; }
   .nav-btn.primary {
-    background: var(--teal);
+    background: var(--teal-dark);
     border-color: var(--teal);
     color: var(--white);
     box-shadow: 0 2px 8px rgba(56,144,164,0.25);
@@ -370,7 +370,7 @@
     border-top: 1px solid var(--border);
     margin-top: 8px;
   }
-  .page-footer a { color: var(--teal); text-decoration: none; }
+  .page-footer a { color: var(--teal-dark); text-decoration: none; }
 
   /* SELECTOR VERSIÓN IOS */
   .ios-picker { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
@@ -384,7 +384,7 @@
   .ios-option-label { font-size: 15px; font-weight: 600; color: var(--text); }
   .ios-option-desc { font-size: 13px; color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
   .ios-back { background: none; border: none; color: var(--text-muted); font-size: 13px; font-family: 'Manrope', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; margin-top: 4px; }
-  .ios-back:hover { color: var(--teal); }
+  .ios-back:hover { color: var(--teal-dark); }
 
   @media (max-width: 480px) {
     .hero { padding: 38px 18px 32px; }
@@ -392,6 +392,21 @@
     .card-body { padding: 16px 18px; }
     .nav-btn { padding: 11px 16px; font-size: 13px; }
   }
+
+  /* ── FOCO DE TECLADO ── */
+  :where(a,button,[tabindex]):focus-visible {
+    outline: 3px solid var(--text);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .hero :where(a,button):focus-visible,
+  .tab-btn.active:focus-visible { outline-color: var(--white); }
+
+  /* ── ZONA TÁCTIL ──
+     Solo el logotipo del header: los demás enlaces cortos van dentro de
+     una frase, y la propia norma exime los enlaces en línea (WCAG 2.5.8).
+     Estirarlos a 44px partiría el párrafo. */
+  .site-header > a { min-height: 44px; }
 </style>
 </head>
 <body>
@@ -402,6 +417,7 @@
     <div class="logo-dot"></div>
   </a>
 </header>
+<main id="contenido">
 
 <div class="hero">
   <p class="hero-eyebrow">Guía rápida</p>
@@ -445,6 +461,7 @@
   </button>
 </div>
 
+</main>
 <footer class="page-footer">
   ¿Tienes dudas? Escríbenos por <a href="https://wa.me/34689806987">WhatsApp</a> · <a href="/">Volver a Saneas</a>
 </footer>
@@ -465,7 +482,7 @@ const platforms = {
       icon: iconWorld,
       title: "Abre la app en Chrome",
       sub: "El navegador verde de Android",
-      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Chrome</span>, el navegador con el icono de colores.</p>
+      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal-dark);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Chrome</span>, el navegador con el icono de colores.</p>
       <div class="check-row">${iconCheck}<p>Verás que la app se abre como una página web. Es normal, así es como funciona. ¡Sigue al siguiente paso!</p></div>`,
       tip: "Si no tienes Chrome, puedes descargarlo gratis desde la Play Store. Es el icono circular con los colores rojo, amarillo, verde y azul."
     },
@@ -507,7 +524,7 @@ const platforms = {
       icon: iconWorld,
       title: "Abre la app en Safari",
       sub: "El navegador azul del iPhone",
-      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
+      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal-dark);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
       <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
       tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
     },
@@ -549,7 +566,7 @@ const platforms = {
       icon: iconWorld,
       title: "Abre la app en Safari",
       sub: "El navegador azul del iPhone",
-      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
+      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal-dark);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
       <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
       tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
     },
