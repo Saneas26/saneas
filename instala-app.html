@@ -146,7 +146,11 @@
     padding: 14px 32px; border-radius: 999px; box-shadow: 0 6px 22px rgba(0,0,0,0.18);
     transition: transform .15s;
   }
-  .hero-open:hover { transform: translateY(-2px); }
+/* ── HOVER SOLO CON RATÓN ──
+   En una pantalla táctil el :hover se dispara al tocar y se queda
+   pegado hasta que tocas otra cosa. Con el scale(0.97) al pulsar
+   recién puesto, se notaba todavía más. */
+@media (hover:hover) and (pointer:fine){.hero-open:hover { transform: translateY(-2px); }}
   .hero-url { margin-top: 12px; font-size: var(--fs-sm); opacity: 0.8; }
 
   /* SELECTOR DE PLATAFORMA */
@@ -195,8 +199,7 @@
     background: var(--teal-dark);
     color: var(--white);
     box-shadow: 0 2px 8px rgba(56,144,164,0.28);
-  }
-  .tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal-dark); }
+  }@media (hover:hover) and (pointer:fine){.tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal-dark); }}
 
   /* PROGRESO */
   .progress-wrap {
@@ -339,8 +342,7 @@
     color: var(--text-muted);
     cursor: pointer;
     transition: border-color .2s ease, color .2s ease, transform 160ms ease-out;
-  }
-  .restart-btn:hover { border-color: var(--teal); color: var(--teal-dark); }
+  }@media (hover:hover) and (pointer:fine){.restart-btn:hover { border-color: var(--teal); color: var(--teal-dark); }}
 
   /* NAVEGACIÓN */
   .nav-wrap {
@@ -365,16 +367,14 @@
     color: var(--text-muted);
     cursor: pointer;
     transition: border-color .2s ease, color .2s ease, transform 160ms ease-out;
-  }
-  .nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }
+  }@media (hover:hover) and (pointer:fine){.nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }}
   .nav-btn:disabled { opacity: 0.3; cursor: default; }
   .nav-btn.primary {
     background: var(--teal-dark);
     border-color: var(--teal);
     color: var(--white);
     box-shadow: 0 2px 8px rgba(56,144,164,0.25);
-  }
-  .nav-btn.primary:hover:not(:disabled) { background: var(--teal-dark); border-color: var(--teal-dark); }
+  }@media (hover:hover) and (pointer:fine){.nav-btn.primary:hover:not(:disabled) { background: var(--teal-dark); border-color: var(--teal-dark); }}
   .nav-btn svg { width:16px; height:16px; stroke: currentColor; }
   .step-counter { font-size: var(--fs-sm); color: var(--text-muted); font-weight: 500; }
 
@@ -394,15 +394,13 @@
   .ios-picker { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
   .ios-picker-title { font-family: 'Quicksand', sans-serif; font-size: var(--fs-md); color: var(--text); margin-bottom: 4px; text-align: center; }
   .ios-picker-sub { font-size: var(--fs-sm); color: var(--text-muted); text-align: center; margin-bottom: 8px; line-height: 1.6; }
-  .ios-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; transition: border-color .2s ease, background .2s ease, transform 160ms ease-out; text-align: left; width: 100%; font-family: 'Manrope', sans-serif; }
-  .ios-option:hover { border-color: var(--teal); background: var(--teal-light); }
+  .ios-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; transition: border-color .2s ease, background .2s ease, transform 160ms ease-out; text-align: left; width: 100%; font-family: 'Manrope', sans-serif; }@media (hover:hover) and (pointer:fine){.ios-option:hover { border-color: var(--teal); background: var(--teal-light); }}
   .ios-option-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: var(--fs-xl); }
   .ios-option-icon.new { background: #e8f0fe; }
   .ios-option-icon.old { background: var(--teal-light); }
   .ios-option-label { font-size: var(--fs-base); font-weight: 600; color: var(--text); }
   .ios-option-desc { font-size: var(--fs-sm); color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
-  .ios-back { background: none; border: none; color: var(--text-muted); font-size: var(--fs-sm); font-family: 'Manrope', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; margin-top: 4px; }
-  .ios-back:hover { color: var(--teal-dark); }
+  .ios-back { background: none; border: none; color: var(--text-muted); font-size: var(--fs-sm); font-family: 'Manrope', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; margin-top: 4px; }@media (hover:hover) and (pointer:fine){.ios-back:hover { color: var(--teal-dark); }}
 
   @media (max-width: 480px) {
     .hero { padding: 38px 18px 32px; }

@@ -115,7 +115,11 @@ nav{
 .gs-boton{background:none;border:0;padding:2px 6px;margin:0;cursor:pointer;
   text-align:left;line-height:1.15;min-height:0;border-radius:8px;
   font-family:"Quicksand",-apple-system,"Segoe UI",sans-serif}
-.gs-boton:hover{background:#eef6f8}
+/* ── HOVER SOLO CON RATÓN ──
+   En una pantalla táctil el :hover se dispara al tocar y se queda
+   pegado hasta que tocas otra cosa. Con el scale(0.97) al pulsar
+   recién puesto, se notaba todavía más. */
+@media (hover:hover) and (pointer:fine){.gs-boton:hover{background:#eef6f8}}
 .gs-b-marca{display:block;font-size:var(--fs-sm);font-weight:700;color:var(--teal-ui)}
 .gs-b-marca b{font-weight:700}
 .gs-b-accion{display:block;font-size:var(--fs-xs);font-weight:700;color:#66797f;letter-spacing:.04em}
@@ -140,8 +144,7 @@ nav{
   background:#25D366;color:var(--text);text-decoration:none;
   font-size:var(--fs-sm);font-weight:700;padding:10px 22px;border-radius:999px;
   transition:background .2s,transform .15s;
-}
-.nav-wa:hover{background:#1db954;transform:translateY(-1px)}
+}@media (hover:hover) and (pointer:fine){.nav-wa:hover{background:#1db954;transform:translateY(-1px)}}
 .nav-wa svg{width:18px;height:18px;fill:var(--text);flex-shrink:0}
 
 /* ── HERO ── */
@@ -183,8 +186,7 @@ nav{
   background:var(--orange);color:var(--text);text-decoration:none;
   font-size:var(--fs-md);font-weight:800;padding:18px 40px;border-radius:999px;
   transition:background .2s,transform .15s;letter-spacing:-0.3px;
-}
-.btn-orange:hover{background:#ff9445;transform:translateY(-2px)}
+}@media (hover:hover) and (pointer:fine){.btn-orange:hover{background:#ff9445;transform:translateY(-2px)}}
 
 /* ── PHONE MOCKUP ── */
 .hero-visual{position:relative}
@@ -254,8 +256,7 @@ nav{
   border-radius:var(--radius);overflow:hidden;
   background:#f7f9fa;border:1px solid rgba(0,0,0,0.06);
   transition:transform .2s;
-}
-.nv-card:hover{transform:translateY(-4px)}
+}@media (hover:hover) and (pointer:fine){.nv-card:hover{transform:translateY(-4px)}}
 .nv-img{
   width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
   background:#e8e8e8;
@@ -351,8 +352,7 @@ nav{
 .historia>summary::-webkit-details-marker{display:none}
 .historia>summary::after{content:"▾";font-size:var(--fs-sm);transition:transform .25s}
 .historia[open]>summary{background:var(--teal-ui);color:#fff}
-.historia[open]>summary::after{transform:rotate(180deg)}
-.historia>summary:hover{background:var(--teal-ui);color:#fff}
+.historia[open]>summary::after{transform:rotate(180deg)}@media (hover:hover) and (pointer:fine){.historia>summary:hover{background:var(--teal-ui);color:#fff}}
 .historia-cuerpo{margin-top:22px;animation:histFade .35s ease}
 .historia-cuerpo p{font-size:var(--fs-md);color:var(--gray);line-height:1.75;margin-bottom:16px}
 .historia-cuerpo p strong{color:var(--text)}
@@ -374,8 +374,7 @@ nav{
   padding:48px 36px;border-radius:var(--radius);
   background:#fff;border:1px solid rgba(0,0,0,0.06);
   transition:transform .2s;
-}
-.cf-card:hover{transform:translateY(-4px)}
+}@media (hover:hover) and (pointer:fine){.cf-card:hover{transform:translateY(-4px)}}
 .cf-card.featured{background:var(--teal-ui);border-color:var(--teal)}
 .cf-num{
   font-size:var(--fs-cifra);font-weight:900;color:var(--teal-ui);
@@ -398,8 +397,7 @@ nav{
   border-radius:var(--radius);overflow:hidden;
   background:#fff;border:1px solid rgba(0,0,0,0.06);
   transition:transform .2s;
-}
-.sus-card:hover{transform:translateY(-4px)}
+}@media (hover:hover) and (pointer:fine){.sus-card:hover{transform:translateY(-4px)}}
 .sus-img-placeholder{
   width:100%;height:auto;aspect-ratio:4/3;background:#e8e8e8;
   display:block;object-fit:cover;
@@ -483,12 +481,9 @@ nav{
   padding:15px;border-radius:999px;font-size:var(--fs-base);font-weight:700;
   transition:background .2s ease,color .2s ease;
 }
-.p-btn.outline{border:1.5px solid var(--text);color:var(--text)}
-.p-btn.outline:hover{background:var(--text);color:#fff}
-.p-btn.orange{background:var(--orange);color:var(--text)}
-.p-btn.orange:hover{background:#ff9445}
-.p-btn.outline-w{border:1.5px solid rgba(255,255,255,0.25);color:#fff}
-.p-btn.outline-w:hover{background:rgba(255,255,255,0.1)}
+.p-btn.outline{border:1.5px solid var(--text);color:var(--text)}@media (hover:hover) and (pointer:fine){.p-btn.outline:hover{background:var(--text);color:#fff}}
+.p-btn.orange{background:var(--orange);color:var(--text)}@media (hover:hover) and (pointer:fine){.p-btn.orange:hover{background:#ff9445}}
+.p-btn.outline-w{border:1.5px solid rgba(255,255,255,0.25);color:#fff}@media (hover:hover) and (pointer:fine){.p-btn.outline-w:hover{background:rgba(255,255,255,0.1)}}
 .p-badge{
   position:absolute;top:-14px;left:50%;transform:translateX(-50%);
   background:var(--orange);color:var(--text);font-size:var(--fs-xs);font-weight:800;
@@ -521,8 +516,7 @@ details p{font-size:var(--fs-base);color:var(--gray);line-height:1.7;margin-top:
 .quien-card{
   background:#f7f9fa;border:1px solid rgba(0,0,0,0.06);
   border-radius:var(--radius);padding:36px 32px;transition:transform .2s;text-align:left;
-}
-.quien-card:hover{transform:translateY(-4px)}
+}@media (hover:hover) and (pointer:fine){.quien-card:hover{transform:translateY(-4px)}}
 .quien-card .ico{font-size:38px;display:block;margin-bottom:16px}
 .quien-card h3{font-size:var(--fs-xl);font-weight:800;letter-spacing:-0.5px;margin-bottom:10px;color:var(--text)}
 .quien-card p{font-size:var(--fs-base);color:var(--gray);line-height:1.65;font-weight:500}
@@ -583,8 +577,7 @@ details p{font-size:var(--fs-base);color:var(--gray);line-height:1.7;margin-top:
   font-size:var(--fs-lg);font-weight:800;padding:20px 48px;border-radius:999px;
   transition:transform .15s,box-shadow .15s;
   box-shadow:0 8px 32px rgba(0,0,0,0.15);
-}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,0.2)}
+}@media (hover:hover) and (pointer:fine){.btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(0,0,0,0.2)}}
 .btn-white svg{width:22px;height:22px;fill:var(--teal);flex-shrink:0}
 
 /* ── FOOTER ── */
@@ -595,21 +588,17 @@ footer{
 footer .logo{font-size:24px;color:var(--teal-ui)}
 footer .logo sup{font-size:11px;font-weight:700;margin-left:1px}
 .footer-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:16px 0 0}
-.footer-links a{font-size:var(--fs-sm);color:var(--gray);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--text)}
+.footer-links a{font-size:var(--fs-sm);color:var(--gray);text-decoration:none;transition:color .2s}@media (hover:hover) and (pointer:fine){.footer-links a:hover{color:var(--text)}}
 .legal-links{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:22px 0 0}
 .legal-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;
-  font-size:var(--fs-sm);color:var(--gray);text-decoration:none;font-weight:600}
-.legal-links a:hover{color:var(--text);text-decoration:underline}
+  font-size:var(--fs-sm);color:var(--gray);text-decoration:none;font-weight:600}@media (hover:hover) and (pointer:fine){.legal-links a:hover{color:var(--text);text-decoration:underline}}
 .fg-title{font-size:var(--fs-sm);font-weight:800;color:var(--gray);margin:34px 0 16px}
 .fg-title .fg-s{color:var(--teal-ui)}
 .fg-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:820px;margin:0 auto}
-.fg-card{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:12px 18px 12px 12px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,0.04);transition:transform .15s,box-shadow .15s}
-.fg-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.08)}
+.fg-card{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:12px 18px 12px 12px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,0.04);transition:transform .15s,box-shadow .15s}@media (hover:hover) and (pointer:fine){.fg-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.08)}}
 .fg-card img,.fg-card .fg-ico{width:44px;height:44px;border-radius:12px;object-fit:cover;flex:none}
 .fg-card .fg-ico{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--orange),#d96b1a)}
-.fg-card.pronto{cursor:default}
-.fg-card.pronto:hover{transform:none;box-shadow:0 2px 10px rgba(0,0,0,0.04)}
+.fg-card.pronto{cursor:default}@media (hover:hover) and (pointer:fine){.fg-card.pronto:hover{transform:none;box-shadow:0 2px 10px rgba(0,0,0,0.04)}}
 .fg-card small.soon{color:#ac5e20;font-weight:700}
 .fg-card .fg-ico svg{width:22px;height:22px;stroke:#fff;fill:none}
 .fg-card span.tx{text-align:left}
@@ -647,8 +636,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 .pa-sub{font-size:var(--fs-md);color:var(--gray);font-weight:500;margin-top:10px}
 .pa-acciones{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .pa-link{font-size:var(--fs-base);color:var(--teal-ui);font-weight:700;text-decoration:none;
-  display:inline-flex;align-items:center;min-height:44px}
-.pa-link:hover{text-decoration:underline}
+  display:inline-flex;align-items:center;min-height:44px}@media (hover:hover) and (pointer:fine){.pa-link:hover{text-decoration:underline}}
 
 /* ── BARRA DE ACCIÓN EN MÓVIL ──
    Aparece al pasar el hero y se esconde al llegar a los planes, para no
