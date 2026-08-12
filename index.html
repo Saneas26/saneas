@@ -481,7 +481,7 @@ nav{
 .p-btn{
   display:block;text-align:center;text-decoration:none;
   padding:15px;border-radius:999px;font-size:var(--fs-base);font-weight:700;
-  transition:all .2s;
+  transition:background .2s ease,color .2s ease;
 }
 .p-btn.outline{border:1.5px solid var(--text);color:var(--text)}
 .p-btn.outline:hover{background:var(--text);color:#fff}
@@ -671,6 +671,22 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;
 }
 @media (prefers-reduced-motion:reduce){.barra-movil{transition:none}}
+
+
+/* ── FEEDBACK AL PULSAR (Emil Kowalski) ──
+   Un botón tiene que acusar el toque: scale(0.97) al pulsar da la
+   sensación de que la interfaz te ha oído. En una web que se usa sobre
+   todo con el dedo es el detalle que más se nota, y no había ninguno.
+   160ms y ease-out: rápido al entrar, se posa suave. */
+.btn-orange,.nav-wa,.p-btn,.bm-btn,.gs-boton,.historia summary,.faq-list summary{
+  transition-property:background,color,transform,border-color,box-shadow;
+  transition-duration:.2s,.2s,160ms,.2s,.2s;
+  transition-timing-function:ease,ease,ease-out,ease,ease;
+}
+.btn-orange:active,.nav-wa:active,.p-btn:active,.bm-btn:active,
+.gs-boton:active,.historia summary:active,.faq-list summary:active{
+  transform:scale(0.97);
+}
 
 /* ── WA ICON ── */
 .wa-icon{fill:currentColor}

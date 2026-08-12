@@ -188,7 +188,7 @@
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all .22s;
+    transition: background .22s ease, color .22s ease, transform 160ms ease-out;
   }
   .tab-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
   .tab-btn.active {
@@ -218,7 +218,7 @@
     font-weight: 600;
     color: var(--text-muted);
     background: var(--white);
-    transition: all .28s;
+    transition: background .28s ease, border-color .28s ease, color .28s ease, box-shadow .28s ease;
     flex-shrink: 0;
     position: relative;
     z-index: 1;
@@ -338,7 +338,7 @@
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all .2s;
+    transition: border-color .2s ease, color .2s ease, transform 160ms ease-out;
   }
   .restart-btn:hover { border-color: var(--teal); color: var(--teal-dark); }
 
@@ -364,7 +364,7 @@
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
-    transition: all .2s;
+    transition: border-color .2s ease, color .2s ease, transform 160ms ease-out;
   }
   .nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }
   .nav-btn:disabled { opacity: 0.3; cursor: default; }
@@ -394,7 +394,7 @@
   .ios-picker { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
   .ios-picker-title { font-family: 'Quicksand', sans-serif; font-size: var(--fs-md); color: var(--text); margin-bottom: 4px; text-align: center; }
   .ios-picker-sub { font-size: var(--fs-sm); color: var(--text-muted); text-align: center; margin-bottom: 8px; line-height: 1.6; }
-  .ios-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; transition: all .2s; text-align: left; width: 100%; font-family: 'Manrope', sans-serif; }
+  .ios-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; transition: border-color .2s ease, background .2s ease, transform 160ms ease-out; text-align: left; width: 100%; font-family: 'Manrope', sans-serif; }
   .ios-option:hover { border-color: var(--teal); background: var(--teal-light); }
   .ios-option-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: var(--fs-xl); }
   .ios-option-icon.new { background: #e8f0fe; }
@@ -410,6 +410,19 @@
     .card-body { padding: 16px 18px; }
     .nav-btn { padding: 11px 16px; font-size: var(--fs-sm); }
   }
+
+
+/* ── FEEDBACK AL PULSAR (Emil Kowalski) ──
+   Un botón tiene que acusar el toque: scale(0.97) al pulsar da la
+   sensación de que la interfaz te ha oído. En una web que se usa sobre
+   todo con el dedo es el detalle que más se nota, y no había ninguno.
+   160ms y ease-out: rápido al entrar, se posa suave. */
+  .tab-btn:active, .nav-btn:not(:disabled):active, .restart-btn:active,
+  .ios-option:active, .hero-open:active, .ios-back:active {
+    transform: scale(0.97);
+  }
+  .hero-open { transition: transform 160ms ease-out, box-shadow .2s ease; }
+  .ios-back  { transition: color .2s ease, transform 160ms ease-out; }
 
   /* ── FOCO DE TECLADO ── */
   :where(a,button,[tabindex]):focus-visible {

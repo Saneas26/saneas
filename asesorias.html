@@ -436,6 +436,21 @@ footer p{font-size:var(--fs-xs);color:#696969;margin-top:30px}
 .wa-icon{fill:currentColor}
 
 
+
+/* ── FEEDBACK AL PULSAR (Emil Kowalski) ──
+   Un botón tiene que acusar el toque: scale(0.97) al pulsar da la
+   sensación de que la interfaz te ha oído. En una web que se usa sobre
+   todo con el dedo es el detalle que más se nota, y no había ninguno.
+   160ms y ease-out: rápido al entrar, se posa suave. */
+.btn-orange,.nav-wa,.gs-boton{
+  transition-property:background,color,transform,border-color,box-shadow;
+  transition-duration:.2s,.2s,160ms,.2s,.2s;
+  transition-timing-function:ease,ease,ease-out,ease,ease;
+}
+.btn-orange:active,.nav-wa:active,.gs-boton:active{
+  transform:scale(0.97);
+}
+
 /* ── FOCO DE TECLADO ──
    El formulario llevaba outline:none y solo cambiaba el borde al enfocar:
    quien navega con teclado se quedaba sin saber dónde está. */
