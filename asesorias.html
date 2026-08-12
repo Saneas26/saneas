@@ -90,7 +90,10 @@ body{font-family:'Manrope',sans-serif;background:#fff;color:#17343c;-webkit-font
 }
 
 /* ── NAV ── */
-nav{
+/* Acotado a la cabecera: el selector suelto nav{} capturaba también
+   el <nav> de enlaces legales del pie y lo clavaba arriba, tapando
+   el logotipo y el botón. */
+body>nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 40px;height:64px;
