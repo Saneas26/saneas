@@ -622,14 +622,20 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 /* ── PRECIO TEMPRANO ──
    Los planes viven en la pantalla 19 de 24. Quien se convence con el caso
    de Nanny tenía dieciocho pantallas por delante antes de saber qué cuesta. */
-.precio-antes{padding:0 40px}
-@media(max-width:600px){.precio-antes{padding:0 24px}}
+.precio-antes{padding:96px 40px;background:#fff}
+@media(max-width:600px){.precio-antes{padding:64px 24px}}
 .pa-caja{
-  display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;
-  background:#f7f9fa;border:1px solid rgba(0,0,0,0.06);
-  border-radius:var(--radius);padding:36px 44px;
+  /* Apilada a propósito, no por flex-wrap: a 860px la proporción queda en
+     2,4:1 y se lee como una tarjeta, no como una franja de 1100 de ancho.
+     Sin borde: sumar filete Y sombra es la señal doble que delata una
+     tarjeta hecha a ojo. Solo elevación. */
+  display:flex;flex-direction:column;align-items:flex-start;gap:28px;
+  max-width:860px;margin:0 auto;
+  background:#f7f9fa;
+  box-shadow:0 12px 34px rgba(23,52,60,0.09);
+  border-radius:var(--radius);padding:44px 48px;
 }
-@media(max-width:700px){.pa-caja{flex-direction:column;align-items:flex-start;padding:30px 26px;gap:22px}}
+@media(max-width:700px){.pa-caja{padding:32px 26px;gap:22px}}
 .pa-eyebrow{
   display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:2px;
   text-transform:uppercase;color:var(--teal-ui);margin-bottom:10px;
