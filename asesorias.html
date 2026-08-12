@@ -406,6 +406,10 @@ footer .logo sup{font-size:var(--fs-xs);font-weight:700;margin-left:1px}
 .footer-links{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:16px 0 0}
 .footer-links a{font-size:var(--fs-sm);color:var(--gray);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--text)}
+.legal-links{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:22px 0 0}
+.legal-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;
+  font-size:var(--fs-sm);color:var(--gray);text-decoration:none;font-weight:600}
+.legal-links a:hover{color:var(--text);text-decoration:underline}
 .fg-title{font-size:var(--fs-sm);font-weight:800;color:var(--gray);margin:34px 0 16px}
 .fg-title .fg-s{color:var(--teal-ui)}
 .fg-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:820px;margin:0 auto}
@@ -671,7 +675,7 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
       <input id="c_web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       <button class="btn-orange" id="btnSolicitud" type="submit" style="width:100%;justify-content:center">Enviar mi solicitud →</button>
       <div class="sol-msg" id="solMsg"></div>
-      <div class="sol-legal">Usaremos tus datos únicamente para valorar tu candidatura y ponernos en contacto contigo. Nada de listas ni cesiones.</div>
+      <div class="sol-legal">Usaremos tus datos únicamente para valorar tu candidatura y ponernos en contacto contigo. Nada de listas ni cesiones. Responsable: Óscar Belloso Jiménez. Puedes acceder, rectificar o borrar tus datos cuando quieras — <a href="/privacidad">cómo tratamos tus datos</a>.</div>
     </form>
   </div>
 </section>
@@ -714,6 +718,11 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
       <span class="tx"><b>APP Acumula</b><small>Ya disponible</small></span>
     </a>
   </div>
+  <nav class="legal-links" aria-label="Información legal">
+    <a href="/privacidad">Privacidad</a>
+    <a href="/aviso-legal">Aviso legal</a>
+    <a href="/cookies">Cookies</a>
+  </nav>
   <p>© 2026 Saneas® · Programa de Asesorías · Documento informativo. Las condiciones concretas se detallan en el contrato de adhesión.</p>
 </footer>
 

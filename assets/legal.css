@@ -1,0 +1,92 @@
+/* Estilo común de las páginas legales de saneas.es.
+   Una sola hoja para las tres, en vez de repetirla en cada fichero. */
+
+@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;
+  src:url(/assets/fonts/manrope-200-800-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Quicksand';font-style:normal;font-weight:700;font-display:swap;
+  src:url(/assets/fonts/quicksand-700-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+:root{
+  --teal:#3890A4; --teal-ui:#307c8d; --teal-dark:#1a5a6a;
+  --orange:#F5862E; --orange-text:#d87628;
+  --text:#17343c; --gray:#66757a; --bg:#f7f9fa;
+  --fs-xs:12px; --fs-sm:14px; --fs-base:16px;
+  --fs-md:18px; --fs-lg:20px; --fs-xl:22px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Manrope',sans-serif;background:#fff;color:var(--text);
+  -webkit-font-smoothing:antialiased;line-height:1.7;
+}
+:where(a,button,summary):focus-visible{outline:3px solid var(--text);outline-offset:3px;border-radius:4px}
+
+header{
+  display:flex;align-items:center;gap:20px;padding:0 40px;height:64px;
+  border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;background:#fff;z-index:10;
+}
+a.logo{
+  font-family:'Quicksand',sans-serif;font-weight:700;font-size:20px;
+  color:var(--teal-ui);text-decoration:none;letter-spacing:-0.3px;
+  display:inline-flex;align-items:center;min-height:44px;
+}
+a.logo sup{font-size:11px;font-weight:700;margin-left:1px}
+a.volver{
+  margin-left:auto;font-size:var(--fs-base);font-weight:700;color:var(--teal-ui);
+  text-decoration:none;display:inline-flex;align-items:center;min-height:44px;
+}
+a.volver:hover{text-decoration:underline}
+
+main{max-width:1100px;margin:0 auto;padding:72px 40px 96px}
+.doc{max-width:58ch}   /* ~70 caracteres reales: el ch de Manrope es 1,37x el carácter medio */
+
+h1{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-2px;line-height:1.08;margin-bottom:14px}
+.fecha{font-size:var(--fs-sm);color:var(--gray);font-weight:600;margin-bottom:52px}
+h2{
+  font-size:clamp(21px,2.4vw,26px);font-weight:800;letter-spacing:-0.6px;
+  margin:48px 0 14px;line-height:1.25;
+}
+h3{font-size:var(--fs-md);font-weight:800;margin:28px 0 8px}
+p{font-size:var(--fs-md);color:var(--gray);margin-bottom:16px}
+p strong,li strong{color:var(--text);font-weight:800}
+ul{margin:0 0 16px 22px}
+li{font-size:var(--fs-md);color:var(--gray);margin-bottom:9px}
+a{color:var(--teal-ui);font-weight:700}
+
+.aviso{
+  background:var(--bg);border:1px solid rgba(0,0,0,0.06);
+  border-radius:20px;padding:26px 30px;margin:32px 0;
+}
+.aviso p:last-child{margin-bottom:0}
+.aviso strong{color:var(--text)}
+
+.tabla{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:var(--fs-base)}
+.tabla th,.tabla td{
+  text-align:left;padding:12px 14px;border-bottom:1px solid rgba(0,0,0,0.08);
+  vertical-align:top;color:var(--gray);
+}
+.tabla th{color:var(--text);font-weight:800;font-size:var(--fs-sm);
+  text-transform:uppercase;letter-spacing:1px}
+.tabla td:first-child{color:var(--text);font-weight:700;white-space:nowrap}
+.envoltorio-tabla{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+footer{
+  border-top:1px solid rgba(0,0,0,0.06);padding:34px 40px;
+  text-align:center;font-size:var(--fs-sm);color:var(--gray);
+}
+footer nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+footer nav a{
+  display:inline-flex;align-items:center;min-height:44px;padding:0 10px;
+  font-size:var(--fs-sm);
+}
+
+@media(max-width:600px){
+  header{padding:0 22px;gap:12px}
+  main{padding:52px 22px 72px}
+  footer{padding:28px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition:none!important;scroll-behavior:auto!important}
+}
