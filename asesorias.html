@@ -9,6 +9,14 @@
 <meta property="og:url" content="https://saneas.es/asesorias">
 <title>Saneas® · Programa de Asesorías — Monta tu consulta</title>
 <link rel="canonical" href="https://saneas.es/asesorias">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Saneas">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://saneas.es/assets/og-asesorias.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Saneas® · Monta tu asesoría de salud con un equipo clínico detrás">
+<meta name="twitter:card" content="summary_large_image">
 <!-- Fuentes propias: antes eran tres viajes a dos dominios de Google
      antes de que el texto se pintara con su tipografía. -->
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/manrope-200-800-latin.woff2">
@@ -640,12 +648,12 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
     <p class="peque">Rellena esto y te contactamos personalmente. Sin listas de correo, sin llamadas pesadas: una conversación de tú a tú para ver si encajamos.</p>
     <form class="solicitud-card" id="formSolicitud" onsubmit="return enviarSolicitud(event)">
       <div class="f2">
-        <label>Nombre*<input id="c_nombre" maxlength="60" required></label>
-        <label>Apellidos*<input id="c_apellidos" maxlength="80" required></label>
+        <label>Nombre*<input id="c_nombre" maxlength="60" autocomplete="given-name" autocapitalize="words" required></label>
+        <label>Apellidos*<input id="c_apellidos" maxlength="80" autocomplete="family-name" autocapitalize="words" required></label>
       </div>
       <div class="f2">
-        <label>Email*<input id="c_email" type="email" maxlength="120" required></label>
-        <label>Teléfono<input id="c_telefono" type="tel" maxlength="20"></label>
+        <label>Email*<input id="c_email" type="email" maxlength="120" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required></label>
+        <label>Teléfono<input id="c_telefono" type="tel" maxlength="20" autocomplete="tel" inputmode="tel"></label>
       </div>
       <label>Tu formación actual*
         <input id="c_formacion" maxlength="160" placeholder="Ej: TAFAD, grado en CAFD, entrenador personal certificado, enfermería…" required></label>
