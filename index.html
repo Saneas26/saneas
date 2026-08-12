@@ -615,6 +615,51 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 .reveal-delay-2{transition-delay:.12s}
 .reveal-delay-3{transition-delay:.18s}
 
+/* ── PRECIO TEMPRANO ──
+   Los planes viven en la pantalla 19 de 24. Quien se convence con el caso
+   de Nanny tenía dieciocho pantallas por delante antes de saber qué cuesta. */
+.precio-antes{padding:0 40px}
+@media(max-width:600px){.precio-antes{padding:0 24px}}
+.pa-caja{
+  display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;
+  background:#f7f9fa;border:1px solid rgba(0,0,0,0.06);
+  border-radius:var(--radius);padding:36px 44px;
+}
+@media(max-width:700px){.pa-caja{flex-direction:column;align-items:flex-start;padding:30px 26px;gap:22px}}
+.pa-eyebrow{
+  display:block;font-size:var(--fs-xs);font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:var(--teal-ui);margin-bottom:10px;
+}
+.pa-cifra{font-size:var(--fs-cifra);font-weight:900;letter-spacing:-2px;line-height:1;color:var(--text)}
+.pa-cifra small{font-size:var(--fs-lg);font-weight:700;color:var(--gray);letter-spacing:0}
+.pa-sub{font-size:var(--fs-md);color:var(--gray);font-weight:500;margin-top:10px}
+.pa-acciones{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.pa-link{font-size:var(--fs-base);color:var(--teal-ui);font-weight:700;text-decoration:none;
+  display:inline-flex;align-items:center;min-height:44px}
+.pa-link:hover{text-decoration:underline}
+
+/* ── BARRA DE ACCIÓN EN MÓVIL ──
+   Aparece al pasar el hero y se esconde al llegar a los planes, para no
+   tapar los botones de verdad. */
+.barra-movil{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;
+  align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 18px;padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  background:#fff;border-top:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 -6px 24px rgba(23,52,60,0.10);
+  transform:translateY(120%);transition:transform .25s ease-out;
+}
+@media(max-width:900px){.barra-movil{display:flex}}
+.barra-movil.visible{transform:none}
+.bm-precio{font-size:var(--fs-lg);font-weight:900;color:var(--text);line-height:1.1}
+.bm-precio small{display:block;font-size:var(--fs-xs);font-weight:600;color:var(--gray);letter-spacing:0}
+.bm-btn{
+  background:var(--orange);color:var(--text);text-decoration:none;
+  font-size:var(--fs-base);font-weight:800;padding:13px 26px;border-radius:999px;
+  min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;
+}
+@media (prefers-reduced-motion:reduce){.barra-movil{transition:none}}
+
 /* ── WA ICON ── */
 .wa-icon{fill:currentColor}
 
@@ -846,6 +891,23 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   </div>
 </section>
 
+<!-- PRECIO TEMPRANO -->
+<section class="precio-antes">
+  <div class="container">
+    <div class="pa-caja reveal">
+      <div>
+        <span class="pa-eyebrow">Lo que cuesta</span>
+        <div class="pa-cifra">60 €<small>/mes</small></div>
+        <p class="pa-sub">Sin permanencia. Cancelas cuando quieras.</p>
+      </div>
+      <div class="pa-acciones">
+        <a class="btn-orange" href="#planes">Ver los planes →</a>
+        <a class="pa-link" href="https://api.whatsapp.com/send?phone=34689806987&amp;text=Hola%20Oscar%2C%20quiero%20empezar%20con%20Saneas.">o cuéntame tu caso por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MÉTODO · GPS -->
 <section class="section" style="background:#f7f9fa">
   <div style="max-width:700px;margin:0 auto;text-align:center;padding:0 20px;">
@@ -1020,7 +1082,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 </section>
 
 <!-- PRICING -->
-<section class="section" style="background:#f7f9fa;">
+<section class="section" id="planes" style="background:#f7f9fa;">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:64px;">
       <h2 class="section-title">Empieza hoy.</h2>
@@ -1157,6 +1219,12 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   <p>© 2026 Saneas® · Nutrición online personalizada · Todos los derechos reservados</p>
 </footer>
 
+<!-- BARRA DE ACCIÓN (solo móvil) -->
+<div class="barra-movil" id="barraMovil" aria-hidden="true">
+  <div class="bm-precio">60 €<small>al mes, sin permanencia</small></div>
+  <a class="bm-btn" href="#planes">Ver planes</a>
+</div>
+
 <!-- JS: REVEAL + COUNTER -->
 <script>
 // Si el sistema pide menos movimiento, el vídeo del hero no se reproduce:
@@ -1171,6 +1239,30 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
   }
   aplicar();
   mq.addEventListener('change', aplicar);
+})();
+
+// Barra de acción en móvil: aparece al pasar el hero y desaparece
+// cuando los planes o el cierre están a la vista, para no taparlos.
+(function(){
+  var barra = document.getElementById('barraMovil');
+  var hero = document.querySelector('main > section');
+  var planes = document.getElementById('planes');
+  var cierre = document.querySelector('.cta-final');
+  if(!barra || !hero) return;
+  var pasoElHero = false, hayCtaALaVista = false;
+  function pintar(){
+    var verla = pasoElHero && !hayCtaALaVista;
+    barra.classList.toggle('visible', verla);
+    barra.setAttribute('aria-hidden', verla ? 'false' : 'true');
+  }
+  new IntersectionObserver(function(e){
+    pasoElHero = !e[0].isIntersecting; pintar();
+  }, {threshold:0}).observe(hero);
+  var obs = new IntersectionObserver(function(entradas){
+    hayCtaALaVista = entradas.some(function(x){return x.isIntersecting});
+    pintar();
+  }, {threshold:0});
+  [planes, cierre].forEach(function(el){ if(el) obs.observe(el); });
 })();
 
 // Reveal on scroll
