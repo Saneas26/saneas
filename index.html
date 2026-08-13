@@ -795,6 +795,17 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 </head>
 <body>
 
+<script>
+/* La página siempre arranca desde el inicio (pedido de Óscar 12/08/2026):
+   ni el refresco restaura el scroll anterior, ni un #planes guardado en la
+   URL salta al precio. El botón "Ver planes" sigue funcionando: esto solo
+   actúa en la carga. */
+history.scrollRestoration='manual';
+if(location.hash){history.replaceState(null,'',location.pathname+location.search);}
+window.scrollTo(0,0);
+window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,0);});
+</script>
+
 <!-- NAV -->
 <nav>
   <div class="nav-izq"><div class="nav-logo saneas">Saneas®</div><button type="button" class="gs-boton" onclick="GrupoSaneas.abrirMenu()" aria-label="Ver las apps del Grupo Saneas"><span class="gs-b-marca">Grupo <b>Saneas</b> &#9656;</span><span class="gs-b-accion">despliega</span></button></div>
