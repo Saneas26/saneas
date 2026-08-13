@@ -225,7 +225,15 @@ body>nav{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:40px;text-align:center;
 }
-@media(max-width:600px){.stats-inner{grid-template-columns:1fr;gap:32px}}
+/* En móvil la banda de métricas va compacta justo bajo el hero: las dos
+   cifras a la par y las estrellas debajo a todo el ancho (Stitch 08/2026). */
+@media(max-width:600px){
+  .stats{padding:36px 20px}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:24px 12px}
+  .stats-inner>div:nth-child(3){grid-column:1/-1}
+  .stat-num{font-size:clamp(24px,7vw,30px);letter-spacing:-1px;margin-bottom:6px;white-space:nowrap}
+  .stat-label{font-size:var(--fs-sm)}
+}
 .stat-num{
   font-size:var(--fs-titulo);font-weight:900;
   color:var(--text);letter-spacing:-3px;line-height:1;
@@ -274,10 +282,16 @@ body>nav{
   text-decoration:line-through;letter-spacing:-0.3px;margin-bottom:6px;
 }
 .nv-desc{font-size:var(--fs-sm);color:#727272;line-height:1.5}
-.nv-card.yes{background:var(--teal-ui);border-color:var(--teal)}
+.nv-card.yes{background:var(--teal-ui);border-color:var(--teal);box-shadow:0 16px 40px rgba(23,52,60,0.18)}
 .nv-card.yes .nv-img-placeholder{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.5)}
-.nv-card.yes .nv-title{color:#fff;text-decoration:none}
+.nv-card.yes .nv-title{color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px}
 .nv-card.yes .nv-desc{color:rgba(255,255,255,0.85)}
+/* Comparativa visual (patrón Stitch 08/2026): lo que NO vendemos va en
+   foto desaturada; la comida real conserva el color y luce check verde. */
+.nv-card:not(.yes) .nv-img-placeholder{filter:grayscale(0.85);opacity:0.92}
+.nv-check{display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;min-width:24px;border-radius:50%;background:#25D366}
+.nv-check svg{width:13px;height:13px;stroke:#fff;fill:none}
 
 /* ── CASO REAL ── */
 .caso-real{background:#f7f9fa}
@@ -288,9 +302,13 @@ body>nav{
 }
 @media(max-width:800px){.caso-inner{grid-template-columns:1fr;gap:48px}}
 
+/* El nombre del caso va en pastilla de color (patrón Stitch 08/2026). */
 .caso-text .tag{
-  font-size:var(--fs-xs);font-weight:700;letter-spacing:2px;
-  text-transform:uppercase;color:var(--teal-ui);margin-bottom:20px;display:block;
+  font-size:var(--fs-sm);font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--teal-dark);
+  background:rgba(56,144,164,0.12);border:1px solid rgba(56,144,164,0.28);
+  padding:8px 18px;border-radius:999px;
+  margin-bottom:20px;display:inline-block;
 }
 .caso-text h2{
   font-size:var(--fs-titulo);font-weight:900;
@@ -343,6 +361,22 @@ body>nav{
 .caso-fotos.dos .caso-foto{grid-row:auto;aspect-ratio:495 / 1073;height:auto}
 .caso-fotos.dos .caso-foto img{object-position:center}
 @media(max-width:520px){.caso-fotos.dos{gap:8px}}
+
+/* ── COLLAGE ANTES/DESPUÉS (patrón Stitch 08/2026) ──
+   Marco blanco, leve rotación y un pelín de solape/escalón entre fotos.
+   Todo con transform: no altera el layout ni las alturas de la rejilla. */
+.caso-foto{border:6px solid #fff;background:#fff;box-shadow:0 16px 40px rgba(23,52,60,0.18)}
+.caso-fotos .caso-foto.big{transform:rotate(-2deg)}
+.caso-fotos .caso-foto:nth-child(2){transform:rotate(2.2deg) translate(-8px,6px);z-index:2}
+.caso-fotos .caso-foto:nth-child(3){transform:rotate(-1.5deg) translate(-12px,-4px);z-index:3}
+.caso-fotos.dos .caso-foto:nth-child(1){transform:rotate(-2deg)}
+.caso-fotos.dos .caso-foto:nth-child(2){transform:rotate(2deg) translateY(22px);z-index:2}
+@media(max-width:800px){
+  .caso-fotos .caso-foto:nth-child(2){transform:rotate(2.2deg) translate(-4px,4px)}
+  .caso-fotos .caso-foto:nth-child(3){transform:rotate(-1.5deg) translate(-6px,-2px)}
+  .caso-fotos.dos .caso-foto:nth-child(2){transform:rotate(2deg) translateY(14px)}
+  .caso-foto{border-width:5px}
+}
 
 /* ── Historia desplegable (Nanny) ── */
 .historia{margin-top:30px;max-width:540px}
@@ -447,32 +481,34 @@ body>nav{
   border-radius:var(--radius);padding:40px 32px;
   background:#fff;border:1px solid rgba(0,0,0,0.08);
 }
+/* La tarjeta central destaca por borde teal y elevación, no por fondo
+   oscuro: así las tres se comparan de un vistazo (patrón Stitch 08/2026). */
 .p-card.featured{
-  background:var(--teal-dark);border-color:transparent;
+  background:#fff;border:2px solid var(--teal);
   transform:scale(1.04);
-  box-shadow:0 16px 36px rgba(23,52,60,0.22);
+  box-shadow:0 20px 48px rgba(56,144,164,0.25);
 }
 .p-tier{
   font-size:var(--fs-xs);font-weight:700;letter-spacing:2.5px;
   text-transform:uppercase;color:var(--gray);margin-bottom:16px;display:block;
 }
-.p-card.featured .p-tier{color:var(--orange-light)}
+.p-card.featured .p-tier{color:var(--teal-ui)}
 .p-price{
   font-size:var(--fs-cifra);font-weight:900;letter-spacing:-3px;
   color:var(--text);line-height:1;
 }
-.p-card.featured .p-price{color:#fff}
+.p-card.featured .p-price{color:var(--text)}
 .p-per{font-size:var(--fs-md);font-weight:500;color:var(--gray);margin-left:4px}
-.p-card.featured .p-per{color:rgba(255,255,255,0.5)}
+.p-card.featured .p-per{color:var(--gray)}
 .p-desc{font-size:var(--fs-base);color:var(--gray);margin:16px 0 28px;line-height:1.6}
-.p-card.featured .p-desc{color:rgba(255,255,255,0.65)}
+.p-card.featured .p-desc{color:var(--gray)}
 .p-list{list-style:none;margin-bottom:32px}
 .p-list li{
   font-size:var(--fs-sm);color:var(--gray);padding:9px 0;
   border-bottom:1px solid #f0f0f0;
   display:flex;align-items:center;gap:10px;line-height:1.5;
 }
-.p-card.featured .p-list li{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.1)}
+.p-card.featured .p-list li{color:var(--gray);border-color:#f0f0f0}
 .p-list li::before{
   content:'';width:16px;height:16px;min-width:16px;border-radius:50%;
   background:var(--orange);flex-shrink:0;
@@ -489,7 +525,7 @@ body>nav{
 .p-btn.outline-w{border:1.5px solid rgba(255,255,255,0.25);color:#fff}@media (hover:hover) and (pointer:fine){.p-btn.outline-w:hover{background:rgba(255,255,255,0.1)}}
 .p-badge{
   position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  background:var(--orange);color:var(--text);font-size:var(--fs-xs);font-weight:800;
+  background:var(--teal-ui);color:#fff;font-size:var(--fs-xs);font-weight:800;
   letter-spacing:1.5px;text-transform:uppercase;padding:5px 18px;border-radius:999px;
   white-space:nowrap;
 }
@@ -673,8 +709,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 }
 /* Sobre los fondos oscuros el anillo oscuro no se ve: allí va en blanco. */
 .cta-final :where(a,button):focus-visible,
-.sus-card.yes :where(a,button):focus-visible,
-.p-card.featured :where(a,button):focus-visible{
+.sus-card.yes :where(a,button):focus-visible{
   outline-color:#fff;
 }
 
@@ -849,7 +884,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
       <div class="nv-card yes">
         <img class="nv-img-placeholder" src="assets/img/comida-real.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Solo comida real">
         <div class="nv-body">
-          <div class="nv-title">Solo comida real</div>
+          <div class="nv-title"><span class="nv-check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Solo comida real</div>
           <div class="nv-desc">Exactamente lo que siempre debió ser</div>
         </div>
       </div>
@@ -1140,7 +1175,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
       </div>
 
       <div class="p-card featured">
-        <span class="p-badge">Más popular</span>
+        <span class="p-badge">Más elegido</span>
         <span class="p-tier">Completo</span>
         <div><span class="p-price">60€</span><span class="p-per">/mes</span></div>
         <p class="p-desc">Todo lo que necesitas para transformar tu relación con la comida.</p>
@@ -1263,7 +1298,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 <!-- BARRA DE ACCIÓN (solo móvil) -->
 <div class="barra-movil" id="barraMovil" aria-hidden="true">
   <div class="bm-precio">60 €<small>al mes, con seguimiento</small></div>
-  <a class="bm-btn" href="#planes">Ver planes</a>
+  <a class="bm-btn" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20información%20sobre%20Saneas.">Empezar ahora</a>
 </div>
 
 <!-- JS: REVEAL + COUNTER -->
