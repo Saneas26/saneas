@@ -202,6 +202,17 @@
   }@media (hover:hover) and (pointer:fine){.tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal-dark); }}
 
   /* PROGRESO */
+  /* Bloque "Disponible en Google Play" (solo Android; se oculta si no hay enlace) */
+  .play-block { display:none; max-width: 560px; margin: 18px auto 6px; padding: 18px 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); text-align:center; }
+  .play-block.show { display:block; }
+  .play-block h2 { font-size: var(--fs-lg); color: var(--text); margin: 0 0 6px; }
+  .play-block p { font-size: var(--fs-sm); color: var(--text-muted); margin: 0 0 12px; line-height:1.5; }
+  .play-badge { display:inline-flex; align-items:center; gap:12px; background:#000; color:#fff; text-decoration:none; border-radius: 10px; padding: 10px 18px 10px 14px; border:1px solid #a6a6a6; transition: transform 160ms ease-out; }
+  .play-badge:hover { transform: translateY(-1px); }
+  .play-badge svg { width: 30px; height: 32px; flex: 0 0 auto; }
+  .play-badge .t1 { display:block; font-size: 11px; letter-spacing:.2px; line-height:1; opacity:.9; text-align:left; }
+  .play-badge .t2 { display:block; font-size: 20px; font-weight:600; line-height:1.15; text-align:left; }
+  .play-block .alt { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 10px; }
   .progress-wrap {
     max-width: 680px;
     margin: 28px auto 0;
@@ -470,6 +481,17 @@
   </div>
 </div>
 
+<!-- Google Play (Android). El enlace se pone en PLAY_URL al final de la página; vacío = bloque oculto. -->
+<div class="play-block" id="play-block">
+  <h2>Descárgala desde Google Play</h2>
+  <p>La forma más fácil en Android: instálala como cualquier otra app y olvídate de los pasos de abajo.</p>
+  <a class="play-badge" id="play-link" href="#" target="_blank" rel="noopener" aria-label="Disponible en Google Play">
+    <svg viewBox="0 0 30 32" aria-hidden="true"><path fill="#00d7fe" d="M1.2 1.1 16.3 16 1.2 30.9c-.4-.3-.7-.9-.7-1.6V2.7c0-.7.3-1.3.7-1.6z"/><path fill="#00f076" d="M21.4 11 16.3 16 1.2 1.1c.5-.4 1.2-.4 1.9 0L21.4 11z"/><path fill="#ff3a44" d="M21.4 21 3.1 30.9c-.7.4-1.4.4-1.9 0L16.3 16l5.1 5z"/><path fill="#ffd500" d="M28.2 14.2c1.4.8 1.4 2.8 0 3.6L21.4 21l-5.1-5 5.1-5 6.8 3.2z"/></svg>
+    <span><span class="t1">DISPONIBLE EN</span><span class="t2">Google Play</span></span>
+  </a>
+  <p class="alt">¿Prefieres no pasar por la tienda? Sigue la guía de abajo: funciona igual.</p>
+</div>
+
 <div class="progress-wrap">
   <div class="progress-track" id="progress-track"></div>
 </div>
@@ -635,6 +657,15 @@ const platforms = {
   ]
 };
 
+// Enlace de la app en Google Play. Déjalo vacío ('') hasta que la app sea pública; con el enlace, el bloque aparece solo en Android.
+const PLAY_URL = '';
+function renderPlayBlock() {
+  const b = document.getElementById('play-block'); if (!b) return;
+  const ok = platform === 'android' && PLAY_URL;
+  b.classList.toggle('show', !!ok);
+  if (ok) document.getElementById('play-link').href = PLAY_URL;
+}
+
 let platform = 'android';
 let iosVariant = null; // null = no elegido, 'old' o 'new'
 let step = 0;
@@ -645,6 +676,7 @@ function switchPlatform(p) {
   step = 0;
   document.getElementById('tab-android').classList.toggle('active', p === 'android');
   document.getElementById('tab-apple').classList.toggle('active', p === 'apple');
+  renderPlayBlock();
   render();
 }
 
@@ -767,6 +799,7 @@ function render() {
   counter.textContent = step < total ? `Paso ${step + 1} de ${total}` : '✓ Completado';
 }
 
+renderPlayBlock();
 render();
 </script>
 <script src="/assets/telemetria.js" defer></script>
