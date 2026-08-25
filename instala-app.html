@@ -658,7 +658,7 @@ const platforms = {
 };
 
 // Enlace de la app en Google Play. Déjalo vacío ('') hasta que la app sea pública; con el enlace, el bloque aparece solo en Android.
-const PLAY_URL = '';
+const PLAY_URL = 'https://play.google.com/store/apps/details?id=es.saneas.app';
 function renderPlayBlock() {
   const b = document.getElementById('play-block'); if (!b) return;
   const ok = platform === 'android' && PLAY_URL;
