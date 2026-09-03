@@ -24,14 +24,17 @@ var GrupoSaneas = (function(){
     { id:'saneas', nombre:'Saneas', logo:'app-saneas-web.png', url:'https://saneas.es', tipo:'una página web',
       texto:'El método de nutrición con 87% de éxito que ha ayudado a más de 1700 personas, sin pastillas, sin batidos y sin inyecciones. Solo cambiando tus hábitos poco a poco. El GPS de la nutrición que te muestra el camino.' },
     { id:'saneas-app', nombre:'APP Saneas', logo:'app-saneas-s.png', url:'https://saneas.es/instala-app', tipo:'una aplicación',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.app',
       texto:'Probablemente la mejor APP de nutrición del mercado.' },
     { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app', tipo:'una aplicación',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.pordondevoy',
       texto:'En un avión no hay datos ni wifi. Ahora puedes entretenerte y saber por dónde vas, de manera gratuita. Las 20 noticias más importantes del día te acompañan, junto a los principales podcast en español. Con itinerarios a las principales ciudades europeas.' },
     { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es', tipo:'una página web',
       texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' },
     { id:'laora', nombre:'laOra', logo:'app-laora.png', url:'https://laora.es', tipo:'una página web',
       texto:'La relojería de lujo al precio honesto, sin peajes de marca.' },
     { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es', tipo:'una aplicación',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.acumula',
       texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' },
     { id:'quemedices', nombre:'¿Qué me dices?', logo:'app-quemedices.png', url:'https://quemedices.vercel.app', tipo:'una aplicación',
       texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' }
@@ -169,6 +172,23 @@ var GrupoSaneas = (function(){
         'box-shadow:0 4px 12px rgba(16,40,48,.16)}',
       '.gs-word-ficha{width:96px;height:96px;border-radius:24px;font-size:19px;',
         'box-shadow:0 8px 22px rgba(16,40,48,.2)}',
+      // Dos columnas de descarga. El teal de los botones es #2f7c8e y no el
+      // #3890a4 de la casa porque el claro se queda en 3,7:1 de contraste
+      // sobre blanco y no llega al minimo legible; el oscuro da 4,8:1.
+      '.gs-dos{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}',
+      '.gs-baja{display:flex;flex-direction:column;align-items:center;justify-content:center;',
+        'gap:3px;border-radius:14px;padding:12px 8px;text-decoration:none;font-family:inherit;',
+        'border:2px solid #2f7c8e}',
+      '.gs-baja b{font-size:15.5px;font-weight:800;line-height:1.2}',
+      '.gs-baja span{font-size:12.5px;font-weight:700;line-height:1.2}',
+      '.gs-baja-web{background:#fff}',
+      '.gs-baja-web b{color:#22313a}',
+      '.gs-baja-web span{color:#3d4f59}',
+      '.gs-baja-web:active{background:#f4fafb}',
+      '.gs-baja-play{background:#2f7c8e}',
+      '.gs-baja-play b{color:#fff}',
+      '.gs-baja-play span{color:#f2fafc}',
+      '.gs-baja-play:active{background:#26697a}',
       '@media (prefers-reduced-motion:reduce){.gs-panel,.gs-fondo{transition:none}}'
     ].join('');
     document.head.appendChild(c);
@@ -249,13 +269,30 @@ var GrupoSaneas = (function(){
       + '</div>');
   }
 
+  // ---- como se instala cada app ----
+  // En iPhone no hay tienda: la PWA se anade desde la propia web. En Android
+  // hay ficha de Google Play para Saneas, Pordondevoy y Acumula. Las apps que
+  // aun no estan en Play (¿Que me dices?) y las paginas web del grupo se
+  // quedan con el boton de siempre: no hay nada que descargar de dos sitios.
+  function descargas(m, aqui){
+    if(!m.play){
+      return aqui ? '' : '<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>';
+    }
+    return '<div class="gs-dos">'
+      + '<a class="gs-baja gs-baja-web" href="'+esc(m.url)+'" target="_blank" rel="noopener">'
+        + '<b>iPhone</b><span>Desde la web</span></a>'
+      + '<a class="gs-baja gs-baja-play" href="'+esc(m.play)+'" target="_blank" rel="noopener">'
+        + '<b>Android</b><span>Google Play</span></a>'
+      + '</div>';
+  }
+
   function ficha(id){
     var m=porId(id); if(!m) return;
     var aqui=(m.id===CFG.actual);
     mostrar('<div class="gs-ficha">'
       + icono(m,'gs-svg gs-svg-ficha')
       + '<h3>'+esc(m.nombre)+'</h3><p>'+esc(m.texto)+'</p>'
-      + (aqui?'':'<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>')
+      + descargas(m, aqui)
       + '<button type="button" class="gs-comp gs-comp-ficha" onclick="GrupoSaneas.compartir(\''+esc(m.id)+'\')">Compartir</button>'
       + '<button type="button" class="gs-ok" onclick="GrupoSaneas.cerrar()">OK</button></div>');
   }
