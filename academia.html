@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Programa de Asesorías Saneas — Monta tu asesoría de salud con un equipo clínico detrás. Método probado, app y panel incluidos.">
-<meta property="og:title" content="Saneas® · Programa de Asesorías">
-<meta property="og:description" content="Monta tu asesoría de salud con un equipo clínico detrás. No cobras por captar: cobras cada mes que tu cliente sigue contigo.">
-<meta property="og:url" content="https://saneas.es/asesorias">
-<title>Saneas® · Programa de Asesorías — Monta tu consulta</title>
-<link rel="canonical" href="https://saneas.es/asesorias">
+<meta name="description" content="Academia Saneas — El temario de una carrera de nutrición, ordenado en clases de 15 minutos. Dos al día. Empieza con 28 clases gratis. 60 €/mes, 8 meses.">
+<meta property="og:title" content="Academia Saneas">
+<meta property="og:description" content="El temario de una carrera de nutrición en clases de 15 minutos. Dos al día, ocho meses. Empieza con 28 clases gratis.">
+<meta property="og:url" content="https://saneas.es/academia">
+<title>Academia Saneas — Aprende nutrición, media hora al día</title>
+<link rel="canonical" href="https://saneas.es/academia">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Saneas">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://saneas.es/assets/og-asesorias.png">
+<meta property="og:image" content="https://saneas.es/assets/og-saneas.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Saneas® · Monta tu asesoría de salud con un equipo clínico detrás">
+<meta property="og:image:alt" content="Academia Saneas · Aprende nutrición media hora al día">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Fuentes propias: antes eran tres viajes a dos dominios de Google
      antes de que el texto se pintara con su tipografía. -->
@@ -467,13 +467,29 @@ footer p{font-size:var(--fs-xs);color:#696969;margin-top:30px}
 footer a.logo{display:inline-flex;align-items:center;min-height:44px}
 a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 </style>
-</head>
-<body>
-
+<style>
+  /* Academia (12/09/2026): piezas propias. Todo lo demás reutiliza el CSS de la web. */
+  .ac-bloques{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:26px}
+  .ac-b{background:#fff;border:1px solid #e3ebed;border-radius:20px;padding:20px 20px 18px}
+  .ac-b .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:10px;
+    background:var(--teal);color:#fff;font-weight:800;font-size:var(--fs-sm)}
+  .ac-b h3{font-size:var(--fs-md);margin:12px 0 6px;line-height:1.3;color:var(--text)}
+  .ac-b p{font-size:var(--fs-sm);color:var(--gray);margin:0;line-height:1.5}
+  .ac-b .em{font-size:26px;float:right;line-height:1}
+  .ac-hoy{background:#eef6f8;border-radius:20px;padding:20px 22px;margin-top:24px;font-size:var(--fs-base);
+    line-height:1.6;color:var(--text)}
+  .ac-dos{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:22px}
+  .ac-dos .c{background:#fff;border:1px solid #e3ebed;border-radius:20px;padding:22px}
+  .ac-dos .c.esta{border:2px solid var(--teal)}
+  .ac-dos .c h3{font-size:var(--fs-lg);margin:0 0 4px;color:var(--text)}
+  .ac-dos .c .pr{font-size:var(--fs-xl);font-weight:800;color:var(--teal-ui);margin:6px 0 10px}
+  .ac-dos .c p{font-size:var(--fs-sm);color:var(--gray);line-height:1.55;margin:0 0 14px}
+  .ac-plazas{font-size:var(--fs-sm);font-weight:700;color:var(--text);margin-top:14px}
+</style></head>
 <!-- NAV -->
 <nav>
   <div class="nav-izq"><a class="nav-logo saneas" href="/">Saneas®</a><button type="button" class="gs-boton" onclick="GrupoSaneas.abrirMenu()" aria-label="Ver las apps del Grupo Saneas"><span class="gs-b-marca">Grupo <b>Saneas</b> &#9656;</span><span class="gs-b-accion">despliega</span></button></div>
-  <a class="nav-wa" style="background:var(--teal-ui)" href="#solicitud">Quiero ser asesor</a>
+  <a class="nav-wa" style="background:var(--teal-ui)" href="https://nutre-six.vercel.app">Empezar gratis</a>
 </nav>
 
 <!-- HERO -->
@@ -481,225 +497,159 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <section style="display:flex;align-items:center;">
   <div class="hero">
     <div class="hero-left reveal">
-      <span class="badge"><span class="badge-dot"></span>Programa de Asesorías</span>
-      <h1>Monta tu asesoría de salud <em>con un equipo clínico detrás.</em></h1>
+      <span class="badge"><span class="badge-dot"></span>Academia Saneas</span>
+      <h1>Aprende nutrición de verdad, <em>media hora al día.</em></h1>
       <div class="hero-sub">
-        Tú acompañas a las personas. Nosotros ponemos el método, la tecnología y el respaldo profesional.<br>
-        <strong>No cobras por captar: cobras cada mes que tu cliente sigue contigo.</strong>
+        Dos clases de quince minutos, seis días por semana. El temario de una carrera ordenado para
+        entenderlo y recordarlo, no para aprobar un examen.<br>
+        <strong>Empieza con 28 clases gratis: si no te convence, lo dejas y no has pagado nada.</strong>
       </div>
-      <a class="btn-orange" href="#solicitud">
-        Quiero ser asesor Saneas →
-      </a>
+      <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar gratis →</a>
+      <p class="ac-plazas" id="acPlazas">Esta primera promoción tiene 20 plazas.</p>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
-      <div class="hv-card v"><b>🟢 Verde</b><span>Adelante con el método. La mayoría de los casos.</span></div>
-      <div class="hv-card a"><b>🟠 Ámbar</b><span>El plan se adapta solo a lo que tu cliente necesita.</span></div>
-      <div class="hv-card r"><b>🔴 Rojo</b><span>Un profesional colegiado revisa y firma antes de arrancar.</span></div>
-      <div class="hv-cap">El semáforo Saneas: el sistema decide, tú acompañas.</div>
+      <div class="hv-card v"><b>🕒 30 minutos</b><span>al día, dos clases de quince</span></div>
+      <div class="hv-card a"><b>🎧 Un profesor</b><span>te corrige lo que escribes y lo que dices</span></div>
+      <div class="hv-card r"><b>🎓 8 meses</b><span>de principio a fin, a tu ritmo</span></div>
+      <div class="hv-cap">La clase de hoy dura lo que un café.</div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
+<!-- CIFRAS -->
+<section class="stats">
   <div class="stats-inner">
-    <div class="reveal">
-      <div class="stat-num">6</div>
-      <div class="stat-label">años de consulta diaria</div>
-    </div>
-    <div class="reveal reveal-delay-1">
-      <div class="stat-num" data-count="1700">0</div>
-      <div class="stat-label">personas acompañadas</div>
-    </div>
-    <div class="reveal reveal-delay-2">
-      <div class="stat-num">76</div>
-      <div class="stat-label">semanas de método estructurado</div>
-    </div>
-  </div>
-</div>
-
-<!-- QUIÉNES SOMOS -->
-<section class="section">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">Quiénes somos</span>
-      <h2 class="section-title">Un método probado,<br>no una idea nueva.</h2>
-      <p class="parr">Saneas no es un curso ni una plantilla de dietas. Es un sistema entero: <b>una app para tu cliente, un panel para ti, un método por fases y un equipo clínico que supervisa cada caso.</b> Todo lo que a un profesional le llevaría años montar, ya está hecho. Ahora lo abrimos para que tú montes tu propia asesoría bajo nuestra marca, sin necesidad de ser nutricionista: de la parte clínica nos ocupamos nosotros.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CÓMO FUNCIONA -->
-<section class="section" style="background:#f7f9fa">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">Cómo funciona para ti</span>
-      <h2 class="section-title">Tú preguntas.<br>El sistema decide.</h2>
-      <p class="parr">En la primera consulta rellenas con tu cliente una ficha sencilla: su situación, su salud, su medicación. No tienes que interpretar nada. El sistema evalúa solo y te dice cómo seguir con un semáforo.</p>
-    </div>
-    <div class="semaforo">
-      <div class="sem v reveal"><b>Verde</b><span>Adelante con el método. La mayoría de los casos.</span></div>
-      <div class="sem a reveal reveal-delay-1"><b>Ámbar</b><span>El plan se adapta solo a lo que tu cliente necesita.</span></div>
-      <div class="sem r reveal reveal-delay-2"><b>Rojo</b><span>Un profesional colegiado revisa y firma antes de arrancar.</span></div>
-    </div>
-    <p class="quote reveal">Nunca tomas una decisión clínica. Por eso no puedes meter la pata: el sistema te cubre y un profesional firma lo delicado.</p>
-  </div>
-</section>
-
-<!-- EL RESPALDO -->
-<section class="section">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">El respaldo</span>
-      <h2 class="section-title">Detrás de ti,<br>un equipo colegiado.</h2>
-      <p class="parr">Lo que hace de Saneas algo serio —y lo que te protege— es el equipo clínico que respalda cada asesoría. Tú eres <b>el asesor personal de Saneas</b> para tu cliente: su punto de contacto, quien lo acompaña día a día. La parte clínica la firma quien tiene el título. Cada uno en su sitio.</p>
-    </div>
-    <div class="eq-cards">
-      <div class="eq-card reveal"><span class="ico">🥗</span><h3>Dietista y nutricionista</h3><p>Definen y supervisan el método. Firman los planes de los casos con patología o medicación.</p></div>
-      <div class="eq-card reveal reveal-delay-1"><span class="ico">🧠</span><h3>Psicóloga colegiada</h3><p>Atiende los casos que requieren un acompañamiento distinto y sostiene la parte emocional del proceso.</p></div>
-      <div class="eq-card reveal reveal-delay-2"><span class="ico">🏥</span><h3>Red de derivación</h3><p>Cuando un caso necesita a otro profesional, hay a dónde enviarlo. Nunca te quedas solo ante una situación difícil.</p></div>
-      <div class="eq-card reveal reveal-delay-3"><span class="ico">🎓</span><h3>Soporte y formación</h3><p>Aprendes a usar el sistema y a acompañar bien. Y tienes a quién llamar cuando lo necesitas.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- QUÉ INCLUYE -->
-<section class="section" style="background:#f7f9fa">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">Qué incluye tu asesoría</span>
-      <h2 class="section-title">Todo el sistema,<br>listo para trabajar.</h2>
-    </div>
-    <ul class="check reveal">
-      <li>App para tus clientes <small>dieta, seguimiento, registro y comunicación</small></li>
-      <li>Tu panel de gestión <small>tus clientes, tus altas, tu facturación</small></li>
-      <li>El método completo de 76 semanas <small>con sus dietas, recetas y listas de la compra</small></li>
-      <li>La ficha de entrada con el sistema de seguridad <small>el semáforo que decide por ti</small></li>
-      <li>El respaldo del equipo clínico colegiado <small>que firma los casos delicados</small></li>
-      <li>Formación inicial y acompañamiento <small>en tus primeros meses</small></li>
-      <li>Los textos y la marca hechos <small>para que comuniques bien sin exponerte</small></li>
-    </ul>
-  </div>
-</section>
-
-<!-- EL MODELO -->
-<section class="section">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">El modelo</span>
-      <h2 class="section-title">Un ingreso que se construye<br>y se sostiene.</h2>
-    </div>
-    <div class="modelo-grid">
-      <div class="money reveal">
-        <div class="row"><span class="k">Tu cliente paga (tarifa fija)</span><span class="v">60 € / mes</span></div>
-        <div class="row"><span class="k">Te quedas tú</span><span class="v orange">20 € / cliente</span></div>
-        <div class="row"><span class="k">Cuota Saneas (sistema + respaldo clínico)</span><span class="v">40 € / cliente</span></div>
-        <div class="row"><span class="k">Entrada única</span><span class="v">480 €</span></div>
-        <div class="big">La entrada se amortiza con tus primeras 12 altas. A partir de ahí, cada cliente activo son 20 € cada mes que sigue contigo.</div>
-      </div>
-      <div class="ahorro reveal reveal-delay-1">
-        <h3>Y lo que NO tendrás que pagar</h3>
-        <div class="conf"><span class="tick">✓</span><span>Confianza de serie: tus clientes entran a un método que ya funciona, no a un experimento.</span></div>
-        <div class="fila"><span class="k">Gestoría / asesoría fiscal<small>facturación y papeleo, resuelto en el sistema</small></span><span class="v">~50 €/mes</span></div>
-        <div class="fila"><span class="k">Holded (facturación)</span><span class="v">19 €/mes</span></div>
-        <div class="fila"><span class="k">Software de nutricionista<small>tipo Nutrium, DietoPro…</small></span><span class="v">~30 €/mes</span></div>
-        <div class="fila"><span class="k">WhatsApp Business (plataforma)</span><span class="v">~15 €/mes</span></div>
-        <div class="fila"><span class="k">Publicidad en Meta / TikTok<small>lo mínimo para llegar a algún cliente</small></span><span class="v">desde 150 €/mes</span></div>
-        <div class="total"><span class="k">Cada mes te ahorras</span><span class="v">≈ 260 €</span></div>
-        <div class="iva"><b>Y el IVA, fuera.</b> Facturando por tu cuenta, 100 clientes a 60 € te obligarían a declarar <b>≈ 1.040 € de IVA cada mes</b> (21 % incluido en el precio). Con Saneas, 0 €: ni sobre los 60 € de tu cliente ni sobre los 20 € que te quedas — aunque no seas nutricionista.</div>
-      </div>
-    </div>
-    <div class="garantias">
-      <div class="gar reveal"><span class="ico">🛡️</span><h3>Sin riesgo y sin sorpresas</h3><p>Tu única inversión es la entrada, y es <b>amortizable</b>: hasta que no la amortices, <b>no te cobramos nada más</b>. La parte proporcional de Saneas de las cuotas de tus clientes solo empieza a cobrarse cuando la entrada ya está cubierta — durante tus 12 primeros cobros, nada extra.</p></div>
-      <div class="gar reveal reveal-delay-1"><span class="ico">🧩</span><h3>Sin dejar tu trabajo</h3><p>No te obliga a soltar lo que ya haces: es <b>compatible con tu empleo</b> y puede empezar siendo un sobresueldo que crece a tu ritmo, cliente a cliente.</p></div>
-    </div>
-    <p class="honesto reveal">Seamos honestos: esto no es dinero rápido. Es un ingreso que se construye cliente a cliente y que vive de la <b>constancia</b>, no de la captación. Cuidas bien a tu gente, tu gente se queda, y tu ingreso crece solo. Sin más gastos que tu cuota de autónomo. <span style="font-size:var(--fs-sm);font-style:italic">Ahorros orientativos según precios habituales del mercado español en 2026.</span></p>
+    <div><div class="stat-num" data-num="147">147</div><div class="stat-label">clases ya publicadas</div></div>
+    <div><div class="stat-num" data-num="28">28</div><div class="stat-label">clases gratis para probar</div></div>
+    <div><div class="stat-num" data-num="8">8</div><div class="stat-label">meses de curso</div></div>
+    <div><div class="stat-num" data-num="60">60</div><div class="stat-label">euros al mes</div></div>
   </div>
 </section>
 
 <!-- PARA QUIÉN -->
-<section class="section" style="background:#f7f9fa">
+<section class="section">
   <div class="container">
-    <div class="reveal">
-      <span class="tag">Para quién es</span>
-      <h2 class="section-title">¿Es para ti?</h2>
-    </div>
+    <h2 class="section-title">¿Es para ti?</h2>
+    <p class="section-sub">Preferimos decírtelo antes de cobrarte.</p>
     <div class="pq-cards">
-      <div class="pq si reveal"><h3>Sí, si…</h3><p>Ya acompañas a personas (entrenas, cuidas, orientas), tienes una red de confianza y paciencia para construir algo a un año.</p></div>
-      <div class="pq no reveal reveal-delay-1"><h3>No, si…</h3><p>Buscas dinero rápido, no tienes a nadie a quien acompañar de verdad, o quieres «vender dietas» prometiendo resultados.</p></div>
+      <div class="pq si reveal"><h3>Sí, si…</h3><p>Quieres entender de verdad lo que comes, o ya acompañas a personas —entrenas, cuidas, orientas— y te falta la base. También si quieres llegar a ser <b>asesor de Saneas</b>.</p></div>
+      <div class="pq no reveal reveal-delay-1"><h3>No, si…</h3><p>Buscas un título para colgar en la pared, o quieres empezar a pautar dietas a otras personas el mes que viene. <b>Esto no te habilita para eso</b>, y no vamos a fingir que sí.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CÓMO EMPIEZAS -->
+<!-- CÓMO SE ESTUDIA -->
 <section class="section">
   <div class="container">
-    <div class="reveal">
-      <span class="tag">Cómo empiezas</span>
-      <h2 class="section-title">Cuatro pasos.<br>Sin letra pequeña.</h2>
-    </div>
+    <h2 class="section-title">Media hora al día,<br>todos los días.</h2>
+    <p class="section-sub">La constancia es el método. No hay atajos ni maratones de fin de semana.</p>
     <div class="pasos">
-      <div class="paso reveal"><div class="num">1</div><div class="txt"><b>Conoces el sistema.</b> Te enseñamos la ficha y el semáforo en directo, con un caso real.</div></div>
-      <div class="paso reveal reveal-delay-1"><div class="num">2</div><div class="txt"><b>Entras en el programa.</b> Formación inicial y tu panel activo.</div></div>
-      <div class="paso reveal reveal-delay-2"><div class="num">3</div><div class="txt"><b>Das de alta a tus primeros clientes.</b> Con el equipo clínico ya detrás.</div></div>
-      <div class="paso reveal reveal-delay-3"><div class="num">4</div><div class="txt"><b>Construyes tu asesoría.</b> Cada cliente que se queda es ingreso que se sostiene.</div></div>
+      <div class="paso reveal"><div class="num">1</div><div class="txt"><b>Dos clases al día, de quince minutos.</b> Se abren solas, a su ritmo: no puedes tragarte el curso entero un domingo ni quedarte descolgado sin remedio.</div></div>
+      <div class="paso reveal reveal-delay-1"><div class="num">2</div><div class="txt"><b>Cada clase acaba practicando.</b> Montas el plato, lees una etiqueta, calculas una cantidad, ordenas una pauta, interpretas una analítica o le contestas en voz alta a un cliente que te habla.</div></div>
+      <div class="paso reveal reveal-delay-2"><div class="num">3</div><div class="txt"><b>Un profesor te corrige.</b> No es un test de tres opciones: escribes o hablas, y te dice qué has entendido mal y por qué.</div></div>
+      <div class="paso reveal reveal-delay-3"><div class="num">4</div><div class="txt"><b>Si paras, vuelves donde lo dejaste.</b> El curso te espera. Ni caduca ni te penaliza por haber tenido una mala semana.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMARIO -->
+<section class="section" id="temario">
+  <div class="container">
+    <h2 class="section-title">Qué vas a estudiar</h2>
+    <p class="section-sub">Ocho bloques, 120 temas, 420 clases. En este orden y por una razón.</p>
+    <div class="ac-bloques">
+      <div class="ac-b reveal"><span class="em">🫀</span><span class="n">1</span><h3>Lo que tu cuerpo hace con la comida</h3><p>20 temas. Digestión, energía, proteína, grasa, hidratos. Para dejar de repetir de memoria lo que no se entiende.</p></div>
+      <div class="ac-b reveal reveal-delay-1"><span class="em">🏷️</span><span class="n">2</span><h3>Los alimentos de verdad y la etiqueta</h3><p>16 temas. Qué aporta cada grupo y cómo leer cualquier etiqueta en menos de un minuto.</p></div>
+      <div class="ac-b reveal reveal-delay-2"><span class="em">📏</span><span class="n">3</span><h3>Medir, calcular y montar un plan</h3><p>15 temas. Cantidades, necesidades y por qué un plan dice lo que dice.</p></div>
+      <div class="ac-b reveal"><span class="em">🧠</span><span class="n">4</span><h3>La cabeza, el hábito y la conversación</h3><p>10 temas. Lo que decide de verdad si alguien sigue o lo deja.</p></div>
+      <div class="ac-b reveal reveal-delay-1"><span class="em">🤰</span><span class="n">5</span><h3>Etapas de la vida</h3><p>11 temas. Embarazo, infancia, mayores, deporte. Cada edad come distinto.</p></div>
+      <div class="ac-b reveal reveal-delay-2"><span class="em">🩺</span><span class="n">6</span><h3>Cuando hay enfermedad: reconocer y derivar</h3><p>26 temas. El bloque más largo, y el que más cuida: reconocer la señal y saber a quién mandarla.</p></div>
+      <div class="ac-b reveal"><span class="em">⚖️</span><span class="n">7</span><h3>La ley, los fármacos y la cocina segura</h3><p>10 temas. Va antes que las patologías a propósito: primero se aprende lo que uno NO puede hacer.</p></div>
+      <div class="ac-b reveal reveal-delay-1"><span class="em">🎓</span><span class="n">8</span><h3>Ser asesor de Saneas</h3><p>12 temas. El oficio: la ficha, el semáforo, el seguimiento y la conversación difícil.</p></div>
+    </div>
+    <div class="ac-hoy reveal">
+      <b>Qué hay publicado hoy:</b> los bloques 1 y 2 completos, <b>147 clases</b>. A dos clases al día son
+      más de dos meses de curso desde el primer día, y el resto se publica mientras avanzas. Preferimos
+      decirte el número real a enseñarte un índice entero que todavía no existe.
     </div>
   </div>
 </section>
 
 <!-- LO QUE NO ES -->
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="container">
     <div class="noes reveal">
-      <h3>Lo que Saneas NO es</h3>
-      <p>Aquí solo se gana de una forma: <b>clientes reales que pagan su mensualidad y se quedan.</b> No ganas ni un euro por traer a otro asesor —eso no existe en Saneas—. Y por eso el modelo se sostiene: tu ingreso depende de que cuides bien a tu gente, no de a cuánta gente convenzas. No prometemos kilos, ni plazos, ni cifras de ingresos. Prometemos un método serio y un respaldo real.</p>
+      <h3>Lo que esto NO es</h3>
+      <p>No es un grado ni un módulo de FP. <b>No da certificado de profesionalidad ni habilita para ejercer.</b>
+      Al terminar tienes un certificado de aprovechamiento de Saneas, sin validez académica.
+      Dietista-nutricionista es una profesión sanitaria regulada por la Ley 44/2003: aquí no te vas a
+      convertir en uno, y quien te venda lo contrario te está engañando. Lo que sí aprendes es a entender
+      la nutrición y a acompañar bien a una persona. En Saneas, además, <b>el plan lo firma siempre un
+      titulado</b> — también cuando el caso es sencillo.</p>
     </div>
   </div>
 </section>
 
-<!-- SOLICITUD -->
-<section class="cta-final" id="solicitud">
-  <div class="reveal">
-    <h2>Cuéntanos<br>quién eres.</h2>
-    <p>Antes de enseñarte el sistema queremos conocerte un poco.</p>
-    <p class="peque">Rellena esto y te contactamos personalmente. Sin listas de correo, sin llamadas pesadas: una conversación de tú a tú para ver si encajamos.</p>
-    <form class="solicitud-card" id="formSolicitud" onsubmit="return enviarSolicitud(event)">
-      <div class="f2">
-        <label>Nombre*<input id="c_nombre" maxlength="60" autocomplete="given-name" autocapitalize="words" required></label>
-        <label>Apellidos*<input id="c_apellidos" maxlength="80" autocomplete="family-name" autocapitalize="words" required></label>
-      </div>
-      <div class="f2">
-        <label>Email*<input id="c_email" type="email" maxlength="120" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required></label>
-        <label>Teléfono<input id="c_telefono" type="tel" maxlength="20" autocomplete="tel" inputmode="tel"></label>
-      </div>
-      <label>Tu formación actual*
-        <input id="c_formacion" maxlength="160" placeholder="Ej: TAFAD, grado en CAFD, entrenador personal certificado, enfermería…" required></label>
-      <label>Tu relación con la dietética, la nutrición o la preparación física*
-        <select id="c_relacion" required>
-          <option value="" selected disabled>Elige la que más se acerque…</option>
-          <option>Preparador/a físico o entrenador/a personal</option>
-          <option>Profesional de la salud (enfermería, fisio, farmacia…)</option>
-          <option>Formación en dietética/nutrición sin ejercer</option>
-          <option>Sin formación reglada, pero acompaño a personas</option>
-          <option>Otra</option>
-        </select></label>
-      <label>¿Por qué quieres unirte a Saneas y ser asesor?*
-        <textarea id="c_motivo" rows="4" maxlength="1000" placeholder="Cuéntanoslo con tus palabras. No buscamos redacciones perfectas: buscamos motivos de verdad." required></textarea></label>
-      <input id="c_web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      <button class="btn-orange" id="btnSolicitud" type="submit" style="width:100%;justify-content:center">Enviar mi solicitud →</button>
-      <div class="sol-msg" id="solMsg"></div>
-      <div class="sol-legal">Usaremos tus datos únicamente para valorar tu candidatura y ponernos en contacto contigo. Nada de listas ni cesiones. Responsable: Óscar Belloso Jiménez. Puedes acceder, rectificar o borrar tus datos cuando quieras — <a href="/privacidad">cómo tratamos tus datos</a>.</div>
-    </form>
+<!-- PRECIO -->
+<section class="section" id="precio">
+  <div class="container">
+    <h2 class="section-title">Lo que cuesta</h2>
+    <p class="section-sub">Una academia de barrio, dos días por semana, cuesta lo mismo al mes.</p>
+    <div class="money reveal">
+      <div class="row"><span class="k">Cuota mensual</span><span class="v">60 € / mes</span></div>
+      <div class="row"><span class="k">Duración del curso</span><span class="v">8 meses</span></div>
+      <div class="row"><span class="k">Total</span><span class="v">480 €</span></div>
+      <div class="row"><span class="k">Si lo pagas de una vez</span><span class="v orange">420 €</span></div>
+      <div class="big">420 clases por 480 €: <b>1,14 € cada clase</b>. Y las 28 primeras, gratis.</div>
+    </div>
+    <div class="garantias">
+      <div class="gar reveal"><span class="ico">🎁</span><h3>Pruébalo antes de pagar</h3><p><b>28 clases gratis.</b> Suficiente para saber si esto es para ti. No hace falta tarjeta para empezar.</p></div>
+      <div class="gar reveal reveal-delay-1"><span class="ico">✋</span><h3>Lo dejas cuando quieras</h3><p>No hay permanencia. Dejas de pagar y ya está. Si algún día vuelves, sigues donde lo dejaste: no se pierde lo estudiado.</p></div>
+      <div class="gar reveal reveal-delay-2"><span class="ico">🧾</span><h3>14 días para arrepentirte</h3><p>Tienes derecho a desistir dentro de los 14 días naturales. Si pides empezar el contenido de pago antes de ese plazo, te lo preguntamos expresamente al pagar, como manda la ley.</p></div>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ACADEMIA vs ASESORÍAS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">¿Y ser asesor de Saneas?</h2>
+    <p class="section-sub">Son dos cosas distintas. Conviene no mezclarlas.</p>
+    <div class="ac-dos">
+      <div class="c esta reveal">
+        <h3>Academia Saneas</h3>
+        <div class="pr">60 € al mes · 8 meses</div>
+        <p>Es esto: <b>formación</b>. Aprendes nutrición y aprendes a acompañar. Puedes quedarte aquí y no hacer nada más con ello.</p>
+        <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar gratis →</a>
+      </div>
+      <div class="c reveal reveal-delay-1">
+        <h3>Programa de Asesorías</h3>
+        <div class="pr">Entrada aparte</div>
+        <p>Es <b>montar tu consulta</b> con nuestro método, nuestra app, nuestro panel y nuestro equipo clínico detrás. Tiene su propia entrada, independiente de la Academia.</p>
+        <a class="btn-white" href="/asesorias">Ver el programa →</a>
+      </div>
+    </div>
+    <div class="ac-hoy reveal">
+      Lo normal es empezar por la Academia y decidir después. Pero <b>ni la Academia te obliga a ser asesor,
+      ni hay que hacer la Academia para serlo</b>. Y pagar una no paga la otra.
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="cta-final" id="empezar">
+  <div class="reveal">
+    <h2>Empieza hoy.<br>Las 28 primeras clases<br>no cuestan nada.</h2>
+    <p>Quince minutos, dos veces al día. Se empieza por el principio: lo que tu cuerpo hace con la comida.</p>
+    <a class="btn-orange" href="https://nutre-six.vercel.app">Entrar en la Academia →</a>
+    <p class="peque" id="acPlazas2">Esta primera promoción tiene 20 plazas.</p>
+  </div>
+</section>
 </main>
 <footer>
   <div class="logo saneas">Saneas<sup>®</sup></div>
   <div class="footer-links">
     <a href="/">← Volver a saneas.es</a>
-    <a href="/academia">Academia Saneas</a>
     <a href="https://www.instagram.com/saneas.es/">Instagram</a>
     <a href="https://facebook.com/SaneasEs">Facebook</a>
     <a href="https://www.youtube.com/@saneas">YouTube</a>
@@ -737,7 +687,7 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
     <a href="/aviso-legal">Aviso legal</a>
     <a href="/cookies">Cookies</a>
   </nav>
-  <p>© 2026 Saneas® · Programa de Asesorías · Documento informativo. Las condiciones concretas se detallan en el contrato de adhesión.</p>
+  <p>© 2026 Saneas® · Academia Saneas · Formación privada no reglada. No conduce a título oficial ni a certificado de profesionalidad.</p>
 </footer>
 
 <!-- JS: REVEAL + COUNTER -->
@@ -817,5 +767,9 @@ function solOK(){
 document.querySelectorAll(".nav-logo").forEach(function(e){e.style.cursor="pointer";e.setAttribute("title","El grupo Saneas");e.addEventListener("click",function(){GrupoSaneas.abrirMenu();});});
 var _fg=document.querySelector(".fg-grid"); if(_fg) _fg.outerHTML=GrupoSaneas.gridHTML();
 </script>
+
+<!-- Las plazas en vivo se quitaron el 12/09/2026: la API de la Academia (nutre-six.vercel.app)
+     no manda cabeceras CORS, así que saneas.es no puede leerla desde el navegador. El número real
+     lo enseña la propia Academia al entrar. -->
 </body>
 </html>
