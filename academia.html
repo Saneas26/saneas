@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="El temario de una carrera de nutrición en clases de 15 minutos, dos al día. No da título y te lo digo en el tercer párrafo. Empieza con 28 clases gratis, sin tarjeta. 60 €/mes.">
+<meta name="description" content="Ocho meses, media hora al día. La materia de la carrera de Nutrición que se usa de verdad para asesorar. Después, tu asesoría desde casa: 20 € tuyos por cliente y mes, con un equipo de titulados detrás. 28 clases gratis.">
 <meta property="og:title" content="Academia Saneas">
-<meta property="og:description" content="Llevas media vida a dieta y no sabes qué hace tu cuerpo con un plátano. Media hora al día, ocho meses. Las 28 primeras clases, gratis.">
+<meta property="og:description" content="Llevas años asesorando gratis. Este es el año en que empiezas a cobrar. Ocho meses, media hora al día, y tu asesoría desde casa con un equipo de titulados detrás.">
 <meta property="og:url" content="https://saneas.es/academia">
-<title>Academia Saneas — Deja de obedecer papeles: aprende nutrición de verdad</title>
+<title>Academia Saneas — Llevas años asesorando gratis. Empieza a cobrar.</title>
 <link rel="canonical" href="https://saneas.es/academia">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Saneas">
@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://saneas.es/assets/og-saneas.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Academia Saneas · Aprende nutrición media hora al día">
+<meta property="og:image:alt" content="Academia Saneas · Fórmate para asesorar en ocho meses">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Fuentes propias: antes eran tres viajes a dos dominios de Google
      antes de que el texto se pintara con su tipografía. -->
@@ -487,6 +487,122 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
   .ac-dos .c p{font-size:var(--fs-sm);color:var(--gray);line-height:1.55;margin:0 0 14px}
   .ac-plazas{font-size:var(--fs-sm);font-weight:700;color:var(--text);margin-top:14px}
 
+/* ── HERO: doble botón ── */
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;color:var(--teal-ui);text-decoration:none;
+  font-size:var(--fs-md);font-weight:800;padding:16px 30px;border-radius:999px;
+  border:2px solid var(--teal-ui);transition:background .16s ease-out,color .16s ease-out}
+@media(hover:hover) and (pointer:fine){.btn-ghost:hover{background:var(--teal-ui);color:#fff}}
+.btn-ghost:active{transform:scale(0.97)}
+
+/* ── TU DÍA ── */
+.dia{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.dh{background:#fff;border:1px solid #e3ebed;border-radius:20px;padding:24px;
+  border-left:5px solid var(--teal)}
+.dh .hh{display:block;font-size:var(--fs-2xl);font-weight:900;letter-spacing:-1px;
+  color:var(--orange-text);margin-bottom:8px}
+.dh p{font-size:var(--fs-md);line-height:1.6;color:var(--gray);margin:0;font-weight:500}
+.dh p b{color:var(--text);font-weight:800}
+.dia-cierre{margin-top:26px;background:var(--teal-ui);color:#fff;border-radius:var(--radius);
+  padding:30px 28px;font-size:clamp(19px,2.4vw,24px);font-weight:800;line-height:1.45;
+  letter-spacing:-0.5px;text-align:center}
+
+/* ── NO ESTÁS SOLA ── */
+.resp{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.rc{background:#f1f7f8;border:1px solid #cfe2e6;border-radius:20px;padding:26px}
+.rc .ri{font-size:30px;display:block;margin-bottom:10px;line-height:1}
+.rc h3{font-size:var(--fs-xl);font-weight:900;letter-spacing:-0.5px;color:var(--text);margin:0 0 8px}
+.rc p{font-size:var(--fs-base);line-height:1.6;color:var(--gray);margin:0;font-weight:500}
+.rc p b{color:var(--text)}
+
+/* ── LA CRIBA ── */
+.criba{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.cr-col{border-radius:var(--radius);padding:30px 28px;border:2px solid}
+.cr-col.fuera{background:#fdf4f1;border-color:#e0b9ab}
+.cr-col.dentro{background:#f1f7f8;border-color:var(--teal)}
+.cr-col h3{font-size:clamp(24px,3.2vw,30px);font-weight:900;letter-spacing:-1px;margin:0 0 4px}
+.cr-col.fuera h3{color:var(--red)}
+.cr-col.dentro h3{color:var(--teal-ui)}
+.cr-col .cr-sub{font-size:var(--fs-sm);font-weight:700;color:var(--gray);margin:0 0 20px}
+.cr-col ul{margin:0;padding:0;list-style:none}
+.cr-col li{position:relative;padding-left:30px;margin-bottom:13px;
+  font-size:var(--fs-md);line-height:1.5;color:var(--text);font-weight:600}
+.cr-col li small{display:block;font-size:var(--fs-sm);font-weight:500;color:var(--gray);margin-top:2px}
+.cr-col.fuera li{color:#8a7168}
+.cr-col.fuera li::before{content:"✕";position:absolute;left:0;top:0;color:var(--red);font-weight:900}
+.cr-col.dentro li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:900}
+
+/* ── EL CAMINO ── */
+.camino{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.cam{background:#fff;border:1px solid #e3ebed;border-radius:20px;padding:26px}
+.cam:first-child{border:2px solid var(--teal)}
+.cam .cn{display:inline-block;font-size:var(--fs-xs);font-weight:800;letter-spacing:1.4px;
+  text-transform:uppercase;color:#fff;background:var(--teal-ui);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.cam h3{font-size:var(--fs-xl);margin:0 0 4px;color:var(--text);font-weight:900;letter-spacing:-0.5px}
+.cam .cpr{font-size:var(--fs-lg);font-weight:800;color:var(--teal-ui);margin:0 0 12px}
+.cam p{font-size:var(--fs-base);color:var(--gray);line-height:1.6;margin:0 0 16px}
+.cam p b{color:var(--text)}
+
+/* ── LA CUENTA ── */
+.cuenta{background:var(--text);color:#fff;border-radius:var(--radius);padding:36px 30px}
+.cu-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.cu-grid > div{background:rgba(255,255,255,0.07);border-radius:16px;padding:20px 16px;text-align:center}
+.cu-grid b{display:block;font-size:clamp(34px,4.5vw,46px);font-weight:900;letter-spacing:-2px;line-height:1}
+.cu-grid span{display:block;font-size:var(--fs-sm);color:rgba(255,255,255,0.72);margin-top:2px;font-weight:600}
+.cu-grid i{display:block;font-style:normal;font-size:var(--fs-lg);font-weight:800;
+  color:#ffb380;margin-top:12px;white-space:nowrap}
+.cu-pie,.cu-primera{font-size:var(--fs-md);color:rgba(255,255,255,0.85);line-height:1.65;
+  margin:26px 0 0;font-weight:500}
+.cu-pie b,.cu-primera b{color:#fff}
+.cu-primera{border-top:1px solid rgba(255,255,255,0.16);padding-top:22px}
+
+/* ── LEGAL AL PIE ── */
+.carta .legalin{font-size:var(--fs-sm);color:#7a878b;line-height:1.6;margin-top:34px;
+  border-top:1px solid #e3ebed;padding-top:20px}
+
+
+/* ── LA CRIBA: lo que se tira / lo que queda ── */
+.criba{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.cr-col{border-radius:var(--radius);padding:30px 28px;border:2px solid}
+.cr-col.fuera{background:#fdf4f1;border-color:#e8c3b7}
+.cr-col.dentro{background:#f1f7f8;border-color:var(--teal)}
+.cr-col h3{font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:-0.8px;margin:0 0 4px}
+.cr-col.fuera h3{color:var(--red)}
+.cr-col.dentro h3{color:var(--teal-ui)}
+.cr-col .cr-sub{font-size:var(--fs-sm);font-weight:700;color:var(--gray);margin:0 0 20px}
+.cr-col ul{margin:0;padding:0;list-style:none}
+.cr-col li{position:relative;padding-left:30px;margin-bottom:13px;
+  font-size:var(--fs-md);line-height:1.5;color:var(--text);font-weight:500}
+.cr-col.fuera li{color:var(--gray);text-decoration:line-through;text-decoration-color:#d8b2a4}
+.cr-col.fuera li::before{content:"✕";position:absolute;left:0;top:0;color:var(--red);font-weight:900;text-decoration:none}
+.cr-col.dentro li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:900}
+
+/* ── EL CAMINO: paso 1 y paso 2 ── */
+.camino{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:28px}
+.cam{background:#fff;border:1px solid #e3ebed;border-radius:20px;padding:26px}
+.cam:first-child{border:2px solid var(--teal)}
+.cam .cn{display:inline-block;font-size:var(--fs-xs);font-weight:800;letter-spacing:1.6px;
+  text-transform:uppercase;color:#fff;background:var(--teal-ui);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.cam h3{font-size:var(--fs-xl);margin:0 0 4px;color:var(--text);font-weight:900;letter-spacing:-0.5px}
+.cam .cpr{font-size:var(--fs-lg);font-weight:800;color:var(--teal-ui);margin:0 0 12px}
+.cam p{font-size:var(--fs-base);color:var(--gray);line-height:1.6;margin:0 0 16px}
+.cam p b{color:var(--text)}
+
+/* ── LA CUENTA ── */
+.cuenta{background:var(--text);color:#fff;border-radius:var(--radius);padding:36px 30px}
+.cuenta h3{font-size:clamp(24px,3.4vw,32px);font-weight:900;letter-spacing:-1px;margin:0 0 6px;color:#fff}
+.cuenta .cu-sub{font-size:var(--fs-md);color:rgba(255,255,255,0.82);margin:0 0 26px;font-weight:500;line-height:1.55}
+.cu-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.cu-grid > div{background:rgba(255,255,255,0.07);border-radius:16px;padding:18px 16px;text-align:center}
+.cu-grid b{display:block;font-size:clamp(32px,4.5vw,44px);font-weight:900;letter-spacing:-2px;line-height:1}
+.cu-grid span{display:block;font-size:var(--fs-sm);color:rgba(255,255,255,0.72);margin-top:2px;font-weight:600}
+.cu-grid i{display:block;font-style:normal;font-size:var(--fs-lg);font-weight:800;
+  color:#ffb380;margin-top:10px;white-space:nowrap}
+.cu-pie{font-size:var(--fs-base);color:rgba(255,255,255,0.82);line-height:1.65;margin:26px 0 0;font-weight:500}
+.cu-pie b{color:#fff}
+
+
 /* ── LA CARTA (copy largo) ── */
 .carta-wrap{padding:110px 24px;background:#fff}
 @media(max-width:600px){.carta-wrap{padding:80px 22px}}
@@ -541,22 +657,26 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <section style="display:flex;align-items:center;">
   <div class="hero">
     <div class="hero-left reveal">
-      <span class="badge"><span class="badge-dot"></span>Academia Saneas &middot; 20 plazas</span>
-      <h1>Llevas media vida a dieta y todavía no sabes qué le pasa a tu cuerpo <em>cuando te comes un plátano.</em></h1>
+      <span class="badge"><span class="badge-dot"></span>Academia Saneas &middot; quedan 19 plazas</span>
+      <h1>Llevas años asesorando gratis. <em>Este es el año en que empiezas a cobrar.</em></h1>
       <div class="hero-sub">
-        No es culpa tuya. Nunca te lo han explicado: te han dado papeles. Una hoja con
-        cantidades que obedeces hasta que se acaba la hoja, y entonces vuelves a estar
-        exactamente donde estabas.<br><br>
-        <strong>Media hora al día. Ocho meses. Y no vuelves a obedecer un papel en tu vida.</strong>
+        Ocho meses. Media hora al día. Toda la materia de la carrera de Nutrición que de verdad se
+        usa para asesorar a una persona &mdash; sin laboratorio, sin investigación y sin hospital.<br><br>
+        <strong>Y al terminar, tu propia asesoría desde tu casa: un ordenador, un teléfono, un equipo
+        de titulados cubriéndote las espaldas y 20 € tuyos por cada cliente, todos los meses que siga
+        contigo.</strong>
       </div>
-      <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar por la clase 1 &rarr;</a>
-      <p class="ac-plazas" id="acPlazas">Las 28 primeras clases son gratis. Sin tarjeta. Sin dar explicaciones para irte.</p>
+      <div class="hero-ctas">
+        <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar gratis ahora &rarr;</a>
+        <a class="btn-ghost" href="#hablamos">Quiero que me llaméis</a>
+      </div>
+      <p class="ac-plazas">28 clases gratis. Sin tarjeta y sin compromiso.</p>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
-      <div class="hv-card v"><b>🕒 15 minutos</b><span>dos veces al día. Lo que dura un café</span></div>
-      <div class="hv-card a"><b>🎧 Alguien te corrige</b><span>escribes o hablas, y te dicen qué has entendido mal</span></div>
-      <div class="hv-card r"><b>🎓 420 clases</b><span>en orden, y por una razón</span></div>
-      <div class="hv-cap">Hoy te toca la clase 1: qué hace tu cuerpo con la comida.</div>
+      <div class="hv-card v"><b>🎓 8 meses</b><span>no cuatro años de facultad</span></div>
+      <div class="hv-card a"><b>💼 Tu asesoría</b><span>desde casa, sin local y sin empleados</span></div>
+      <div class="hv-card r"><b>💶 20 € por cliente</b><span>cada mes que siga contigo</span></div>
+      <div class="hv-cap">Primero aprendes. Después vives de ello.</div>
     </div>
   </div>
 </section>
@@ -564,10 +684,10 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <!-- CIFRAS -->
 <section class="stats">
   <div class="stats-inner">
-    <div><div class="stat-num" data-num="28">28</div><div class="stat-label">clases gratis antes de pagar un euro</div></div>
-    <div><div class="stat-num" data-num="15">15</div><div class="stat-label">minutos por clase</div></div>
-    <div><div class="stat-num" data-num="420">420</div><div class="stat-label">clases en todo el curso</div></div>
-    <div><div class="stat-num" data-num="20">20</div><div class="stat-label">plazas en esta promoción</div></div>
+    <div><div class="stat-num">8</div><div class="stat-label">meses, no cuatro años</div></div>
+    <div><div class="stat-num">1.700</div><div class="stat-label">horas de facultad que te ahorras</div></div>
+    <div><div class="stat-num">20 €</div><div class="stat-label">tuyos por cliente y mes</div></div>
+    <div><div class="stat-num">19</div><div class="stat-label">plazas libres de 20</div></div>
   </div>
 </section>
 
@@ -575,82 +695,182 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <section class="section carta-wrap">
   <div class="carta reveal">
     <span class="eyebrow">De Óscar, de Saneas</span>
-    <h2>Voy a empezar por lo que no te va a gustar</h2>
+    <h2>No te falta cara.<br>Te falta respaldo.</h2>
 
-    <p>Esta academia <b>no te da un título</b>.</p>
-    <p>No te habilita para ejercer. No te convierte en dietista&#8209;nutricionista: eso es una
-    profesión sanitaria regulada por la Ley 44/2003, y quien te diga lo contrario te está
-    mintiendo a la cara mientras te acerca el datáfono.</p>
-    <p>Ya está. Lo he soltado en las tres primeras líneas, antes de enseñarte el precio.</p>
-    <p class="grande">Y fíjate en lo que acabo de hacer, porque es exactamente lo que se enseña aquí:
-    decir la verdad entera aunque venda menos.</p>
+    <p>Déjame contarte una escena y me dices si la reconoces.</p>
 
-    <p>Ahora la otra parte.</p>
+    <p>Son las dos y media. Estás comiendo con las compañeras de trabajo. Alguien suelta «es que yo
+    no sé qué cenar», y contestas tú.</p>
 
-    <p>Hay dos tipos de personas comiendo ahí fuera.</p>
-    <p>Las que obedecen un papel.<br>Y las que entienden lo que están haciendo.</p>
-    <p>Las primeras bajan ocho kilos y los recuperan. No porque sean débiles ni porque les falte
-    carácter: es que cuando se acaba el papel se les acabó también todo lo que sabían. Nunca
-    supieron nada. Solo obedecieron.</p>
-    <p>Las segundas se ponen delante de una carta, de una etiqueta o de una cena de Nochebuena y
-    saben qué están haciendo. No piden permiso. No necesitan un plan nuevo cada enero.</p>
-    <p class="grande">La diferencia entre unas y otras no es fuerza de voluntad. Es información puesta en orden.</p>
+    <p>Y te escuchan. Y te preguntan. Y por la tarde te llegan fotos de etiquetas por WhatsApp.</p>
 
-    <p>Eso es lo único que vendo aquí: el temario de una carrera de nutrición, entero, colocado en
-    el orden en que se entiende, partido en trozos de quince minutos.</p>
+    <p>Esa media hora es la única del día en la que eres alguien.</p>
 
-    <h3>Por qué quince minutos y no hora y media</h3>
+    <p class="grande">Ya estás asesorando. Lo que pasa es que lo haces gratis.</p>
 
-    <p>Porque los vídeos de hora y media no los termina nadie. Tú tampoco. Los compras, los dejas
-    en la pestaña siete del navegador y te sientes fatal cada vez que la ves abierta.</p>
-    <p>Quince minutos los saca cualquiera. En la cola del súper. Antes de dormir. En el coche
-    esperando a que salgan los niños.</p>
-    <p>Y hay otra razón menos amable: <b>las clases se abren solas, a su ritmo</b>. No puedes tragarte
-    el curso entero un domingo por la noche, sentirte muy productivo y no acordarte de nada el
-    martes. Aquí se aprende como se aprende de verdad, que es poco y todos los días.</p>
+    <p>Y por la noche abres Instagram y ves a gente que sabe la mitad que tú cobrando por esto todos
+    los meses. Y te dices lo de siempre: «si esa puede, ¿por qué yo no?».</p>
 
-    <h3>Y cada clase acaba contigo haciendo algo</h3>
+    <p>Y te contestas lo de siempre: «porque esa tiene cara y yo no».</p>
 
-    <p>Montas el plato. Lees una etiqueta de verdad. Calculas una cantidad. Ordenas una pauta.
-    Interpretas una analítica. O se te sienta delante un cliente que te habla, y le contestas
-    <b>en voz alta</b>.</p>
-    <p>Entonces <b>un profesor te corrige</b>. No un test de tres opciones donde aciertas por
-    descarte y te vas tan tranquilo. Alguien que lee lo que has escrito, escucha lo que has
-    dicho, y te dice qué has entendido mal y por qué.</p>
-    <p>Es la diferencia entre haber visto un curso y haberlo hecho.</p>
+    <p><b>Eso es mentira. Y llevo años viéndolo.</b></p>
 
-    <h3>Algunas de las cosas que hay dentro</h3>
+    <p>No es que a ti te falte desvergüenza. Es que eres responsable. Una persona responsable no se
+    pone a hablar de la salud de otra sin nadie detrás. Lo que te frena no es un defecto tuyo:
+    es que <b>nadie te ha dado nunca un sitio donde hacer esto bien</b>.</p>
 
-    <ul class="fasc">
-      <li>Por qué el bloque de enfermedades &mdash;26 temas, el más largo del curso&mdash; empieza
-      enseñándote lo que <b>no</b> puedes hacer.</li>
-      <li>Cómo leer cualquier etiqueta del supermercado en menos de un minuto, y por qué la lista
-      de ingredientes te cuenta más que la tabla nutricional.</li>
-      <li>Lo que de verdad decide si una persona sigue un plan o lo deja. Pista: no tiene nada que
-      ver con la comida. Es el bloque 4 entero.</li>
-      <li>Por qué una embarazada, un niño de siete años y una mujer de sesenta no pueden comer lo
-      mismo aunque pesen lo mismo.</li>
-      <li>La frase exacta que hay que decir cuando alguien te cuenta un síntoma que no te toca a ti
-      tratar. Saber decirla vale más que veinte recetas.</li>
-      <li>Cuánta proteína necesita una persona normal, y de dónde salió el número que repite todo
-      el mundo en Instagram.</li>
-      <li>Qué contestar cuando te dicen «es que el fin de semana me lo salto todo».</li>
-    </ul>
+    <p>Ese sitio es lo que te vendo. No valor: respaldo.</p>
 
-    <p>Ocho bloques. 120 temas. 420 clases. Todo lo tienes listado más abajo, sin trampa.</p>
+    <h3>La carrera no está mal hecha.<br>Está hecha para otro trabajo.</h3>
+
+    <p>Y esto es lo que nadie te explica.</p>
+
+    <p>El grado de Nutrición Humana y Dietética no forma a alguien que acompañe a una persona sana a
+    comer mejor. Forma, a la vez, a quien va a <b>investigar en un laboratorio</b>, a quien va a
+    <b>montar el circuito de comidas de un hospital de quinientas camas</b> y a quien va a
+    <b>hacer epidemiología de poblaciones</b>.</p>
+
+    <p>Por eso tiene Estadística Aplicada. Y Análisis de los Alimentos con su cromatografía. Y
+    Microbiología y Parasitología. Y Procesado Industrial. Y Dietética Hospitalaria. Y Epidemiología
+    y Salud Pública. Y un Trabajo de Fin de Grado de doce créditos.</p>
+
+    <p>Todo eso hace muchísima falta. <b>Para otra cosa.</b> Tú no vas a cultivar una bacteria en tu
+    vida.</p>
+
+    <p>Así que hicimos lo que no había hecho nadie: <b>nos sentamos con el plan de estudios delante y
+    empezamos a tachar.</b></p>
+
+    <p>Lo que queda son <b>132 créditos</b>: los que se usan todos los días delante de una persona.
+    Lo que sobra son <b>87 créditos que no vas a abrir jamás</b>.</p>
+
+    <p>Y ahora traduce eso a lo único que no se recupera:</p>
+
+    <p class="grande">Son más de 1.700 horas de tu vida estudiando cosas que no vas a usar nunca. Más de un curso entero. Y son unos 5.000 € de matrícula en una universidad pública, con cuatro años por delante sin cobrar un euro.</p>
+
+    <p>Aquí son ocho meses, media hora al día, y 480 €.</p>
+
+    <p><b>Todo lo que hace falta para asesorar. Nada de lo que hace falta para lo demás.</b></p>
+
+    <p>Y cuando termines, no te soltamos la mano y adiós muy buenas. Ahí es cuando empieza lo bueno.</p>
+  </div>
+</section>
+
+<!-- TU DÍA -->
+<section class="section" id="tudia">
+  <div class="container">
+    <h2 class="section-title">Cómo va a ser<br>un martes cualquiera.</h2>
+    <p class="section-sub">No te voy a hablar de libertad ni de propósito. Te voy a contar el día, hora por hora.</p>
+    <div class="dia">
+      <div class="dh reveal"><span class="hh">9:15</span><p>La casa vacía. Café. Abres el portátil en la mesa de la cocina y tienes seis fichas que revisar. <b>Nadie te ha dicho a qué hora empezar.</b></p></div>
+      <div class="dh reveal reveal-delay-1"><span class="hh">10:40</span><p>Contestas el audio de una clienta que se vino abajo el domingo. Le dices que un domingo no es nada. <b>Sigue adelante porque tú estabas al otro lado.</b></p></div>
+      <div class="dh reveal reveal-delay-2"><span class="hh">12:00</span><p>Te llega un mensaje de alguien que no es de tu familia pidiéndote hora. <b>Lo lees tres veces.</b></p></div>
+      <div class="dh reveal"><span class="hh">14:00</span><p>Cierras el ordenador. Ya has hecho lo del día. <b>La tarde es tuya.</b></p></div>
+      <div class="dh reveal reveal-delay-1"><span class="hh">17:00</span><p>Estás en la puerta del colegio. Sin pedir permiso, sin gastar un día de vacaciones y sin dar explicaciones a nadie.</p></div>
+      <div class="dh reveal reveal-delay-2"><span class="hh">21:30</span><p>Suena el móvil: «he bajado cuatro kilos y <b>estoy contenta</b>». Y esa frase, en parte, es tuya.</p></div>
+    </div>
+    <div class="dia-cierre reveal">
+      Y el sábado, cuando alguien te pregunte a qué te dedicas, por primera vez en tu vida vas a
+      contestar algo que te gusta decir.
+    </div>
+  </div>
+</section>
+
+<!-- LA CUENTA -->
+<section class="section" id="cuenta">
+  <div class="container">
+    <h2 class="section-title">Hablemos de dinero,<br>que para eso estamos.</h2>
+    <p class="section-sub">Tu cliente paga 60 € al mes. <b>20 € son tuyos</b>, cada mes que siga contigo. No cobras por captarlo una vez: cobras mientras lo cuides.</p>
+    <div class="cuenta reveal">
+      <div class="cu-grid">
+        <div><b>10</b><span>clientes</span><i>200 € / mes</i></div>
+        <div><b>25</b><span>clientes</span><i>500 € / mes</i></div>
+        <div><b>50</b><span>clientes</span><i>1.000 € / mes</i></div>
+        <div><b>100</b><span>clientes</span><i>2.000 € / mes</i></div>
+      </div>
+      <p class="cu-pie">Y cien clientes no son cien personas metidas en una sala de espera. Son cien
+      conversaciones de WhatsApp al mes desde tu cocina, con el sistema haciendo el trabajo pesado
+      por ti: las fichas, los planes, los recordatorios, las facturas. <b>Sin local, sin género, sin
+      empleados y sin nadie por encima.</b></p>
+      <p class="cu-primera">Pero el número que te va a emocionar de verdad no es ninguno de esos.
+      Es el primero. <b>Los primeros 180 €</b> que te entran por hacer esto, leídos en la notificación
+      del banco un martes cualquiera. Ese no se te olvida nunca.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA CRIBA -->
+<section class="section" id="criba">
+  <div class="container">
+    <h2 class="section-title">Lo que hemos tirado<br>a la basura.</h2>
+    <p class="section-sub">Esto es lo que hace que quepa en ocho meses en vez de en cuatro años. No hemos resumido nada: hemos quitado lo que no se usa para asesorar.</p>
+    <div class="criba">
+      <div class="cr-col fuera reveal">
+        <h3>Fuera</h3>
+        <p class="cr-sub">Asignaturas reales del grado que aquí no vas a ver</p>
+        <ul>
+          <li>Estadística Aplicada</li>
+          <li>Análisis de los Alimentos <small>cromatografía, espectrofotometría</small></li>
+          <li>Microbiología y Parasitología</li>
+          <li>Procesado Industrial de los Alimentos</li>
+          <li>Dietética Hospitalaria <small>nutrición enteral y parenteral</small></li>
+          <li>Epidemiología y Salud Pública</li>
+          <li>Economía y Gestión de Comedores Colectivos</li>
+          <li>Trabajo de Fin de Grado</li>
+        </ul>
+      </div>
+      <div class="cr-col dentro reveal reveal-delay-1">
+        <h3>Dentro</h3>
+        <p class="cr-sub">Lo que vas a usar delante de una persona, cada día</p>
+        <ul>
+          <li>Qué hace el cuerpo con la comida, de verdad</li>
+          <li>Los alimentos y la etiqueta del supermercado</li>
+          <li>Medir, calcular y entender por qué un plan dice lo que dice</li>
+          <li>La cabeza, el hábito y la conversación difícil</li>
+          <li>Embarazo, infancia, mayores y deporte</li>
+          <li>Reconocer la señal de alarma y saber a quién se deriva</li>
+          <li>La ley, los fármacos y la cocina segura</li>
+          <li>El oficio de asesor, de principio a fin</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-hoy reveal">
+      <b>Y que quede claro, porque respeto el oficio:</b> el grado no está mal hecho ni le sobra nada.
+      Forma a la vez a investigadores, a gestores de hospital y a profesionales de salud pública, y para
+      eso necesita todo eso. Lo que pasa es que <b>tú no vas a ser ninguna de las tres cosas</b>. Aquí
+      recorres la materia que sí se usa para acompañar a una persona, y la recorres en ocho meses.
+    </div>
+  </div>
+</section>
+
+<!-- NUNCA SOLA -->
+<section class="section" id="respaldo">
+  <div class="container">
+    <h2 class="section-title">No vas a estar sola<br>delante de nadie.</h2>
+    <p class="section-sub">Esta es la parte que no tiene ninguna otra formación, y es la razón por la que vas a poder dedicarte a esto durmiendo tranquila.</p>
+    <div class="resp">
+      <div class="rc reveal"><span class="ri">✍️</span><h3>El plan lo firma un titulado</h3><p>Siempre. Un dietista-nutricionista colegiado diseña y firma cada plan, también cuando el caso es el más sencillo del mundo. Tú no tienes que decidir lo que come nadie.</p></div>
+      <div class="rc reveal reveal-delay-1"><span class="ri">🚦</span><h3>El semáforo salta antes que tú</h3><p>Cuando tu cliente rellena su ficha, el sistema calcula solo. Si hay una patología, una medicación o algo que huele mal, ese caso se desvía al especialista <b>antes de que tú toques nada</b>. No tienes que darte cuenta: se da cuenta el sistema.</p></div>
+      <div class="rc reveal reveal-delay-2"><span class="ri">👥</span><h3>Un equipo entero detrás</h3><p>Dietista-nutricionista, dietista y psicóloga. Cuando no sepas qué contestar, preguntas y te contestan. Ni un solo día vas a estar sola con una duda.</p></div>
+      <div class="rc reveal"><span class="ri">🛠️</span><h3>El sistema hace el trabajo sucio</h3><p>Fichas, planes, seguimiento, avisos, facturación. Tú pones lo único que no puede poner una máquina: estar al otro lado cuando esa persona flaquea.</p></div>
+    </div>
+    <div class="ac-hoy reveal">
+      <b>Tu oficio son cinco verbos:</b> seguir el plan, motivar, animar, hacer seguimiento y ayudar.
+      Esos cinco los haces tú mejor que cualquier titulado, porque tú has estado donde está tu cliente.
+      Y son exactamente los cinco que deciden si una persona llega o abandona.
+    </div>
   </div>
 </section>
 
 <!-- CÓMO SE ESTUDIA -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">Media hora al día.<br>Todos los días.</h2>
-    <p class="section-sub">La constancia es el método. No hay atajos, no hay maratones de fin de semana y no hay nadie que haya aprendido nada de golpe.</p>
+    <h2 class="section-title">Media hora al día.<br>Ocho meses.</h2>
+    <p class="section-sub">Dos clases de quince minutos. Se estudia como se aprende de verdad: poco y todos los días.</p>
     <div class="pasos">
-      <div class="paso reveal"><div class="num">1</div><div class="txt"><b>Dos clases al día, de quince minutos.</b> Se abren solas. Ni te las puedes tragar todas de una tarde, ni te puedes quedar descolgado sin remedio.</div></div>
-      <div class="paso reveal reveal-delay-1"><div class="num">2</div><div class="txt"><b>Cada clase acaba practicando.</b> Montas el plato, lees la etiqueta, calculas la cantidad, ordenas la pauta, interpretas la analítica o le contestas en voz alta a un cliente que te está hablando.</div></div>
-      <div class="paso reveal reveal-delay-2"><div class="num">3</div><div class="txt"><b>Un profesor te corrige.</b> Escribes o hablas, y te dice qué has entendido mal y por qué. No hay forma de aprobar por descarte.</div></div>
-      <div class="paso reveal reveal-delay-3"><div class="num">4</div><div class="txt"><b>Si paras, vuelves donde lo dejaste.</b> El curso te espera. Ni caduca ni te castiga por haber tenido una mala semana. Tuviste una mala semana, no un defecto de fábrica.</div></div>
+      <div class="paso reveal"><div class="num">1</div><div class="txt"><b>Dos clases al día, de quince minutos.</b> En la cola del súper, antes de dormir, esperando a que salgan los niños. Se abren solas: ni te las tragas todas de una tarde ni te quedas descolgada.</div></div>
+      <div class="paso reveal reveal-delay-1"><div class="num">2</div><div class="txt"><b>Cada clase acaba practicando.</b> Montas el plato, lees una etiqueta, calculas una cantidad, ordenas una pauta, interpretas una analítica o le contestas <b>en voz alta</b> a un cliente que te está hablando.</div></div>
+      <div class="paso reveal reveal-delay-2"><div class="num">3</div><div class="txt"><b>Te corrigen lo que escribes y lo que dices.</b> Un profesor de inteligencia artificial entrenado con el método Saneas, disponible a las seis de la mañana y a las once de la noche, los siete días, sin cansarse nunca de ti. Nada de tests de tres opciones donde se acierta por descarte.</div></div>
+      <div class="paso reveal reveal-delay-3"><div class="num">4</div><div class="txt"><b>Si te atascas, no pasa nada.</b> Sobre la semana seis casi todo el mundo se atasca: se acaba lo que ya sabías y empieza lo que no. No es que no valgas, es que vas por donde tienes que ir. Puedes pausar, y vuelves donde lo dejaste sin perder nada.</div></div>
     </div>
   </div>
 </section>
@@ -658,51 +878,48 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <!-- TEMARIO -->
 <section class="section" id="temario">
   <div class="container">
-    <h2 class="section-title">Las 420 clases, por orden</h2>
-    <p class="section-sub">Ocho bloques, 120 temas. Este orden no es casualidad: cada bloque solo se entiende si el anterior ya está dentro.</p>
+    <h2 class="section-title">Los ocho bloques</h2>
+    <p class="section-sub">120 temas, 420 clases. En este orden, porque cada bloque solo se entiende si el anterior ya está dentro.</p>
     <div class="ac-bloques">
-      <div class="ac-b reveal"><span class="em">🫀</span><span class="n">1</span><h3>Lo que tu cuerpo hace con la comida</h3><p>20 temas. Digestión, energía, proteína, grasa, hidratos. Para dejar de repetir de memoria frases que nadie te ha explicado.</p></div>
-      <div class="ac-b reveal reveal-delay-1"><span class="em">🏷️</span><span class="n">2</span><h3>Los alimentos de verdad y la etiqueta</h3><p>16 temas. Qué aporta cada grupo y cómo destripar cualquier etiqueta en menos de un minuto, sin app y sin semáforos de colores.</p></div>
-      <div class="ac-b reveal reveal-delay-2"><span class="em">📏</span><span class="n">3</span><h3>Medir, calcular y montar un plan</h3><p>15 temas. Cantidades, necesidades y por qué un plan dice lo que dice. Aquí se acaba el «me han mandado 120 g de arroz» y empieza el «sé por qué».</p></div>
-      <div class="ac-b reveal"><span class="em">🧠</span><span class="n">4</span><h3>La cabeza, el hábito y la conversación</h3><p>10 temas. Lo que decide de verdad si alguien sigue o lo deja. El bloque que casi nadie enseña y el que más abandonos evita.</p></div>
+      <div class="ac-b reveal"><span class="em">🫀</span><span class="n">1</span><h3>Lo que el cuerpo hace con la comida</h3><p>20 temas. Digestión, energía, proteína, grasa, hidratos. Para dejar de repetir de memoria lo que no se entiende.</p></div>
+      <div class="ac-b reveal reveal-delay-1"><span class="em">🏷️</span><span class="n">2</span><h3>Los alimentos y la etiqueta</h3><p>16 temas. Qué aporta cada grupo y cómo destripar cualquier etiqueta en menos de un minuto, sin app y sin semáforos de colores.</p></div>
+      <div class="ac-b reveal reveal-delay-2"><span class="em">📏</span><span class="n">3</span><h3>Medir, calcular y montar un plan</h3><p>15 temas. Cantidades y necesidades: por qué un plan dice lo que dice y cómo explicárselo a tu cliente para que lo entienda.</p></div>
+      <div class="ac-b reveal"><span class="em">🧠</span><span class="n">4</span><h3>La cabeza, el hábito y la conversación</h3><p>10 temas. Lo que decide de verdad si una persona sigue o lo deja. El bloque que casi nadie enseña y el que más clientes te va a mantener.</p></div>
       <div class="ac-b reveal reveal-delay-1"><span class="em">🤰</span><span class="n">5</span><h3>Etapas de la vida</h3><p>11 temas. Embarazo, infancia, mayores, deporte. Dos personas del mismo peso pueden necesitar cosas opuestas.</p></div>
-      <div class="ac-b reveal reveal-delay-2"><span class="em">🩺</span><span class="n">6</span><h3>Cuando hay enfermedad: reconocer y derivar</h3><p>26 temas. El bloque más largo del curso, y el que más cuida: ver la señal y saber exactamente a quién se manda.</p></div>
-      <div class="ac-b reveal"><span class="em">⚖️</span><span class="n">7</span><h3>La ley, los fármacos y la cocina segura</h3><p>10 temas. Va antes que las patologías a propósito: primero se aprende lo que uno NO puede hacer. Ese orden no es burocracia, es respeto.</p></div>
-      <div class="ac-b reveal reveal-delay-1"><span class="em">🎓</span><span class="n">8</span><h3>Ser asesor de Saneas</h3><p>12 temas. El oficio: la ficha, el semáforo, el seguimiento y la conversación difícil, la que nadie quiere tener.</p></div>
+      <div class="ac-b reveal reveal-delay-2"><span class="em">🩺</span><span class="n">6</span><h3>Reconocer y derivar</h3><p>26 temas. El bloque más largo del curso y el que más te protege: ver la señal y saber exactamente a quién se manda.</p></div>
+      <div class="ac-b reveal"><span class="em">⚖️</span><span class="n">7</span><h3>La ley, los fármacos y la cocina segura</h3><p>10 temas. Va antes que las patologías a propósito: primero se aprende dónde está cada línea. Eso es lo que te deja dormir tranquila.</p></div>
+      <div class="ac-b reveal reveal-delay-1"><span class="em">🎓</span><span class="n">8</span><h3>Ser asesor de Saneas</h3><p>12 temas. El oficio entero: la ficha, el semáforo, el seguimiento y la conversación difícil, la que nadie quiere tener.</p></div>
     </div>
     <div class="ac-hoy reveal">
-      <b>Y ahora el número honesto:</b> hoy hay <b>147 clases publicadas</b>, los bloques 1 y 2 enteros.
-      A dos al día son más de dos meses de curso desde el primer minuto, y el resto se va publicando
-      mientras avanzas. Podría enseñarte un índice de 420 clases y callarme cuántas existen de verdad.
-      Es lo que hace todo el mundo. Prefiero decirte el número.
+      <b>El número honesto:</b> hoy hay <b>147 clases publicadas</b>, los bloques 1 y 2 enteros. A dos al
+      día son más de dos meses de curso desde el primer minuto, y el resto se publica mientras avanzas.
+      Podría enseñarte un índice de 420 clases y callarme cuántas existen. Prefiero decirte el número.
     </div>
   </div>
 </section>
 
-<!-- LO QUE NO TE VENDO -->
-<section class="section">
+<!-- EL CAMINO -->
+<section class="section" id="camino">
   <div class="container">
-    <div class="noes reveal">
-      <h3>Lo que NO te vendo</h3>
-      <p>No es un grado ni un módulo de FP. <b>No da certificado de profesionalidad ni habilita para
-      ejercer.</b> Al terminar tienes un certificado de aprovechamiento de Saneas, sin ninguna validez
-      académica. Dietista&#8209;nutricionista es una profesión sanitaria regulada por la Ley 44/2003:
-      aquí no te vas a convertir en uno, y quien te venda lo contrario te está engañando.</p>
-      <p>Lo que sí te llevas es entender la nutrición y saber acompañar bien a una persona. Y en
-      Saneas, además, <b>el plan lo firma siempre un titulado</b> &mdash; también cuando el caso
-      parece de lo más sencillo. Sobre todo entonces.</p>
-    </div>
-  </div>
-</section>
-
-<!-- NO LO COMPRES SI -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">No lo compres si…</h2>
-    <p class="section-sub">Prefiero decírtelo yo ahora que descubrirlo tú dentro de un mes.</p>
-    <div class="pq-cards">
-      <div class="pq no reveal"><h3>Mejor no entres si…</h3><p>Quieres un título para colgar en la pared &mdash;ya te he dicho que aquí no lo hay&mdash;. O quieres empezar a pautarle dietas a gente el mes que viene: <b>esto no te habilita</b>, y no voy a fingir que sí. O te parece que media hora al día es mucho tiempo; entonces el problema no ha sido nunca el precio.</p></div>
-      <div class="pq si reveal reveal-delay-1"><h3>Entra si…</h3><p>Estás harto de obedecer planes que no entiendes. O ya acompañas a personas &mdash;entrenas, cuidas, orientas&mdash; y notas que te falta el suelo debajo. O quieres llegar a ser <b>asesor de Saneas</b> y quieres saber de qué hablas antes de sentarte delante de nadie.</p></div>
+    <h2 class="section-title">Los dos pasos</h2>
+    <p class="section-sub">Primero aprendes. Después te dedicas a ello. Son dos cosas y se pagan por separado.</p>
+    <div class="camino">
+      <div class="cam reveal">
+        <span class="cn">Paso 1 &middot; empieza hoy</span>
+        <h3>Academia Saneas</h3>
+        <div class="cpr">60 € al mes &middot; 8 meses</div>
+        <p>Ocho meses, media hora al día, con corrección de todo lo que haces. Al terminar sabes de
+        qué hablas y sabes acompañar a una persona de principio a fin.</p>
+        <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar gratis &rarr;</a>
+      </div>
+      <div class="cam reveal reveal-delay-1">
+        <span class="cn">Paso 2 &middot; cuando estés lista</span>
+        <h3>Programa de Asesorías</h3>
+        <div class="cpr">Entrada aparte</div>
+        <p>Tu asesoría montada: el método, la app, el panel y el equipo clínico firmando los planes.
+        <b>Tu cliente paga 60 € al mes y 20 € son tuyos</b>, cada mes que siga contigo.</p>
+        <a class="btn-white" href="/asesorias">Ver el programa &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
@@ -710,75 +927,85 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <!-- PRECIO -->
 <section class="section" id="precio">
   <div class="container">
-    <h2 class="section-title">Hablemos de dinero,<br>que es donde todos dan rodeos.</h2>
-    <p class="section-sub">Sin «inversión», sin «ticket» y sin tachar un precio que nunca ha cobrado nadie.</p>
+    <h2 class="section-title">Lo que cuesta<br>aprender el oficio.</h2>
+    <p class="section-sub">Sin rodeos y sin tachar un precio que no ha cobrado nunca nadie.</p>
     <div class="money reveal">
       <div class="row"><span class="k">Cuota mensual</span><span class="v">60 € / mes</span></div>
-      <div class="row"><span class="k">Duración del curso</span><span class="v">8 meses</span></div>
+      <div class="row"><span class="k">Duración</span><span class="v">8 meses</span></div>
       <div class="row"><span class="k">Total</span><span class="v">480 €</span></div>
       <div class="row"><span class="k">Si lo pagas de una vez</span><span class="v orange">420 €</span></div>
       <div class="big">420 clases por 480 €. Echa la cuenta: <b>1,14 € cada clase.</b> Y las 28 primeras, cero.</div>
     </div>
-    <p class="parr" style="margin-top:28px">Una academia de idiomas de barrio, dos tardes por semana, te cobra eso mismo al mes durante años.
-    Y de una consulta suelta sales con una hoja; de aquí sales sabiendo por qué pone lo que pone.
-    <b>Sesenta euros al mes por entender de una vez lo que llevas años obedeciendo.</b></p>
+    <p class="parr" style="margin-top:28px">El mismo camino por la vía larga: unos <b>5.000 € de matrícula</b> en una universidad pública
+    &mdash;bastante más en una privada&mdash; y <b>cuatro años sin cobrar</b>. Y al acabar sigues sin
+    saber montar una consulta ni llevar a un cliente semana a semana, porque eso no lo enseña ninguna
+    facultad. <b>Aquí son 60 € al mes durante ocho meses.</b></p>
     <div class="garantias">
-      <div class="gar reveal"><span class="ico">🎁</span><h3>Pruébalo antes de pagar</h3><p><b>28 clases gratis</b>, enteras y en orden. No una muestra recortada: las 28 primeras del curso de verdad. <b>No te pido ni la tarjeta.</b></p></div>
-      <div class="gar reveal reveal-delay-1"><span class="ico">✋</span><h3>Te vas cuando quieras</h3><p>Sin permanencia y sin llamada de retención. Dejas de pagar y ya está. Si algún día vuelves, sigues donde lo dejaste: no se pierde lo estudiado.</p></div>
-      <div class="gar reveal reveal-delay-2"><span class="ico">🧾</span><h3>14 días para arrepentirte</h3><p>Tienes derecho a desistir dentro de los 14 días naturales. Si pides empezar el contenido de pago antes de ese plazo, te lo preguntamos expresamente al pagar, como manda la ley.</p></div>
+      <div class="gar reveal"><span class="ico">🎁</span><h3>28 clases gratis</h3><p>Enteras y en orden, no una muestra recortada: las 28 primeras del curso de verdad. <b>No te pedimos la tarjeta</b> y no se cobra nada solo.</p></div>
+      <div class="gar reveal reveal-delay-1"><span class="ico">✋</span><h3>Cancelas cuando quieras</h3><p>Sin permanencia y sin llamadas de retención. No se te cobra ningún mes más y sigues hasta el día que tienes pagado. Si vuelves, sigues donde lo dejaste.</p></div>
+      <div class="gar reveal reveal-delay-2"><span class="ico">🧾</span><h3>14 días para arrepentirte</h3><p>Tienes derecho a desistir dentro de los 14 días naturales, como manda la ley.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ACADEMIA vs ASESORÍAS -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">¿Y lo de ser asesor de Saneas?</h2>
-    <p class="section-sub">Son dos cosas distintas y no me interesa que las mezcles.</p>
-    <div class="ac-dos">
-      <div class="c esta reveal">
-        <h3>Academia Saneas</h3>
-        <div class="pr">60 € al mes · 8 meses</div>
-        <p>Es esto: <b>formación</b>. Aprendes nutrición y aprendes a acompañar. Puedes quedarte aquí, no hacer nada más con ello y haber ganado igual.</p>
-        <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar gratis &rarr;</a>
+<!-- HABLAMOS -->
+<section class="cta-final" id="hablamos">
+  <div class="reveal">
+    <h2>¿Te lo estás pensando?<br>Hablemos.</h2>
+    <p>Déjanos tus datos y te escribimos personalmente. Sin listas de correo y sin llamadas pesadas:
+    una conversación de tú a tú para ver si esto es para ti.</p>
+    <form class="solicitud-card" id="formSolicitud" onsubmit="return enviarSolicitud(event)">
+      <div class="f2">
+        <label>Nombre*<input id="c_nombre" maxlength="60" autocomplete="given-name" autocapitalize="words" required></label>
+        <label>Apellidos*<input id="c_apellidos" maxlength="80" autocomplete="family-name" autocapitalize="words" required></label>
       </div>
-      <div class="c reveal reveal-delay-1">
-        <h3>Programa de Asesorías</h3>
-        <div class="pr">Entrada aparte</div>
-        <p>Es <b>montar tu consulta</b> con nuestro método, nuestra app, nuestro panel y nuestro equipo clínico detrás. Tiene su propia entrada, independiente de la Academia.</p>
-        <a class="btn-white" href="/asesorias">Ver el programa &rarr;</a>
+      <div class="f2">
+        <label>Email*<input id="c_email" type="email" maxlength="120" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required></label>
+        <label>Teléfono<input id="c_telefono" type="tel" maxlength="20" autocomplete="tel" inputmode="tel"></label>
       </div>
-    </div>
-    <div class="ac-hoy reveal">
-      Lo normal es empezar por la Academia y decidir después. Pero <b>ni la Academia te obliga a ser asesor,
-      ni hace falta la Academia para serlo</b>. Y pagar una no paga la otra. Te lo digo claro porque las dos
-      cuestan lo mismo y no quiero que nadie se lleve una sorpresa.
-    </div>
+      <label>¿A qué te dedicas ahora?*
+        <input id="c_formacion" maxlength="160" placeholder="Ej: administrativa, entrenadora personal, enfermera, en casa con los niños…" required></label>
+      <label>Tu relación con la nutrición hoy*
+        <select id="c_relacion" required>
+          <option value="" selected disabled>Elige la que más se acerque…</option>
+          <option>Me apasiona y aconsejo gratis a familia y amigos</option>
+          <option>Preparador/a físico o entrenador/a personal</option>
+          <option>Profesional de la salud (enfermería, fisio, farmacia…)</option>
+          <option>Tengo formación en dietética pero no ejerzo</option>
+          <option>Empiezo de cero, pero lo tengo claro</option>
+        </select></label>
+      <label>¿Por qué quieres dedicarte a esto?*
+        <textarea id="c_motivo" rows="4" maxlength="1000" placeholder="Cuéntamelo con tus palabras. No busco redacciones bonitas: busco motivos de verdad." required></textarea></label>
+      <input id="c_web" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <button class="btn-orange" id="btnSolicitud" type="submit" style="width:100%;justify-content:center">Quiero que me contéis más →</button>
+      <div class="sol-msg" id="solMsg"></div>
+      <div class="sol-legal">Usaremos tus datos únicamente para ponernos en contacto contigo. Nada de listas ni cesiones. Responsable: Óscar Belloso Jiménez. Puedes acceder, rectificar o borrar tus datos cuando quieras — <a href="/privacidad">cómo tratamos tus datos</a>.</div>
+    </form>
+    <p class="peque" style="margin-top:26px">¿Prefieres escribir ahora mismo? <a href="https://api.whatsapp.com/send?phone=34689806987" style="color:#fff;text-decoration:underline">Mándanos un WhatsApp</a>.</p>
   </div>
 </section>
 
 <!-- CIERRE -->
-<section class="cta-final" id="empezar">
-  <div class="reveal">
-    <h2>Empieza por la clase 1.<br>Quince minutos.<br>Y no cuesta nada.</h2>
-    <p>Va de lo que tu cuerpo hace con la comida. Si al llegar a la clase 28 no te ha cambiado nada
-    por dentro, te vas por donde has venido y no me debes un euro.</p>
-    <a class="btn-orange" href="https://nutre-six.vercel.app">Entrar en la Academia &rarr;</a>
-    <p class="peque" id="acPlazas2">Esta primera promoción tiene 20 plazas. Cuando se llenen, se llenan.</p>
-  </div>
-</section>
-
-<!-- POSDATAS -->
-<section class="section carta-wrap">
+<section class="section carta-wrap" id="empezar">
   <div class="carta pd reveal">
-    <p><b>P. D.</b> Las 28 clases gratis no son un tráiler. Son las 28 primeras clases del curso de
-    verdad, enteras y en su orden. Si te enseño lo bueno y luego te cobro por lo bueno, no tengo
-    que convencerte de nada.</p>
-    <p><b>P. D. 2</b> Si has llegado hasta aquí abajo leyendo, ya sabes cuánto cuesta, qué no te doy
-    y a cuánto sale cada clase. Eso es todo lo que tenía. Lo único que falta son quince minutos tuyos.</p>
-    <p style="text-align:center;margin-top:34px">
-      <a class="btn-orange" href="https://nutre-six.vercel.app">Quiero mis 28 clases gratis &rarr;</a>
+    <h2 style="margin-bottom:24px">Empieza por la clase 1.<br>Quince minutos.<br>Y no cuesta nada.</h2>
+    <p>Va de lo que el cuerpo hace con la comida. Si al llegar a la clase 28 no te ves haciendo esto,
+    te vas por donde has venido y no me debes un euro.</p>
+    <p style="text-align:center;margin:30px 0">
+      <a class="btn-orange" href="https://nutre-six.vercel.app">Entrar en la Academia &rarr;</a>
     </p>
+    <p><b>P. D.</b> Las 28 clases gratis no son un tráiler. Son las 28 primeras del curso de verdad,
+    enteras y en su orden. Si te enseño lo bueno y luego te cobro por lo bueno, no tengo que
+    convencerte de nada.</p>
+    <p><b>P. D. 2</b> Lo de «¿y quién soy yo para asesorar a nadie?» no se te va a quitar leyendo esta
+    página. Se te va a quitar el día que una persona te escriba para contarte que ha aguantado la
+    semana entera y tú sepas exactamente qué contestarle. Entre hoy y ese día hay ocho meses. Y
+    empiezan con quince minutos.</p>
+    <p class="legalin">Academia Saneas es formación privada, no reglada. No es un grado ni un módulo de FP,
+    y no habilita para ejercer como dietista-nutricionista: esa es una profesión sanitaria regulada y
+    solo se accede a ella con el título universitario oficial. Al terminar recibes un certificado de
+    aprovechamiento de Academia Saneas. El Programa de Asesorías tiene selección y se contrata aparte;
+    las cifras de esta página son la aritmética del modelo, no una previsión de ingresos.</p>
   </div>
 </section>
 </main>
