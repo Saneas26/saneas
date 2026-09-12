@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Ocho meses, media hora al día. La materia de la carrera de Nutrición que se usa de verdad para asesorar. Después, tu asesoría desde casa: 20 € tuyos por cliente y mes, con un equipo de titulados detrás. 28 clases gratis.">
+<meta name="description" content="Ocho meses, media hora al día. La materia de la carrera de Nutrición que se usa de verdad para asesorar. Después, tu asesoría desde casa: 20 € netos por cliente y mes, con un equipo de titulados detrás. 28 clases gratis.">
 <meta property="og:title" content="Academia Saneas">
 <meta property="og:description" content="Llevas años asesorando gratis. Este es el año en que empiezas a cobrar. Ocho meses, media hora al día, y tu asesoría desde casa con un equipo de titulados detrás.">
 <meta property="og:url" content="https://saneas.es/academia">
@@ -487,6 +487,58 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
   .ac-dos .c p{font-size:var(--fs-sm);color:var(--gray);line-height:1.55;margin:0 0 14px}
   .ac-plazas{font-size:var(--fs-sm);font-weight:700;color:var(--text);margin-top:14px}
 
+.cu-calc{background:rgba(255,179,128,0.12);border:1px solid rgba(255,179,128,0.4);
+  border-radius:16px;padding:20px 22px;margin:22px 0 0;
+  font-size:clamp(19px,2.5vw,24px);line-height:1.45;font-weight:600;
+  color:rgba(255,255,255,0.9);letter-spacing:-0.4px}
+.cu-calc b{color:#ffb380;font-weight:900}
+
+
+/* ── DIEZ RAZONES ── */
+.razones{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.rz{background:#fff;border:1px solid #e3ebed;border-radius:20px;padding:24px;position:relative}
+.rz .rn{display:block;font-size:var(--fs-sm);font-weight:900;letter-spacing:1.5px;
+  color:var(--orange-text);margin-bottom:10px}
+.rz h3{font-size:var(--fs-lg);font-weight:900;letter-spacing:-0.4px;color:var(--text);
+  margin:0 0 8px;line-height:1.25}
+.rz p{font-size:var(--fs-base);line-height:1.6;color:var(--gray);margin:0;font-weight:500}
+
+
+/* ── LO QUE NO PAGAS ── */
+.nopagas{background:#fff;border:1px solid #e3ebed;border-radius:var(--radius);padding:34px 30px;margin-top:20px}
+.nopagas h3{font-size:clamp(23px,3.2vw,30px);font-weight:900;letter-spacing:-1px;color:var(--text);margin:0 0 4px;line-height:1.2}
+.nopagas .np-sub{font-size:var(--fs-base);color:var(--gray);font-weight:500;margin:0 0 22px;line-height:1.55}
+.np-list > div{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;
+  padding:14px 0;border-bottom:1px solid #eef3f4}
+.np-list .k{font-size:var(--fs-md);font-weight:700;color:var(--text);line-height:1.35}
+.np-list .k small{display:block;font-size:var(--fs-sm);font-weight:500;color:var(--gray);margin-top:3px}
+.np-list .v{font-size:var(--fs-md);font-weight:800;color:var(--red);white-space:nowrap;
+  text-decoration:line-through;text-decoration-color:#e0b9ab}
+.np-list .tot{border-bottom:0;border-top:2px solid var(--teal);margin-top:8px;padding-top:18px}
+.np-list .tot .k{font-size:var(--fs-lg);font-weight:900}
+.np-list .tot .v{font-size:clamp(22px,3vw,30px);font-weight:900;color:var(--green);
+  letter-spacing:-1px;text-decoration:none}
+.np-iva{font-size:var(--fs-md);color:var(--gray);line-height:1.65;margin:24px 0 0;font-weight:500;
+  background:#f1f7f8;border-radius:16px;padding:18px 20px}
+.np-iva b{color:var(--text)}
+
+
+/* ── CÓMO COBRAS ── */
+.cobras{background:#f1f7f8;border:2px solid var(--teal);border-radius:var(--radius);
+  padding:34px 30px;margin-top:20px}
+.cobras h3{font-size:clamp(23px,3.2vw,30px);font-weight:900;letter-spacing:-1px;
+  color:var(--text);margin:0 0 22px;line-height:1.2}
+.cobras ol{margin:0;padding:0;list-style:none;counter-reset:cb}
+.cobras li{counter-increment:cb;position:relative;padding-left:52px;margin-bottom:18px;
+  font-size:var(--fs-md);line-height:1.6;color:var(--gray);font-weight:500}
+.cobras li b{color:var(--text);font-weight:800}
+.cobras li::before{content:counter(cb);position:absolute;left:0;top:-2px;
+  width:34px;height:34px;border-radius:50%;background:var(--teal-ui);color:#fff;
+  font-size:var(--fs-base);font-weight:900;display:flex;align-items:center;justify-content:center}
+.cobras .cob-pie{font-size:var(--fs-md);color:var(--text);font-weight:700;line-height:1.6;
+  margin:24px 0 0;border-top:1px solid #cfe2e6;padding-top:20px}
+
+
 /* ── HERO: doble botón ── */
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .btn-ghost{display:inline-flex;align-items:center;justify-content:center;
@@ -663,8 +715,8 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
         Ocho meses. Media hora al día. Toda la materia de la carrera de Nutrición que de verdad se
         usa para asesorar a una persona &mdash; sin laboratorio, sin investigación y sin hospital.<br><br>
         <strong>Y al terminar, tu propia asesoría desde tu casa: un ordenador, un teléfono, un equipo
-        de titulados cubriéndote las espaldas y 20 € tuyos por cada cliente, todos los meses que siga
-        contigo.</strong>
+        de titulados cubriéndote las espaldas y <b>20 € netos por cada cliente</b>, todos los meses que
+        siga contigo.</strong>
       </div>
       <div class="hero-ctas">
         <a class="btn-orange" href="https://nutre-six.vercel.app">Empezar gratis ahora &rarr;</a>
@@ -686,7 +738,7 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
   <div class="stats-inner">
     <div><div class="stat-num">8</div><div class="stat-label">meses, no cuatro años</div></div>
     <div><div class="stat-num">1.700</div><div class="stat-label">horas de facultad que te ahorras</div></div>
-    <div><div class="stat-num">20 €</div><div class="stat-label">tuyos por cliente y mes</div></div>
+    <div><div class="stat-num">20 €</div><div class="stat-label">netos por cliente y mes</div></div>
     <div><div class="stat-num">19</div><div class="stat-label">plazas libres de 20</div></div>
   </div>
 </section>
@@ -779,7 +831,7 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
 <section class="section" id="cuenta">
   <div class="container">
     <h2 class="section-title">Hablemos de dinero,<br>que para eso estamos.</h2>
-    <p class="section-sub">Tu cliente paga 60 € al mes. <b>20 € son tuyos</b>, cada mes que siga contigo. No cobras por captarlo una vez: cobras mientras lo cuides.</p>
+    <p class="section-sub">Tu cliente paga 60 € al mes. <b>20 € netos son tuyos</b>, cada mes que siga contigo. No cobras por captarlo una vez: cobras mientras lo cuides.</p>
     <div class="cuenta reveal">
       <div class="cu-grid">
         <div><b>10</b><span>clientes</span><i>200 € / mes</i></div>
@@ -787,6 +839,8 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
         <div><b>50</b><span>clientes</span><i>1.000 € / mes</i></div>
         <div><b>100</b><span>clientes</span><i>2.000 € / mes</i></div>
       </div>
+      <p class="cu-calc"><b>100 clientes &times; 20 € = 2.000 € netos al mes.</b> Que son
+      <b>24.000 € al año</b> haciendo esto desde tu cocina.</p>
       <p class="cu-pie">Y cien clientes no son cien personas metidas en una sala de espera. Son cien
       conversaciones de WhatsApp al mes desde tu cocina, con el sistema haciendo el trabajo pesado
       por ti: las fichas, los planes, los recordatorios, las facturas. <b>Sin local, sin género, sin
@@ -795,7 +849,37 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
       <b>8.683 dietistas-nutricionistas colegiados</b> para cuarenta y ocho millones de personas. Uno
       por cada cinco mil seiscientas. Gente que necesita que alguien la acompañe a comer mejor hay en
       cada calle; quien se dedique a ello en condiciones, muchísima menos.</p>
-      <p class="cu-primera">Pero el número que te va a emocionar de verdad no es ninguno de esos.
+    </div>
+    <div class="cobras reveal">
+      <h3>Y ahora lo importante: cómo llega ese dinero a tu cuenta.</h3>
+      <ol>
+        <li><b>Te das de alta como autónoma.</b> Esto es tu negocio, no un empleo. No hay jefe, no hay horario y no hay nadie diciéndote lo que tienes que hacer.</li>
+        <li><b>El cliente nos paga a nosotros.</b> Saneas cobra, emite la factura y se ocupa del IVA y de toda la gestión. Tú no persigues a nadie para que pague, ni das de baja a nadie, ni discutes un recibo devuelto en tu vida.</li>
+        <li><b>Tú nos facturas tu parte.</b> Una factura al mes. Una. Aunque tengas cien clientes.</li>
+        <li><b>Y te la llevas neta.</b> Los 20 € por cliente son tuyos tal cual. Sin IVA que declarar por medio, sin software que pagar, sin gestoría de facturación y sin sorpresas a final de mes.</li>
+      </ol>
+      <p class="cob-pie">Lo único que tienes que hacer tú es cuidar a tus clientes. Todo lo demás
+      &mdash;el cobro, los papeles, el programa, el respaldo de los titulados&mdash; lo ponemos nosotros.</p>
+    </div>
+
+    <div class="nopagas reveal">
+      <h3>Y esto es lo que NO vas a pagar</h3>
+      <p class="np-sub">Montar esto por tu cuenta cuesta dinero todos los meses, tengas clientes o no. Aquí va dentro.</p>
+      <div class="np-list">
+        <div><span class="k">Gestoría y asesoría fiscal<small>facturación y papeleo, resuelto en el sistema</small></span><span class="v">~50 €/mes</span></div>
+        <div><span class="k">Programa de facturación<small>tipo Holded</small></span><span class="v">19 €/mes</span></div>
+        <div><span class="k">Software de nutricionista<small>tipo Nutrium o DietoPro</small></span><span class="v">~30 €/mes</span></div>
+        <div><span class="k">WhatsApp Business<small>la plataforma, para escribir a tus clientes</small></span><span class="v">~15 €/mes</span></div>
+        <div><span class="k">Publicidad en Meta o TikTok<small>lo mínimo para que alguien te vea</small></span><span class="v">desde 150 €/mes</span></div>
+        <div class="tot"><span class="k">Lo que te ahorras cada mes</span><span class="v">≈ 260 €</span></div>
+      </div>
+      <p class="np-iva"><b>Y el IVA, fuera.</b> Facturando por tu cuenta, cien clientes a 60 € te
+      obligarían a declarar <b>alrededor de 1.040 € de IVA cada mes</b>. Con Saneas, <b>cero</b>: ni
+      sobre los 60 € de tu cliente ni sobre los 20 € que te quedas tú.</p>
+    </div>
+
+    <div class="cuenta reveal" style="margin-top:20px">
+      <p class="cu-primera" style="border-top:0;padding-top:0">Pero el número que te va a emocionar de verdad no es ninguno de esos.
       Es el primero. <b>Los primeros 180 €</b> que te entran por hacer esto, leídos en la notificación
       del banco un martes cualquiera. Ese no se te olvida nunca.</p>
     </div>
@@ -854,8 +938,8 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
     <div class="resp">
       <div class="rc reveal"><span class="ri">✍️</span><h3>El plan lo firma un titulado</h3><p>Siempre. Un dietista-nutricionista colegiado diseña y firma cada plan, también cuando el caso es el más sencillo del mundo. Tú no tienes que decidir lo que come nadie.</p></div>
       <div class="rc reveal reveal-delay-1"><span class="ri">🚦</span><h3>El semáforo salta antes que tú</h3><p>Cuando tu cliente rellena su ficha, el sistema calcula solo. Si hay una patología, una medicación o algo que huele mal, ese caso se desvía al especialista <b>antes de que tú toques nada</b>. No tienes que darte cuenta: se da cuenta el sistema.</p></div>
-      <div class="rc reveal reveal-delay-2"><span class="ri">👥</span><h3>Un equipo entero detrás</h3><p>Dietista-nutricionista, dietista y psicóloga. Cuando no sepas qué contestar, preguntas y te contestan. Ni un solo día vas a estar sola con una duda.</p></div>
-      <div class="rc reveal"><span class="ri">🛠️</span><h3>El sistema hace el trabajo sucio</h3><p>Fichas, planes, seguimiento, avisos, facturación. Tú pones lo único que no puede poner una máquina: estar al otro lado cuando esa persona flaquea.</p></div>
+      <div class="rc reveal reveal-delay-2"><span class="ri">👥</span><h3>Un equipo entero detrás</h3><p>Nutricionista, dietistas titulados y psicóloga, <b>todos los días</b>. Cuando no sepas qué contestar o te llegue un caso que se te escapa, preguntas y te contestan. Ni un solo día vas a estar sola con una duda.</p></div>
+      <div class="rc reveal"><span class="ri">🛠️</span><h3>El software y el programa, puestos</h3><p>La app, el panel, el programa nutricional entero, las fichas, los planes, el seguimiento, los avisos y la facturación. No compras nada ni montas nada: <b>ya está hecho</b>. Tú pones lo único que no puede poner una máquina: estar al otro lado cuando esa persona flaquea.</p></div>
     </div>
     <div class="resp" style="margin-top:16px">
       <div class="rc reveal" style="grid-column:1/-1;background:var(--text);border-color:var(--text)">
@@ -931,10 +1015,31 @@ a.nav-logo{display:inline-flex;align-items:center;min-height:44px}
         <span class="cn">Paso 2 &middot; cuando estés lista</span>
         <h3>Programa de Asesorías</h3>
         <div class="cpr">Entrada aparte</div>
-        <p>Tu asesoría montada: el método, la app, el panel y el equipo clínico firmando los planes.
-        <b>Tu cliente paga 60 € al mes y 20 € son tuyos</b>, cada mes que siga contigo.</p>
+        <p>Tu asesoría montada: el método, la app, el panel, el programa nutricional y el equipo clínico
+        firmando los planes. <b>Tu cliente paga 60 € al mes y 20 € netos son tuyos</b>, cada mes que
+        siga contigo.</p>
         <a class="btn-white" href="/asesorias">Ver el programa &rarr;</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ AQUÍ -->
+<section class="section" id="porque">
+  <div class="container">
+    <h2 class="section-title">Diez razones<br>y todas se comprueban.</h2>
+    <p class="section-sub">Coge esta lista, ábrete la web de cualquier otra academia y ve tachando. Es el ejercicio que más gente nos ha traído hasta aquí.</p>
+    <div class="razones">
+      <div class="rz reveal"><span class="rn">01</span><h3>Te corrige alguien. En todas las clases.</h3><p>No un test de tres opciones donde se acierta por descarte: escribes o hablas y te dicen qué has entendido mal y por qué. A las seis de la mañana o a las once de la noche, los siete días.</p></div>
+      <div class="rz reveal reveal-delay-1"><span class="rn">02</span><h3>Un titulado firma el plan de cada cliente tuyo.</h3><p>Siempre, también cuando el caso es el más sencillo del mundo. Hemos buscado esto por toda España y no lo hace nadie más: lo más parecido son unas guías genéricas.</p></div>
+      <div class="rz reveal reveal-delay-2"><span class="rn">03</span><h3>El semáforo salta antes que tú.</h3><p>Si tu cliente tiene una patología o toma medicación, el sistema lo aparta y lo coge el especialista antes de que tú toques nada. No tienes que darte cuenta.</p></div>
+      <div class="rz reveal"><span class="rn">04</span><h3>El software va dentro.</h3><p>App, panel y programa nutricional completo. Un software de nutricionista por tu cuenta son unos 30 € al mes, y encima tendrías que aprender a usarlo.</p></div>
+      <div class="rz reveal reveal-delay-1"><span class="rn">05</span><h3>Nosotros cobramos y llevamos los papeles.</h3><p>Tú emites una factura al mes, aunque tengas cien clientes. Ni recibos devueltos, ni IVA, ni gestoría de facturación, ni perseguir a nadie.</p></div>
+      <div class="rz reveal reveal-delay-2"><span class="rn">06</span><h3>Un equipo de verdad, todos los días.</h3><p>Nutricionista, dietistas titulados y psicóloga. Cuando te llegue algo que se te escapa, preguntas y te contestan. Eso no lo tiene un PDF.</p></div>
+      <div class="rz reveal"><span class="rn">07</span><h3>105 horas de clase real.</h3><p>420 clases de quince minutos. Cuando veas un curso que anuncia «600 horas», mira la letra pequeña: son las que se supone que echas tú leyendo un dosier en casa.</p></div>
+      <div class="rz reveal reveal-delay-1"><span class="rn">08</span><h3>Se enseña el oficio, no solo la materia.</h3><p>Hay un bloque entero para lo que ninguna facultad da: llevar a un cliente semana a semana, sostenerlo cuando se cae, manejar unas vacaciones y tener la conversación difícil.</p></div>
+      <div class="rz reveal reveal-delay-2"><span class="rn">09</span><h3>Pruebas 28 clases sin dar la tarjeta.</h3><p>Enteras y en orden, las 28 primeras del curso de verdad. No un vídeo de muestra. Y no se te cobra nada solo.</p></div>
+      <div class="rz reveal"><span class="rn">10</span><h3>Cobras mientras cuidas, no por captar.</h3><p>20 € netos por cliente y mes, todos los meses que siga contigo. El negocio no es firmar gente nueva: es que la que tienes no se vaya.</p></div>
     </div>
   </div>
 </section>
