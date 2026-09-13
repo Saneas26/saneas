@@ -878,12 +878,223 @@ body>nav{background:rgba(251,251,249,0.9);backdrop-filter:blur(12px);
 .carta.pd p{font-size:clamp(17px,2vw,19px);color:var(--gray)}
 .carta.pd p b{color:var(--text)}
 
+</style>
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   CAPA «CRO» — 13/09/2026
+   La maqueta de Stitch que Óscar sirvió en localhost:8768
+   («optimizador landing academia saneas»). Va la última a propósito:
+   NO se reescribe nada de arriba, se aprieta. La página pasa de
+   editorial de 21.000 px a ficha compacta de móvil.
+   Regla que manda por encima de esto: legibilidad (nada por debajo
+   de 12px y contraste alto).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* — Ritmo vertical: 48px en móvil, 72 en escritorio (antes 100/140) — */
+.section{padding:48px 20px}
+@media(min-width:900px){.section{padding:72px 40px}}
+.container{max-width:680px}          /* pista de lectura de la maqueta */
+@media(min-width:900px){.container{max-width:1120px}}
+
+/* — Titulares: headline-lg (32/24) en vez de 72px editoriales — */
+.section-title{
+  font-size:clamp(24px,5.4vw,32px);font-weight:800;
+  letter-spacing:-.6px;line-height:1.22;margin-bottom:10px;
+}
+.section-sub{font-size:var(--fs-base);line-height:1.6;margin-bottom:22px}
+
+/* — Cabecera compacta con la pastilla de plazas — */
+body>nav{height:56px;padding:0 14px}
+.nav-plazas{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--verde-suave);color:var(--teal-ui);
+  border:1px solid #A7F3D0;border-radius:999px;
+  padding:5px 12px;font-size:var(--fs-xs);font-weight:800;
+  letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;
+}
+.nav-plazas .pt{width:7px;height:7px;border-radius:50%;background:var(--red)}
+@media(max-width:560px){.nav-plazas{display:none}}
+
+/* — Barra de anclas, justo bajo la cabecera (la navegación de la maqueta) — */
+.chipnav{
+  position:sticky;top:56px;z-index:80;
+  background:rgba(251,251,249,.94);backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.chipnav ul{
+  display:flex;gap:8px;margin:0 auto;padding:8px 14px;max-width:1120px;
+  list-style:none;overflow-x:auto;scrollbar-width:none;
+}
+.chipnav ul::-webkit-scrollbar{display:none}
+.chipnav a{
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  padding:8px 14px;border-radius:999px;text-decoration:none;
+  font-size:var(--fs-sm);font-weight:700;color:var(--teal-ui);
+  background:#fff;border:1px solid var(--line);
+}
+.chipnav a:active{transform:scale(.97)}
+
+/* — Hero: sin pantalla completa, directo al grano — */
+.hero{min-height:0;padding:84px 20px 22px;gap:26px}
+@media(min-width:900px){.hero{padding:104px 40px 40px;align-items:start}}
+.hero h1{font-size:clamp(30px,7.2vw,48px);letter-spacing:-1.2px;line-height:1.1}
+.hero-sub{font-size:var(--fs-base);line-height:1.62}
+.hero-ctas{flex-direction:column;align-items:stretch;gap:10px;margin-top:18px}
+@media(min-width:900px){.hero-ctas{flex-direction:row;align-items:center}}
+.hero-ctas .btn-orange,.hero-ctas .btn-ghost{width:100%;justify-content:center}
+@media(min-width:900px){.hero-ctas .btn-orange,.hero-ctas .btn-ghost{width:auto}}
+.hero-ctas .btn-ghost{border-width:1.5px;font-size:var(--fs-base);padding:14px 24px}
+
+/* — Cifras: tarjeta de nivel 2, pegada al hero — */
+.stats{background:transparent;border:0;padding:0 20px 6px}
+.stats-inner{
+  max-width:680px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:8px;box-shadow:0 4px 20px -2px rgba(6,78,59,.08);
+}
+.stats-inner > div{padding:16px 6px;border-radius:12px}
+.stats .stat-num{font-size:clamp(19px,5.4vw,30px);letter-spacing:-.8px;margin-bottom:2px}
+.stats .stat-label{font-size:var(--fs-xs);line-height:1.3}
+@media(max-width:520px){
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stats-inner > div{padding:14px 6px}
+}
+
+/* — Tres formas de aprender: la comparativa de la maqueta — */
+.tres3{display:grid;gap:14px;margin-top:8px}
+@media(min-width:900px){.tres3{grid-template-columns:repeat(3,1fr);align-items:start}}
+.t3{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;position:relative;
+}
+.t3.destaca{border:1.5px solid var(--teal);box-shadow:0 4px 20px -2px rgba(6,78,59,.08)}
+.t3 .t3-tag{
+  position:absolute;top:-11px;left:20px;background:var(--teal);color:#fff;
+  font-size:var(--fs-xs);font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  padding:4px 12px;border-radius:999px;
+}
+.t3 h3{font-size:var(--fs-md);margin:0 0 2px;color:var(--text);line-height:1.25}
+.t3 .t3-pre{font-size:var(--fs-lg);font-weight:800;color:var(--teal-ui);letter-spacing:-.5px;margin-bottom:14px;display:block}
+.t3.apagada .t3-pre{color:var(--gray)}
+.t3 ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.t3 li{display:flex;gap:9px;font-size:var(--fs-sm);line-height:1.45;color:var(--gray)}
+.t3 li b{color:var(--text)}
+.t3 .mk{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;
+  font-size:11px;font-weight:900;margin-top:2px}
+.t3 .mk.no{background:#FEE2E2;color:#991B1B}
+.t3 .mk.si{background:var(--verde-suave);color:var(--teal)}
+
+/* — Precio: dos tarjetas elegibles en vez de la tabla negra — */
+.pcards{display:grid;gap:14px;margin:18px 0 22px}
+@media(min-width:900px){.pcards{grid-template-columns:1fr 1fr;align-items:start}}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative}
+.pc.destaca{border:1.5px solid var(--teal);box-shadow:0 4px 20px -2px rgba(6,78,59,.08)}
+.pc .pc-lbl{font-size:var(--fs-xs);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+.pc.apagada .pc-lbl{color:var(--gray)}
+.pc h3{font-size:var(--fs-lg);margin:6px 0 4px;color:var(--text)}
+.pc .pc-num{font-size:clamp(32px,9vw,44px);font-weight:800;letter-spacing:-1.5px;color:var(--text);line-height:1}
+.pc .pc-num small{font-size:var(--fs-base);font-weight:700;color:var(--gray);letter-spacing:0}
+.pc .pc-tach{font-size:var(--fs-md);color:var(--gray);text-decoration:line-through;margin-left:10px;font-weight:700}
+.pc .pc-ahorro{display:inline-block;background:var(--verde-suave);color:var(--teal-ui);
+  border-radius:999px;padding:4px 12px;font-size:var(--fs-xs);font-weight:800;margin-top:10px}
+.pc p{font-size:var(--fs-sm);color:var(--gray);line-height:1.55;margin:12px 0 16px}
+.pc .btn-orange,.pc .btn-ghost{width:100%;justify-content:center;min-height:50px;font-size:var(--fs-base);padding:14px 20px}
+.pc-cuenta{
+  background:var(--verde-suave);border:1px solid #A7F3D0;border-radius:var(--radius);
+  padding:16px 18px;font-size:var(--fs-sm);color:var(--teal-ui);line-height:1.55;
+}
+.pc-cuenta b{color:var(--teal-ui)}
+
+/* — Temario en acordeón: 8 bloques plegados (la mitad de alto) — */
+.ac-bloques{grid-template-columns:1fr;gap:10px}
+details.ac-b{padding:0;border-radius:14px;overflow:hidden}
+details.ac-b > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;
+  padding:16px 18px;font-weight:800;color:var(--text);font-size:var(--fs-base);line-height:1.3;
+}
+details.ac-b > summary::-webkit-details-marker{display:none}
+details.ac-b > summary .n{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:10px;background:var(--teal);color:#fff;
+  font-weight:800;font-size:var(--fs-sm);
+}
+details.ac-b > summary .tt{flex:1;min-width:0}
+details.ac-b > summary .fl{flex:none;color:var(--teal);font-size:var(--fs-lg);transition:transform .2s ease-out}
+details.ac-b[open] > summary .fl{transform:rotate(45deg)}
+details.ac-b[open] > summary{background:var(--verde-suave)}
+details.ac-b > p{margin:0;padding:2px 18px 18px;font-size:var(--fs-sm);color:var(--gray);line-height:1.55}
+details.ac-b > summary .em{font-size:22px;flex:none}
+
+/* — Garantías: tres pastillas anchas, no tres tarjetones — */
+.garantias{grid-template-columns:1fr;gap:10px;margin-top:16px}
+@media(min-width:760px){.garantias{grid-template-columns:repeat(3,1fr)}}
+.gar{padding:18px 20px;border:1px solid var(--line);border-radius:14px}
+.gar .ico{font-size:24px;margin-bottom:8px}
+.gar h3{font-size:var(--fs-base);margin:0 0 4px}
+.gar p{font-size:var(--fs-sm);line-height:1.5;margin:0}
+
+/* — Pasada de densidad: el mismo texto, la mitad de alto —
+   La maqueta cabe en 8.000 px porque no grita en cada párrafo.
+   Aquí no se quita contenido: se baja la escala de la prosa larga. */
+.parr{font-size:var(--fs-base);line-height:1.62;max-width:680px;margin-bottom:14px}
+.carta h2{font-size:clamp(24px,5.4vw,34px);letter-spacing:-.8px;line-height:1.18;margin:0 0 18px}
+.carta h3{font-size:clamp(19px,3.4vw,23px);letter-spacing:-.4px;margin:30px 0 12px}
+.carta p{font-size:var(--fs-base);line-height:1.62;margin:0 0 14px}
+.carta .eyebrow{margin-bottom:10px;letter-spacing:1.4px}
+.carta .grande{font-size:clamp(18px,2.4vw,21px);line-height:1.38;margin:20px 0;padding-left:16px}
+.carta ul.fasc{margin:16px 0 20px}
+.carta ul.fasc li{font-size:var(--fs-base);line-height:1.55;margin-bottom:11px;padding-left:26px}
+.carta .legalin{margin-top:22px;padding-top:16px}
+
+/* Rejillas: dos columnas ya en el móvil donde el texto es corto */
+.tres{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.tr{padding:14px 13px;border-radius:14px}
+.tr-em{font-size:20px;margin-bottom:6px}
+.tr h3{font-size:var(--fs-base);letter-spacing:-.2px}
+.tr p{font-size:var(--fs-sm);line-height:1.45}
+
+.resp{gap:10px;grid-template-columns:1fr}
+@media(min-width:760px){.resp{grid-template-columns:1fr 1fr}}
+.rc{padding:18px;border-radius:14px}
+.rc .ri{font-size:24px;margin-bottom:6px}
+.rc h3{font-size:var(--fs-md);letter-spacing:-.2px;margin-bottom:5px}
+.rc p{font-size:var(--fs-sm);line-height:1.55}
+
+.cam{padding:18px;border-radius:14px}
+.dia .dh{padding-bottom:16px}
+.dia .dh .hh{font-size:var(--fs-md)}
+.np-list .k{font-size:var(--fs-base)}
+.np-list > div{padding:11px 0}
+.cu-grid b{font-size:clamp(26px,7.4vw,38px);letter-spacing:-1.2px}
+.cu-grid > div{padding:14px 10px}
+.golpe{padding:24px 20px;margin-top:22px}
+.golpe span{font-size:clamp(16px,2.2vw,19px)}
+.golpe b{font-size:clamp(21px,3.6vw,30px)}
+.cobras ol li{font-size:var(--fs-sm);line-height:1.55;margin-bottom:10px}
+.cobras h3,.nopagas h3{font-size:var(--fs-md);margin-bottom:6px}
+.cob-pie,.np-sub,.np-iva,.cu-pie,.cu-primera{font-size:var(--fs-sm);line-height:1.55}
+.np-list .k small{font-size:var(--fs-xs)}
+.cu-calc{font-size:var(--fs-base)}
+.chat{max-width:460px}
+.msg{font-size:var(--fs-sm);padding:9px 12px}
 </style></head>
 <!-- NAV -->
 <nav>
   <div class="nav-izq"><a class="nav-logo saneas" href="/">Saneas®</a><button type="button" class="gs-boton" onclick="GrupoSaneas.abrirMenu()" aria-label="Ver las apps del Grupo Saneas"><span class="gs-b-marca">Grupo <b>Saneas</b> &#9656;</span><span class="gs-b-accion">despliega</span></button></div>
-  <a class="nav-wa" style="background:var(--teal-ui)" href="https://academia.saneas.es">Empezar gratis</a>
+  <div style="display:flex;align-items:center;gap:10px"><span class="nav-plazas"><span class="pt"></span>Quedan 19 plazas</span><a class="nav-wa" style="background:var(--teal-ui)" href="https://academia.saneas.es">Empezar gratis</a></div>
 </nav>
+
+<!-- ANCLAS -->
+<div class="chipnav" aria-label="Secciones">
+  <ul>
+    <li><a href="#temario">El programa</a></li>
+    <li><a href="#respaldo">El respaldo</a></li>
+    <li><a href="#cuenta">El dinero</a></li>
+    <li><a href="#precio">Precio</a></li>
+    <li><a href="#hablamos">Dudas</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <main id="contenido">
@@ -895,15 +1106,14 @@ body>nav{background:rgba(251,251,249,0.9);backdrop-filter:blur(12px);
       <span class="badge"><span class="badge-dot"></span>Academia Saneas &middot; 6 años y 1.700 personas &middot; quedan 19 plazas</span>
       <h1>Llevas años asesorando gratis. <em>Este es el año en que empiezas a cobrar.</em></h1>
       <div class="hero-sub">
-        Ocho meses. Media hora al día. Toda la materia de la carrera de Nutrición que de verdad se
-        usa para asesorar a una persona &mdash; sin laboratorio, sin investigación y sin hospital.<br><br>
-        <strong>Y al terminar, tu propia asesoría desde tu casa: un ordenador, un teléfono, un equipo
-        de titulados cubriéndote las espaldas y <b>20 € netos por cada cliente</b>, todos los meses que
-        siga contigo.</strong>
+        Ocho meses. Media hora al día. La materia de la carrera de Nutrición que de verdad se usa
+        para asesorar &mdash; sin laboratorio ni hospital. Y al terminar, <strong>tu propia asesoría
+        desde casa</strong>, con titulados cubriéndote las espaldas y <strong>20 € netos por cada
+        cliente</strong>, todos los meses que siga contigo.
       </div>
       <div class="hero-ctas">
-        <a class="btn-orange" href="https://academia.saneas.es">Empezar gratis ahora &rarr;</a>
-        <a class="btn-ghost" href="#hablamos">Quiero que me llaméis</a>
+        <a class="btn-orange" href="https://academia.saneas.es">Empezar 28 clases gratis, sin tarjeta &rarr;</a>
+        <a class="btn-ghost" href="#precio">Ver lo que cuesta (desde 60 €/mes)</a>
       </div>
       <p class="microconf">
         <span>⚡ <b>Acceso inmediato</b></span>
@@ -986,27 +1196,6 @@ body>nav{background:rgba(251,251,249,0.9);backdrop-filter:blur(12px);
     Lo que te frena no es un defecto tuyo: es que nadie te ha dado nunca un sitio donde hacer esto bien.</p>
   </div>
 </section>
-
-<!-- LA CREDENCIAL -->
-<section class="section" id="credencial">
-  <div class="container estrecho">
-    <div class="cred reveal">
-      <span class="cr-lbl">Y esto no me lo invento esta mañana</span>
-      <div class="cr-nums">
-        <div><b>6</b><span>años</span></div>
-        <div><b>+1.700</b><span>personas</span></div>
-        <div><b>87 %</b><span>lo consiguió</span></div>
-      </div>
-      <p>El método que vas a estudiar es <b>ese</b>. No es teoría bonita de un libro: es lo que ha
-      funcionado con mil setecientas personas de verdad, con sus recaídas, sus navidades y sus
-      semanas malas.</p>
-      <p class="cr-remate">Seis años dando de comer a gente enseñan algo que no está en ningún
-      temario: <b>qué hace exactamente que alguien siga o lo deje.</b> Eso es lo que te voy a enseñar.</p>
-      <div class="cr-firma">Óscar · Saneas</div>
-    </div>
-  </div>
-</section>
-
 <!-- LA CARRERA -->
 <section class="section" id="carrera">
   <div class="container">
@@ -1034,32 +1223,6 @@ body>nav{background:rgba(251,251,249,0.9);backdrop-filter:blur(12px);
       </div>
       <p class="bc-pie">Nos sentamos con el plan de estudios delante y empezamos a tachar. <b>Tú no vas
       a cultivar una bacteria en tu vida.</b></p>
-    </div>
-
-    <div class="coste reveal">
-      <div class="co-card larga">
-        <span class="co-lbl">La vía larga</span>
-        <h3>La facultad</h3>
-        <ul>
-          <li><b>4 años</b> de tu vida</li>
-          <li><b>~5.000 €</b> de matrícula en pública</li>
-          <li><b>~2.000 horas</b> en materia que no usarás</li>
-          <li><b>0 €</b> ingresados mientras tanto</li>
-        </ul>
-        <div class="co-pie">Y al acabar, sigues sin saber llevar a un cliente.</div>
-      </div>
-      <div class="co-vs">frente a</div>
-      <div class="co-card corta">
-        <span class="co-lbl">La vía corta</span>
-        <h3>Academia Saneas</h3>
-        <ul>
-          <li><b>8 meses</b>, media hora al día</li>
-          <li><b>480 €</b> en total (420 € de una vez)</li>
-          <li><b>105 horas</b> de clase, todas útiles</li>
-          <li><b>20 € netos</b> por cliente al terminar</li>
-        </ul>
-        <div class="co-pie">Y al acabar, empieza lo bueno.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1237,14 +1400,14 @@ body>nav{background:rgba(251,251,249,0.9);backdrop-filter:blur(12px);
     <h2 class="section-title">Los ocho bloques</h2>
     <p class="section-sub">120 temas, 420 clases. En este orden, porque cada bloque solo se entiende si el anterior ya está dentro.</p>
     <div class="ac-bloques">
-      <div class="ac-b reveal"><span class="em">🫀</span><span class="n">1</span><h3>Lo que el cuerpo hace con la comida</h3><p>20 temas. Digestión, energía, proteína, grasa, hidratos. Para dejar de repetir de memoria lo que no se entiende.</p></div>
-      <div class="ac-b reveal reveal-delay-1"><span class="em">🏷️</span><span class="n">2</span><h3>Los alimentos y la etiqueta</h3><p>16 temas. Qué aporta cada grupo y cómo destripar cualquier etiqueta en menos de un minuto, sin app y sin semáforos de colores.</p></div>
-      <div class="ac-b reveal reveal-delay-2"><span class="em">📏</span><span class="n">3</span><h3>Medir, calcular y montar un plan</h3><p>15 temas. Cantidades y necesidades: por qué un plan dice lo que dice y cómo explicárselo a tu cliente para que lo entienda.</p></div>
-      <div class="ac-b reveal"><span class="em">🧠</span><span class="n">4</span><h3>La cabeza, el hábito y la conversación</h3><p>10 temas. Lo que decide de verdad si una persona sigue o lo deja. El bloque que casi nadie enseña y el que más clientes te va a mantener.</p></div>
-      <div class="ac-b reveal reveal-delay-1"><span class="em">🤰</span><span class="n">5</span><h3>Etapas de la vida</h3><p>11 temas. Embarazo, infancia, mayores, deporte. Dos personas del mismo peso pueden necesitar cosas opuestas.</p></div>
-      <div class="ac-b reveal reveal-delay-2"><span class="em">🩺</span><span class="n">6</span><h3>Reconocer y derivar</h3><p>26 temas. El bloque más largo del curso y el que más te protege: ver la señal y saber exactamente a quién se manda.</p></div>
-      <div class="ac-b reveal"><span class="em">⚖️</span><span class="n">7</span><h3>La ley, los fármacos y la cocina segura</h3><p>10 temas. Va antes que las patologías a propósito: primero se aprende dónde está cada línea. Eso es lo que te deja dormir del tirón.</p></div>
-      <div class="ac-b reveal reveal-delay-1"><span class="em">🎓</span><span class="n">8</span><h3>Ser asesor de Saneas</h3><p>12 temas. El oficio entero: la ficha, el semáforo, el seguimiento y la conversación difícil, la que nadie quiere tener.</p></div>
+      <details class="ac-b reveal"><summary><span class="n">1</span><span class="em">🫀</span><span class="tt">Lo que el cuerpo hace con la comida</span><span class="fl">+</span></summary><p>20 temas. Digestión, energía, proteína, grasa, hidratos. Para dejar de repetir de memoria lo que no se entiende.</p></details>
+      <details class="ac-b reveal reveal-delay-1"><summary><span class="n">2</span><span class="em">🏷️</span><span class="tt">Los alimentos y la etiqueta</span><span class="fl">+</span></summary><p>16 temas. Qué aporta cada grupo y cómo destripar cualquier etiqueta en menos de un minuto, sin app y sin semáforos de colores.</p></details>
+      <details class="ac-b reveal reveal-delay-2"><summary><span class="n">3</span><span class="em">📏</span><span class="tt">Medir, calcular y montar un plan</span><span class="fl">+</span></summary><p>15 temas. Cantidades y necesidades: por qué un plan dice lo que dice y cómo explicárselo a tu cliente para que lo entienda.</p></details>
+      <details class="ac-b reveal"><summary><span class="n">4</span><span class="em">🧠</span><span class="tt">La cabeza, el hábito y la conversación</span><span class="fl">+</span></summary><p>10 temas. Lo que decide de verdad si una persona sigue o lo deja. El bloque que casi nadie enseña y el que más clientes te va a mantener.</p></details>
+      <details class="ac-b reveal reveal-delay-1"><summary><span class="n">5</span><span class="em">🤰</span><span class="tt">Etapas de la vida</span><span class="fl">+</span></summary><p>11 temas. Embarazo, infancia, mayores, deporte. Dos personas del mismo peso pueden necesitar cosas opuestas.</p></details>
+      <details class="ac-b reveal reveal-delay-2"><summary><span class="n">6</span><span class="em">🩺</span><span class="tt">Reconocer y derivar</span><span class="fl">+</span></summary><p>26 temas. El bloque más largo del curso y el que más te protege: ver la señal y saber exactamente a quién se manda.</p></details>
+      <details class="ac-b reveal"><summary><span class="n">7</span><span class="em">⚖️</span><span class="tt">La ley, los fármacos y la cocina segura</span><span class="fl">+</span></summary><p>10 temas. Va antes que las patologías a propósito: primero se aprende dónde está cada línea. Eso es lo que te deja dormir del tirón.</p></details>
+      <details class="ac-b reveal reveal-delay-1"><summary><span class="n">8</span><span class="em">🎓</span><span class="tt">Ser asesor de Saneas</span><span class="fl">+</span></summary><p>12 temas. El oficio entero: la ficha, el semáforo, el seguimiento y la conversación difícil, la que nadie quiere tener.</p></details>
     </div>
     <div class="ac-hoy reveal">
       <b>El número honesto:</b> hoy hay <b>147 clases publicadas</b>, los bloques 1 y 2 enteros. A dos al
@@ -1280,47 +1443,82 @@ body>nav{background:rgba(251,251,249,0.9);backdrop-filter:blur(12px);
     </div>
   </div>
 </section>
-
-<!-- POR QUÉ AQUÍ -->
-<section class="section" id="porque">
+<!-- PRECIO -->
+<!-- TRES FORMAS DE APRENDER (comparativa de la maqueta) -->
+<section class="section" id="formas">
   <div class="container">
-    <h2 class="section-title">Diez razones<br>y todas se comprueban.</h2>
-    <p class="section-sub">Coge esta lista, ábrete la web de cualquier otra academia y ve tachando. Es el ejercicio que más gente nos ha traído hasta aquí.</p>
-    <div class="razones">
-      <div class="rz reveal"><span class="rn">01</span><h3>Te corrige alguien. En todas las clases.</h3><p>No un test de tres opciones donde se acierta por descarte: escribes o hablas y te dicen qué has entendido mal y por qué. A las seis de la mañana o a las once de la noche, los siete días.</p></div>
-      <div class="rz reveal reveal-delay-1"><span class="rn">02</span><h3>Un titulado firma el plan de cada cliente tuyo.</h3><p>Siempre, también cuando el caso es el más sencillo del mundo. Hemos buscado esto por toda España y no lo hace nadie más: lo más parecido son unas guías genéricas.</p></div>
-      <div class="rz reveal reveal-delay-2"><span class="rn">03</span><h3>El semáforo salta antes que tú.</h3><p>Si tu cliente tiene una patología o toma medicación, el sistema lo aparta y lo coge el especialista antes de que tú toques nada. No tienes que darte cuenta.</p></div>
-      <div class="rz reveal"><span class="rn">04</span><h3>El software va dentro.</h3><p>App, panel y programa nutricional completo. Un software de nutricionista por tu cuenta son unos 30 € al mes, y encima tendrías que aprender a usarlo.</p></div>
-      <div class="rz reveal reveal-delay-1"><span class="rn">05</span><h3>Nosotros cobramos y llevamos los papeles.</h3><p>Tú emites una factura al mes, aunque tengas cien clientes. Ni recibos devueltos, ni IVA, ni gestoría de facturación, ni perseguir a nadie.</p></div>
-      <div class="rz reveal reveal-delay-2"><span class="rn">06</span><h3>Un equipo de verdad, todos los días.</h3><p>Nutricionista, dietistas titulados y psicóloga. Cuando te llegue algo que se te escapa, preguntas y te contestan. Eso no lo tiene un PDF.</p></div>
-      <div class="rz reveal"><span class="rn">07</span><h3>105 horas de clase real.</h3><p>420 clases de quince minutos. Cuando veas un curso que anuncia «600 horas», mira la letra pequeña: son las que se supone que echas tú leyendo un dosier en casa.</p></div>
-      <div class="rz reveal reveal-delay-1"><span class="rn">08</span><h3>Se enseña el oficio, no solo la materia.</h3><p>Hay un bloque entero para lo que ninguna facultad da: llevar a un cliente semana a semana, sostenerlo cuando se cae, manejar unas vacaciones y tener la conversación difícil. Sale de seis años y 1.700 personas, no de un libro.</p></div>
-      <div class="rz reveal reveal-delay-2"><span class="rn">09</span><h3>Pruebas 28 clases sin dar la tarjeta.</h3><p>Enteras y en orden, las 28 primeras del curso de verdad. No un vídeo de muestra. Y no se te cobra nada solo.</p></div>
-      <div class="rz reveal"><span class="rn">10</span><h3>Cobras mientras cuidas, no por captar.</h3><p>20 € netos por cliente y mes, todos los meses que siga contigo. El negocio no es firmar gente nueva: es que la que tienes no se vaya.</p></div>
+    <h2 class="section-title">Tres formas de<br>aprender esto.</h2>
+    <p class="section-sub">El mismo oficio por tres caminos distintos. Lo que cuesta cada uno en
+    tiempo, en dinero y en lo que dejas de ingresar por el camino.</p>
+    <div class="tres3">
+
+      <div class="t3 apagada reveal">
+        <h3>La facultad</h3>
+        <span class="t3-pre">4 años &middot; ~5.000 €</span>
+        <ul>
+          <li><span class="mk no">&times;</span><span>Matrícula de unos <b>5.000 €</b> en una pública. Bastante más en una privada.</span></li>
+          <li><span class="mk no">&times;</span><span><b>Cuatro años</b> sin ingresar un euro por esto.</span></li>
+          <li><span class="mk no">&times;</span><span>Unas <b>2.000 horas</b> en materia que no vas a usar jamás para asesorar.</span></li>
+          <li><span class="mk no">&times;</span><span>Y al terminar <b>sigues sin saber</b> llevar a un cliente semana a semana: eso no lo enseña ninguna facultad.</span></li>
+        </ul>
+      </div>
+
+      <div class="t3 apagada reveal reveal-delay-1">
+        <h3>Los cursos online de siempre</h3>
+        <span class="t3-pre">1.000 – 4.000 €</span>
+        <ul>
+          <li><span class="mk no">&times;</span><span>Un PDF y un test de respuestas múltiples. <b>Nadie corrige nada.</b></span></li>
+          <li><span class="mk no">&times;</span><span>Anuncian «600 horas» contando <b>las que se supone que echas tú leyendo</b>.</span></li>
+          <li><span class="mk no">&times;</span><span>Al acabar te sueltan la mano: <b>cero clientes</b> y cero respaldo.</span></li>
+          <li><span class="mk no">&times;</span><span>Si te pones a asesorar, <b>el riesgo es entero tuyo</b>.</span></li>
+        </ul>
+      </div>
+
+      <div class="t3 destaca reveal reveal-delay-2">
+        <span class="t3-tag">Lo que te propongo</span>
+        <h3>Academia Saneas</h3>
+        <span class="t3-pre">8 meses &middot; 480 €</span>
+        <ul>
+          <li><span class="mk si">&#10003;</span><span><b>Media hora al día</b>: dos clases de quince minutos, en el móvil.</span></li>
+          <li><span class="mk si">&#10003;</span><span><b>105 horas de clase de verdad</b>, y en todas hay alguien corrigiendo lo que contestas.</span></li>
+          <li><span class="mk si">&#10003;</span><span>Un <b>titulado firma</b> el plan de cada cliente tuyo. Siempre, también en el caso más sencillo.</span></li>
+          <li><span class="mk si">&#10003;</span><span>Al terminar, <b>20 € netos por cliente y mes</b>, con el cobro, los papeles y el programa puestos.</span></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- PRECIO -->
 <section class="section" id="precio">
   <div class="container">
     <h2 class="section-title">Lo que cuesta<br>aprender el oficio.</h2>
     <p class="section-sub">Sin rodeos y sin tachar un precio que no ha cobrado nunca nadie.</p>
-    <div class="money reveal">
-      <div class="row"><span class="k">Cuota mensual</span><span class="v">60 € / mes</span></div>
-      <div class="row"><span class="k">Duración</span><span class="v">8 meses</span></div>
-      <div class="row"><span class="k">Total</span><span class="v">480 €</span></div>
-      <div class="row"><span class="k">Si lo pagas de una vez</span><span class="v orange">420 €</span></div>
-      <div class="big">420 clases por 480 €. Echa la cuenta: <b>1,14 € cada clase.</b> Y las 28 primeras, cero.</div>
+    <div class="pcards reveal">
+      <div class="pc destaca">
+        <span class="pc-lbl">Pago único &middot; ahorras 60 €</span>
+        <h3>De una vez</h3>
+        <div class="pc-num">420 €<span class="pc-tach">480 €</span></div>
+        <span class="pc-ahorro">Un mes de regalo</span>
+        <p>Los ocho meses enteros, con todas las correcciones. Se estudia igual, media hora al día:
+        pagar de golpe no adelanta el temario ni un solo día.</p>
+        <a class="btn-orange" href="https://academia.saneas.es">Empezar &rarr;</a>
+      </div>
+      <div class="pc">
+        <span class="pc-lbl">Mes a mes</span>
+        <h3>Suscripción</h3>
+        <div class="pc-num">60 €<small> / mes</small></div>
+        <span class="pc-ahorro" style="background:#F3F4F6;color:var(--gray)">8 meses &middot; 480 € en total</span>
+        <p>Pagas el primer mes y entras hoy. Mismo temario, mismas correcciones y el mismo ritmo:
+        el pago nunca abre nada que no te toque estudiar todavía.</p>
+        <a class="btn-ghost" href="https://academia.saneas.es">Empezar &rarr;</a>
+      </div>
     </div>
-    <p class="parr" style="margin-top:28px">El mismo camino por la vía larga: unos <b>5.000 € de matrícula</b> en una universidad pública
-    &mdash;bastante más en una privada&mdash; y <b>cuatro años sin cobrar</b>. Y al acabar sigues sin
-    saber montar una consulta ni llevar a un cliente semana a semana, porque eso no lo enseña ninguna
-    facultad.</p>
-    <p class="parr">Y por la vía corta están las academias online de toda la vida, que por esto mismo
-    te piden <b>entre 1.000 y 4.000 €</b>, te mandan un PDF y un test de respuestas múltiples, y ahí
-    te quedas. Sus cursos dicen «600 horas» porque cuentan las que se supone que tú echas leyendo.
-    <b>Las 105 horas de aquí son de clase de verdad, y en todas hay alguien corrigiéndote.</b></p>
+    <div class="pc-cuenta reveal">
+      <b>420 clases por 480 €: sale a 1,14 € cada clase.</b> Y las 28 primeras, cero.
+      Te digo también el número que nadie dice: <b>147 clases están ya publicadas</b> y el resto se
+      publican por delante de ti, a dos por día. Aquí no se enseña nada que no esté pagado.
+    </div>
     <div class="garantias">
       <div class="gar reveal"><span class="ico">🎁</span><h3>28 clases gratis</h3><p>Enteras y en orden, no una muestra recortada: las 28 primeras del curso de verdad. <b>No te pedimos la tarjeta</b> y no se cobra nada solo.</p></div>
       <div class="gar reveal reveal-delay-1"><span class="ico">✋</span><h3>Cancelas cuando quieras</h3><p>Sin permanencia y sin llamadas de retención. No se te cobra ningún mes más y sigues hasta el día que tienes pagado. Si vuelves, sigues donde lo dejaste.</p></div>
