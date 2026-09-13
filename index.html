@@ -97,6 +97,7 @@ body{font-family:'Manrope',sans-serif;background:#fff;color:#17343c;-webkit-font
   --fs-sub:clamp(17px,2vw,22px);        /* entradillas */
   --fs-destacado:clamp(21px,3vw,28px);  /* citas y frases destacadas */
   --fs-cifra:clamp(42px,5.5vw,64px);    /* números grandes (pasos y precio) */
+  --nav-h:64px;                         /* alto de la barra fija */
 }
 
 /* ── NAV ── */
@@ -106,7 +107,8 @@ body{font-family:'Manrope',sans-serif;background:#fff;color:#17343c;-webkit-font
 body>nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;height:64px;
+  flex-wrap:wrap;
+  padding:0 40px;min-height:64px;
   background:rgba(255,255,255,0.85);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(0,0,0,0.06);
@@ -142,6 +144,27 @@ body>nav{
   nav .nav-wa{padding:8px 11px;font-size:var(--fs-xs)}
 }
 
+/* Los tres sitios de Saneas, siempre a mano (13/09/2026, Óscar). */
+.nav-links{display:flex;align-items:center;gap:26px;min-width:0}
+.nav-links a{
+  font-size:var(--fs-sm);font-weight:700;color:var(--teal-ui);text-decoration:none;
+  white-space:nowrap;padding:6px 2px;border-bottom:2px solid transparent;
+}
+@media (hover:hover) and (pointer:fine){.nav-links a:hover{border-bottom-color:var(--teal)}}
+.nav-links a:active{transform:scale(0.97)}
+@media(max-width:860px){
+  /* En el móvil no caben al lado del logo: segunda fila, a lo ancho. */
+  body>nav{padding-bottom:0}
+  .nav-links{
+    order:3;flex-basis:100%;justify-content:space-between;gap:10px;
+    border-top:1px solid rgba(0,0,0,0.06);padding:7px 0;
+    overflow-x:auto;scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:var(--fs-xs);padding:4px 2px}
+  nav .gs-boton{display:none}   /* el grupo sigue en el pie */
+  :root{--nav-h:88px}
+}
 .nav-wa{
   display:inline-flex;align-items:center;gap:8px;
   background:#25D366;color:var(--text);text-decoration:none;
@@ -809,6 +832,11 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
 <!-- NAV -->
 <nav>
   <div class="nav-izq"><div class="nav-logo saneas">Saneas®</div><button type="button" class="gs-boton" onclick="GrupoSaneas.abrirMenu()" aria-label="Ver las apps del Grupo Saneas"><span class="gs-b-marca">Grupo <b>Saneas</b> &#9656;</span><span class="gs-b-accion">despliega</span></button></div>
+  <nav class="nav-links" aria-label="Secciones de Saneas">
+    <a href="/instala-app">Instala la APP</a>
+    <a href="/academia">La Academia</a>
+    <a href="/asesorias">Tu propia consulta</a>
+  </nav>
   <a class="nav-wa" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20información%20sobre%20Saneas.">
     <svg viewBox="0 0 24 24" class="wa-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.134.558 4.133 1.533 5.868L.057 23.887a.75.75 0 0 0 .917.972l6.195-1.597A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.523-5.168-1.43l-.34-.208-3.677.947.983-3.594-.229-.363A9.98 9.98 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
     Empezar ahora
@@ -817,7 +845,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
 
 <!-- HERO -->
 <main id="contenido">
-<section style="min-height:100svh;display:flex;align-items:center;padding-top:64px;">
+<section style="min-height:100svh;display:flex;align-items:center;padding-top:var(--nav-h,64px);">
   <div class="hero">
     <div class="hero-left reveal">
       <span class="badge"><span class="badge-dot"></span>Nutrición por suscripción</span>
@@ -830,9 +858,6 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
       <a class="btn-orange" href="#planes">
         Ver los planes →
       </a>
-      <a href="/instala-app" style="display:inline-flex;align-items:center;gap:10px;background:var(--teal-ui);color:#fff;text-decoration:none;font-size:var(--fs-md);font-weight:800;padding:18px 40px;border-radius:999px;letter-spacing:-0.3px;transition:transform .15s;">📲 Instala la app Saneas</a>
-      <a href="/asesorias" style="display:inline-flex;align-items:center;gap:10px;background:none;border:2px solid var(--teal);color:var(--teal-ui);text-decoration:none;font-size:var(--fs-base);font-weight:800;padding:14px 32px;border-radius:999px;letter-spacing:-0.3px;transition:transform .15s,background .2s,color .2s;" onmouseover="this.style.background='var(--teal)';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='var(--teal)'">¿Quieres tener tu consulta Saneas?</a>
-      <a href="/academia" style="display:inline-flex;align-items:center;gap:10px;background:none;border:2px solid var(--teal);color:var(--teal-ui);text-decoration:none;font-size:var(--fs-base);font-weight:800;padding:14px 32px;border-radius:999px;letter-spacing:-0.3px;transition:transform .15s,background .2s,color .2s;" onmouseover="this.style.background='var(--teal)';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='var(--teal)'">🎓 Fórmate en la Academia Saneas</a>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
       <div class="phone-wrap">
@@ -846,64 +871,8 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="reveal">
-      <div class="stat-num" data-count="1700">0</div>
-      <div class="stat-label">Pacientes acompañados</div>
-    </div>
-    <div class="reveal reveal-delay-1">
-      <div class="stat-num">48,5 kg</div>
-      <div class="stat-label">Mayor transformación</div>
-    </div>
-    <div class="reveal reveal-delay-2">
-      <div class="stat-num">★★★★★</div>
-      <div class="stat-label">Opiniones reales</div>
-    </div>
-  </div>
-</div>
-
-<!-- NO VENDEMOS -->
-<section class="section no-vendemos">
-  <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">Aquí nadie intentará<br>venderte nada.</h2>
-      <p class="section-sub">Solo aprenderás a comer.</p>
-    </div>
-    <div class="cards reveal reveal-delay-1">
-      <div class="nv-card">
-        <img class="nv-img-placeholder" src="assets/img/batidos.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Batidos">
-        <div class="nv-body">
-          <div class="nv-title">Batidos</div>
-          <div class="nv-desc">No los necesitas para adelgazar</div>
-        </div>
-      </div>
-      <div class="nv-card">
-        <img class="nv-img-placeholder" src="assets/img/pastillas.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Pastillas">
-        <div class="nv-body">
-          <div class="nv-title">Pastillas</div>
-          <div class="nv-desc">No las necesitas para adelgazar</div>
-        </div>
-      </div>
-      <div class="nv-card">
-        <img class="nv-img-placeholder" src="assets/img/inyecciones.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Inyecciones">
-        <div class="nv-body">
-          <div class="nv-title">Inyecciones</div>
-          <div class="nv-desc">No las necesitas para adelgazar</div>
-        </div>
-      </div>
-      <div class="nv-card yes">
-        <img class="nv-img-placeholder" src="assets/img/comida-real.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Solo comida real">
-        <div class="nv-body">
-          <div class="nv-title"><span class="nv-check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Solo comida real</div>
-          <div class="nv-desc">Exactamente lo que siempre debió ser</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- CASO REAL · sube aquí (13/09/2026, Óscar): en vez de tres cifras sueltas,
+     lo segundo que se ve es una persona de verdad. -->
 <!-- CASO REAL -->
 <section class="section caso-real">
   <div class="caso-inner container">
@@ -940,6 +909,46 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
       </div>
       <div class="caso-foto">
         <img src="assets/veronica-resultado.jpg" width="496" height="520" loading="lazy" decoding="async" alt="Verónica Torres resultado">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NO VENDEMOS -->
+<section class="section no-vendemos">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Aquí nadie intentará<br>venderte nada.</h2>
+      <p class="section-sub">Solo aprenderás a comer.</p>
+    </div>
+    <div class="cards reveal reveal-delay-1">
+      <div class="nv-card">
+        <img class="nv-img-placeholder" src="assets/img/batidos.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Batidos">
+        <div class="nv-body">
+          <div class="nv-title">Batidos</div>
+          <div class="nv-desc">No los necesitas para adelgazar</div>
+        </div>
+      </div>
+      <div class="nv-card">
+        <img class="nv-img-placeholder" src="assets/img/pastillas.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Pastillas">
+        <div class="nv-body">
+          <div class="nv-title">Pastillas</div>
+          <div class="nv-desc">No las necesitas para adelgazar</div>
+        </div>
+      </div>
+      <div class="nv-card">
+        <img class="nv-img-placeholder" src="assets/img/inyecciones.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Inyecciones">
+        <div class="nv-body">
+          <div class="nv-title">Inyecciones</div>
+          <div class="nv-desc">No las necesitas para adelgazar</div>
+        </div>
+      </div>
+      <div class="nv-card yes">
+        <img class="nv-img-placeholder" src="assets/img/comida-real.jpg" width="516" height="388" loading="lazy" decoding="async" alt="Solo comida real">
+        <div class="nv-body">
+          <div class="nv-title"><span class="nv-check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Solo comida real</div>
+          <div class="nv-desc">Exactamente lo que siempre debió ser</div>
+        </div>
       </div>
     </div>
   </div>
