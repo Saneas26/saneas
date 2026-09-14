@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Guía paso a paso para tener Saneas como una app en tu móvil, en menos de 2 minutos. Android e iPhone.">
-<title>Instala la app de Saneas en tu móvil</title>
+<meta name="description" content="Descarga la app de Saneas en Google Play o en el App Store, o entra desde la web.">
+<title>Descarga la app de Saneas</title>
 <link rel="canonical" href="https://saneas.es/instala-app">
-<meta property="og:title" content="Instala la app de Saneas en tu móvil">
-<meta property="og:description" content="Guía paso a paso para tener Saneas como una app en tu móvil, en menos de 2 minutos. Android e iPhone.">
+<meta property="og:title" content="Descarga la app de Saneas">
+<meta property="og:description" content="Descarga la app de Saneas en Google Play o en el App Store, o entra desde la web.">
 <meta property="og:url" content="https://saneas.es/instala-app">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Saneas">
@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://saneas.es/assets/og-instala-app.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Instala la app de Saneas en tu móvil">
+<meta property="og:image:alt" content="Descarga la app de Saneas">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Fuentes propias: antes eran tres viajes a dos dominios de Google
      antes de que el texto se pintara con su tipografía. -->
@@ -60,393 +60,47 @@
 </style>
 <style>
   :root {
-    --teal: #3890A4;
     --teal-dark: #2a6d7c;
-    --teal-light: #e8f5f8;
     --orange: #F5862E;
-    --orange-light: #fff3eb;
     --text: #1a2e35;
     --text-muted: #56747e;
     --border: #d0e8ee;
     --bg: #f7fbfc;
     --white: #ffffff;
-    --radius: 14px;
-    --shadow: 0 2px 12px rgba(56,144,164,0.10);
-
-    /* Escala tipográfica: siete pasos. Antes eran diez tamaños con 13px
-       haciendo de todo. El logotipo queda fuera: no es texto de lectura. */
-    --fs-xs: 12px; --fs-sm: 14px; --fs-base: 16px;
-    --fs-md: 18px; --fs-lg: 20px; --fs-xl: 22px; --fs-2xl: 24px;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Manrope', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
 
   /* HEADER */
-  .site-header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .logo-text {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 22px;
-    color: var(--teal-dark);
-    letter-spacing: -0.5px;
-  }
-  .logo-dot {
-    width: 8px; height: 8px;
-    background: var(--orange);
-    border-radius: 50%;
-    margin-bottom: 2px;
-  }
+  .site-header { background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 24px; display: flex; align-items: center; gap: 10px; }
+  .site-header > a { min-height: 44px; }
+  .logo-text { font-family: 'Quicksand', sans-serif; font-size: 22px; color: var(--teal-dark); letter-spacing: -0.5px; }
+  .logo-dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; margin-bottom: 2px; }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
-    color: var(--white);
-    text-align: center;
-    padding: 52px 24px 44px;
+  /* LAS TRES PUERTAS (14/09/2026): Google Play, App Store y la web.
+     Las tres insignias miden lo mismo; la de la web copia la forma de las oficiales. */
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 20px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .badges { list-style: none; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  @media (min-width: 760px) { .badges { flex-direction: row; gap: 22px; } }
+  .badge {
+    display: flex; align-items: center; gap: 12px;
+    width: 232px; height: 70px; padding: 0 18px;
+    background: #000; color: #fff; text-decoration: none;
+    border: 1px solid #a6a6a6; border-radius: 12px;
+    transition: transform 160ms ease-out;
   }
-  .hero-eyebrow {
-    font-size: var(--fs-xs);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 14px;
-  }
-  .hero h1 {
-    font-family: 'Quicksand', sans-serif;
-    font-size: clamp(26px, 5vw, 38px);
-    line-height: 1.2;
-    margin-bottom: 14px;
-  }
-  .hero h1 span { color: #ffb380; }
-  .hero p {
-    font-size: var(--fs-base);
-    opacity: 0.85;
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-  .hero-open {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
-    background: var(--white); color: var(--teal-dark); text-decoration: none;
-    font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: var(--fs-md);
-    padding: 14px 32px; border-radius: 999px; box-shadow: 0 6px 22px rgba(0,0,0,0.18);
-    transition: transform .15s;
-  }
-/* ── HOVER SOLO CON RATÓN ──
-   En una pantalla táctil el :hover se dispara al tocar y se queda
-   pegado hasta que tocas otra cosa. Con el scale(0.97) al pulsar
-   recién puesto, se notaba todavía más. */
-@media (hover:hover) and (pointer:fine){.hero-open:hover { transform: translateY(-2px); }}
-  .hero-url { margin-top: 12px; font-size: var(--fs-sm); opacity: 0.8; }
-
-  /* SELECTOR DE PLATAFORMA */
-  .platform-section {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 36px 20px 0;
-  }
-  .platform-label {
-    text-align: center;
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 14px;
-  }
-  .platform-tabs {
-    display: flex;
-    gap: 10px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 6px;
-    box-shadow: var(--shadow);
-  }
-  .tab-btn {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 12px;
-    border-radius: 10px;
-    border: none;
-    background: transparent;
-    font-family: 'Manrope', sans-serif;
-    font-size: var(--fs-base);
-    font-weight: 600;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: background .22s ease, color .22s ease, transform 160ms ease-out;
-  }
-  .tab-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
-  .tab-btn.active {
-    background: var(--teal-dark);
-    color: var(--white);
-    box-shadow: 0 2px 8px rgba(56,144,164,0.28);
-  }@media (hover:hover) and (pointer:fine){.tab-btn:not(.active):hover { background: var(--teal-light); color: var(--teal-dark); }}
-
-  /* PROGRESO */
-  /* Bloque "Disponible en Google Play" (solo Android; se oculta si no hay enlace) */
-  .play-block { display:none; max-width: 560px; margin: 18px auto 6px; padding: 18px 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); text-align:center; }
-  .play-block.show { display:block; }
-  .play-block h2 { font-size: var(--fs-lg); color: var(--text); margin: 0 0 6px; }
-  .play-block p { font-size: var(--fs-sm); color: var(--text-muted); margin: 0 0 12px; line-height:1.5; }
-  .play-badge { display:inline-flex; align-items:center; gap:12px; background:#000; color:#fff; text-decoration:none; border-radius: 10px; padding: 10px 18px 10px 14px; border:1px solid #a6a6a6; transition: transform 160ms ease-out; }
-  .play-badge:hover { transform: translateY(-1px); }
-  .play-badge svg { width: 30px; height: 32px; flex: 0 0 auto; }
-  .play-badge .t1 { display:block; font-size: 11px; letter-spacing:.2px; line-height:1; opacity:.9; text-align:left; }
-  .play-badge .t2 { display:block; font-size: 20px; font-weight:600; line-height:1.15; text-align:left; }
-  .play-block .alt { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 10px; }
-  .progress-wrap {
-    max-width: 680px;
-    margin: 28px auto 0;
-    padding: 0 20px;
-  }
-  .progress-track {
-    display: flex;
-    align-items: center;
-    gap: 0;
-  }
-  .p-dot {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    color: var(--text-muted);
-    background: var(--white);
-    transition: background .28s ease, border-color .28s ease, color .28s ease, box-shadow .28s ease;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
-  }
-  .p-dot.done { background: var(--teal-dark); border-color: var(--teal-dark); color: var(--white); }
-  .p-dot.active { background: var(--orange); border-color: var(--orange); color: var(--text); box-shadow: 0 0 0 4px var(--orange-light); }
-  .p-line {
-    flex: 1;
-    height: 3px;
-    background: var(--border);
-    transition: background .28s;
-    margin: 0 -1px;
-  }
-  .p-line.done { background: var(--teal); }
-
-  /* TARJETA DE PASO */
-  .card-wrap {
-    max-width: 680px;
-    margin: 22px auto 0;
-    padding: 0 20px;
-  }
-  .step-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    animation: fadeIn .3s ease;
-  }
-  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
-
-  .card-top {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 22px 24px 18px;
-    border-bottom: 1px solid var(--border);
-  }
-  .step-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    background: var(--teal-light);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .step-icon svg { width: 24px; height: 24px; stroke: var(--teal); }
-  .card-title { font-family: 'Quicksand', sans-serif; font-size: var(--fs-lg); color: var(--text); }
-  .card-sub { font-size: var(--fs-sm); color: var(--text-muted); margin-top: 2px; }
-
-  .card-body { padding: 20px 24px; }
-  .instruction {
-    font-size: var(--fs-base);
-    line-height: 1.75;
-    color: var(--text);
-    margin-bottom: 14px;
-  }
-  .pill {
-    display: inline-block;
-    background: var(--teal-light);
-    color: var(--teal-dark);
-    border-radius: 6px;
-    padding: 2px 9px;
-    font-weight: 600;
-    font-size: var(--fs-sm);
-  }
-  .check-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px 16px;
-    background: var(--bg);
-    border-radius: 10px;
-    margin-bottom: 14px;
-  }
-  .check-row svg { width:18px; height:18px; stroke: var(--teal); flex-shrink:0; margin-top:2px; }
-  .check-row p { font-size: var(--fs-sm); line-height: 1.6; color: var(--text); }
-
-  .tip-box {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    background: var(--orange-light);
-    border-left: 3px solid var(--orange);
-    border-radius: 0 10px 10px 0;
-    padding: 12px 16px;
-  }
-  .tip-box svg { width:18px; height:18px; stroke: var(--orange); flex-shrink:0; margin-top:2px; }
-  .tip-box p { font-size: var(--fs-sm); line-height: 1.6; color: #7a4010; }
-  .tip-box strong { color: #a75b1f; }   /* --orange sobre --orange-light daba 2,31 */
-
-  /* FINALIZADO */
-  .finished-card {
-    text-align: center;
-    padding: 40px 24px;
-  }
-  .finished-icon {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: #e6f7f0;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 18px;
-  }
-  .finished-icon svg { width:34px; height:34px; stroke: #1a9e6b; stroke-width:2.5; }
-  .finished-card h2 { font-family: 'Quicksand', sans-serif; font-size: var(--fs-2xl); margin-bottom: 10px; color: var(--text); }
-  .finished-card p { font-size: var(--fs-base); color: var(--text-muted); max-width: 360px; margin: 0 auto; line-height: 1.7; }
-  .restart-btn {
-    margin-top: 22px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 22px;
-    border-radius: 10px;
-    border: 1.5px solid var(--border);
-    background: var(--white);
-    font-family: 'Manrope', sans-serif;
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: border-color .2s ease, color .2s ease, transform 160ms ease-out;
-  }@media (hover:hover) and (pointer:fine){.restart-btn:hover { border-color: var(--teal); color: var(--teal-dark); }}
-
-  /* NAVEGACIÓN */
-  .nav-wrap {
-    max-width: 680px;
-    margin: 16px auto 0;
-    padding: 0 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 12px 22px;
-    border-radius: 10px;
-    border: 1.5px solid var(--border);
-    background: var(--white);
-    font-family: 'Manrope', sans-serif;
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: border-color .2s ease, color .2s ease, transform 160ms ease-out;
-  }@media (hover:hover) and (pointer:fine){.nav-btn:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-dark); }}
-  .nav-btn:disabled { opacity: 0.3; cursor: default; }
-  .nav-btn.primary {
-    background: var(--teal-dark);
-    border-color: var(--teal);
-    color: var(--white);
-    box-shadow: 0 2px 8px rgba(56,144,164,0.25);
-  }@media (hover:hover) and (pointer:fine){.nav-btn.primary:hover:not(:disabled) { background: var(--teal-dark); border-color: var(--teal-dark); }}
-  .nav-btn svg { width:16px; height:16px; stroke: currentColor; }
-  .step-counter { font-size: var(--fs-sm); color: var(--text-muted); font-weight: 500; }
+  .badge svg { width: 34px; height: 34px; flex: 0 0 auto; }
+  .badge .t1 { display: block; font-size: 12px; letter-spacing: .3px; line-height: 1.1; text-align: left; }
+  .badge .t2 { display: block; font-size: 25px; font-weight: 600; line-height: 1.1; letter-spacing: -.3px; text-align: left; white-space: nowrap; }
+  .badge:active { transform: scale(0.97); }
+  @media (hover: hover) and (pointer: fine) { .badge:hover { transform: translateY(-2px); } }
+  :where(a):focus-visible { outline: 3px solid var(--text); outline-offset: 3px; border-radius: 12px; }
+  @media (prefers-reduced-motion: reduce) { .badge { transition: none; } }
 
   /* FOOTER */
-  .page-footer {
-    text-align: center;
-    padding: 24px;
-    font-size: var(--fs-xs);
-    color: var(--text-muted);
-    border-top: 1px solid var(--border);
-    margin-top: 8px;
-  }
+  .page-footer { text-align: center; padding: 24px; font-size: 14px; color: var(--text-muted); border-top: 1px solid var(--border); }
   .page-footer a { color: var(--teal-dark); text-decoration: none; }
-  .legal-links { margin-top: 10px; font-size: var(--fs-sm); }
-
-  /* SELECTOR VERSIÓN IOS */
-  .ios-picker { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
-  .ios-picker-title { font-family: 'Quicksand', sans-serif; font-size: var(--fs-md); color: var(--text); margin-bottom: 4px; text-align: center; }
-  .ios-picker-sub { font-size: var(--fs-sm); color: var(--text-muted); text-align: center; margin-bottom: 8px; line-height: 1.6; }
-  .ios-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; transition: border-color .2s ease, background .2s ease, transform 160ms ease-out; text-align: left; width: 100%; font-family: 'Manrope', sans-serif; }@media (hover:hover) and (pointer:fine){.ios-option:hover { border-color: var(--teal); background: var(--teal-light); }}
-  .ios-option-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: var(--fs-xl); }
-  .ios-option-icon.new { background: #e8f0fe; }
-  .ios-option-icon.old { background: var(--teal-light); }
-  .ios-option-label { font-size: var(--fs-base); font-weight: 600; color: var(--text); }
-  .ios-option-desc { font-size: var(--fs-sm); color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
-  .ios-back { background: none; border: none; color: var(--text-muted); font-size: var(--fs-sm); font-family: 'Manrope', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; margin-top: 4px; }@media (hover:hover) and (pointer:fine){.ios-back:hover { color: var(--teal-dark); }}
-
-  @media (max-width: 480px) {
-    .hero { padding: 38px 18px 32px; }
-    .card-top { padding: 18px 18px 14px; }
-    .card-body { padding: 16px 18px; }
-    .nav-btn { padding: 11px 16px; font-size: var(--fs-sm); }
-  }
-
-
-/* ── FEEDBACK AL PULSAR (Emil Kowalski) ──
-   Un botón tiene que acusar el toque: scale(0.97) al pulsar da la
-   sensación de que la interfaz te ha oído. En una web que se usa sobre
-   todo con el dedo es el detalle que más se nota, y no había ninguno.
-   160ms y ease-out: rápido al entrar, se posa suave. */
-  .tab-btn:active, .nav-btn:not(:disabled):active, .restart-btn:active,
-  .ios-option:active, .hero-open:active, .ios-back:active {
-    transform: scale(0.97);
-  }
-  .hero-open { transition: transform 160ms ease-out, box-shadow .2s ease; }
-  .ios-back  { transition: color .2s ease, transform 160ms ease-out; }
-
-  /* ── FOCO DE TECLADO ── */
-  :where(a,button,[tabindex]):focus-visible {
-    outline: 3px solid var(--text);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-  .hero :where(a,button):focus-visible,
-  .tab-btn.active:focus-visible { outline-color: var(--white); }
-
-  /* ── ZONA TÁCTIL ──
-     Solo el logotipo del header: los demás enlaces cortos van dentro de
-     una frase, y la propia norma exime los enlaces en línea (WCAG 2.5.8).
-     Estirarlos a 44px partiría el párrafo. */
-  .site-header > a { min-height: 44px; }
 </style>
 </head>
 <body>
@@ -457,351 +111,34 @@
     <div class="logo-dot"></div>
   </a>
 </header>
+
 <main id="contenido">
-
-<div class="hero">
-  <p class="hero-eyebrow">Guía rápida</p>
-  <h1>Instala la app de Saneas<br>en tu <span>móvil</span></h1>
-  <p>En menos de 2 minutos la tendrás como una app normal, sin necesidad de buscar el enlace cada vez.</p>
-  <a class="hero-open" href="https://app.saneas.es" target="_blank" rel="noopener">📲 Instala la app Saneas</a>
-  <div class="hero-url">app.saneas.es</div>
-</div>
-
-<div class="platform-section">
-  <p class="platform-label">¿Qué móvil tienes?</p>
-  <div class="platform-tabs">
-    <button class="tab-btn active" id="tab-android" onclick="switchPlatform('android')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><line x1="9" y1="17" x2="9" y2="17.01"/><line x1="15" y1="17" x2="15" y2="17.01"/><line x1="7" y1="4" x2="5" y2="2"/><line x1="17" y1="4" x2="19" y2="2"/></svg>
-      Android
-    </button>
-    <button class="tab-btn" id="tab-apple" onclick="switchPlatform('apple')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75-.67 3.95-1.7C17.1 18.28 18 16.57 18 14.5c0-2.5-1.5-4.5-3-6s-2-3.5-2-5.5c0 0-1 2-3 3.5S7 10 7 14.5c0 2.07.9 3.78 2.05 4.74C10.25 20.27 11.5 20.94 12 20.94z"/><path d="M12 20.94V22"/></svg>
-      iPhone / iPad
-    </button>
-  </div>
-</div>
-
-<!-- Google Play (Android). El enlace se pone en PLAY_URL al final de la página; vacío = bloque oculto. -->
-<div class="play-block" id="play-block">
-  <h2>Descárgala desde Google Play</h2>
-  <p>La forma más fácil en Android: instálala como cualquier otra app y olvídate de los pasos de abajo.</p>
-  <a class="play-badge" id="play-link" href="#" target="_blank" rel="noopener" aria-label="Disponible en Google Play">
-    <svg viewBox="0 0 30 32" aria-hidden="true"><path fill="#00d7fe" d="M1.2 1.1 16.3 16 1.2 30.9c-.4-.3-.7-.9-.7-1.6V2.7c0-.7.3-1.3.7-1.6z"/><path fill="#00f076" d="M21.4 11 16.3 16 1.2 1.1c.5-.4 1.2-.4 1.9 0L21.4 11z"/><path fill="#ff3a44" d="M21.4 21 3.1 30.9c-.7.4-1.4.4-1.9 0L16.3 16l5.1 5z"/><path fill="#ffd500" d="M28.2 14.2c1.4.8 1.4 2.8 0 3.6L21.4 21l-5.1-5 5.1-5 6.8 3.2z"/></svg>
-    <span><span class="t1">DISPONIBLE EN</span><span class="t2">Google Play</span></span>
-  </a>
-  <p class="alt">¿Prefieres no pasar por la tienda? Sigue la guía de abajo: funciona igual.</p>
-</div>
-
-<div class="progress-wrap">
-  <div class="progress-track" id="progress-track"></div>
-</div>
-
-<div class="card-wrap">
-  <div class="step-card" id="step-card"></div>
-</div>
-
-<div class="nav-wrap">
-  <button class="nav-btn" id="btn-prev" onclick="changeStep(-1)" disabled>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    Atrás
-  </button>
-  <span class="step-counter" id="step-counter"></span>
-  <button class="nav-btn primary" id="btn-next" onclick="changeStep(1)">
-    Siguiente
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
-</div>
-
+  <h1 class="sr-only">Descarga la app de Saneas</h1>
+  <ul class="badges">
+    <li>
+      <a class="badge" href="https://play.google.com/store/apps/details?id=es.saneas.app" target="_blank" rel="noopener" aria-label="Disponible en Google Play">
+        <svg viewBox="0 0 30 32" aria-hidden="true"><path fill="#00d7fe" d="M1.2 1.1 16.3 16 1.2 30.9c-.4-.3-.7-.9-.7-1.6V2.7c0-.7.3-1.3.7-1.6z"/><path fill="#00f076" d="M21.4 11 16.3 16 1.2 1.1c.5-.4 1.2-.4 1.9 0L21.4 11z"/><path fill="#ff3a44" d="M21.4 21 3.1 30.9c-.7.4-1.4.4-1.9 0L16.3 16l5.1 5z"/><path fill="#ffd500" d="M28.2 14.2c1.4.8 1.4 2.8 0 3.6L21.4 21l-5.1-5 5.1-5 6.8 3.2z"/></svg>
+        <span><span class="t1">DISPONIBLE EN</span><span class="t2">Google Play</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="badge" href="https://apps.apple.com/es/app/saneas/id6809389820" target="_blank" rel="noopener" aria-label="Descárgalo en el App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.37 12.73c-.03-2.83 2.31-4.19 2.41-4.26-1.31-1.92-3.36-2.18-4.09-2.21-1.74-.18-3.4 1.03-4.28 1.03-.89 0-2.25-1-3.7-.98-1.9.03-3.65 1.11-4.63 2.81-1.97 3.42-.5 8.48 1.42 11.25.94 1.36 2.06 2.88 3.52 2.83 1.41-.06 1.95-.91 3.66-.91 1.7 0 2.18.91 3.67.88 1.52-.03 2.48-1.38 3.41-2.74 1.07-1.57 1.51-3.09 1.54-3.17-.03-.01-2.95-1.13-2.98-4.49zM13.56 4.43c.78-.94 1.3-2.25 1.16-3.55-1.12.05-2.48.75-3.28 1.69-.72.83-1.35 2.16-1.18 3.44 1.25.1 2.52-.63 3.3-1.58z"/></svg>
+        <span><span class="t1">Descárgalo en el</span><span class="t2">App Store</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="badge" href="https://app.saneas.es" target="_blank" rel="noopener" aria-label="Entra desde la web, app.saneas.es">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span><span class="t1">ENTRA DESDE LA</span><span class="t2">Web</span></span>
+      </a>
+    </li>
+  </ul>
 </main>
+
 <footer class="page-footer">
-  ¿Tienes dudas? Escríbenos por <a href="https://wa.me/34689806987">WhatsApp</a> · <a href="/">Volver a Saneas</a>
-  <nav class="legal-links" aria-label="Información legal"><a href="/privacidad">Privacidad</a> · <a href="/aviso-legal">Aviso legal</a> · <a href="/cookies">Cookies</a></nav>
+  <nav aria-label="Información legal"><a href="/privacidad">Privacidad</a> · <a href="/aviso-legal">Aviso legal</a> · <a href="/cookies">Cookies</a></nav>
 </footer>
 
-<script>
-const iconWorld = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
-const iconMenu = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>`;
-const iconHome = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`;
-const iconEdit = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
-const iconGrid = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`;
-const iconShare = `<svg viewBox="0 0 24 24" fill="none" stroke="#3890A4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`;
-const iconCheck = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-const iconBulb = `<svg viewBox="0 0 24 24" fill="none" stroke="#F5862E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>`;
-
-const platforms = {
-  android: [
-    {
-      icon: iconWorld,
-      title: "Abre la app en Chrome",
-      sub: "El navegador verde de Android",
-      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal-dark);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Chrome</span>, el navegador con el icono de colores.</p>
-      <div class="check-row">${iconCheck}<p>Verás que la app se abre como una página web. Es normal, así es como funciona. ¡Sigue al siguiente paso!</p></div>`,
-      tip: "Si no tienes Chrome, puedes descargarlo gratis desde la Play Store. Es el icono circular con los colores rojo, amarillo, verde y azul."
-    },
-    {
-      icon: iconMenu,
-      title: "Toca los tres puntitos",
-      sub: "Arriba a la derecha de Chrome",
-      body: `<p class="instruction">Mira la esquina <span class="pill">superior derecha</span> de la pantalla. Verás tres puntitos verticales ⋮ Tócalos con el dedo.</p>
-      <div class="check-row">${iconCheck}<p>Se abrirá un menú con varias opciones. No te preocupes, en el siguiente paso te decimos exactamente cuál tocar.</p></div>`,
-      tip: "Los puntitos están justo al lado de la barra donde aparece la dirección web (la que empieza por https://)."
-    },
-    {
-      icon: iconHome,
-      title: "Toca «Añadir a pantalla de inicio»",
-      sub: "Esta es la opción clave del tutorial",
-      body: `<p class="instruction">Dentro del menú, busca y toca la opción <span class="pill">Añadir a pantalla de inicio</span>.</p>
-      <div class="check-row">${iconCheck}<p>Puede que tengas que deslizar el menú hacia abajo para verla. Está cerca de las opciones de «Compartir».</p></div>`,
-      tip: "En algunos móviles pone «Instalar aplicación» en lugar de «Añadir a pantalla de inicio». Las dos funcionan exactamente igual."
-    },
-    {
-      icon: iconEdit,
-      title: "Ponle nombre y confirma",
-      sub: "El último paso antes de tenerla lista",
-      body: `<p class="instruction">Aparecerá una ventana pequeña con el nombre. Puedes dejarlo como está o escribir <span class="pill">Saneas</span>. Luego toca el botón <span class="pill">Añadir</span>.</p>
-      <div class="check-row">${iconCheck}<p>No hace falta cambiar nada. El nombre es solo para que reconozcas el icono en tu pantalla.</p></div>`,
-      tip: "Si te equivocas con el nombre, no pasa nada. Después puedes mantener el icono pulsado y elegir «Renombrar»."
-    },
-    {
-      icon: iconGrid,
-      title: "¡Ya está en tu pantalla!",
-      sub: "Busca el icono de Saneas en tu móvil",
-      body: `<p class="instruction">Sal de Chrome pulsando el botón de inicio de tu móvil. En tu pantalla principal verás el icono de <span class="pill">Saneas</span> como si fuera una app descargada.</p>
-      <div class="check-row">${iconCheck}<p>Desde ahora, toca ese icono cada vez que quieras entrar. Sin buscar el enlace, sin pasos extra.</p></div>`,
-      tip: "Si no ves el icono, desliza las pantallas hacia los lados. A veces se coloca al final de todas las páginas."
-    }
-  ],
-  apple_old: [
-    {
-      icon: iconWorld,
-      title: "Abre la app en Safari",
-      sub: "El navegador azul del iPhone",
-      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal-dark);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
-      <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
-      tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
-    },
-    {
-      icon: iconShare,
-      title: "Toca el botón de compartir",
-      sub: "La cajita con una flecha hacia arriba, en la barra de abajo",
-      body: `<p class="instruction">En la barra de abajo de Safari verás un icono con <span class="pill">una cajita y una flecha apuntando hacia arriba</span>. Tócalo.</p>
-      <div class="check-row">${iconCheck}<p>Se abrirá un panel grande con muchas opciones de colores. Es el menú de «compartir» del iPhone.</p></div>`,
-      tip: "En iPad este botón está arriba a la derecha, no abajo. Tiene el mismo aspecto: cajita con flecha hacia arriba."
-    },
-    {
-      icon: iconHome,
-      title: "Busca «En pantalla de inicio»",
-      sub: "Desliza el panel hacia abajo para verlo",
-      body: `<p class="instruction">En el panel que se abrió, desliza hacia <span class="pill">abajo</span> hasta encontrar la opción <span class="pill">En pantalla de inicio</span>. Tiene un icono de cuadrado con un símbolo +.</p>
-      <div class="check-row">${iconCheck}<p>Tócalo cuando lo veas. Si no aparece a primera vista, sigue bajando, está casi siempre en la segunda o tercera fila.</p></div>`,
-      tip: "El panel tiene muchas opciones. Ve despacio deslizando con el dedo hacia abajo hasta encontrar exactamente «En pantalla de inicio»."
-    },
-    {
-      icon: iconEdit,
-      title: "Ponle nombre y toca «Añadir»",
-      sub: "Ya casi lo tienes",
-      body: `<p class="instruction">Saldrá una pantalla con el nombre de la app. Puedes cambiarlo a <span class="pill">Saneas</span> si quieres. Cuando estés lista/o, toca el botón azul <span class="pill">Añadir</span> en la esquina superior derecha.</p>
-      <div class="check-row">${iconCheck}<p>Eso es todo. Con ese toque ya queda instalada en tu pantalla de inicio.</p></div>`,
-      tip: "El botón «Añadir» está arriba a la derecha de esa pantalla pequeña. Es de color azul y bastante visible."
-    },
-    {
-      icon: iconGrid,
-      title: "¡Ya tienes tu app en el iPhone!",
-      sub: "Búscala en la pantalla de inicio",
-      body: `<p class="instruction">Sal de Safari pulsando el botón de inicio (o deslizando desde abajo). Verás el icono de <span class="pill">Saneas</span> en tu pantalla, como una app de verdad.</p>
-      <div class="check-row">${iconCheck}<p>Se abrirá a pantalla completa, sin la barra de Safari. A partir de ahora entra siempre desde ahí.</p></div>`,
-      tip: "Si no la encuentras, desliza hacia abajo desde el centro de la pantalla para abrir el buscador y escribe «Saneas»."
-    }
-  ],
-  apple_new: [
-    {
-      icon: iconWorld,
-      title: "Abre la app en Safari",
-      sub: "El navegador azul del iPhone",
-      body: `<p class="instruction">Abre este enlace: <a href="https://app.saneas.es" target="_blank" style="color:var(--teal-dark);font-weight:600;">app.saneas.es</a> — asegúrate de abrirlo con <span class="pill">Safari</span>, el icono azul con una brújula que viene en todos los iPhone.</p>
-      <div class="check-row">${iconCheck}<p>Es muy importante usar Safari y no otro navegador. Solo con Safari funciona el truco que vamos a hacer.</p></div>`,
-      tip: "Si el enlace se abre en otro navegador, cópialo, abre Safari y pégalo en la barra de arriba donde aparece la dirección web."
-    },
-    {
-      icon: iconMenu,
-      title: "Toca los tres puntitos",
-      sub: "A la derecha de la barra de navegación, abajo",
-      body: `<p class="instruction">En iOS 26, Safari tiene la barra de navegación <span class="pill">abajo</span>. A la derecha de esa barra verás tres puntitos <span class="pill">···</span>. Tócalos.</p>
-      <div class="check-row">${iconCheck}<p>Se abrirá un menú pequeño con tres opciones: «Nueva ventana», «Compartir» y «Añadir a pantalla de inicio».</p></div>`,
-      tip: "La barra con la dirección web está abajo del todo, no arriba. Los tres puntitos están en el extremo derecho de esa barra."
-    },
-    {
-      icon: iconHome,
-      title: "Toca «Añadir a pantalla de inicio»",
-      sub: "Aparece directamente en el menú, sin más pasos",
-      body: `<p class="instruction">En el menú que se abrió verás directamente la opción <span class="pill">Añadir a pantalla de inicio</span>. Tócala.</p>
-      <div class="check-row">${iconCheck}<p>En iOS 26 es mucho más rápido que antes. No hay que buscar entre muchas opciones, aparece enseguida.</p></div>`,
-      tip: "Si en lugar de «Añadir a pantalla de inicio» ves «Compartir», toca «Compartir» y desde ahí busca la opción en el panel que se abre."
-    },
-    {
-      icon: iconEdit,
-      title: "Ponle nombre y toca «Añadir»",
-      sub: "Ya casi lo tienes",
-      body: `<p class="instruction">Saldrá una pantalla con el nombre de la app. Puedes cambiarlo a <span class="pill">Saneas</span> si quieres. Cuando estés lista/o, toca el botón azul <span class="pill">Añadir</span> en la esquina superior derecha.</p>
-      <div class="check-row">${iconCheck}<p>Eso es todo. Con ese toque ya queda instalada en tu pantalla de inicio.</p></div>`,
-      tip: "El botón «Añadir» está arriba a la derecha de esa pantalla pequeña. Es de color azul y bastante visible."
-    },
-    {
-      icon: iconGrid,
-      title: "¡Ya tienes tu app en el iPhone!",
-      sub: "Búscala en la pantalla de inicio",
-      body: `<p class="instruction">Sal de Safari deslizando desde abajo o pulsando el botón de inicio. Verás el icono de <span class="pill">Saneas</span> en tu pantalla, como una app de verdad.</p>
-      <div class="check-row">${iconCheck}<p>Se abrirá a pantalla completa, sin la barra de Safari. A partir de ahora entra siempre desde ahí.</p></div>`,
-      tip: "Si no la encuentras, desliza hacia abajo desde el centro de la pantalla para abrir el buscador y escribe «Saneas»."
-    }
-  ]
-};
-
-// Enlace de la app en Google Play. Déjalo vacío ('') hasta que la app sea pública; con el enlace, el bloque aparece solo en Android.
-const PLAY_URL = 'https://play.google.com/store/apps/details?id=es.saneas.app';
-function renderPlayBlock() {
-  const b = document.getElementById('play-block'); if (!b) return;
-  const ok = platform === 'android' && PLAY_URL;
-  b.classList.toggle('show', !!ok);
-  if (ok) document.getElementById('play-link').href = PLAY_URL;
-}
-
-let platform = 'android';
-let iosVariant = null; // null = no elegido, 'old' o 'new'
-let step = 0;
-
-function switchPlatform(p) {
-  platform = p;
-  iosVariant = null;
-  step = 0;
-  document.getElementById('tab-android').classList.toggle('active', p === 'android');
-  document.getElementById('tab-apple').classList.toggle('active', p === 'apple');
-  renderPlayBlock();
-  render();
-}
-
-function selectIosVariant(v) {
-  iosVariant = v;
-  step = 0;
-  render();
-}
-
-function getSteps() {
-  if (platform === 'android') return platforms.android;
-  if (platform === 'apple' && iosVariant === 'old') return platforms.apple_old;
-  if (platform === 'apple' && iosVariant === 'new') return platforms.apple_new;
-  return null;
-}
-
-function changeStep(dir) {
-  const steps = getSteps();
-  if (!steps) return;
-  step = Math.max(0, Math.min(steps.length, step + dir));
-  render();
-}
-
-function render() {
-  const steps = getSteps();
-  const card = document.getElementById('step-card');
-  const track = document.getElementById('progress-track');
-  const btnPrev = document.getElementById('btn-prev');
-  const btnNext = document.getElementById('btn-next');
-  const counter = document.getElementById('step-counter');
-
-  // Si es iPhone y no ha elegido versión → mostrar selector
-  if (platform === 'apple' && !iosVariant) {
-    track.innerHTML = '';
-    counter.textContent = '';
-    btnPrev.disabled = true;
-    btnNext.style.display = 'none';
-    card.innerHTML = `
-      <div class="ios-picker">
-        <div class="ios-picker-title">¿Qué versión de iOS tienes?</div>
-        <p class="ios-picker-sub">Elige según la versión de tu iPhone para ver el tutorial correcto. Si no lo sabes, ve a Ajustes → General → Información → Versión de software.</p>
-        <button class="ios-option" onclick="selectIosVariant('new')">
-          <div class="ios-option-icon new">✦</div>
-          <div>
-            <div class="ios-option-label">iOS 26 o superior</div>
-            <div class="ios-option-desc">Safari tiene tres puntitos ··· en la barra de arriba</div>
-          </div>
-        </button>
-        <button class="ios-option" onclick="selectIosVariant('old')">
-          <div class="ios-option-icon old">◷</div>
-          <div>
-            <div class="ios-option-label">iOS 25 o anterior</div>
-            <div class="ios-option-desc">Safari tiene el botón de compartir (cajita con flecha) abajo</div>
-          </div>
-        </button>
-      </div>`;
-    return;
-  }
-
-  btnNext.style.display = '';
-  const total = steps.length;
-
-  // Progress
-  track.innerHTML = '';
-  steps.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'p-dot' + (i < step ? ' done' : (i === step ? ' active' : ''));
-    dot.innerHTML = i < step
-      ? `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>`
-      : (i + 1);
-    track.appendChild(dot);
-    if (i < total - 1) {
-      const line = document.createElement('div');
-      line.className = 'p-line' + (i < step ? ' done' : '');
-      track.appendChild(line);
-    }
-  });
-
-  // Card
-  if (step >= total) {
-    card.innerHTML = `
-      <div class="finished-card">
-        <div class="finished-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h2>¡Ya tienes la app instalada!</h2>
-        <p>Ahora puedes entrar a Saneas directamente desde tu pantalla, como cualquier otra app. Sin buscar enlaces, sin pasos.</p>
-        ${platform === 'apple' ? `<button class="ios-back" onclick="iosVariant=null;step=0;render()" style="margin:12px auto 0;justify-content:center;">← Elegir otra versión de iOS</button>` : ''}
-        <button class="restart-btn" onclick="step=0;render()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-          Repetir tutorial
-        </button>
-      </div>`;
-  } else {
-    const s = steps[step];
-    const backBtn = (platform === 'apple' && step === 0)
-      ? `<button class="ios-back" onclick="iosVariant=null;step=0;render()">← Cambiar versión de iOS</button>`
-      : '';
-    card.innerHTML = `
-      <div class="card-top">
-        <div class="step-icon">${s.icon}</div>
-        <div>
-          <div class="card-title">${s.title}</div>
-          <div class="card-sub">${s.sub}</div>
-        </div>
-      </div>
-      <div class="card-body">
-        ${s.body}
-        <div class="tip-box">${iconBulb}<p><strong>Consejo:</strong> ${s.tip}</p></div>
-        ${backBtn}
-      </div>`;
-  }
-
-  btnPrev.disabled = step === 0;
-  btnNext.disabled = step >= total;
-  btnNext.innerHTML = step >= total - 1 && step < total
-    ? `Finalizar <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>`
-    : `Siguiente <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>`;
-
-  counter.textContent = step < total ? `Paso ${step + 1} de ${total}` : '✓ Completado';
-}
-
-renderPlayBlock();
-render();
-</script>
-<script src="/assets/telemetria.js" defer></script>
 </body>
 </html>
