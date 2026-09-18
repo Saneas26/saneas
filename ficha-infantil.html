@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ficha de alimentación infantil · Saneas</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#19352d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2318332b'/%3E%3Ctext x='18' y='46' font-size='42' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f7f3;color:#19352d;font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+header{background:#19352d;color:#fff;padding:16px 5%;position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px}
+header b{font-size:22px}
+#estado{font-size:14px;color:#cfe3d4;text-align:right}
+main{max-width:820px;margin:0 auto;padding:22px 16px 120px}
+h1{font-size:30px;line-height:1.15;margin:8px 0 14px;font-weight:600}
+.intro{background:#fff;border:1px solid #dfe5de;border-radius:14px;padding:20px;margin-bottom:18px}
+.intro p{margin:0 0 10px}
+details{background:#fff;border:1px solid #dfe5de;border-radius:14px;margin-bottom:12px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:18px 20px;font-size:20px;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary .cnt{font-size:14px;font-weight:700;color:#2f6b4f;background:#e3efe4;border-radius:20px;padding:3px 10px;white-space:nowrap}
+details[open] summary{border-bottom:1px solid #dfe5de}
+.sec{padding:10px 20px 20px}
+.f{margin:18px 0}
+.f>label.q,.q{display:block;font-weight:700;margin-bottom:8px}
+input[type=text],textarea{width:100%;font:inherit;font-size:18px;color:#19352d;border:2px solid #c9d6cb;border-radius:10px;padding:12px;background:#fbfcfa}
+textarea{min-height:92px;resize:vertical}
+input[type=text]:focus,textarea:focus{outline:none;border-color:#2f6b4f;background:#fff}
+.op{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border:2px solid #e1e8e2;border-radius:10px;margin:6px 0;cursor:pointer;background:#fbfcfa}
+.op input{width:24px;height:24px;flex:none;margin:2px 0 0;accent-color:#2f6b4f}
+.op.on{border-color:#2f6b4f;background:#eef6ef}
+.info{background:#eef6ef;border-radius:10px;padding:12px 14px;margin:14px 0}
+.fila{border:1px solid #dfe5de;border-radius:12px;padding:12px 14px;margin:10px 0;background:#fbfcfa}
+.fila .h{font-weight:700;margin-bottom:6px}
+.fila label{display:block;font-size:15px;font-weight:700;color:#4d5e57;margin:8px 0 4px}
+.nota{font-size:15px;color:#4d5e57}
+.cons{background:#fff7e8;border:2px solid #e9b85c;border-radius:14px;padding:18px 20px;margin-bottom:18px}
+.cons .op{background:#fff}
+button.enviar{display:block;width:100%;margin:24px 0 8px;padding:20px;border:0;border-radius:50px;background:#f5862e;color:#17343c;font-size:20px;font-weight:800;cursor:pointer}
+button.enviar:disabled{opacity:.6}
+#msg{font-size:17px;font-weight:700;text-align:center;min-height:24px}
+.ok{background:#e3efe4;border:2px solid #2f6b4f;border-radius:14px;padding:18px;margin-top:14px;display:none}
+a{color:#2f6b4f}
+</style></head><body>
+<header><b>Saneas</b><span id="estado">Cargando…</span></header>
+<main>
+<h1>Ficha de alimentación de <span id="nino">tu hijo</span></h1>
+<div class="intro">
+<p>Complétala con tranquilidad y basándote en lo que observas habitualmente. <b>No hace falta pesar los alimentos</b>: puedes indicar unidades, cucharadas, vasos o platos. Las fotos mándalas a Óscar por WhatsApp.</p>
+<p><b>Se guarda sola</b> mientras escribes. Puedes dejarla a medias y seguir otro día, incluso desde otro dispositivo con este mismo enlace.</p>
+<p>Es preferible completar las preguntas sobre peso, cuerpo o conducta con la comida <b>sin el niño presente</b>, para no transmitirle preocupación ni hacerle sentir que está «a dieta». Si no sabes una respuesta, escribe «no lo sé».</p>
+</div>
+<div class="cons">
+<label class="op" id="consLbl"><input type="checkbox" id="consentimiento"><span>Soy la madre, el padre o el tutor legal del niño y <b>doy mi consentimiento</b> para que Saneas trate estos datos de salud con el único fin de preparar y seguir su plan de alimentación. Puedo pedir que se borren en cualquier momento. <a href="/privacidad" target="_blank">Política de privacidad</a>.</span></label>
+</div>
+<div id="form"></div>
+<button class="enviar" id="btnEnviar">Enviar a Óscar</button>
+<div id="msg"></div>
+<div class="ok" id="okBox"><b>¡Recibido! Gracias.</b><br>Óscar ya tiene la ficha. Si más adelante recuerdas algo, puedes volver a este mismo enlace, cambiarlo y enviarlo otra vez.</div>
+</main>
+<script>
+var SB='https://uisrxztowgdpkxeuznfh.supabase.co', KEY='sb_publishable_8ybOGHnn9rsMDf57mx-Igw_AVvWK30D';
+var TOKEN=new URLSearchParams(location.search).get('c')||'';
+var D={}, TIMER=null, LS='ficha_inf_'+TOKEN;
+function S(t,f){return{t:t,f:f}}
+function txt(id,l){return{k:'txt',id:id,l:l}} function area(id,l){return{k:'area',id:id,l:l}}
+function chk(id,l,o,otros){return{k:'chk',id:id,l:l,o:o,otros:!!otros}} function rad(id,l,o){return{k:'rad',id:id,l:l,o:o}}
+function info(l){return{k:'info',l:l}} function tabla(id,l,cols,filas,n){return{k:'tabla',id:id,l:l,cols:cols,filas:filas||null,n:n||0}}
+function lista(id,l,n){return{k:'lista',id:id,l:l,n:n}}
+var SN=['Sí','No','No lo sé'];
+var SCHEMA=[
+S('1. Datos generales',[txt('s1_nombre','Nombre y apellidos del niño'),info('Fecha de nacimiento: <b>24/12/2015</b> · Edad: <b>10 años y 8 meses</b>'),txt('s1_curso','Curso escolar'),txt('s1_madre','Nombre de la madre'),txt('s1_padre','Nombre del padre'),
+ chk('s1_vive','¿Con quién vive habitualmente?',['Madre','Padre','Custodia compartida'],true),area('s1_dias','Indica qué días permanece en cada domicilio'),txt('s1_compra','¿Quién compra y prepara habitualmente su comida?'),
+ rad('s1_parecida','¿Come de forma parecida en ambos domicilios?',SN),area('s1_diferencias','Explica las principales diferencias'),rad('s1_apoyo','¿Ambos progenitores conocen y apoyan este proceso?',['Sí','No','Parcialmente'])]),
+S('2. Situación familiar y emocional',[txt('s2_separacion','¿Cuándo se produjo la separación de los padres?'),area('s2_inicial','¿Cómo consideras que le afectó inicialmente?'),area('s2_actual','¿Cómo crees que le afecta actualmente?'),
+ chk('s2_cambios','¿Ha habido recientemente otros cambios importantes?',['Cambio de domicilio','Cambio de colegio','Fallecimiento o enfermedad familiar','Conflictos familiares','Acoso escolar','Nacimiento de un hermano','Ninguno'],true),
+ chk('s2_emocion','Cuando está nervioso, triste, enfadado o aburrido, ¿cambia su forma de comer?',['Come más','Come menos','Pide alimentos concretos','Come impulsivamente','No observamos cambios'],true),area('s2_ejemplo','Describe algún ejemplo')]),
+S('3. Diagnósticos y seguimiento médico',[rad('s3_tdah','TDAH',['Diagnóstico confirmado','En valoración','No confirmado']),chk('s3_tea','Posible trastorno del espectro autista',['En valoración','Sospecha familiar','Sospecha escolar','Sospecha médica','Diagnóstico confirmado']),
+ chk('s3_prof','Profesionales que le atienden actualmente',['Pediatra','Neuropediatra','Psicólogo infantil','Psiquiatra infantil','Logopeda','Terapeuta ocupacional','Orientador escolar'],true),
+ area('s3_otros','Otros diagnósticos, enfermedades, operaciones o ingresos hospitalarios'),txt('s3_alergias','Alergias conocidas'),area('s3_asma','¿Tiene asma, dermatitis, rinitis u otras afecciones frecuentes?')]),
+S('4. Medicación y suplementos',[tabla('s4_med','Indica todo lo que toma actualmente',['Medicamento o suplemento','Dosis','Hora','Desde cuándo','Motivo'],null,3),
+ chk('s4_efectos','Desde que toma la medicación para el TDAH, ¿habéis observado alguno de estos cambios?',['Menos hambre por la mañana','Menos hambre al mediodía','Mucha hambre por la tarde o noche','Pérdida de peso','Aumento de peso','Dolor de barriga','Náuseas','Estreñimiento','Dificultad para dormir','Irritabilidad cuando desaparece el efecto','Ningún cambio'],true)]),
+S('5. Crecimiento y antecedentes',[info('Datos actuales: <b>peso 46 kg · altura 1,50 m · cintura 83 cm</b>'),txt('s5_fecha','Fecha aproximada de esas mediciones'),area('s5_cintura','¿Cómo se midió la cintura y en qué zona?'),rad('s5_ropa','¿El peso fue tomado con ropa y calzado?',SN),
+ tabla('s5_hist','Revisa la cartilla de salud, informes pediátricos o revisiones escolares y anota cualquier dato que encuentres',['Fecha o edad','Peso','Altura','Observaciones'],null,3),
+ txt('s5_nacer','Peso al nacer, si se conoce'),txt('s5_semanas','Semanas de gestación'),area('s5_embarazo','¿Hubo dificultades importantes durante el embarazo, parto o primeros meses?'),rad('s5_pubertad','¿Ha comenzado a mostrar cambios propios de la pubertad?',SN)]),
+S('6. Intolerancia a la lactosa',[rad('s6_diag','¿La intolerancia está diagnosticada médicamente?',['Sí, mediante prueba','Indicada por el pediatra','Sospechada por la familia','No lo sé']),
+ chk('s6_sint','¿Qué síntomas presenta cuando toma lactosa?',['Dolor abdominal','Hinchazón','Gases','Diarrea','Náuseas','Vómitos','Estreñimiento'],true),txt('s6_tiempo','¿Cuánto tiempo tardan en aparecer los síntomas?'),
+ chk('s6_tolera','¿Qué alimentos tolera sin molestias?',['Leche sin lactosa','Yogur sin lactosa','Yogur normal','Queso fresco','Queso curado','Mantequilla','Bebida de soja','Ninguno'],true),
+ rad('s6_inmediata','¿Ha tenido alguna reacción inmediata con ronchas, inflamación, picor o dificultad respiratoria?',['Sí','No']),area('s6_explica','En caso afirmativo, explica qué ocurrió')]),
+S('7. Digestión y salud gastrointestinal',[rad('s7_frec','Frecuencia de las deposiciones',['Más de una al día','Una al día','Cada dos días','Menos de tres por semana']),
+ chk('s7_prob','¿Suele presentar alguno de estos problemas?',['Estreñimiento','Diarrea','Heces muy duras','Heces muy blandas','Dolor al defecar','Manchado de ropa interior','Dolor abdominal','Hinchazón frecuente','Muchos gases','Reflujo o ardor','Náuseas','Vómitos','Ninguno']),
+ area('s7_alim','¿Hay alimentos que relacionéis claramente con estos síntomas?'),area('s7_laxantes','¿Ha necesitado laxantes, enemas o medicación digestiva?')]),
+S('8. Masticación, deglución y dificultades físicas al comer',[chk('s8_comp','¿Presenta alguno de estos comportamientos?',['Mastica durante mucho tiempo','Guarda comida en la boca','Escupe alimentos','Tiene arcadas con determinadas texturas','Se atraganta con frecuencia','Tose al comer o beber','Necesita beber para poder tragar','Evita alimentos duros','Evita alimentos secos','Come demasiado rápido','Se llena enseguida','Ninguno']),
+ area('s8_dental','¿Tiene problemas dentales, dolor al masticar o respiración habitual por la boca?'),area('s8_miedo','¿Alguna vez ha tenido miedo a comer después de un atragantamiento o vómito?')]),
+S('9. Alimentos aceptados y rechazados',[tabla('s9_grupos','Indica, para cada grupo, lo que come y la forma exacta en que lo acepta',['Alimentos que acepta','Forma, textura o marca necesaria','Alimentos que rechaza'],['Carne','Pescado y marisco','Huevos','Legumbres y hummus','Lácteos sin lactosa','Arroz, pasta, pan y cereales','Patata y boniato','Verduras','Frutas','Frutos secos','Dulces y aperitivos','Bebidas']),
+ lista('s9_fav','Sus cinco alimentos o platos favoritos',5),area('s9_antes','Alimentos que comía anteriormente y ahora rechaza')]),
+S('10. Dificultad específica con la carne',[chk('s10_rechaza','¿Qué carnes rechaza?',['Pollo','Pavo','Ternera','Cerdo','Cordero','Todas']),
+ chk('s10_molesta','¿Qué aspecto parece molestarle principalmente?',['Textura fibrosa','Grasa visible','Olor','Sabor','Tener que masticarla','Trozos grandes','Saber que es carne','Mezcla de varias cosas','No lo sabemos']),
+ chk('s10_tolera','¿Tolera alguna de estas preparaciones?',['Carne picada','Hamburguesa','Albóndigas','Croquetas caseras','Carne triturada en crema','Salsa boloñesa','Pollo desmenuzado','Caldo elaborado con carne','Ninguna']),
+ area('s10_como','Explica cómo consigues introducir actualmente la carne'),rad('s10_sabe','¿Él sabe que la preparación contiene carne?',['Siempre','Algunas veces','Generalmente no']),area('s10_descubre','¿Qué sucede cuando descubre la carne?')]),
+S('11. Perfil sensorial',[chk('s11_acepta','Texturas que suele aceptar mejor',['Cremosas','Trituradas','Blandas','Crujientes','Secas','Jugosas','Frías','Calientes','Templadas']),
+ chk('s11_rechazo','Lo que suele provocarle rechazo',['Grumos','Texturas fibrosas','Alimentos mezclados','Salsas','Alimentos húmedos','Alimentos que se tocan entre sí','Olores intensos','Colores concretos','Temperaturas concretas','Cambios de marca o envase','Cambios en la presentación']),
+ area('s11_orden','¿Necesita que los alimentos estén siempre colocados o cortados de la misma manera?'),
+ chk('s11_nuevos','¿Acepta probar alimentos nuevos?',['Normalmente sí','Solo con mucha insistencia','Los toca o huele, pero no los prueba','Se angustia o enfada','Tiene arcadas','Vomita','Se levanta de la mesa']),
+ area('s11_funciona','¿Qué estrategias han funcionado mejor para que pruebe algo nuevo?'),area('s11_empeora','¿Qué estrategias empeoran la situación?')]),
+S('12. Hambre, saciedad y conducta alimentaria',[chk('s12_conductas','¿Observáis alguna de estas conductas?',['Pide comida continuamente','Picotea entre horas','Come por aburrimiento','Come muy rápido','Repite plato habitualmente','Parece no detectar cuándo está lleno','Se enfada cuando se limita un alimento','Busca comida sin permiso','Esconde envoltorios o alimentos','Come a escondidas','Se levanta por la noche para comer','Alterna periodos de muy poca y mucha hambre','Ninguna']),
+ txt('s12_momento','¿En qué momento del día tiene más hambre?'),txt('s12_pide','¿Qué suele pedir cuando tiene mucha hambre?'),rad('s12_duracion','¿Cuánto duran normalmente las comidas?',['Menos de 10 minutos','Entre 10 y 20 minutos','Entre 20 y 40 minutos','Más de 40 minutos'])]),
+S('13. Entorno durante las comidas',[chk('s13_donde','¿Dónde come habitualmente?',['Mesa familiar','Sofá','Dormitorio','Colegio','Distintos lugares']),txt('s13_quien','¿Con quién come?'),
+ rad('s13_pantallas','¿Utiliza televisión, móvil, tableta o videojuegos mientras come?',['Siempre','Con frecuencia','Algunas veces','Nunca']),rad('s13_tension','¿Hay discusiones o tensión en torno a la comida?',['Frecuentemente','Algunas veces','Raramente','Nunca']),
+ chk('s13_estrategias','¿Se utilizan estas estrategias?',['Obligarlo a terminar','Dar premios por comer','Ofrecer dulces como recompensa','Amenazar con retirar actividades','Prepararle inmediatamente otro plato','Darle de comer directamente','Negociar cada bocado','Ninguna']),
+ area('s13_rechaza','¿Qué sucede cuando rechaza la comida preparada?')]),
+S('14. Horarios habituales',[tabla('s14_horario','Días de colegio',['Hora','Qué suele comer o beber','Lugar'],['Al despertarse','Desayuno','Media mañana','Comida','Merienda','Cena','Antes de dormir']),
+ area('s14_finde','Fines de semana: ¿cambian mucho los horarios o alimentos?'),rad('s14_comedor','¿Come en comedor escolar?',['Sí, todos los días','Algunos días','No']),area('s14_platos','En caso afirmativo, qué platos come y cuáles suele dejar'),area('s14_dinero','¿Lleva comida o dinero para comprar alimentos en el colegio?')]),
+S('15. Registro alimentario de siete días',[info('Durante siete días anota todo lo que coma y beba, incluidos picoteos. No hace falta pesar. Incluye cinco días de colegio, un sábado y un domingo, y los días que esté con cada progenitor. Las fotos del plato (antes y después) mándalas por WhatsApp.'),
+ tabla('s15_dias','Un bloque por día',['Día y fecha · colegio o fin de semana · con quién','Desayuno','Media mañana','Comida','Merienda','Cena','Picoteos y bebidas','Pantallas, hambre (baja/media/alta), reacciones o síntomas'],['Día 1','Día 2','Día 3','Día 4','Día 5','Día 6','Día 7'])]),
+S('16. Sueño y descanso',[txt('s16_acuesta','Hora habitual de acostarse'),txt('s16_levanta','Hora habitual de levantarse'),txt('s16_tarda','¿Cuánto tarda en dormirse?'),txt('s16_despierta','¿Se despierta durante la noche?'),
+ chk('s16_signos','¿Presenta alguno de estos signos?',['Ronquidos frecuentes','Pausas al respirar','Respiración por la boca','Sueño muy inquieto','Sudoración nocturna','Pesadillas','Se levanta cansado','Se duerme durante el día','Ninguno'])]),
+S('17. Actividad física y pantallas',[tabla('s17_act','¿Qué actividades físicas realiza actualmente?',['Actividad','Días por semana','Duración','¿Le gusta?'],null,3),
+ chk('s17_disfruta','¿Qué formas de movimiento disfruta especialmente?',['Bicicleta','Natación','Fútbol','Baloncesto','Baile','Artes marciales','Caminar','Juegos en el parque','Juegos activos en casa'],true),
+ rad('s17_pantallas','Tiempo aproximado diario de pantallas fuera del colegio',['Menos de una hora','Entre una y dos horas','Entre dos y cuatro horas','Más de cuatro horas']),txt('s17_come','¿Come mientras utiliza pantallas?')]),
+S('18. Colegio y relaciones sociales',[area('s18_rend','¿Cómo es su rendimiento escolar actualmente?'),area('s18_dific','¿El colegio ha comunicado dificultades de atención, conducta o relación con otros niños?'),
+ rad('s18_burlas','¿Ha recibido comentarios, burlas o acoso por su cuerpo, peso o forma de comer?',SN),area('s18_evita','¿Evita cambiarse de ropa delante de otros niños, ir a la piscina o hacer deporte?'),area('s18_nervios','¿Se pone nervioso en cumpleaños, comedores o situaciones con alimentos desconocidos?')]),
+S('19. Relación con su cuerpo y con la comida',[chk('s19_coment','¿Ha hecho alguno de estos comentarios?',['«Estoy gordo»','«Tengo que adelgazar»','«Esto engorda»','«No quiero comer para no engordar»','«Me da vergüenza mi cuerpo»','«Los demás se ríen de mí»','No ha hecho comentarios de este tipo']),
+ area('s19_adulto','¿Algún adulto o niño le habla habitualmente de su peso?'),area('s19_compara','¿Se compara físicamente con otros niños?'),area('s19_salta','¿Ha intentado saltarse comidas o reducir alimentos por iniciativa propia?'),area('s19_culpa','¿Siente culpa, vergüenza o miedo después de comer?')]),
+S('20. Opinión del niño',[info('Estas preguntas hazlas sin mencionar adelgazar, calorías, obesidad o dietas. Escribe sus palabras lo más literalmente posible.'),
+ area('s20_fav','¿Cuáles son tus comidas favoritas?'),area('s20_cuesta','¿Qué comidas te cuesta comer y qué notas cuando las pruebas?'),area('s20_olores','¿Hay olores o texturas que te molesten mucho?'),area('s20_despues','¿Cómo te encuentras después de comer: bien, pesado, con dolor, con gases o cansado?'),
+ chk('s20_objetivo','¿Qué te gustaría conseguir?',['Tener más energía','Correr o jugar mejor','Dormir mejor','Tener menos dolor de barriga','Aprender a comer algún alimento nuevo','Cocinar platos que le gusten'],true),rad('s20_cocinar','¿Le apetece participar eligiendo recetas o cocinando?',['Sí','Quizá','No'])]),
+S('21. Objetivos y posibilidades familiares',[area('s21_preocupa','¿Cuál es tu principal preocupación?'),lista('s21_cambios','¿Qué tres cambios consideras más importantes?',3),area('s21_dificil','¿Qué cambios crees que serían más difíciles de mantener?'),
+ rad('s21_tiempo','Tiempo disponible para cocinar entre semana',['Menos de 15 minutos','Entre 15 y 30 minutos','Más de 30 minutos']),area('s21_rapidas','¿Qué comidas necesitan ser especialmente rápidas?'),txt('s21_equipo','¿Dispones de horno, microondas, batidora y congelador?'),area('s21_limit','¿Hay alguna limitación económica o de acceso a determinados alimentos que debamos tener en cuenta?')]),
+S('22. Información médica importante',[chk('s22_signos','Marca si presenta actualmente alguno de estos signos',['Atragantamientos repetidos','Vómitos frecuentes','Dolor abdominal intenso o persistente','Sangre en las heces','Pérdida rápida de peso','Aumento muy rápido de peso','Sed excesiva','Orina con mucha frecuencia','Cansancio llamativo','Ronquidos con pausas respiratorias','Oscurecimiento de la piel en cuello o axilas','Mareos o desmayos','Rechazo alimentario cada vez más amplio','Miedo intenso a comer','Preocupación importante por engordar','Ninguno'])]),
+S('23. Documentación que puede adjuntarse',[info('Si los tienes, mándaselos a Óscar por WhatsApp: informes del pediatra, neuropediatra o psicólogo; diagnóstico y tratamiento del TDAH; informes de la valoración de posible TEA; analíticas recientes; cartilla o gráfica de crecimiento; menú del comedor escolar; fotos del registro alimentario; nombres o fotos de los productos y marcas que acepta; cualquier informe sobre la intolerancia a la lactosa.'),
+ area('s23_enviados','Anota aquí qué documentos le has mandado o le vas a mandar')])
+];
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function campo(f){
+  var h='<div class="f">';
+  if(f.k==='info') return '<div class="info">'+f.l+'</div>';
+  h+='<span class="q">'+esc(f.l)+'</span>';
+  if(f.k==='txt') h+='<input type="text" data-id="'+f.id+'">';
+  else if(f.k==='area') h+='<textarea data-id="'+f.id+'"></textarea>';
+  else if(f.k==='chk'||f.k==='rad'){
+    f.o.forEach(function(o,i){ h+='<label class="op"><input type="'+(f.k==='chk'?'checkbox':'radio')+'" name="'+f.id+'" data-id="'+f.id+'" value="'+esc(o)+'"><span>'+esc(o)+'</span></label>'; });
+    if(f.otros) h+='<input type="text" data-id="'+f.id+'_otros" placeholder="Otros (escríbelo aquí)" style="margin-top:6px">';
+  } else if(f.k==='lista'){ for(var i=1;i<=f.n;i++) h+='<input type="text" data-id="'+f.id+'_'+i+'" placeholder="'+i+'." style="margin:4px 0">'; }
+  else if(f.k==='tabla'){
+    var filas=f.filas||Array.from({length:f.n},function(_,i){return 'Nº '+(i+1)});
+    filas.forEach(function(r,ri){ h+='<div class="fila"><div class="h">'+esc(r)+'</div>';
+      f.cols.forEach(function(c,ci){ var id=f.id+'_'+ri+'_'+ci; h+='<label>'+esc(c)+'</label>'+(f.cols.length>4||ci>0&&f.filas?'<textarea data-id="'+id+'" style="min-height:60px"></textarea>':'<input type="text" data-id="'+id+'">'); });
+      h+='</div>'; });
+  }
+  return h+'</div>';
+}
+function pinta(){
+  var h=''; SCHEMA.forEach(function(s,i){ h+='<details data-s="'+i+'"><summary><span>'+esc(s.t)+'</span><span class="cnt" id="cnt'+i+'"></span></summary><div class="sec">'+s.f.map(campo).join('')+'</div></details>'; });
+  document.getElementById('form').innerHTML=h;
+}
+function volcar(){
+  document.querySelectorAll('[data-id]').forEach(function(e){ var v=D[e.dataset.id];
+    if(e.type==='checkbox') e.checked=Array.isArray(v)&&v.indexOf(e.value)>=0;
+    else if(e.type==='radio') e.checked=(v===e.value);
+    else if(v!=null) e.value=v;
+    marca(e); });
+  document.getElementById('consentimiento').checked=D.consentimiento===true; marca(document.getElementById('consentimiento'));
+  cuenta();
+}
+function marca(e){ var l=e.closest&&e.closest('.op'); if(l) l.classList.toggle('on',!!e.checked); if(e.type==='radio'){ document.querySelectorAll('input[name="'+e.name+'"]').forEach(function(x){ var ll=x.closest('.op'); if(ll) ll.classList.toggle('on',x.checked); }); } }
+function leer(e){
+  var id=e.dataset.id;
+  if(e.type==='checkbox'){ var arr=[]; document.querySelectorAll('input[type=checkbox][data-id="'+id+'"]').forEach(function(x){ if(x.checked) arr.push(x.value); }); D[id]=arr; }
+  else if(e.type==='radio') D[id]=e.value; else D[id]=e.value;
+}
+function lleno(v){ return Array.isArray(v)?v.length>0:(v!=null&&String(v).trim()!==''); }
+function cuenta(){
+  SCHEMA.forEach(function(s,i){ var n=0; document.querySelectorAll('details[data-s="'+i+'"] [data-id]').forEach(function(e){ /*contamos por campo*/ });
+    var ids=new Set(); document.querySelectorAll('details[data-s="'+i+'"] [data-id]').forEach(function(e){ ids.add(e.dataset.id); });
+    ids.forEach(function(id){ if(lleno(D[id])) n++; });
+    var c=document.getElementById('cnt'+i); if(c) c.textContent=n?('✓ '+n):''; });
+}
+function resumen(){
+  var out=[];
+  SCHEMA.forEach(function(s){ s.f.forEach(function(f){
+    if(f.k==='info') return;
+    if(f.k==='txt'||f.k==='area'){ if(lleno(D[f.id])) out.push([s.t,f.l,String(D[f.id])]); }
+    else if(f.k==='chk'||f.k==='rad'){ var v=D[f.id]; var t=Array.isArray(v)?v.join(', '):(v||''); var o=D[f.id+'_otros']; if(lleno(o)) t+=(t?' · ':'')+'Otros: '+o; if(t) out.push([s.t,f.l,t]); }
+    else if(f.k==='lista'){ var a=[]; for(var i=1;i<=f.n;i++){ if(lleno(D[f.id+'_'+i])) a.push(i+'. '+D[f.id+'_'+i]); } if(a.length) out.push([s.t,f.l,a.join('\n')]); }
+    else if(f.k==='tabla'){ var filas=f.filas||Array.from({length:f.n},function(_,i){return 'Nº '+(i+1)});
+      filas.forEach(function(r,ri){ var p=[]; f.cols.forEach(function(c,ci){ var v=D[f.id+'_'+ri+'_'+ci]; if(lleno(v)) p.push(c+': '+v); }); if(p.length) out.push([s.t,f.l+' · '+r,p.join('\n')]); }); }
+  }); });
+  return out;
+}
+function estado(t){ document.getElementById('estado').textContent=t; }
+function guardarLocal(){ try{ localStorage.setItem(LS, JSON.stringify({ts:Date.now(),d:D})); }catch(e){} }
+async function rpc(fn,body){ var r=await fetch(SB+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:KEY,Authorization:'Bearer '+KEY,'Content-Type':'application/json'},body:JSON.stringify(body)}); return r.json(); }
+async function guardarServidor(enviar){
+  D._resumen=resumen(); D._ts=Date.now();
+  var r=await rpc('ficha_infantil_guardar',{p_token:TOKEN,p_datos:D,p_enviar:!!enviar});
+  return r;
+}
+function programar(){ guardarLocal(); estado('Guardando…'); clearTimeout(TIMER); TIMER=setTimeout(async function(){ try{ var r=await guardarServidor(false); estado(r&&r.ok?'Guardado ✓':'Guardado en este móvil'); }catch(e){ estado('Guardado en este móvil'); } },1500); }
+document.addEventListener('input',function(e){ var t=e.target; if(t.id==='consentimiento'){ D.consentimiento=t.checked; marca(t); programar(); return; } if(!t.dataset||!t.dataset.id) return; leer(t); marca(t); cuenta(); programar(); });
+document.addEventListener('change',function(e){ var t=e.target; if(t.id==='consentimiento'){ D.consentimiento=t.checked; marca(t); programar(); return; } if(t.type==='radio'||t.type==='checkbox'){ leer(t); marca(t); cuenta(); programar(); } });
+document.getElementById('btnEnviar').addEventListener('click',async function(){
+  var m=document.getElementById('msg'); m.style.color='#b42318';
+  if(!document.getElementById('consentimiento').checked){ m.textContent='Marca primero la casilla de consentimiento, arriba del todo.'; document.getElementById('consLbl').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  clearTimeout(TIMER); var b=this; b.disabled=true; b.textContent='Enviando…'; m.textContent='';
+  try{ var r=await guardarServidor(true);
+    if(r&&r.ok){ m.style.color='#2f6b4f'; m.textContent=''; document.getElementById('okBox').style.display='block'; b.textContent='Enviar otra vez'; estado('Enviada ✓'); document.getElementById('okBox').scrollIntoView({behavior:'smooth'}); }
+    else { m.textContent='No se ha podido enviar: '+((r&&r.error)||'inténtalo de nuevo')+'. Lo que has escrito sigue guardado.'; b.textContent='Enviar a Óscar'; }
+  }catch(e){ m.textContent='Sin conexión. Lo que has escrito sigue guardado en este móvil; inténtalo de nuevo en un rato.'; b.textContent='Enviar a Óscar'; }
+  b.disabled=false;
+});
+(async function(){
+  pinta();
+  if(!TOKEN){ estado(''); document.getElementById('form').innerHTML='<div class="intro"><b>Este enlace no es válido.</b> Pídele a Óscar el tuyo.</div>'; return; }
+  var local=null; try{ local=JSON.parse(localStorage.getItem(LS)||'null'); }catch(e){}
+  try{
+    var r=await rpc('ficha_infantil_leer',{p_token:TOKEN});
+    if(!r||!r.ok){ estado(''); document.getElementById('form').innerHTML='<div class="intro"><b>Este enlace no es válido.</b> Pídele a Óscar el tuyo.</div>'; document.getElementById('btnEnviar').style.display='none'; return; }
+    if(r.nino) document.getElementById('nino').textContent=r.nino;
+    var srv=r.datos||{}; D=(local&&local.d&&(local.ts||0)>(srv._ts||0))?local.d:srv;
+    estado(r.enviado_at?'Enviada ✓ · puedes seguir cambiándola':'Guardado ✓');
+  }catch(e){ if(local&&local.d) D=local.d; estado('Sin conexión · se guarda en este móvil'); }
+  volcar();
+})();
+</script>
+</body></html>
