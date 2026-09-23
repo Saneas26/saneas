@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diario de Samuel · Saneas</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#19352d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2318332b'/%3E%3Ctext x='18' y='46' font-size='42' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f7f3;color:#19352d;font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+header{background:#19352d;color:#fff;padding:14px 5%;position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px}
+header b{font-size:22px}
+#estado{font-size:14px;color:#cfe3d4;text-align:right}
+main{max-width:760px;margin:0 auto;padding:18px 16px 120px}
+h1{font-size:28px;line-height:1.15;margin:6px 0 12px;font-weight:600}
+.intro{background:#fff;border:1px solid #dfe5de;border-radius:14px;padding:18px;margin-bottom:16px}
+.intro p{margin:0 0 10px}.intro p:last-child{margin:0}
+.dias{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #dfe5de;border-radius:14px;padding:10px 12px;margin-bottom:16px}
+.dias button{flex:none;width:52px;height:52px;border:2px solid #c9d6cb;background:#fbfcfa;border-radius:12px;font-size:24px;font-weight:800;color:#19352d;cursor:pointer}
+.dias button:disabled{opacity:.35}
+.dias .hoy{flex:1;text-align:center;font-weight:800;font-size:19px}
+.dias .hoy small{display:block;font-weight:400;font-size:14px;color:#4d5e57}
+.bloque{background:#fff;border:1px solid #dfe5de;border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.bloque h2{font-size:20px;margin:0 0 4px}
+.bloque .ay{font-size:15px;color:#4d5e57;margin:0 0 14px}
+.q{display:block;font-weight:700;margin:16px 0 8px}
+.sem{display:grid;gap:10px}
+.sem button{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:3px solid #e1e8e2;background:#fbfcfa;border-radius:14px;padding:14px;font:inherit;color:#19352d;cursor:pointer}
+.sem button .em{font-size:30px;line-height:1;flex:none}
+.sem button .tx b{display:block;font-size:19px}
+.sem button .tx span{font-size:15px;color:#4d5e57}
+.sem button.on{border-color:#19352d;background:#eef6ef}
+.sem button.on.v{border-color:#2f6b4f;background:#e9f5ec}
+.sem button.on.a{border-color:#c98a1e;background:#fdf4e3}
+.sem button.on.r{border-color:#b4442f;background:#fbecea}
+.merienda{display:none;margin-top:14px;border-radius:12px;padding:14px 16px;font-size:17px;line-height:1.5}
+.merienda b{display:block;margin-bottom:4px}
+.ops{display:flex;flex-wrap:wrap;gap:8px}
+.ops button{border:2px solid #c9d6cb;background:#fbfcfa;border-radius:24px;padding:11px 16px;font:inherit;font-size:16px;font-weight:700;color:#19352d;cursor:pointer}
+.ops button.on{border-color:#2f6b4f;background:#e9f5ec;color:#1d4a35}
+.rej{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;margin:8px 0}
+.rej .n{font-weight:700;font-size:17px}
+.rej button{border:2px solid #c9d6cb;background:#fbfcfa;border-radius:10px;padding:9px 0;font:inherit;font-size:15px;font-weight:700;cursor:pointer;color:#19352d;min-width:64px}
+.rej button.on{border-color:#2f6b4f;background:#e9f5ec}
+input[type=text],input[type=time],input[type=number],textarea{width:100%;font:inherit;font-size:18px;color:#19352d;border:2px solid #c9d6cb;border-radius:10px;padding:12px;background:#fbfcfa}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:#2f6b4f;background:#fff}
+.med{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.med label{display:block;font-size:15px;font-weight:700;color:#4d5e57;margin-bottom:4px}
+.docs li{margin:8px 0}
+.subir{display:block;width:100%;margin-top:12px;padding:16px;border:2px dashed #2f6b4f;border-radius:14px;background:#eef6ef;color:#1d4a35;font:inherit;font-size:18px;font-weight:800;cursor:pointer;text-align:center}
+.aviso{background:#fff7e8;border:2px solid #e9b85c;border-radius:12px;padding:14px 16px;font-size:16px;margin-top:12px}
+.err{color:#b4442f;font-weight:700}
+ul{padding-left:22px;margin:8px 0}
+</style></head><body>
+<header><b>Saneas</b><span id="estado">Cargando…</span></header>
+<main id="main">
+  <h1 id="tit">Diario de Samuel</h1>
+  <div class="intro">
+    <p><b>Para qué sirve esta página.</b> Durante las dos primeras semanas necesitamos saber
+      <b>cuánto come de verdad</b> y <b>cómo le sienta el Concerta</b>. Con eso, el <b>30 de septiembre</b>
+      ajustamos su plan con datos reales en vez de con suposiciones.</p>
+    <p><b>Qué tienes que hacer.</b> Entra <b>una vez al día</b>, a la hora que te venga bien, y rellena lo que
+      sepas. No hace falta contestar a todo: lo importante es el <b>semáforo del comedor</b>, porque de él
+      depende la merienda de esa tarde.</p>
+    <p>Se guarda solo mientras escribes. Puedes volver con este mismo enlace las veces que quieras.
+      <b>Samuel no ve nada de esto</b>, y no hace falta hablar de kilos delante de él.</p>
+  </div>
+
+  <div class="dias">
+    <button id="ant" onclick="mover(-1)" aria-label="Día anterior">‹</button>
+    <div class="hoy"><span id="fLarga">—</span><small id="fSub"></small></div>
+    <button id="sig" onclick="mover(1)" aria-label="Día siguiente">›</button>
+  </div>
+
+  <div class="bloque">
+    <h2>🚦 El comedor</h2>
+    <p class="ay">Lo más importante del día. Si no lo sabes seguro, pregúntale en cuanto salga.</p>
+    <div class="sem">
+      <button class="v" data-sem="verde" onclick="setSem('verde')"><span class="em">🟢</span><span class="tx"><b>Comió bien</b><span>Se acabó más o menos dos tercios y algo de la proteína (carne, pescado, huevo o legumbre).</span></span></button>
+      <button class="a" data-sem="ambar" onclick="setSem('ambar')"><span class="em">🟡</span><span class="tx"><b>Dejó la proteína</b><span>Comió el arroz, la pasta, la patata o la verdura, pero apartó la carne o el pescado.</span></span></button>
+      <button class="r" data-sem="rojo" onclick="setSem('rojo')"><span class="em">🔴</span><span class="tx"><b>Casi no comió</b><span>Menos de un tercio del plato.</span></span></button>
+    </div>
+    <div class="merienda" id="mer"></div>
+    <label class="q">¿Qué dejó exactamente? <span style="font-weight:400;color:#4d5e57">(opcional)</span></label>
+    <input type="text" id="comedor_que" placeholder="Por ejemplo: dejó las albóndigas">
+  </div>
+
+  <div class="bloque">
+    <h2>💊 Concerta</h2>
+    <p class="ay">Se traga entero, nunca partido ni machacado. Lo importante es que desayune antes.</p>
+    <label class="q">¿A qué hora lo tomó?</label>
+    <input type="time" id="concerta_hora">
+    <label class="q">¿Desayunó antes de tomarlo?</label>
+    <div class="ops" id="op_desayuno"></div>
+  </div>
+
+  <div class="bloque">
+    <h2>🍽️ Hambre en cada comida</h2>
+    <p class="ay">El Concerta suele quitar el hambre a mediodía. Esto nos dice cuándo le pasa a él.</p>
+    <div id="hambre"></div>
+  </div>
+
+  <div class="bloque">
+    <h2>🩺 Cómo le ha sentado</h2>
+    <p class="ay">Marca solo lo que hayas visto hoy. Si no ha habido nada, no marques nada.</p>
+    <label class="q">La tripa</label>
+    <div class="ops" id="op_tripa"></div>
+    <label class="q">El ánimo y la cabeza</label>
+    <div class="ops" id="op_animo"></div>
+    <label class="q">¿A qué hora se durmió?</label>
+    <input type="time" id="sueno_hora">
+    <label class="q">Por la noche</label>
+    <div class="ops" id="op_noche"></div>
+  </div>
+
+  <div class="bloque">
+    <h2>📏 Medidas</h2>
+    <p class="ay">Solo cuando toque, y <b>sin comentarlo delante de él</b>. El peso, hoy y dentro de dos
+      semanas. La cintura, una vez al mes. La altura, cada tres meses.</p>
+    <div class="med">
+      <div><label>Peso (kg)</label><input type="number" step="0.1" id="peso" placeholder="46"></div>
+      <div><label>Cintura (cm)</label><input type="number" step="0.5" id="cintura" placeholder="83"></div>
+      <div><label>Altura (cm)</label><input type="number" step="0.5" id="altura" placeholder="150"></div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <h2>✏️ Lo que quieras contarme</h2>
+    <p class="ay">Cualquier cosa del día: una comida que fue bien, una pelea, algo que te preocupa.</p>
+    <textarea id="notas" placeholder="Escribe aquí…"></textarea>
+  </div>
+
+  <div class="bloque">
+    <h2>📎 Documentos</h2>
+    <p class="ay">Sube aquí el <b>menú del comedor</b> cuando el colegio publique el del mes, informes
+      médicos, analíticas o la foto de cualquier papel que quieras que vea. PDF o foto, hasta 20 MB.</p>
+    <input type="file" id="fich" accept="application/pdf,image/jpeg,image/png,image/heic,image/webp" style="display:none" onchange="subir(this)">
+    <button class="subir" onclick="document.getElementById('fich').click()">📎 Añadir un PDF o una foto</button>
+    <div id="msgDoc" style="margin-top:10px;font-weight:700"></div>
+    <ul class="docs" id="listaDocs"></ul>
+  </div>
+</main>
+<script>
+var SB='https://uisrxztowgdpkxeuznfh.supabase.co', KEY='sb_publishable_8ybOGHnn9rsMDf57mx-Igw_AVvWK30D';
+var TOKEN=new URLSearchParams(location.search).get('c')||'';
+var FECHA=hoyISO(), D={}, DIAS={}, TIMER=null;
+
+function hoyISO(){ return new Date().toLocaleDateString('en-CA'); }
+function $(id){ return document.getElementById(id); }
+function estado(t,err){ var e=$('estado'); e.textContent=t; e.className=err?'err':''; }
+async function rpc(fn,body){
+  var r=await fetch(SB+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:KEY,Authorization:'Bearer '+KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});
+  return r.json();
+}
+
+/* ── Las opciones de cada bloque ─────────────────────────────────────────── */
+var TOMAS=[['desayuno','Desayuno'],['media','Media mañana'],['comedor','Comedor'],['merienda','Merienda'],['cena','Cena']];
+var HAMBRE=['Poco','Normal','Mucho'];
+var TRIPA=['Dolor de tripa','Gases','Diarrea','Estreñimiento','Náuseas'];
+var ANIMO=['Dolor de cabeza','Irritable','Adormilado','Le costó dormir'];
+var NOCHE=['Roncó','Se despertó','Vino a buscarme'];
+var SINO=['Sí','No'];
+
+var MERIENDAS={
+  verde:{c:'#e9f5ec',b:'#2f6b4f',t:'Merienda de hoy',x:'Yogur sin lactosa o de soja con una fruta. O zanahoria con 3 cucharadas de hummus.'},
+  ambar:{c:'#fdf4e3',b:'#c98a1e',t:'Merienda de hoy · reforzada',x:'Bocadillo pequeño integral con tortilla o con hummus, y una fruta. Ha comido, pero le falta la proteína del mediodía.'},
+  rojo:{c:'#fbecea',b:'#b4442f',t:'Merienda de hoy · merienda-comida',x:'Bocadillo pequeño con huevo o hummus + yogur sin lactosa o de soja + fruta. <b>No esperes a la cena</b> y no lo compenses con galletas ni dulces.'}
+};
+
+function pintarOps(cont,lista,campo){
+  var el=$(cont); el.innerHTML='';
+  lista.forEach(function(op){
+    var b=document.createElement('button'); b.type='button'; b.textContent=op;
+    b.onclick=function(){ toggle(campo,op,b); };
+    el.appendChild(b);
+  });
+}
+function toggle(campo,op,b){
+  if(campo.multi){
+    var arr=D[campo.k]||[]; var i=arr.indexOf(op);
+    if(i>=0) arr.splice(i,1); else arr.push(op);
+    D[campo.k]=arr; b.classList.toggle('on');
+  } else {
+    D[campo.k]=(D[campo.k]===op)?null:op;
+    var p=b.parentNode; for(var i=0;i<p.children.length;i++) p.children[i].classList.remove('on');
+    if(D[campo.k]) b.classList.add('on');
+  }
+  guardar();
+}
+function pintarHambre(){
+  var el=$('hambre'); el.innerHTML='';
+  TOMAS.forEach(function(t){
+    var fila=document.createElement('div'); fila.className='rej';
+    var n=document.createElement('div'); n.className='n'; n.textContent=t[1]; fila.appendChild(n);
+    HAMBRE.forEach(function(h){
+      var b=document.createElement('button'); b.type='button'; b.textContent=h;
+      b.onclick=function(){
+        D['hambre_'+t[0]]=(D['hambre_'+t[0]]===h)?null:h;
+        for(var i=1;i<fila.children.length;i++) fila.children[i].classList.remove('on');
+        if(D['hambre_'+t[0]]) b.classList.add('on');
+        guardar();
+      };
+      fila.appendChild(b);
+    });
+    el.appendChild(fila);
+  });
+}
+function setSem(v){
+  D.semaforo=(D.semaforo===v)?null:v;
+  document.querySelectorAll('.sem button').forEach(function(b){ b.classList.toggle('on', b.dataset.sem===D.semaforo); });
+  var m=$('mer');
+  if(D.semaforo){ var s=MERIENDAS[D.semaforo];
+    m.style.display='block'; m.style.background=s.c; m.style.border='2px solid '+s.b;
+    m.innerHTML='<b>'+s.t+'</b>'+s.x;
+  } else m.style.display='none';
+  guardar();
+}
+
+/* ── Guardar y pintar ───────────────────────────────────────────────────── */
+function recoger(){
+  ['comedor_que','concerta_hora','sueno_hora','peso','cintura','altura','notas'].forEach(function(id){
+    var v=$(id).value; D[id]=(v==='')?null:v;
+  });
+}
+function guardar(){
+  recoger(); DIAS[FECHA]=JSON.parse(JSON.stringify(D));
+  estado('Guardando…'); clearTimeout(TIMER);
+  TIMER=setTimeout(async function(){
+    try{
+      var r=await rpc('diario_infantil_guardar',{p_token:TOKEN,p_fecha:FECHA,p_datos:D});
+      estado(r&&r.ok?'Guardado ✓':'No se ha podido guardar', !(r&&r.ok));
+    }catch(e){ estado('Sin conexión. Lo guardo al volver.', true); }
+  }, 700);
+}
+function pintar(){
+  var f=new Date(FECHA+'T12:00:00Z');
+  var dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  var mes=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  $('fLarga').textContent=dias[f.getUTCDay()].charAt(0).toUpperCase()+dias[f.getUTCDay()].slice(1)+' '+f.getUTCDate()+' de '+mes[f.getUTCMonth()];
+  $('fSub').textContent=(FECHA===hoyISO())?'Hoy':'';
+  $('sig').disabled=(FECHA>=hoyISO());
+  D=DIAS[FECHA]?JSON.parse(JSON.stringify(DIAS[FECHA])):{};
+  ['comedor_que','concerta_hora','sueno_hora','peso','cintura','altura','notas'].forEach(function(id){ $(id).value=D[id]||''; });
+  document.querySelectorAll('.sem button').forEach(function(b){ b.classList.toggle('on', b.dataset.sem===D.semaforo); });
+  var m=$('mer');
+  if(D.semaforo){ var s=MERIENDAS[D.semaforo]; m.style.display='block'; m.style.background=s.c; m.style.border='2px solid '+s.b; m.innerHTML='<b>'+s.t+'</b>'+s.x; }
+  else m.style.display='none';
+  [['op_desayuno','desayuno_antes'],['op_tripa','tripa'],['op_animo','animo'],['op_noche','noche']].forEach(function(p){
+    var el=$(p[0]); var v=D[p[1]];
+    for(var i=0;i<el.children.length;i++){
+      var b=el.children[i], t=b.textContent;
+      b.classList.toggle('on', Array.isArray(v)?v.indexOf(t)>=0:v===t);
+    }
+  });
+  var h=$('hambre');
+  TOMAS.forEach(function(t,i){
+    var fila=h.children[i]; var v=D['hambre_'+t[0]];
+    for(var j=1;j<fila.children.length;j++) fila.children[j].classList.toggle('on', fila.children[j].textContent===v);
+  });
+}
+function mover(n){
+  var f=new Date(FECHA+'T12:00:00Z'); f.setUTCDate(f.getUTCDate()+n);
+  var nueva=f.toISOString().slice(0,10);
+  if(nueva>hoyISO()) return;
+  FECHA=nueva; pintar();
+}
+
+/* ── Documentos ─────────────────────────────────────────────────────────── */
+function pintarDocs(docs){
+  var el=$('listaDocs'); el.innerHTML='';
+  if(!docs||!docs.length){ el.innerHTML='<li style="list-style:none;margin-left:-22px;color:#4d5e57">Todavía no has subido nada.</li>'; return; }
+  docs.forEach(function(d){
+    var li=document.createElement('li');
+    var f=new Date(d.subido);
+    li.innerHTML='<b>'+String(d.nombre||'documento').replace(/[<>&]/g,'')+'</b><br><span style="font-size:15px;color:#4d5e57">Subido el '+f.getDate()+'/'+(f.getMonth()+1)+'</span>';
+    el.appendChild(li);
+  });
+}
+async function subir(inp){
+  var f=inp.files&&inp.files[0]; inp.value='';
+  if(!f) return;
+  var m=$('msgDoc'); m.className=''; m.textContent='Subiendo '+f.name+'…';
+  try{
+    var r=await fetch(SB+'/functions/v1/subir-doc-infantil',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({token:TOKEN,nombre:f.name,tipo:f.type,bytes:f.size})});
+    var j=await r.json();
+    if(!j||!j.ok){ m.className='err'; m.textContent=(j&&j.error)||'No se ha podido subir.'; return; }
+    var put=await fetch(j.upload_url,{method:'PUT',headers:{'Content-Type':f.type},body:f});
+    if(!put.ok){ m.className='err'; m.textContent='No se ha podido subir. Inténtalo otra vez.'; return; }
+    m.textContent='Subido ✓  Óscar ya lo puede ver.';
+    cargar(true);
+  }catch(e){ m.className='err'; m.textContent='Sin conexión. Inténtalo en un rato.'; }
+}
+
+/* ── Arranque ───────────────────────────────────────────────────────────── */
+pintarOps('op_desayuno',SINO,{k:'desayuno_antes'});
+pintarOps('op_tripa',TRIPA,{k:'tripa',multi:true});
+pintarOps('op_animo',ANIMO,{k:'animo',multi:true});
+pintarOps('op_noche',NOCHE,{k:'noche',multi:true});
+pintarHambre();
+['comedor_que','concerta_hora','sueno_hora','peso','cintura','altura','notas'].forEach(function(id){
+  $(id).addEventListener('input',guardar);
+});
+
+async function cargar(soloDocs){
+  try{
+    var r=await rpc('diario_infantil_leer',{p_token:TOKEN,p_dias:30});
+    if(!r||!r.ok){
+      document.getElementById('main').innerHTML='<div class="intro"><b>Este enlace no es válido.</b> Pídele a Óscar el tuyo.</div>';
+      estado(''); return;
+    }
+    $('tit').textContent='Diario de '+(r.nino||'tu hijo');
+    document.title='Diario de '+(r.nino||'tu hijo')+' · Saneas';
+    pintarDocs(r.docs);
+    if(soloDocs) return;
+    DIAS={}; (r.dias||[]).forEach(function(d){ DIAS[d.fecha]=d.datos||{}; });
+    pintar(); estado('Guardado ✓');
+  }catch(e){ estado('Sin conexión', true); }
+}
+if(TOKEN.length<16){
+  document.getElementById('main').innerHTML='<div class="intro"><b>Este enlace no es válido.</b> Pídele a Óscar el tuyo.</div>';
+  estado('');
+} else { pintar(); cargar(); }
+</script>
+</body></html>
