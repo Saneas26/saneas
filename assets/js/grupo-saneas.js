@@ -31,8 +31,6 @@ var GrupoSaneas = (function(){
       texto:'En un avión no hay datos ni wifi. Ahora puedes entretenerte y saber por dónde vas, de manera gratuita. Las 20 noticias más importantes del día te acompañan, junto a los principales podcast en español. Con itinerarios a las principales ciudades europeas.' },
     { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es', tipo:'una página web',
       texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' },
-    { id:'laora', nombre:'laOra', logo:'app-laora.png', url:'https://laora.es', tipo:'una página web',
-      texto:'La relojería de lujo al precio honesto, sin peajes de marca.' },
     { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.acumula',
       texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' },
@@ -59,10 +57,9 @@ var GrupoSaneas = (function(){
   var QRS = {
     'saneas': {t:25, d:'/i+/wSBQboOrt1AV26ci7BS1B/qq/gEpAGIVtDZY2set+b0QeIh26gpE+Y/KFBpSAnj2cfkAV8R/jaowQXErpX+d0Spa6q93BeWw/jSkgA=='},
     'saneas-app': {t:29, d:'/m/D/BGOkG6u0Lt0aUXbqcouwVnZB/qqr+AJmABKit2iQQQcy+17Wpip2L329JTyPtFVqCs6YpfqaJcUvQdt0V5L+1IyccfCn+fl/YB/xF/4t2owT4sZups/ldClCK6Dpw8FbNK/5VaJAA=='},
-    'asesorias': {t:29, d:'/h/7/BAqkG6yFLt0ZUXbqKouwVfZB/qqr+AOuABK8rWjzekc8pF7OypnyrGkNZTuBnFV7XqifSEyKKpynQWLAT9FxlISG1/AjfEE+IBoxF/4n2owSU8Zur0/ldBUC66fJx8FHN6/5RatAA=='},
+    'academia': {t:25, d:'/lQ/wRfQbq6Lt1j126kK7BaNB/qq/gGHAL5vPkjQSL7dT2o2XBnn579iQKpqh3drFDGnD/oAaEY/gKrwWRGLqf+l1oN+64wbBMf5/p5/gA=='},
     'pordondevoy': {t:29, d:'/qr7/BeREG6bJLt1Y4XboD0uwQYdB/qqr+ARTwC3BPpcYWX8TeURzYvyeho2pQZQeb0cvZNy+JRw0pMLFNMtWkumvfJIUE2hRXBu/gB4RH/6KutQU/EbuklPpdXOLm6zqEsExDGv7evVAA=='},
     'activala': {t:25, d:'/me/wSIQbqaLt0nV26tS7BcVB/qq/gDnAEqmWiZvxoS6dZkoJGm3d35m3kjMRHhzu7brWv4AdUQ/iKoQRpHbq+/t0qee6SuVBdD+/mNjgA=='},
-    'laora': {t:25, d:'/ju/wTsQbpDrt1FF26T67BXFB/qq/gFmAGIfNE4v2sCqX6cGm4xqWwgHTY9NBhopt/j7fPkARER/kqowTBELph+d0tpa6rZ3Bb0w/gzEgA=='},
     'acumula': {t:25, d:'/iW/wTFQbrbLt0A126r67BTxB/qq/gDwAErHWhClhpan1Y+qtGOhR3+L3kj45nggkjby8f4Ab0Q/kCoQQJH7rw/t0Nue6JOVBWx+/itjgA=='},
     'quemedices': {t:29, d:'/h0b/BZbEG6ljLt0AoXbp1UuwRYNB/qqr+AMKAB2PHA3Swr8dPR69cBYUJ7wddP+O6m/2pRvcgg0WHPFzNKLNAkk0ODoUSTM5ynu+wB+XG/5Y2rQVtESugQv9de2h66jalsFhVGv45PRAA=='}
   };
