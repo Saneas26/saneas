@@ -207,6 +207,19 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
                background:var(--linea); overflow:hidden}
 .receta .barra i{display:block; height:100%; background:var(--teal); border-radius:99px}
 
+/* ---------- Lo que solo sale en una pantalla ----------
+   Las láminas de Óscar llevan el texto dentro. En escritorio se leen de sobra; en un
+   móvil de 390 px el párrafo se queda en 7,6 px y los nombres de los ingredientes en
+   6,9. Así que en móvil se pinta la misma información en HTML, que sí se lee, y la
+   lámina se guarda para la pantalla grande. */
+.solo-pc{display:none}
+@media (min-width:768px){
+  .solo-pc{display:block}
+  .solo-movil{display:none}
+}
+.lamina{width:100%; margin-top:clamp(28px,6vw,44px)}
+.lamina img{width:100%; height:auto; display:block}
+
 /* ---------- 5 · COMPARAR ---------- */
 .comparar{display:grid; grid-template-columns:1fr; gap:clamp(26px,6vw,34px);
           margin-top:clamp(36px,8vw,56px); text-align:left}
@@ -230,6 +243,70 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
            line-height:1; margin-bottom:12px}
 .pasos3 h3{margin-bottom:9px}
 .pasos3 p{margin:0 auto; max-width:28ch; color:var(--tinta-70); font-size:clamp(14px,3.7vw,16px)}
+
+/* ==========================================================================
+   RECUPERADO 01/10/2026: al rehacer la página con la estructura del iPad Air
+   se empalmaron mal los trozos de CSS y estos bloques se quedaron fuera. Los
+   helados, los tamaños, los toppings, el pie y el aviso de página oculta se
+   estaban pintando SIN estilo. Si se vuelve a cortar el fichero, comprobar
+   que toda clase del HTML tiene su regla.
+   ========================================================================== */
+/* ---------- LOS HELADOS, UNO DEBAJO DE OTRO ---------- */
+.sabor{padding-block:clamp(54px,11vw,96px)}
+.sabor + .sabor{border-top:1px solid var(--linea)}
+.sabor .pieza{margin-top:0; margin-bottom:clamp(26px,6vw,44px)}
+.sabor h2{font-size:clamp(34px,9vw,68px)}
+.sabor .que{margin:16px auto 0; max-width:26ch; font-size:clamp(16px,4.2vw,21px);
+            font-weight:600; color:var(--tinta)}
+.sabor .porque{margin:10px auto 0; max-width:34ch; font-size:clamp(14px,3.6vw,16px);
+               color:var(--tinta-70)}
+.sabor .sello{display:inline-block; margin-top:18px; padding:7px 15px; border-radius:999px;
+              background:#f2f8f8; color:var(--teal); font-size:12px; font-weight:700;
+              letter-spacing:.12em; text-transform:uppercase}
+
+
+/* ---------- TAMAÑOS ---------- */
+.tallas{display:flex; justify-content:center; align-items:flex-end;
+        gap:clamp(22px,8vw,72px); margin-top:clamp(34px,8vw,56px)}
+.talla{text-align:center}
+.talla .copa{color:var(--teal); margin:0 auto 14px}
+.talla b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
+         font-size:clamp(24px,6vw,36px); letter-spacing:-.02em; line-height:1}
+.talla span{display:block; margin-top:7px; font-size:clamp(12px,3.2vw,14px); color:var(--tinta-40);
+            font-weight:600}
+.talla .eur{display:block; margin-top:5px; font-family:'Quicksand',sans-serif; font-weight:700;
+            font-size:clamp(15px,4vw,19px); color:var(--naranja)}
+
+
+/* ---------- TOPPINGS ---------- */
+.toppings{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,5vw,34px);
+          margin-top:clamp(34px,8vw,56px)}
+@media (min-width:640px){ .toppings{grid-template-columns:repeat(6,1fr)} }
+.top{text-align:center}
+.top .bola{position:relative; width:100%; aspect-ratio:1/1; border-radius:50%;
+           overflow:hidden; background:#f7f9f9}
+.top .bola img{width:100%; height:100%; object-fit:cover}
+.top .bola .hueco{gap:0}
+.top .bola .hueco b,.top .bola .hueco span{display:none}
+.top .bola .hueco svg{width:22px; height:22px}
+.top span{display:block; margin-top:11px; font-size:clamp(12px,3.2vw,14px); font-weight:600;
+          color:var(--tinta-70); line-height:1.3}
+
+
+/* ---------- CIERRE ---------- */
+.cierre{padding-block:clamp(80px,15vw,160px); border-top:1px solid var(--linea)}
+.cierre .marca{font-family:'Quicksand',sans-serif; font-weight:700; color:var(--teal);
+               font-size:clamp(30px,7.5vw,52px); letter-spacing:-.025em; line-height:1}
+.cierre .sub{display:block; margin-top:8px; font-size:11px; letter-spacing:.2em;
+             text-transform:uppercase; color:var(--tinta-40)}
+.cierre p{margin:26px auto 0; font-size:clamp(15px,4vw,19px); color:var(--tinta-70)}
+
+
+/* ---------- AVISO DE PÁGINA OCULTA ---------- */
+.pruebas{background:#15191a; color:#fff; text-align:center; padding:7px var(--lado);
+         font-size:11.5px; line-height:16px; font-weight:600; letter-spacing:.04em}
+
+
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
 </style>
 </head><body>
@@ -291,15 +368,30 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <a href="#protein"><div class="marco"><img src="/assets/img/helados/protein.jpg" alt="Protein" loading="lazy" width="600" height="600" data-nombre="Protein"></div><b>Protein</b><span>pistacho, crema de cacahuete y chía</span></a>
 <a href="#honey-nuts"><div class="marco"><img src="/assets/img/helados/honey-nuts.jpg" alt="Honey nuts" loading="lazy" width="600" height="600" data-nombre="Honey nuts"></div><b>Honey nuts</b><span>miel, nuez y pistacho</span></a>
 </div></div></section><!-- A PARTIR DE AQUÍ EL TEXTO ES UN BORRADOR MÍO: Óscar lo va dictando acto a acto. -->
-<section class="tema" id="la-crema"><div class="centro">
+<!-- ACTO 2 · la lámina es de Óscar. En escritorio va ella sola, que ya lleva el
+     titular, el texto y las barras dentro. En móvil se pinta en HTML lo mismo. -->
+<section class="tema" id="la-crema">
+<div class="solo-pc lamina">
+<picture>
+  <source type="image/webp" sizes="100vw"
+          srcset="/assets/img/helados/crema-receta-1200.webp 1200w,
+                  /assets/img/helados/crema-receta-2000.webp 2000w,
+                  /assets/img/helados/crema-receta-2900.webp 2900w">
+  <img src="/assets/img/helados/crema-receta-1200.jpg" width="2900" height="1933" loading="lazy"
+       sizes="100vw"
+       srcset="/assets/img/helados/crema-receta-1200.jpg 1200w,
+               /assets/img/helados/crema-receta-2000.jpg 2000w,
+               /assets/img/helados/crema-receta-2900.jpg 2900w"
+       alt="La crema de Saneas: 60 % yogur griego natural 0 %, 28 % leche desnatada, 6,5 % proteína de suero aislada, 3,5 % inulina de achicoria, 1,8 % miel y 0,2 % vainilla natural">
+</picture>
+</div>
+<div class="centro solo-movil">
 <h2>La crema.<br>Aquí empieza todo.</h2>
-<p class="intro">Debajo de cualquiera de nuestros helados hay siempre la misma base. Siete ingredientes, <b>ninguno de ellos un aditivo</b>, y esta es la proporción exacta.</p>
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/crema-base.jpg" alt="Crema base Saneas" loading="lazy" width="1200" height="1200" data-nombre="Crema base Saneas"></div></div>
+<p class="intro">Debajo de cualquiera de nuestros helados hay siempre la misma base. Seis ingredientes, <b>ninguno de ellos un aditivo</b>, y esta es la proporción exacta.</p>
 <div class="receta">
 <div class="fila"><span class="pc">60 %</span><span class="qu">Yogur griego natural 0 %</span><span class="barra"><i style="width:60%"></i></span></div>
-<div class="fila"><span class="pc">24,5 %</span><span class="qu">Leche desnatada</span><span class="barra"><i style="width:24.5%"></i></span></div>
+<div class="fila"><span class="pc">28 %</span><span class="qu">Leche desnatada</span><span class="barra"><i style="width:28%"></i></span></div>
 <div class="fila"><span class="pc">6,5 %</span><span class="qu">Proteína de suero aislada</span><span class="barra"><i style="width:6.5%"></i></span></div>
-<div class="fila"><span class="pc">3,5 %</span><span class="qu">Leche desnatada en polvo</span><span class="barra"><i style="width:3.5%"></i></span></div>
 <div class="fila"><span class="pc">3,5 %</span><span class="qu">Inulina de achicoria</span><span class="barra"><i style="width:3.5%"></i></span></div>
 <div class="fila"><span class="pc">1,8 %</span><span class="qu">Miel</span><span class="barra"><i style="width:1.8%"></i></span></div>
 <div class="fila"><span class="pc">0,2 %</span><span class="qu">Vainilla natural</span><span class="barra"><i style="width:1.2%"></i></span></div>
