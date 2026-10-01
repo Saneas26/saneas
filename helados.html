@@ -113,228 +113,259 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 .cab span{font-size:9.5px; letter-spacing:.2em; text-transform:uppercase;
           color:var(--tinta-40); margin-top:4px; line-height:1}
 
-/* ---------- LAS CIFRAS ---------- */
-.cifras{display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(26px,7vw,64px);
-        margin-top:clamp(30px,7vw,54px)}
-.cifra{min-width:88px}
-.cifra b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
-         font-size:clamp(38px,9vw,64px); letter-spacing:-.035em; line-height:1; color:var(--tinta)}
-.cifra span{display:block; margin-top:9px; font-size:clamp(12px,3.2vw,14px); font-weight:600;
-            letter-spacing:.09em; text-transform:uppercase; color:var(--tinta-40)}
-.cifra.marca b{color:var(--teal)}
+/* ============================================================================
+   PIEZAS CON LA ESTRUCTURA DE apple.com/es/ipad-air (01/10/2026, orden de Óscar)
+   Su página se arma con cinco piezas y las repite. Aquí están las mismas, con
+   nuestros textos:
+     1. bienvenida ....... titular enorme + imagen a sangre + precio
+     2. lo principal ..... fila de frases cortas, una idea cada una
+     3. más de cerca ..... la gama entera de un vistazo
+     4. tema ............. titular + imagen + párrafo + fichas de dato
+     5. comparar ......... dos columnas para decidir
+   ========================================================================== */
 
-/* ---------- LISTA DE INGREDIENTES, CENTRADA ---------- */
-.lista{list-style:none; margin:clamp(26px,6vw,44px) 0 0; padding:0;
-       display:flex; flex-wrap:wrap; justify-content:center; gap:10px 12px}
-.lista li{font-size:clamp(14px,3.7vw,17px); font-weight:600; color:var(--tinta);
-          padding:9px 16px; border:1px solid var(--linea); border-radius:999px}
+/* ---------- 1 · BIENVENIDA ---------- */
+.bienvenida{padding-top:clamp(40px,9vw,76px)}
+.bienvenida .eyebrow{display:block; font-weight:800; font-size:clamp(17px,4.4vw,22px);
+                     letter-spacing:-.01em; color:var(--tinta); margin-bottom:10px;
+                     font-family:'Quicksand',sans-serif}
+.bienvenida .precio{margin-top:26px; font-size:clamp(15px,4vw,19px); font-weight:600;
+                    color:var(--tinta-70)}
+.bienvenida .precio b{font-family:'Quicksand',sans-serif; color:var(--naranja); font-weight:700}
 
-/* ---------- TRÍOS (micronutrientes, pasos) ---------- */
-.trio{display:grid; grid-template-columns:1fr; gap:clamp(30px,7vw,46px);
-      margin-top:clamp(34px,8vw,58px); text-align:center}
-@media (min-width:760px){ .trio{grid-template-columns:repeat(3,1fr); gap:46px} }
-.trio h3{margin-bottom:10px}
-.trio p{margin:0 auto; max-width:30ch; color:var(--tinta-70);
-        font-size:clamp(15px,3.9vw,17px); line-height:1.5}
-.trio .num{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
-           font-size:clamp(34px,8vw,48px); letter-spacing:-.03em; color:var(--tinta-40);
-           line-height:1; margin-bottom:14px}
+/* ---------- 2 · LO PRINCIPAL ---------- */
+.principal{display:grid; grid-template-columns:1fr; gap:clamp(30px,7vw,44px);
+           margin-top:clamp(36px,8vw,60px); text-align:center}
+@media (min-width:700px){ .principal{grid-template-columns:repeat(3,1fr)} }
+@media (min-width:1000px){ .principal{grid-template-columns:repeat(5,1fr); gap:34px} }
+.principal .dato{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
+                 font-size:clamp(34px,8vw,44px); letter-spacing:-.035em; line-height:1;
+                 color:var(--teal); margin-bottom:12px}
+.principal p{margin:0 auto; max-width:24ch; font-size:clamp(14px,3.7vw,16px); line-height:1.5;
+             color:var(--tinta-70)}
+.principal b{color:var(--tinta)}
 
-/* ---------- LOS HELADOS, UNO DEBAJO DE OTRO ---------- */
-.sabor{padding-block:clamp(54px,11vw,96px)}
-.sabor + .sabor{border-top:1px solid var(--linea)}
-.sabor .pieza{margin-top:0; margin-bottom:clamp(26px,6vw,44px)}
-.sabor h2{font-size:clamp(34px,9vw,68px)}
-.sabor .que{margin:16px auto 0; max-width:26ch; font-size:clamp(16px,4.2vw,21px);
-            font-weight:600; color:var(--tinta)}
-.sabor .porque{margin:10px auto 0; max-width:34ch; font-size:clamp(14px,3.6vw,16px);
-               color:var(--tinta-70)}
-.sabor .sello{display:inline-block; margin-top:18px; padding:7px 15px; border-radius:999px;
-              background:#f2f8f8; color:var(--teal); font-size:12px; font-weight:700;
-              letter-spacing:.12em; text-transform:uppercase}
+/* ---------- 3 · MÁS DE CERCA (la gama) ---------- */
+.gama{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(20px,5vw,34px);
+      margin-top:clamp(36px,8vw,58px)}
+@media (min-width:700px){ .gama{grid-template-columns:repeat(5,1fr)} }
+.gama a{text-decoration:none; color:inherit; display:block; text-align:center}
+.gama .marco{position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; border-radius:18px;
+             background:#f7f9f9}
+.gama .marco img{width:100%; height:100%; object-fit:cover}
+.gama b{display:block; margin-top:12px; font-family:'Quicksand',sans-serif; font-weight:700;
+        font-size:clamp(15px,4vw,18px); letter-spacing:-.015em}
+.gama span{display:block; margin-top:3px; font-size:clamp(11px,3vw,13px); color:var(--tinta-40)}
 
-/* ---------- TAMAÑOS ---------- */
-.tallas{display:flex; justify-content:center; align-items:flex-end;
-        gap:clamp(22px,8vw,72px); margin-top:clamp(34px,8vw,56px)}
-.talla{text-align:center}
-.talla .copa{color:var(--teal); margin:0 auto 14px}
-.talla b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
-         font-size:clamp(24px,6vw,36px); letter-spacing:-.02em; line-height:1}
-.talla span{display:block; margin-top:7px; font-size:clamp(12px,3.2vw,14px); color:var(--tinta-40);
-            font-weight:600}
-.talla .eur{display:block; margin-top:5px; font-family:'Quicksand',sans-serif; font-weight:700;
-            font-size:clamp(15px,4vw,19px); color:var(--naranja)}
+/* ---------- 4 · TEMA ---------- */
+.tema{padding-block:clamp(66px,13vw,118px); border-top:1px solid var(--linea)}
+.tema h2{margin-bottom:0}
+.tema .intro{margin:clamp(22px,5vw,32px) auto 0; max-width:46ch;
+             font-size:clamp(16px,4.2vw,20px); line-height:1.55; color:var(--tinta-70)}
+.tema .intro b{color:var(--tinta); font-weight:700}
 
-/* ---------- PRECIO ---------- */
-.desde{margin-top:clamp(36px,8vw,58px)}
-.desde b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
-         font-size:clamp(44px,12vw,80px); letter-spacing:-.04em; line-height:1.02;
-         color:var(--naranja)}
-.desde span{display:block; margin-top:12px; font-size:clamp(13px,3.4vw,15px); font-weight:600;
-            letter-spacing:.1em; text-transform:uppercase; color:var(--tinta-40)}
-.desde .segundo{margin-top:30px}
-.desde .segundo b{font-size:clamp(30px,8vw,52px); color:var(--tinta)}
+/* fichas de dato: el patrón «True Tone / Más comodidad para la vista» */
+.fichas{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(24px,6vw,40px);
+        margin-top:clamp(36px,8vw,58px); text-align:center}
+@media (min-width:700px){ .fichas{grid-template-columns:repeat(4,1fr)} }
+.fichas.tres{grid-template-columns:1fr}
+@media (min-width:700px){ .fichas.tres{grid-template-columns:repeat(3,1fr)} }
+.ficha b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
+         font-size:clamp(22px,5.5vw,30px); letter-spacing:-.025em; line-height:1.1;
+         color:var(--tinta)}
+.ficha span{display:block; margin-top:9px; font-size:clamp(13px,3.4vw,15px); line-height:1.45;
+            color:var(--tinta-70); max-width:24ch; margin-inline:auto}
+.ficha.marca b{color:var(--teal)}
 
-/* ---------- TOPPINGS ---------- */
-.toppings{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,5vw,34px);
-          margin-top:clamp(34px,8vw,56px)}
-@media (min-width:640px){ .toppings{grid-template-columns:repeat(6,1fr)} }
-.top{text-align:center}
-.top .bola{position:relative; width:100%; aspect-ratio:1/1; border-radius:50%;
-           overflow:hidden; background:#f7f9f9}
-.top .bola img{width:100%; height:100%; object-fit:cover}
-.top .bola .hueco{gap:0}
-.top .bola .hueco b,.top .bola .hueco span{display:none}
-.top .bola .hueco svg{width:22px; height:22px}
-.top span{display:block; margin-top:11px; font-size:clamp(12px,3.2vw,14px); font-weight:600;
-          color:var(--tinta-70); line-height:1.3}
+/* la receta, en barras: cuánto hay de cada cosa */
+.receta{margin-top:clamp(34px,8vw,54px); text-align:left}
+.receta .fila{display:flex; align-items:center; gap:14px; padding:13px 0;
+              border-bottom:1px solid var(--linea)}
+.receta .fila:last-child{border-bottom:0}
+.receta .pc{flex:none; width:62px; font-family:'Quicksand',sans-serif; font-weight:700;
+            font-size:clamp(16px,4.2vw,19px); letter-spacing:-.02em; color:var(--teal);
+            text-align:right}
+.receta .qu{flex:1; font-size:clamp(14px,3.7vw,16px); font-weight:600}
+.receta .barra{flex:none; width:clamp(60px,22vw,150px); height:5px; border-radius:99px;
+               background:var(--linea); overflow:hidden}
+.receta .barra i{display:block; height:100%; background:var(--teal); border-radius:99px}
 
-/* ---------- CIERRE ---------- */
-.cierre{padding-block:clamp(80px,15vw,160px); border-top:1px solid var(--linea)}
-.cierre .marca{font-family:'Quicksand',sans-serif; font-weight:700; color:var(--teal);
-               font-size:clamp(30px,7.5vw,52px); letter-spacing:-.025em; line-height:1}
-.cierre .sub{display:block; margin-top:8px; font-size:11px; letter-spacing:.2em;
-             text-transform:uppercase; color:var(--tinta-40)}
-.cierre p{margin:26px auto 0; font-size:clamp(15px,4vw,19px); color:var(--tinta-70)}
+/* ---------- 5 · COMPARAR ---------- */
+.comparar{display:grid; grid-template-columns:1fr; gap:clamp(26px,6vw,34px);
+          margin-top:clamp(36px,8vw,56px); text-align:left}
+@media (min-width:760px){ .comparar{grid-template-columns:1fr 1fr; gap:40px} }
+.col{padding:clamp(24px,6vw,34px); border:1px solid var(--linea); border-radius:22px}
+.col h3{text-align:center}
+.col .eur{display:block; text-align:center; margin-top:10px; font-family:'Quicksand',sans-serif;
+          font-weight:700; font-size:clamp(26px,6.5vw,34px); letter-spacing:-.03em; color:var(--naranja)}
+.col ul{list-style:none; margin:clamp(20px,5vw,26px) 0 0; padding:0}
+.col li{padding:11px 0; border-top:1px solid var(--linea); font-size:clamp(14px,3.7vw,16px);
+        line-height:1.45}
+.col li b{font-weight:700}
+.col .cual{margin:16px 0 0; font-size:clamp(13px,3.5vw,15px); color:var(--tinta-70); text-align:center}
 
-/* ---------- AVISO DE PÁGINA OCULTA ---------- */
-.pruebas{background:#15191a; color:#fff; text-align:center; padding:7px var(--lado);
-         font-size:11.5px; line-height:16px; font-weight:600; letter-spacing:.04em}
-
+/* ---------- los pasos, en la misma rejilla de tres ---------- */
+.pasos3{display:grid; grid-template-columns:1fr; gap:clamp(28px,7vw,40px);
+        margin-top:clamp(36px,8vw,56px); text-align:center}
+@media (min-width:760px){ .pasos3{grid-template-columns:repeat(3,1fr)} }
+.pasos3 .n{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
+           font-size:clamp(30px,7vw,42px); letter-spacing:-.03em; color:var(--tinta-40);
+           line-height:1; margin-bottom:12px}
+.pasos3 h3{margin-bottom:9px}
+.pasos3 p{margin:0 auto; max-width:28ch; color:var(--tinta-70); font-size:clamp(14px,3.7vw,16px)}
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
 </style>
-</head>
-<body>
+</head><body>
 <div class="pruebas">Página en pruebas · todavía no la ve nadie</div>
 <header class="cab"><div class="in"><b>Saneas</b><span>ice cream Healthy</span></div></header>
 <main>
-<section class="acto">
-<div class="centro"><h1>Helado real.<br><span class="teal">Nutrición de verdad.</span></h1><p class="bajada">Cremoso, saludable y delicioso. Hecho solo con ingredientes reales.</p></div>
-<div class="sangre"><div class="marco"><img src="/assets/img/helados/natural.jpg" alt="Helado Saneas" loading="lazy" width="1600" height="1000" data-nombre="Helado Saneas"></div></div>
+<!-- ACTO 1 · texto de Óscar: «Helado solo de crema base, llega el helado más sano.
+     Saneas ice cream healthy». La foto es la crema base sola, sin toppings. -->
+<section class="acto bienvenida"><div class="centro">
+<span class="eyebrow">Saneas ice cream Healthy</span>
+<h1>Llega el helado<br><span class="teal">más sano.</span></h1>
+</div>
+<div class="sangre"><div class="marco"><img src="/assets/img/helados/crema-base.jpg" alt="Helado Saneas de crema base, sin toppings" loading="lazy" width="1920" height="1080" data-nombre="Crema base, sin toppings"></div></div>
+<div class="centro"><p class="precio">Desde <b>4,50 €</b></p></div>
 </section>
-<section class="acto linea"><div class="centro">
-<span class="sobre">Nuestra crema</span>
-<h2>Simplemente<br>natural.</h2>
-<p class="bajada">Seis ingredientes. Ninguno que no sepas pronunciar.</p>
-<ul class="lista"><li>Yogur griego natural</li><li>Leche desnatada</li><li>Proteína de suero de leche</li><li>Miel</li><li>Inulina</li><li>Vainilla natural</li></ul>
-</div></section>
-<section class="acto"><div class="centro">
-<h2>Los números,<br>por delante.</h2>
-<p class="bajada">Por cada 100 g de crema Saneas.</p>
-<div class="cifras">
-<div class="cifra"><b>70</b><span>kcal</span></div>
-<div class="cifra marca"><b>9 g</b><span>proteína</span></div>
-<div class="cifra"><b>0,7 g</b><span>grasas</span></div>
-<div class="cifra"><b>5 g</b><span>hidratos</span></div>
-<div class="cifra"><b>3 g</b><span>fibra</span></div>
-</div>
-<p class="apunte">De los 5 g de hidratos, 3 son azúcares. La fibra es inulina.</p>
-</div></section>
+<section class="acto"><div class="centro ancho">
+<h2>Lo principal.</h2>
+<div class="principal">
+<div><span class="dato">70</span><p><b>kcal por 100 g.</b> Menos que la mayoría de yogures de sabores.</p></div>
+<div><span class="dato">9 g</span><p><b>de proteína</b>, del yogur griego y del suero de leche.</p></div>
+<div><span class="dato">3 g</span><p><b>de fibra.</b> Inulina de achicoria, que alimenta tu microbiota.</p></div>
+<div><span class="dato">0</span><p><b>azúcares añadidos.</b> Lo dulce lo ponen la miel y la fruta.</p></div>
+<div><span class="dato">10</span><p><b>combinaciones</b> y doce toppings para hacerte la tuya.</p></div>
+</div></div></section>
 <section class="acto linea"><div class="centro ancho">
-<span class="sobre">Rica en micronutrientes</span>
-<h2>No solo alimenta.<br>Aporta.</h2>
-<div class="trio">
-<div><h3>Omega 3</h3><p>Contribuye al funcionamiento normal del corazón.</p></div>
-<div><h3>Vitamina D</h3><p>Contribuye al mantenimiento de los huesos y del sistema inmune.</p></div>
-<div><h3>Fibra</h3><p>Favorece tu microbiota intestinal.</p></div>
+<h2>Más de cerca.</h2>
+<p class="bajada">Diez helados. Seis clásicos y cuatro premium.</p>
+<div class="gama">
+<a href="#natural"><div class="marco"><img src="/assets/img/helados/natural.jpg" alt="Natural" loading="lazy" width="600" height="600" data-nombre="Natural"></div><b>Natural</b><span>crema Saneas</span></a>
+<a href="#red"><div class="marco"><img src="/assets/img/helados/red.jpg" alt="Red" loading="lazy" width="600" height="600" data-nombre="Red"></div><b>Red</b><span>fresa, frutos del bosque y chía</span></a>
+<a href="#tropical"><div class="marco"><img src="/assets/img/helados/tropical.jpg" alt="Tropical" loading="lazy" width="600" height="600" data-nombre="Tropical"></div><b>Tropical</b><span>plátano, kiwi y chía</span></a>
+<a href="#choco-banana"><div class="marco"><img src="/assets/img/helados/choco-banana.jpg" alt="Choco banana" loading="lazy" width="600" height="600" data-nombre="Choco banana"></div><b>Choco banana</b><span>plátano, chocolate puro y crema de cacahuete</span></a>
+<a href="#choco-berry"><div class="marco"><img src="/assets/img/helados/choco-berry.jpg" alt="Choco berry" loading="lazy" width="600" height="600" data-nombre="Choco berry"></div><b>Choco berry</b><span>fresa, frutos del bosque y chocolate puro</span></a>
+<a href="#coffee-crunch"><div class="marco"><img src="/assets/img/helados/coffee-crunch.jpg" alt="Coffee crunch" loading="lazy" width="600" height="600" data-nombre="Coffee crunch"></div><b>Coffee crunch</b><span>crema de café, almendra y chocolate puro</span></a>
+<a href="#omega"><div class="marco"><img src="/assets/img/helados/omega.jpg" alt="Omega" loading="lazy" width="600" height="600" data-nombre="Omega"></div><b>Omega</b><span>nuez, chía y frutos del bosque</span></a>
+<a href="#magnesium"><div class="marco"><img src="/assets/img/helados/magnesium.jpg" alt="Magnesium" loading="lazy" width="600" height="600" data-nombre="Magnesium"></div><b>Magnesium</b><span>pistacho, almendra y chocolate puro</span></a>
+<a href="#protein"><div class="marco"><img src="/assets/img/helados/protein.jpg" alt="Protein" loading="lazy" width="600" height="600" data-nombre="Protein"></div><b>Protein</b><span>pistacho, crema de cacahuete y chía</span></a>
+<a href="#honey-nuts"><div class="marco"><img src="/assets/img/helados/honey-nuts.jpg" alt="Honey nuts" loading="lazy" width="600" height="600" data-nombre="Honey nuts"></div><b>Honey nuts</b><span>miel, nuez y pistacho</span></a>
+</div></div></section><!-- A PARTIR DE AQUÍ EL TEXTO ES UN BORRADOR MÍO: Óscar lo va dictando acto a acto. -->
+<section class="tema" id="la-crema"><div class="centro">
+<h2>La crema.<br>Aquí empieza todo.</h2>
+<p class="intro">Debajo de cualquiera de nuestros helados hay siempre la misma base. Siete ingredientes, <b>ninguno de ellos un aditivo</b>, y esta es la proporción exacta.</p>
+<div class="pieza"><div class="marco"><img src="/assets/img/helados/crema-base.jpg" alt="Crema base Saneas" loading="lazy" width="1200" height="1200" data-nombre="Crema base Saneas"></div></div>
+<div class="receta">
+<div class="fila"><span class="pc">60 %</span><span class="qu">Yogur griego natural 0 %</span><span class="barra"><i style="width:60%"></i></span></div>
+<div class="fila"><span class="pc">24,5 %</span><span class="qu">Leche desnatada</span><span class="barra"><i style="width:24.5%"></i></span></div>
+<div class="fila"><span class="pc">6,5 %</span><span class="qu">Proteína de suero aislada</span><span class="barra"><i style="width:6.5%"></i></span></div>
+<div class="fila"><span class="pc">3,5 %</span><span class="qu">Leche desnatada en polvo</span><span class="barra"><i style="width:3.5%"></i></span></div>
+<div class="fila"><span class="pc">3,5 %</span><span class="qu">Inulina de achicoria</span><span class="barra"><i style="width:3.5%"></i></span></div>
+<div class="fila"><span class="pc">1,8 %</span><span class="qu">Miel</span><span class="barra"><i style="width:1.8%"></i></span></div>
+<div class="fila"><span class="pc">0,2 %</span><span class="qu">Vainilla natural</span><span class="barra"><i style="width:1.2%"></i></span></div>
+</div></div></section>
+<section class="tema" id="los-numeros"><div class="centro ancho">
+<h2>Los números,<br>por delante.</h2>
+<p class="intro">Por cada 100 gramos de crema. Sin letra pequeña y sin tener que buscarlo.</p>
+<div class="fichas">
+<div class="ficha"><b>70 kcal</b><span>Menos de la mitad que un helado de crema corriente.</span></div>
+<div class="ficha"><b>9 g de proteína</b><span>Del yogur griego y del suero de leche aislado.</span></div>
+<div class="ficha"><b>0,7 g de grasa</b><span>Prácticamente nada, porque el yogur es 0 %.</span></div>
+<div class="ficha"><b>3 g de fibra</b><span>Inulina de achicoria, que alimenta tu microbiota.</span></div>
 </div>
-<p class="apunte" style="margin-top:clamp(30px,7vw,46px)">Y de forma natural: calcio, magnesio y potasio.</p>
-</div></section><section class="acto linea"><div class="centro">
-<span class="sobre">Nuestros helados</span>
-<h2>Diez.<br>Ninguno de relleno.</h2>
-<p class="bajada">Combinaciones pensadas para tu salud y para tu disfrute.</p>
+<p class="apunte" style="margin-top:clamp(28px,6vw,40px)">De los 5 g de hidratos, 3 son azúcares, y vienen de la leche y de la miel. Azúcar añadido no lleva.</p>
 </div></section>
-<section class="sabor"><div class="centro">
+<section class="tema" id="micronutrientes"><div class="centro ancho">
+<h2>No solo alimenta.<br>Aporta.</h2>
+<p class="intro">Un helado no va a arreglarte la dieta. Pero si vas a tomarte uno, <b>que al menos sume</b>.</p>
+<div class="fichas tres">
+<div class="ficha marca"><b>Omega 3</b><span>Contribuye al funcionamiento normal del corazón.</span></div>
+<div class="ficha marca"><b>Vitamina D</b><span>Contribuye al mantenimiento de los huesos y del sistema inmune.</span></div>
+<div class="ficha marca"><b>Fibra</b><span>Favorece tu microbiota intestinal.</span></div>
+</div>
+<div class="fichas tres" style="margin-top:clamp(26px,6vw,38px)">
+<div class="ficha"><b>Calcio</b><span>Huesos fuertes.</span></div>
+<div class="ficha"><b>Magnesio</b><span>Energía y función muscular.</span></div>
+<div class="ficha"><b>Potasio</b><span>Equilibrio y rendimiento.</span></div>
+</div></div></section>
+<section class="tema" id="uno-a-uno"><div class="centro">
+<h2>Diez helados.<br>Ninguno de relleno.</h2>
+<p class="intro">La misma crema debajo. Lo que cambia es lo que lleva encima, y cada combinación está pensada para aportar algo.</p>
+</div></section>
+<section class="sabor" id="natural"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/natural.jpg" alt="Natural" loading="lazy" width="1200" height="1200" data-nombre="Natural"></div></div>
 <h2>Natural</h2>
 <p class="que">crema Saneas</p>
 <p class="porque">el equilibrio perfecto</p>
 <span class="sello">alto en proteína y calcio</span>
 </div></section>
-<section class="sabor"><div class="centro">
+<section class="sabor" id="red"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/red.jpg" alt="Red" loading="lazy" width="1200" height="1200" data-nombre="Red"></div></div>
 <h2>Red</h2>
 <p class="que">fresa, frutos del bosque y chía</p>
 <p class="porque">frutos que cuidan</p>
 <span class="sello">vitamina C · fibra · antioxidantes</span>
 </div></section>
-<section class="sabor"><div class="centro">
+<section class="sabor" id="tropical"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/tropical.jpg" alt="Tropical" loading="lazy" width="1200" height="1200" data-nombre="Tropical"></div></div>
 <h2>Tropical</h2>
 <p class="que">plátano, kiwi y chía</p>
 <p class="porque">energía natural</p>
 <span class="sello">potasio · vitamina C · fibra</span>
 </div></section>
-<section class="sabor"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/omega.jpg" alt="Omega" loading="lazy" width="1200" height="1200" data-nombre="Omega"></div></div>
-<h2>Omega</h2>
-<p class="que">nuez, chía y frutos del bosque</p>
-<p class="porque">pequeños grandes nutrientes</p>
-<span class="sello">omega 3 · fibra · magnesio</span>
-</div></section>
-<section class="sabor"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/magnesium.jpg" alt="Magnesium" loading="lazy" width="1200" height="1200" data-nombre="Magnesium"></div></div>
-<h2>Magnesium</h2>
-<p class="que">pistacho, almendra y chocolate puro</p>
-<p class="porque">fuerza natural</p>
-<span class="sello">magnesio · grasas saludables</span>
-</div></section>
-<section class="sabor"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/protein.jpg" alt="Protein" loading="lazy" width="1200" height="1200" data-nombre="Protein"></div></div>
-<h2>Protein</h2>
-<p class="que">pistacho, crema de cacahuete y chía</p>
-<p class="porque">más que un capricho</p>
-<span class="sello">proteína · fibra · magnesio</span>
-</div></section>
-<section class="sabor"><div class="centro">
+<section class="sabor" id="choco-banana"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/choco-banana.jpg" alt="Choco banana" loading="lazy" width="1200" height="1200" data-nombre="Choco banana"></div></div>
 <h2>Choco banana</h2>
 <p class="que">plátano, chocolate puro y crema de cacahuete</p>
 <p class="porque">clásicos que siempre funcionan</p>
 <span class="sello">potasio · magnesio · proteína</span>
 </div></section>
-<section class="sabor"><div class="centro">
+<section class="sabor" id="choco-berry"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/choco-berry.jpg" alt="Choco berry" loading="lazy" width="1200" height="1200" data-nombre="Choco berry"></div></div>
 <h2>Choco berry</h2>
 <p class="que">fresa, frutos del bosque y chocolate puro</p>
 <p class="porque">intenso y natural</p>
 <span class="sello">antioxidantes · magnesio</span>
 </div></section>
-<section class="sabor"><div class="centro">
+<section class="sabor" id="coffee-crunch"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/coffee-crunch.jpg" alt="Coffee crunch" loading="lazy" width="1200" height="1200" data-nombre="Coffee crunch"></div></div>
 <h2>Coffee crunch</h2>
 <p class="que">crema de café, almendra y chocolate puro</p>
 <p class="porque">energía con sabor</p>
 <span class="sello">energía · magnesio · antioxidantes</span>
 </div></section>
-<section class="sabor"><div class="centro">
+<section class="sabor" id="omega"><div class="centro">
+<div class="pieza"><div class="marco"><img src="/assets/img/helados/omega.jpg" alt="Omega" loading="lazy" width="1200" height="1200" data-nombre="Omega"></div></div>
+<h2>Omega</h2>
+<p class="que">nuez, chía y frutos del bosque</p>
+<p class="porque">pequeños grandes nutrientes</p>
+<span class="sello">omega 3 · fibra · magnesio</span>
+</div></section>
+<section class="sabor" id="magnesium"><div class="centro">
+<div class="pieza"><div class="marco"><img src="/assets/img/helados/magnesium.jpg" alt="Magnesium" loading="lazy" width="1200" height="1200" data-nombre="Magnesium"></div></div>
+<h2>Magnesium</h2>
+<p class="que">pistacho, almendra y chocolate puro</p>
+<p class="porque">fuerza natural</p>
+<span class="sello">magnesio · grasas saludables</span>
+</div></section>
+<section class="sabor" id="protein"><div class="centro">
+<div class="pieza"><div class="marco"><img src="/assets/img/helados/protein.jpg" alt="Protein" loading="lazy" width="1200" height="1200" data-nombre="Protein"></div></div>
+<h2>Protein</h2>
+<p class="que">pistacho, crema de cacahuete y chía</p>
+<p class="porque">más que un capricho</p>
+<span class="sello">proteína · fibra · magnesio</span>
+</div></section>
+<section class="sabor" id="honey-nuts"><div class="centro">
 <div class="pieza"><div class="marco"><img src="/assets/img/helados/honey-nuts.jpg" alt="Honey nuts" loading="lazy" width="1200" height="1200" data-nombre="Honey nuts"></div></div>
 <h2>Honey nuts</h2>
 <p class="que">miel, nuez y pistacho</p>
 <p class="porque">dulzura natural</p>
 <span class="sello">energía natural · magnesio · grasas saludables</span>
 </div></section>
-<section class="acto linea"><div class="centro">
-<span class="sobre">Tamaños</span>
-<h2>Pequeño, mediano<br>o para compartir.</h2>
-<div class="tallas">
-<div class="talla"><svg class="copa" width="44" height="40" viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18c0-5.5 4.2-9.5 10-9.5s10 4 10 9.5"/><path d="M8 18h28l-3 16a4 4 0 0 1-4 3.4H15a4 4 0 0 1-4-3.4L8 18Z"/></svg><b>S</b><span>120 g</span><span class="eur">3,90 €</span></div>
-<div class="talla"><svg class="copa" width="44" height="47" viewBox="0 0 44 47" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18c0-5.5 4.2-9.5 10-9.5s10 4 10 9.5"/><path d="M8 18h28l-3 23a4 4 0 0 1-4 3.4H15a4 4 0 0 1-4-3.4L8 18Z"/></svg><b>M</b><span>160 g</span><span class="eur">4,90 €</span></div>
-<div class="talla"><svg class="copa" width="44" height="54" viewBox="0 0 44 54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18c0-5.5 4.2-9.5 10-9.5s10 4 10 9.5"/><path d="M8 18h28l-3 30a4 4 0 0 1-4 3.4H15a4 4 0 0 1-4-3.4L8 18Z"/></svg><b>L</b><span>200 g</span><span class="eur">5,90 €</span></div>
-</div>
-<div class="desde"><b>desde 4,50 €</b><span>helados</span><div class="segundo"><b>desde 4,90 €</b><span>helados premium</span></div></div>
-</div></section>
-<section class="acto linea"><div class="centro ancho">
-<span class="sobre">Crea el tuyo</span>
-<h2>Tú eliges.<br>Nosotros lo hacemos.</h2>
-<div class="trio">
-<div><span class="num">1</span><h3>Elige tu tamaño</h3><p>S, M o L. Desde 3,90 €.</p></div>
-<div><span class="num">2</span><h3>Añade tus toppings</h3><p>Los que quieras. 0,50 € cada uno.</p></div>
-<div><span class="num">3</span><h3>Disfrútalo</h3><p>Nadie se lleva el mismo helado dos veces.</p></div>
-</div></div></section>
-<section class="acto linea"><div class="centro ancho">
-<span class="sobre">Doce toppings</span>
-<h2>Fruta, frutos secos,<br>semillas y cremas.</h2>
+<section class="tema" id="toppings"><div class="centro ancho">
+<h2>Doce toppings.</h2>
+<p class="intro">Fruta fresca, frutos secos, semillas y cremas. <b>0,50 € cada uno</b>, y los que quieras.</p>
 <div class="toppings">
 <div class="top"><div class="bola"><img src="/assets/img/helados/topping-fresa.jpg" alt="Fresa" loading="lazy" width="400" height="400" data-nombre="Fresa"></div><span>Fresa</span></div>
 <div class="top"><div class="bola"><img src="/assets/img/helados/topping-frutos-del-bosque.jpg" alt="Frutos del bosque" loading="lazy" width="400" height="400" data-nombre="Frutos del bosque"></div><span>Frutos del bosque</span></div>
@@ -348,6 +379,28 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <div class="top"><div class="bola"><img src="/assets/img/helados/topping-crema-de-cacahuete.jpg" alt="Crema de cacahuete" loading="lazy" width="400" height="400" data-nombre="Crema de cacahuete"></div><span>Crema de cacahuete</span></div>
 <div class="top"><div class="bola"><img src="/assets/img/helados/topping-crema-de-cafe.jpg" alt="Crema de café" loading="lazy" width="400" height="400" data-nombre="Crema de café"></div><span>Crema de café</span></div>
 <div class="top"><div class="bola"><img src="/assets/img/helados/topping-miel.jpg" alt="Miel" loading="lazy" width="400" height="400" data-nombre="Miel"></div><span>Miel</span></div>
+</div></div></section>
+<section class="tema" id="tamanos"><div class="centro">
+<h2>Pequeño, mediano<br>o para compartir.</h2>
+<p class="intro">Eliges el tamaño primero. Después, el helado.</p>
+<div class="tallas">
+<div class="talla"><svg class="copa" width="44" height="40" viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18c0-5.5 4.2-9.5 10-9.5s10 4 10 9.5"/><path d="M8 18h28l-3 16a4 4 0 0 1-4 3.4H15a4 4 0 0 1-4-3.4L8 18Z"/></svg><b>S</b><span>120 g</span><span class="eur">3,90 €</span></div>
+<div class="talla"><svg class="copa" width="44" height="47" viewBox="0 0 44 47" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18c0-5.5 4.2-9.5 10-9.5s10 4 10 9.5"/><path d="M8 18h28l-3 23a4 4 0 0 1-4 3.4H15a4 4 0 0 1-4-3.4L8 18Z"/></svg><b>M</b><span>160 g</span><span class="eur">4,90 €</span></div>
+<div class="talla"><svg class="copa" width="44" height="54" viewBox="0 0 44 54" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18c0-5.5 4.2-9.5 10-9.5s10 4 10 9.5"/><path d="M8 18h28l-3 30a4 4 0 0 1-4 3.4H15a4 4 0 0 1-4-3.4L8 18Z"/></svg><b>L</b><span>200 g</span><span class="eur">5,90 €</span></div>
+</div></div></section>
+<section class="tema" id="crea-el-tuyo"><div class="centro ancho">
+<h2>Tú eliges.<br>Nosotros lo hacemos.</h2>
+<div class="pasos3">
+<div><span class="n">1</span><h3>Elige tu tamaño</h3><p>S, M o L. Desde 3,90 €.</p></div>
+<div><span class="n">2</span><h3>Añade tus toppings</h3><p>Los que quieras, a 0,50 € cada uno.</p></div>
+<div><span class="n">3</span><h3>Disfrútalo</h3><p>Nadie se lleva el mismo helado dos veces.</p></div>
+</div></div></section>
+<section class="tema" id="cual"><div class="centro ancho">
+<h2>¿Cuál elijo?</h2>
+<p class="intro">La diferencia no es el tamaño: es lo que llevan encima.</p>
+<div class="comparar">
+<div class="col"><h3>Clásicos</h3><span class="eur">desde 4,50 €</span><ul><li><b>Natural</b> · crema Saneas</li><li><b>Red</b> · fresa, frutos del bosque y chía</li><li><b>Tropical</b> · plátano, kiwi y chía</li><li><b>Choco banana</b> · plátano, chocolate y crema de cacahuete</li><li><b>Choco berry</b> · fresa, frutos del bosque y chocolate</li><li><b>Coffee crunch</b> · café, almendra y chocolate</li></ul><p class="cual">Fruta, cacao y semillas.</p></div>
+<div class="col"><h3>Premium</h3><span class="eur">desde 4,90 €</span><ul><li><b>Omega</b> · nuez, chía y frutos del bosque</li><li><b>Magnesium</b> · pistacho, almendra y chocolate</li><li><b>Protein</b> · pistacho, crema de cacahuete y chía</li><li><b>Honey nuts</b> · miel, nuez y pistacho</li></ul><p class="cual">Llevan frutos secos, que es lo que sube el precio y lo que aporta el omega 3, el magnesio y las grasas buenas.</p></div>
 </div></div></section>
 </main>
 <footer class="cierre"><div class="centro">
