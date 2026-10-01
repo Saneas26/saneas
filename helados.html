@@ -407,9 +407,26 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 </div>
 <p class="apunte" style="margin-top:clamp(28px,6vw,40px)">De los 5 g de hidratos, 3 son azúcares, y vienen de la leche y de la miel. Azúcar añadido no lleva.</p>
 </div></section>
-<section class="tema" id="micronutrientes"><div class="centro ancho">
+<!-- ACTO 3 · la lámina es de Óscar. En escritorio va ella sola; en móvil, lo mismo
+     en HTML, porque su letra pequeña no llega a los 12 px en una pantalla de teléfono. -->
+<section class="tema" id="micronutrientes">
+<div class="solo-pc lamina">
+<picture>
+  <source type="image/webp" sizes="100vw"
+          srcset="/assets/img/helados/aporta-1200.webp 1200w,
+                  /assets/img/helados/aporta-2000.webp 2000w,
+                  /assets/img/helados/aporta-2900.webp 2900w">
+  <img src="/assets/img/helados/aporta-1200.jpg" width="2900" height="1933" loading="lazy"
+       sizes="100vw"
+       srcset="/assets/img/helados/aporta-1200.jpg 1200w,
+               /assets/img/helados/aporta-2000.jpg 2000w,
+               /assets/img/helados/aporta-2900.jpg 2900w"
+       alt="No solo alimenta, aporta: omega 3 para el corazón, vitamina D para los huesos y el sistema inmune, fibra para la microbiota, y calcio, magnesio y potasio">
+</picture>
+</div>
+<div class="centro ancho solo-movil">
 <h2>No solo alimenta.<br>Aporta.</h2>
-<p class="intro">Un helado no va a arreglarte la dieta. Pero si vas a tomarte uno, <b>que al menos sume</b>.</p>
+<p class="intro">Si vas a tomarte un helado, <b>que al menos sume</b>.</p>
 <div class="fichas tres">
 <div class="ficha marca"><b>Omega 3</b><span>Contribuye al funcionamiento normal del corazón.</span></div>
 <div class="ficha marca"><b>Vitamina D</b><span>Contribuye al mantenimiento de los huesos y del sistema inmune.</span></div>
