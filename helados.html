@@ -220,6 +220,31 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 .lamina{width:100%; margin-top:clamp(28px,6vw,44px)}
 .lamina img{width:100%; height:auto; display:block}
 
+/* ---------- CARRUSEL DE SABORES (01/10/2026, pedido de Óscar) ----------
+   «Podemos hacer un scroll horizontal con estas imágenes, al final son solo 10».
+   Una lámina por tarjeta, se desliza con el dedo en el móvil y con la rueda o
+   arrastrando en el escritorio. El nombre y los ingredientes van en HTML debajo
+   de cada una, porque dentro de la lámina esa letra se queda en 8 px en un
+   teléfono. Sin librerías: scroll-snap del navegador y nada más. */
+.carrusel{display:flex; gap:clamp(14px,4vw,24px); overflow-x:auto; overflow-y:hidden;
+          scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+          scrollbar-width:none; margin-top:clamp(30px,7vw,48px);
+          padding-inline:var(--lado); padding-bottom:6px;
+          scroll-padding-inline:var(--lado)}
+.carrusel::-webkit-scrollbar{display:none}
+.scard{flex:0 0 auto; width:min(80vw, 380px); scroll-snap-align:center; text-align:center}
+@media (min-width:900px){ .scard{width:330px} }
+.scard .marco{position:relative; width:100%; aspect-ratio:1145/1374; overflow:hidden;
+              border-radius:20px; background:#f7f9f9}
+.scard .marco img{width:100%; height:100%; object-fit:cover; display:block}
+.scard b{display:block; margin-top:14px; font-family:'Quicksand',sans-serif; font-weight:700;
+         font-size:clamp(19px,5vw,23px); letter-spacing:-.02em; line-height:1.15}
+.scard span{display:block; margin-top:5px; font-size:clamp(13px,3.5vw,15px); line-height:1.4;
+            color:var(--tinta-70)}
+.desliza{display:block; margin-top:clamp(18px,4vw,26px); text-align:center;
+         font-size:clamp(12px,3.2vw,14px); font-weight:600; letter-spacing:.1em;
+         text-transform:uppercase; color:var(--tinta-40)}
+
 /* Los recortes verticales de los sabores son 4:5, no cuadrados: si se meten en un
    marco 1:1 quedan encajonados con franjas blancas arriba y abajo. */
 .pieza.v45 .marco{aspect-ratio:4/5}
@@ -477,80 +502,124 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <p class="firma">Un viaje al trópico en cada cucharada</p>
 </div>
 </section>
-<section class="tema" id="uno-a-uno"><div class="centro">
+<!-- LOS SABORES, EN SCROLL HORIZONTAL (01/10/2026) ---------------------------
+     Óscar: «podemos hacer un scroll horizontal con estas imágenes, al final son
+     solo 10; en el collage están todas las que hay que colocar de verdad».
+     Faltan por llegar las láminas de Natural, Protein y Honey nuts.
+     El carrusel es del navegador: scroll-snap, sin librerías ni JavaScript. -->
+<section class="tema" id="sabores"><div class="centro">
 <h2>Diez helados.<br>Ninguno de relleno.</h2>
-<p class="intro">La misma crema debajo. Lo que cambia es lo que lleva encima, y cada combinación está pensada para aportar algo.</p>
-</div></section>
-<section class="sabor" id="natural"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/natural.jpg" alt="Natural" loading="lazy" width="1200" height="1200" data-nombre="Natural"></div></div>
-<h2>Natural</h2>
-<p class="que">crema Saneas</p>
-<p class="porque">el equilibrio perfecto</p>
-<span class="sello">alto en proteína y calcio</span>
-</div></section>
-<section class="sabor" id="red"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/red.jpg" alt="Red" loading="lazy" width="1200" height="1200" data-nombre="Red"></div></div>
-<h2>Red</h2>
-<p class="que">fresa, frutos del bosque y chía</p>
-<p class="porque">frutos que cuidan</p>
-<span class="sello">vitamina C · fibra · antioxidantes</span>
-</div></section>
-<section class="sabor" id="tropical"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/tropical.jpg" alt="Tropical" loading="lazy" width="1200" height="1200" data-nombre="Tropical"></div></div>
-<h2>Tropical</h2>
-<p class="que">plátano, kiwi y chía</p>
-<p class="porque">energía natural</p>
-<span class="sello">potasio · vitamina C · fibra</span>
-</div></section>
-<section class="sabor" id="choco-banana"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/choco-banana.jpg" alt="Choco banana" loading="lazy" width="1200" height="1200" data-nombre="Choco banana"></div></div>
-<h2>Choco banana</h2>
-<p class="que">plátano, chocolate puro y crema de cacahuete</p>
-<p class="porque">clásicos que siempre funcionan</p>
-<span class="sello">potasio · magnesio · proteína</span>
-</div></section>
-<section class="sabor" id="choco-berry"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/choco-berry.jpg" alt="Choco berry" loading="lazy" width="1200" height="1200" data-nombre="Choco berry"></div></div>
-<h2>Choco berry</h2>
-<p class="que">fresa, frutos del bosque y chocolate puro</p>
-<p class="porque">intenso y natural</p>
-<span class="sello">antioxidantes · magnesio</span>
-</div></section>
-<section class="sabor" id="coffee-crunch"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/coffee-crunch.jpg" alt="Coffee crunch" loading="lazy" width="1200" height="1200" data-nombre="Coffee crunch"></div></div>
-<h2>Coffee crunch</h2>
-<p class="que">crema de café, almendra y chocolate puro</p>
-<p class="porque">energía con sabor</p>
-<span class="sello">energía · magnesio · antioxidantes</span>
-</div></section>
-<section class="sabor" id="omega"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/omega.jpg" alt="Omega" loading="lazy" width="1200" height="1200" data-nombre="Omega"></div></div>
-<h2>Omega</h2>
-<p class="que">nuez, chía y frutos del bosque</p>
-<p class="porque">pequeños grandes nutrientes</p>
-<span class="sello">omega 3 · fibra · magnesio</span>
-</div></section>
-<section class="sabor" id="magnesium"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/magnesium.jpg" alt="Magnesium" loading="lazy" width="1200" height="1200" data-nombre="Magnesium"></div></div>
-<h2>Magnesium</h2>
-<p class="que">pistacho, almendra y chocolate puro</p>
-<p class="porque">fuerza natural</p>
-<span class="sello">magnesio · grasas saludables</span>
-</div></section>
-<section class="sabor" id="protein"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/protein.jpg" alt="Protein" loading="lazy" width="1200" height="1200" data-nombre="Protein"></div></div>
-<h2>Protein</h2>
-<p class="que">pistacho, crema de cacahuete y chía</p>
-<p class="porque">más que un capricho</p>
-<span class="sello">proteína · fibra · magnesio</span>
-</div></section>
-<section class="sabor" id="honey-nuts"><div class="centro">
-<div class="pieza"><div class="marco"><img src="/assets/img/helados/honey-nuts.jpg" alt="Honey nuts" loading="lazy" width="1200" height="1200" data-nombre="Honey nuts"></div></div>
-<h2>Honey nuts</h2>
-<p class="que">miel, nuez y pistacho</p>
-<p class="porque">dulzura natural</p>
-<span class="sello">energía natural · magnesio · grasas saludables</span>
-</div></section>
+<p class="intro">La misma crema debajo. Lo que cambia es lo que lleva encima.</p>
+</div>
+<div class="carrusel">
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-red-600.webp 600w,
+                  /assets/img/helados/sabor-red-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-red-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-red-600.jpg 600w,
+               /assets/img/helados/sabor-red-1100.jpg 1100w"
+       alt="Helado Red de Saneas: fresa, frutos del bosque, chía">
+</picture>
+</div>
+<b>Red</b><span>fresa, frutos del bosque, chía</span>
+</article>
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-tropical-600.webp 600w,
+                  /assets/img/helados/sabor-tropical-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-tropical-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-tropical-600.jpg 600w,
+               /assets/img/helados/sabor-tropical-1100.jpg 1100w"
+       alt="Helado Tropical de Saneas: plátano, kiwi, chía">
+</picture>
+</div>
+<b>Tropical</b><span>plátano, kiwi, chía</span>
+</article>
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-omega-600.webp 600w,
+                  /assets/img/helados/sabor-omega-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-omega-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-omega-600.jpg 600w,
+               /assets/img/helados/sabor-omega-1100.jpg 1100w"
+       alt="Helado Omega de Saneas: nuez, chía, frutos del bosque">
+</picture>
+</div>
+<b>Omega</b><span>nuez, chía, frutos del bosque</span>
+</article>
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-magnesium-600.webp 600w,
+                  /assets/img/helados/sabor-magnesium-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-magnesium-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-magnesium-600.jpg 600w,
+               /assets/img/helados/sabor-magnesium-1100.jpg 1100w"
+       alt="Helado Magnesium de Saneas: pistacho, almendra, chocolate puro">
+</picture>
+</div>
+<b>Magnesium</b><span>pistacho, almendra, chocolate puro</span>
+</article>
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-choco-banana-600.webp 600w,
+                  /assets/img/helados/sabor-choco-banana-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-choco-banana-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-choco-banana-600.jpg 600w,
+               /assets/img/helados/sabor-choco-banana-1100.jpg 1100w"
+       alt="Helado Choco banana de Saneas: plátano, chocolate puro, crema de cacahuete">
+</picture>
+</div>
+<b>Choco banana</b><span>plátano, chocolate puro, crema de cacahuete</span>
+</article>
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-choco-berry-600.webp 600w,
+                  /assets/img/helados/sabor-choco-berry-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-choco-berry-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-choco-berry-600.jpg 600w,
+               /assets/img/helados/sabor-choco-berry-1100.jpg 1100w"
+       alt="Helado Choco berry de Saneas: fresa, frutos del bosque, chocolate puro">
+</picture>
+</div>
+<b>Choco berry</b><span>fresa, frutos del bosque, chocolate puro</span>
+</article>
+<article class="scard">
+<div class="marco">
+<picture>
+  <source type="image/webp" sizes="(min-width:900px) 330px, 80vw"
+          srcset="/assets/img/helados/sabor-coffee-crunch-600.webp 600w,
+                  /assets/img/helados/sabor-coffee-crunch-1100.webp 1100w">
+  <img src="/assets/img/helados/sabor-coffee-crunch-600.jpg" width="1145" height="1374" loading="lazy"
+       sizes="(min-width:900px) 330px, 80vw"
+       srcset="/assets/img/helados/sabor-coffee-crunch-600.jpg 600w,
+               /assets/img/helados/sabor-coffee-crunch-1100.jpg 1100w"
+       alt="Helado Coffee crunch de Saneas: café, almendra, chocolate puro">
+</picture>
+</div>
+<b>Coffee crunch</b><span>café, almendra, chocolate puro</span>
+</article>
+</div>
+<span class="desliza">Desliza para verlos todos →</span>
+</section>
 <section class="tema" id="toppings"><div class="centro ancho">
 <h2>Doce toppings.</h2>
 <p class="intro">Fruta fresca, frutos secos, semillas y cremas. <b>0,50 € cada uno</b>, y los que quieras.</p>
