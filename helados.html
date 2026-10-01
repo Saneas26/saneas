@@ -220,6 +220,17 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 .lamina{width:100%; margin-top:clamp(28px,6vw,44px)}
 .lamina img{width:100%; height:auto; display:block}
 
+/* Los recortes verticales de los sabores son 4:5, no cuadrados: si se meten en un
+   marco 1:1 quedan encajonados con franjas blancas arriba y abajo. */
+.pieza.v45 .marco{aspect-ratio:4/5}
+.pieza.v45 .marco img{object-fit:cover; border-radius:18px}
+
+/* La frase con la que se cierra cada sabor. En la lámina de Óscar va escrita a
+   mano; aquí, sin esa letra, se distingue por el tamaño y el color. */
+.firma{margin:clamp(20px,5vw,28px) auto 0; max-width:26ch; color:var(--teal);
+       font-family:'Quicksand',sans-serif; font-weight:700; letter-spacing:-.015em;
+       font-size:clamp(18px,4.8vw,24px); line-height:1.25}
+
 /* ---------- 5 · COMPARAR ---------- */
 .comparar{display:grid; grid-template-columns:1fr; gap:clamp(26px,6vw,34px);
           margin-top:clamp(36px,8vw,56px); text-align:left}
@@ -396,19 +407,9 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <div class="fila"><span class="pc">1,8 %</span><span class="qu">Miel</span><span class="barra"><i style="width:1.8%"></i></span></div>
 <div class="fila"><span class="pc">0,2 %</span><span class="qu">Vainilla natural</span><span class="barra"><i style="width:1.2%"></i></span></div>
 </div></div></section>
-<section class="tema" id="los-numeros"><div class="centro ancho">
-<h2>Los números,<br>por delante.</h2>
-<p class="intro">Por cada 100 gramos de crema. Sin letra pequeña y sin tener que buscarlo.</p>
-<div class="fichas">
-<div class="ficha"><b>70 kcal</b><span>Menos de la mitad que un helado de crema corriente.</span></div>
-<div class="ficha"><b>9 g de proteína</b><span>Del yogur griego y del suero de leche aislado.</span></div>
-<div class="ficha"><b>0,7 g de grasa</b><span>Prácticamente nada, porque el yogur es 0 %.</span></div>
-<div class="ficha"><b>3 g de fibra</b><span>Inulina de achicoria, que alimenta tu microbiota.</span></div>
-</div>
-<p class="apunte" style="margin-top:clamp(28px,6vw,40px)">De los 5 g de hidratos, 3 son azúcares, y vienen de la leche y de la miel. Azúcar añadido no lleva.</p>
-</div></section>
-<!-- ACTO 3 · la lámina es de Óscar. En escritorio va ella sola; en móvil, lo mismo
-     en HTML, porque su letra pequeña no llega a los 12 px en una pantalla de teléfono. -->
+<!-- 01/10/2026: fuera la sección de números. Óscar: «no voy a seguir el guión
+     anterior, no quiero hablar de números, quiero crear sensaciones, deseos».
+     Los datos siguen donde tienen sentido: dentro de las láminas. -->
 <section class="tema" id="micronutrientes">
 <div class="solo-pc lamina">
 <picture>
@@ -437,6 +438,45 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <div class="ficha"><b>Magnesio</b><span>Energía y función muscular.</span></div>
 <div class="ficha"><b>Potasio</b><span>Equilibrio y rendimiento.</span></div>
 </div></div></section>
+
+<!-- ACTO 4 · Mango Tropical. Lámina de Óscar. Un sabor nuevo: no estaba en los diez.
+     En escritorio va la lámina entera. En móvil, la tarrina recortada sin letras y
+     el texto en HTML: nombre, qué lleva, qué se siente y la frase de cierre. Sin
+     números, que es lo que pidió Óscar para los actos de sabores. -->
+<section class="tema" id="mango-tropical">
+<div class="solo-pc lamina">
+<picture>
+  <source type="image/webp" sizes="100vw"
+          srcset="/assets/img/helados/mango-1200.webp 1200w,
+                  /assets/img/helados/mango-2000.webp 2000w,
+                  /assets/img/helados/mango-2900.webp 2900w">
+  <img src="/assets/img/helados/mango-1200.jpg" width="2900" height="1933" loading="lazy"
+       sizes="100vw"
+       srcset="/assets/img/helados/mango-1200.jpg 1200w,
+               /assets/img/helados/mango-2000.jpg 2000w,
+               /assets/img/helados/mango-2900.jpg 2900w"
+       alt="Mango Tropical: helado Saneas de mango, maracuyá y un toque de lima, con fruta real y sin azúcares añadidos">
+</picture>
+</div>
+<div class="centro solo-movil">
+<div class="pieza v45"><div class="marco">
+<picture>
+  <source type="image/webp" sizes="100vw"
+          srcset="/assets/img/helados/mango-movil-600.webp 600w,
+                  /assets/img/helados/mango-movil-1100.webp 1100w">
+  <img src="/assets/img/helados/mango-movil-600.jpg" width="552" height="690" loading="lazy"
+       sizes="100vw"
+       srcset="/assets/img/helados/mango-movil-600.jpg 600w,
+               /assets/img/helados/mango-movil-1100.jpg 1100w"
+       alt="Tarrina de Mango Tropical de Saneas, con dados de mango, maracuyá y lima">
+</picture>
+</div></div>
+<h2>Mango Tropical</h2>
+<p class="que">mango, maracuyá, un toque de lima</p>
+<p class="intro">Un sabor exótico y refrescante para cualquier momento del día. Con fruta real, sin azúcares añadidos y toda la frescura del trópico en un helado saludable.</p>
+<p class="firma">Un viaje al trópico en cada cucharada</p>
+</div>
+</section>
 <section class="tema" id="uno-a-uno"><div class="centro">
 <h2>Diez helados.<br>Ninguno de relleno.</h2>
 <p class="intro">La misma crema debajo. Lo que cambia es lo que lleva encima, y cada combinación está pensada para aportar algo.</p>
