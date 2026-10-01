@@ -128,7 +128,12 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
    ========================================================================== */
 
 /* ---------- 1 · BIENVENIDA ---------- */
-.bienvenida{padding-top:clamp(40px,9vw,76px)}
+/* La foto va pegada a la cabecera: antes quedaba un hueco blanco enorme, sobre todo
+   en escritorio, donde el titular ni siquiera se ve porque ya va dentro de la imagen. */
+.bienvenida{padding-top:0}
+.bienvenida .texto{padding-top:clamp(26px,6vw,40px)}
+.bienvenida .sangre{margin-top:clamp(20px,5vw,30px); margin-bottom:clamp(24px,6vw,40px)}
+@media (min-width:768px){ .bienvenida .sangre{margin-top:0} }
 /* De 768 px para arriba el titular y los reclamos ya van DENTRO de la foto y se leen
    de sobra (24 px o más). Ahí el texto en HTML solo estorbaría, así que se esconde a la
    vista pero se deja para los lectores de pantalla y para Google. En el móvil la foto
