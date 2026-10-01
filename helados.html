@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Saneas ice cream Healthy · Helado real, nutrición de verdad</title>
+<meta name="description" content="Helado cremoso de yogur griego, proteína de suero y fibra de inulina. 70 kcal y 9 g de proteína por 100 g. Diez combinaciones y doce toppings.">
 
-<title>Saneas ice cream Healthy</title>
-
-<!-- PÁGINA EN PRUEBAS, INVISIBLE PARA TODOS (28/09/2026) ------------------------
+<!-- PÁGINA EN PRUEBAS, INVISIBLE PARA TODOS ------------------------------------
      No está enlazada desde ninguna parte, no entra en el sitemap y lleva noindex,
      así que no sale en Google. Cuando Óscar quiera enseñarla: quitar el noindex,
      añadirla al sitemap y poner el enlace donde toque.
@@ -14,899 +14,510 @@
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="googlebot" content="noindex, nofollow">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2318332b'/%3E%3Ctext x='18' y='46' font-size='42' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230e8388'/%3E%3Ctext x='17' y='46' font-size='42' font-family='sans-serif' fill='white'%3ES%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ============================================================================
+   SANEAS ICE CREAM HEALTHY · 01/10/2026
+   El sistema visual sale tal cual del DESIGN.md de Stitch («Functional
+   Creamery»): tipos, cuerpos, interlineados, interletrados, radios, escala de
+   espaciado, sombras y bordes fantasma. Los colores son los de la prosa de ese
+   mismo documento (teal, naranja cálido y crema), que son los de la infografía
+   que trajo Óscar; NO los del bloque YAML, que van en frío azulado.
+   Móvil primero: todo está escrito para 360-430 px y el escritorio se amplía
+   después, porque es donde se va a ver casi siempre.
+   ========================================================================== */
 
 :root{
-    --teal:#3890a4;
-    --orange:#f28c28;
-    --dark:#26383d;
-    --soft:#f6fafb;
-    --line:#dcebed;
+  /* --- color --- */
+  --teal:#0e8388;          /* identidad: titulares, anclas visuales        */
+  --teal-ink:#0a6165;      /* teal oscuro para texto sobre tintes claros   */
+  --naranja:#ff6b35;       /* precio, conversión, selección activa         */
+  --naranja-ink:#c74416;
+  --menta:#2ec4b6;         /* micronutrientes, etiquetas de beneficio      */
+  --pizarra:#243338;       /* el negro de la marca, en marino              */
+  --pizarra-70:#5a686d;
+  --crema:#fbf8f2;         /* lienzo                                       */
+  --blanco:#ffffff;
+  --tinte-cian:#ebf7f7;
+  --tinte-menta:#e8f8f5;
+  --tinte-miel:#fff6ed;
+  --borde:rgba(14,131,136,.12);      /* borde fantasma                     */
+  --borde-fuerte:rgba(14,131,136,.22);
+
+  /* --- elevación --- */
+  --sombra-1:0 2px 4px rgba(14,131,136,.04), 0 8px 20px rgba(36,51,56,.06);
+  --sombra-2:0 4px 12px rgba(255,107,53,.22);
+
+  /* --- radios --- */
+  --r-sm:.25rem; --r:.5rem; --r-md:.75rem; --r-lg:1rem; --r-xl:1.5rem; --r-full:9999px;
+
+  /* --- espaciado --- */
+  --xs:.25rem; --sm:.5rem; --md:1rem; --lg:1.5rem; --xl:2.5rem;
+  --margen:1rem;      /* margen lateral en móvil */
+  --canal:.75rem;     /* separación entre columnas en móvil */
 }
 
-*{
-    box-sizing:border-box;
-}
-
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
 body{
-    margin:0;
-    background:white;
-    font-family:"Quicksand",sans-serif;
-    color:var(--dark);
+  margin:0; background:var(--crema); color:var(--pizarra);
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  font-size:14px; line-height:20px; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:inherit}
+
+/* ---------- ESCALA TIPOGRÁFICA (exacta del DESIGN.md) ---------- */
+.t-display{font-size:32px; line-height:38px; letter-spacing:-.02em; font-weight:800}
+.t-h1{font-size:24px; line-height:32px; letter-spacing:-.01em; font-weight:700}
+.t-h2{font-size:22px; line-height:28px; letter-spacing:-.01em; font-weight:700}
+.t-h3{font-size:18px; line-height:24px; font-weight:600}
+.t-body-lg{font-size:16px; line-height:24px; font-weight:400}
+.t-body{font-size:14px; line-height:20px; font-weight:400}
+.t-body-sm{font-size:12px; line-height:16px; font-weight:500}
+/* Space Grotesk, solo para cifras: kcal, gramos, precios, números de paso */
+.t-dato{font-family:'Space Grotesk',ui-monospace,monospace; font-size:20px; line-height:24px;
+        letter-spacing:-.01em; font-weight:700}
+.t-dato-sm{font-family:'Space Grotesk',ui-monospace,monospace; font-size:11px; line-height:14px;
+           letter-spacing:.04em; font-weight:600; text-transform:uppercase}
+.t-tag{font-size:11px; line-height:14px; letter-spacing:.03em; font-weight:700; text-transform:uppercase}
+
+@media (min-width:768px){
+  .t-display{font-size:48px; line-height:56px; letter-spacing:-.03em}
+  .t-h1{font-size:32px; line-height:40px; letter-spacing:-.02em}
 }
 
-.page{
-    max-width:1200px;
-    margin:auto;
-    padding:35px 22px 70px;
+/* ---------- ESTRUCTURA ---------- */
+.env{width:100%; max-width:1280px; margin:0 auto; padding-inline:var(--margen)}
+@media (min-width:768px){ :root{--margen:2rem; --canal:1.25rem} }
+
+section{padding-block:var(--xl)}
+.sec-cab{display:flex; flex-direction:column; gap:var(--xs); margin-bottom:var(--lg)}
+.sec-cab .t-tag{color:var(--menta)}
+
+/* ---------- PIEZAS ---------- */
+.tarjeta{background:var(--blanco); border:1px solid var(--borde); border-radius:var(--r-xl);
+         box-shadow:var(--sombra-1)}
+.pastilla{display:inline-flex; align-items:center; gap:var(--xs);
+          padding:5px 11px; border-radius:var(--r-full);
+          background:var(--tinte-menta); color:var(--teal-ink);
+          font-size:11px; line-height:14px; letter-spacing:.03em; font-weight:700;
+          text-transform:uppercase}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:var(--sm);
+     min-height:48px; padding:.75rem 1.5rem; border-radius:var(--r-full);
+     font-family:inherit; font-size:16px; font-weight:700; line-height:24px;
+     border:0; cursor:pointer; text-decoration:none; transition:transform .15s ease, box-shadow .15s ease}
+.btn-cta{background:var(--naranja); color:#fff; box-shadow:var(--sombra-2)}
+.btn-cta:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(255,107,53,.3)}
+.btn-fantasma{background:transparent; color:var(--teal); border:1.5px solid var(--teal)}
+.btn-fantasma:hover{background:var(--tinte-cian)}
+
+/* ---------- CABECERA ---------- */
+.cab{position:sticky; top:0; z-index:50; background:rgba(251,248,242,.88);
+     backdrop-filter:saturate(180%) blur(14px); border-bottom:1px solid var(--borde);
+     padding-top:env(safe-area-inset-top,0px)}
+.cab-fila{display:flex; align-items:center; justify-content:space-between; gap:var(--md);
+          min-height:62px}
+.marca{display:flex; flex-direction:column; line-height:1}
+.marca b{font-size:22px; font-weight:800; letter-spacing:-.02em; color:var(--teal)}
+.marca span{font-size:10px; letter-spacing:.14em; font-weight:700; text-transform:uppercase;
+            color:var(--menta); margin-top:3px}
+.lema{text-align:right}
+.lema b{display:block; font-size:13px; line-height:17px; font-weight:800; color:var(--pizarra)}
+.lema span{display:block; font-size:9px; line-height:13px; letter-spacing:.12em; font-weight:700;
+           text-transform:uppercase; color:var(--pizarra-70); margin-top:2px}
+@media (min-width:768px){
+  .cab-fila{min-height:76px}
+  .lema b{font-size:17px; line-height:22px}
+  .lema span{font-size:11px}
 }
 
-/* LOGO */
+/* ---------- HERO ---------- */
+.hero{padding-top:var(--lg)}
+.hero-grid{display:flex; flex-direction:column; gap:var(--lg)}
+.hero h1{margin:var(--sm) 0 0}
+.hero h1 em{font-style:normal; color:var(--teal)}
+.hero p.lead{margin:var(--sm) 0 0; color:var(--pizarra-70)}
 
-header{
-    text-align:center;
-    margin-bottom:35px;
+.ingredientes{list-style:none; margin:var(--md) 0 0; padding:0;
+              display:grid; grid-template-columns:1fr 1fr; gap:var(--sm) var(--canal)}
+.ingredientes li{display:flex; align-items:flex-start; gap:7px; font-size:14px; line-height:20px;
+                 font-weight:600; color:var(--pizarra)}
+.ingredientes svg{flex:none; width:17px; height:17px; margin-top:1px; color:var(--menta)}
+@media (max-width:359px){ .ingredientes{grid-template-columns:1fr} }
+
+/* El hueco de la foto: cuadrado, con el nombre dentro mientras no haya imagen */
+.foto{position:relative; width:100%; aspect-ratio:1/1; border-radius:var(--r-xl);
+      background:linear-gradient(170deg,var(--blanco),var(--tinte-cian));
+      border:1px solid var(--borde); overflow:hidden;
+      display:flex; align-items:center; justify-content:center}
+.foto img{width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 14px 26px rgba(36,51,56,.14))}
+.foto-vacia{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
+            justify-content:center; gap:6px; text-align:center; padding:var(--sm);
+            color:var(--teal-ink)}
+.foto-vacia svg{width:30px; height:30px; opacity:.5}
+/* En los toppings el nombre ya va debajo del círculo: dentro solo la cámara. */
+.bola .foto-vacia{padding:0; gap:0}
+.bola .foto-vacia svg{width:22px; height:22px}
+.bola .foto-vacia span{display:none}
+
+/* Cápsulas flotantes sobre la foto grande */
+.hero-foto{position:relative}
+.capsula{position:absolute; display:flex; align-items:center; gap:8px;
+         padding:8px 11px; border-radius:var(--r-lg);
+         background:rgba(255,255,255,.96); backdrop-filter:blur(8px);
+         box-shadow:0 4px 14px rgba(36,51,56,.12); border:1px solid var(--borde)}
+.capsula b{display:block; font-family:'Space Grotesk',monospace; font-size:14px; line-height:17px;
+           font-weight:700; color:var(--pizarra)}
+.capsula span{display:block; font-size:9px; line-height:12px; letter-spacing:.06em; font-weight:700;
+              text-transform:uppercase; color:var(--pizarra-70); margin-top:1px}
+.capsula i{flex:none; width:9px; height:9px; border-radius:50%}
+.cap-1{top:10px; left:10px}
+.cap-2{top:42%; right:8px}
+.cap-3{bottom:12px; left:14px}
+
+/* ---------- TABLA DE MACROS ---------- */
+.macros{margin-top:var(--md); padding:var(--md); background:var(--blanco);
+        border:1px solid var(--borde); border-radius:var(--r-xl); box-shadow:var(--sombra-1)}
+.macros-t{display:flex; align-items:baseline; justify-content:space-between; gap:var(--sm);
+          padding-bottom:10px; border-bottom:1px solid var(--borde)}
+.macros-t b{font-size:14px; line-height:20px; font-weight:800}
+.macros-t span{font-size:11px; line-height:14px; font-weight:600; color:var(--pizarra-70)}
+.macros-fila{display:grid; grid-template-columns:repeat(5,1fr); gap:var(--xs); padding-top:12px}
+.macro{text-align:center}
+.macro b{display:block; font-family:'Space Grotesk',monospace; font-size:19px; line-height:23px;
+         font-weight:700; letter-spacing:-.02em; color:var(--teal)}
+.macro span{display:block; font-size:10px; line-height:13px; font-weight:600; color:var(--pizarra-70);
+            margin-top:2px}
+.macro small{display:block; font-size:9px; line-height:12px; font-weight:500; color:var(--pizarra-70);
+             opacity:.8}
+.macro.destaca b{color:var(--naranja)}
+@media (min-width:768px){
+  .macro b{font-size:26px; line-height:31px}
+  .macro span{font-size:12px; line-height:16px}
 }
 
-.logo{
-    font-size:55px;
-    font-weight:700;
-    color:var(--teal);
-    margin:0;
-    letter-spacing:-2px;
+/* ---------- MICRONUTRIENTES ---------- */
+.micros{margin-top:var(--md)}
+.micros h3{margin:0 0 10px}
+.micro-grid{display:grid; grid-template-columns:1fr; gap:var(--sm)}
+@media (min-width:600px){ .micro-grid{grid-template-columns:repeat(3,1fr)} }
+.micro{display:flex; align-items:flex-start; gap:10px; padding:12px 13px;
+       background:var(--blanco); border:1px solid var(--borde); border-radius:var(--r-md)}
+.micro .pip{flex:none; width:36px; height:36px; border-radius:var(--r); display:flex;
+            align-items:center; justify-content:center; background:var(--tinte-menta); color:var(--teal)}
+.micro .pip svg{width:19px; height:19px}
+.micro b{display:block; font-size:15px; line-height:20px; font-weight:800; color:var(--teal)}
+.micro span{display:block; font-size:12px; line-height:16px; font-weight:500; color:var(--pizarra-70);
+            margin-top:2px}
+.micro.calido .pip{background:var(--tinte-miel); color:var(--naranja-ink)}
+.micro.calido b{color:var(--naranja-ink)}
+
+/* ---------- LOS HELADOS ---------- */
+.helados{display:grid; grid-template-columns:1fr 1fr; gap:var(--canal)}
+@media (max-width:359px){ .helados{grid-template-columns:1fr} }
+@media (min-width:768px){ .helados{grid-template-columns:repeat(3,1fr); gap:var(--lg)} }
+@media (min-width:1024px){ .helados{grid-template-columns:repeat(5,1fr)} }
+
+.helado{display:flex; flex-direction:column; background:var(--blanco);
+        border:1px solid var(--borde); border-radius:var(--r-xl); box-shadow:var(--sombra-1);
+        overflow:hidden; position:relative}
+.helado.premium{border-color:var(--borde-fuerte)}
+.helado .foto{border:0; border-radius:0; border-bottom:1px solid var(--borde)}
+.helado-cuerpo{display:flex; flex-direction:column; gap:7px; padding:13px var(--md) var(--md)}
+.helado h3{margin:0; font-size:17px; line-height:22px; letter-spacing:-.01em; font-weight:800;
+           color:var(--teal)}
+.helado .sub{font-size:12px; line-height:16px; font-weight:600; color:var(--menta)}
+.helado .ing{font-size:13px; line-height:18px; font-weight:500; color:var(--pizarra)}
+.helado .claim{font-size:12px; line-height:16px; font-weight:700; color:var(--pizarra-70)}
+.helado .cinta{position:absolute; top:10px; right:10px; z-index:2;
+               padding:4px 9px; border-radius:var(--r-full); background:var(--naranja); color:#fff;
+               font-family:'Space Grotesk',monospace; font-size:11px; line-height:14px; font-weight:700}
+@media (min-width:768px){
+  .helado h3{font-size:20px; line-height:26px}
+  .helado .ing{font-size:14px; line-height:20px}
 }
 
-.subtitle{
-    font-size:21px;
-    font-weight:600;
-    margin-top:3px;
+/* ---------- TAMAÑOS ---------- */
+.tamanos{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--canal)}
+.tamano{display:flex; flex-direction:column; align-items:center; gap:4px; padding:var(--md) 10px;
+        background:var(--blanco); border:1px solid var(--borde); border-radius:var(--r-lg);
+        text-align:center}
+.tamano .copa{width:100%; max-width:74px; margin-bottom:2px; color:var(--teal)}
+.tamano b{font-family:'Space Grotesk',monospace; font-size:20px; line-height:24px; font-weight:700;
+          letter-spacing:-.01em}
+.tamano span{font-size:12px; line-height:16px; font-weight:600; color:var(--pizarra-70)}
+.tamano .precio{font-family:'Space Grotesk',monospace; font-size:15px; line-height:19px; font-weight:700;
+                color:var(--naranja); margin-top:2px}
+
+/* ---------- BLOQUE DE PRECIO ---------- */
+.precio-bloque{display:flex; flex-direction:column; gap:var(--xs); padding:var(--lg) var(--md);
+               background:var(--naranja); color:#fff; border-radius:var(--r-xl);
+               box-shadow:var(--sombra-2); text-align:center}
+.precio-bloque .et{font-size:13px; line-height:17px; font-weight:700; opacity:.95}
+.precio-bloque .nm{font-family:'Space Grotesk',monospace; font-size:40px; line-height:44px;
+                   font-weight:700; letter-spacing:-.03em}
+.precio-bloque .sep{height:1px; background:rgba(255,255,255,.3); margin:10px 0}
+@media (min-width:768px){ .precio-bloque .nm{font-size:52px; line-height:56px} }
+
+/* ---------- CREA EL TUYO ---------- */
+.pasos{display:flex; flex-direction:column; gap:var(--sm)}
+.paso{display:flex; align-items:flex-start; gap:12px; padding:14px var(--md);
+      background:var(--blanco); border:1px solid var(--borde); border-radius:var(--r-lg)}
+.paso .num{flex:none; width:30px; height:30px; border-radius:var(--r-full); background:var(--naranja);
+           color:#fff; display:flex; align-items:center; justify-content:center;
+           font-family:'Space Grotesk',monospace; font-size:15px; font-weight:700}
+.paso b{display:block; font-size:15px; line-height:20px; font-weight:800}
+.paso span{display:block; font-size:13px; line-height:18px; font-weight:500; color:var(--pizarra-70);
+           margin-top:2px}
+.paso .tallas{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.paso .talla{display:inline-flex; align-items:baseline; gap:5px; padding:6px 11px;
+             border-radius:var(--r-full); background:var(--tinte-cian); border:1px solid var(--borde);
+             font-family:'Space Grotesk',monospace; font-size:13px; font-weight:700; color:var(--teal-ink)}
+
+/* ---------- TOPPINGS ---------- */
+.toppings{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--canal)}
+@media (max-width:359px){ .toppings{grid-template-columns:repeat(3,1fr)} }
+@media (min-width:768px){ .toppings{grid-template-columns:repeat(6,1fr)} }
+.topping{display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center}
+.topping .bola{position:relative; width:100%; aspect-ratio:1/1; border-radius:var(--r-full); background:var(--blanco);
+               border:1px solid var(--borde); box-shadow:var(--sombra-1); overflow:hidden;
+               display:flex; align-items:center; justify-content:center; font-size:26px}
+.topping .bola img{width:100%; height:100%; object-fit:cover}
+.topping span{font-size:11px; line-height:14px; font-weight:600; color:var(--pizarra)}
+
+/* ---------- PIE ---------- */
+.pie{background:var(--pizarra); color:#fff; padding-block:var(--xl); margin-top:var(--xl)}
+.pie .marca b{color:#fff}
+.pie .marca span{color:var(--menta)}
+.pie-fila{display:flex; flex-direction:column; gap:var(--md); align-items:flex-start}
+.pie p{margin:0; font-size:14px; line-height:20px; font-weight:600; color:rgba(255,255,255,.82)}
+.pie .cierre{font-size:13px; font-weight:700; color:var(--menta)}
+@media (min-width:768px){
+  .pie-fila{flex-direction:row; align-items:center; justify-content:space-between}
 }
 
-
-/* CREMA */
-
-.cream{
-    background:var(--soft);
-    border-radius:26px;
-    padding:32px;
-    margin-bottom:50px;
-}
-
-.cream-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:35px;
-    align-items:center;
-}
-
-.cream h2{
-    color:var(--teal);
-    font-size:34px;
-    margin:0 0 5px;
-}
-
-.cream h3{
-    margin:0 0 22px;
-    font-weight:500;
-}
-
-.ingredients{
-    font-size:17px;
-    line-height:1.9;
-}
-
-.ingredients strong{
-    color:var(--teal);
-}
-
-.cream-image{
-    text-align:center;
-}
-
-.cream-image img{
-    width:100%;
-    max-width:390px;
-    border-radius:18px;
-}
-
-
-/* MACROS */
-
-.macros{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:10px;
-    margin-top:28px;
-}
-
-.macro{
-    background:white;
-    padding:14px 5px;
-    text-align:center;
-    border-radius:14px;
-}
-
-.macro strong{
-    display:block;
-    color:var(--teal);
-    font-size:21px;
-}
-
-.macro span{
-    font-size:13px;
-    font-weight:600;
-}
-
-
-/* BENEFICIOS */
-
-.benefits{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
-}
-
-.benefit{
-    color:#c96f11;
-    border:2px solid var(--orange);
-    border-radius:40px;
-    padding:7px 13px;
-    font-weight:700;
-    font-size:13px;
-}
-
-
-/* TITULOS */
-
-.section-title{
-    color:var(--teal);
-    text-align:center;
-    font-size:34px;
-    margin:45px 0 8px;
-}
-
-.section-subtitle{
-    text-align:center;
-    margin-bottom:28px;
-}
-
-
-/* HELADOS */
-
-.products{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.product{
-    border:1px solid var(--line);
-    border-radius:22px;
-    overflow:hidden;
-    background:white;
-}
-
-.product img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
-    background:var(--soft);
-}
-
-.product-content{
-    padding:18px;
-}
-
-.product h3{
-    margin:0 0 8px;
-    color:var(--teal);
-    font-size:22px;
-}
-
-.product p{
-    font-size:14px;
-    min-height:38px;
-}
-
-.micros{
-    color:#c96f11;
-    font-size:14px;
-    font-weight:700;
-    margin-top:12px;
-}
-
-.qr{
-    margin-top:15px;
-    color:var(--teal);
-    font-size:13px;
-    font-weight:600;
-}
-
-
-/* PRECIO */
-
-.price{
-    display:inline-block;
-    background:var(--orange);
-    color:#2b1a00;
-    border-radius:50px;
-    padding:8px 18px;
-    font-weight:700;
-    margin:10px auto 25px;
-}
-
-
-/* CREA EL TUYO */
-
-.custom{
-    margin:55px auto;
-    max-width:800px;
-    border:2px solid var(--teal);
-    border-radius:25px;
-    padding:30px;
-    text-align:center;
-}
-
-.custom h2{
-    color:var(--teal);
-    font-size:32px;
-    margin:0;
-}
-
-.custom-price{
-    color:#c96f11;
-    font-size:26px;
-    font-weight:700;
-    margin:10px;
-}
-
-
-/* TOPPINGS */
-
-.toppings{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    max-width:800px;
-    margin:auto;
-}
-
-.topping{
-    background:var(--soft);
-    text-align:center;
-    padding:13px;
-    border-radius:12px;
-    font-size:14px;
-    font-weight:600;
-}
-
-
-/* TAMAÑOS */
-
-.sizes{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    max-width:600px;
-    margin:25px auto;
-}
-
-.size{
-    text-align:center;
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:18px;
-    font-size:15px;
-}
-
-.size strong{
-    display:block;
-    font-size:27px;
-    color:var(--teal);
-}
-
-
-/* FOOTER */
-
-footer{
-    margin-top:60px;
-    text-align:center;
-    color:var(--teal);
-    font-size:18px;
-    font-weight:700;
-}
-
-
-/* AVISO DE PÁGINA EN PRUEBAS (se quita el día que se publique) */
-
-.borrador{
-    background:#fff4e2;
-    border:1px solid #f0c98a;
-    color:#7a4c07;
-    border-radius:14px;
-    padding:12px 16px;
-    font-size:14px;
-    font-weight:600;
-    text-align:center;
-    margin-bottom:26px;
-}
-
-
-/* MOVIL */
-
-@media(max-width:800px){
-
-    .cream-grid{
-        grid-template-columns:1fr;
-    }
-
-    .macros{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:520px){
-
-    .page{
-        padding:25px 13px 50px;
-    }
-
-    .logo{
-        font-size:44px;
-    }
-
-    .cream{
-        padding:22px 16px;
-    }
-
-    .cream h2{
-        font-size:28px;
-    }
-
-    .products{
-        grid-template-columns:1fr;
-    }
-
-    .toppings{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
+/* ---------- AVISO DE PÁGINA OCULTA ---------- */
+.aviso-pruebas{background:#5d1900; color:#ffdbd0; text-align:center;
+               padding:7px var(--margen); font-size:11.5px; line-height:16px; font-weight:700;
+               letter-spacing:.02em}
+
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
-
 <body>
-
-<div class="page">
-
-<div class="borrador">
-Página en pruebas · todavía no la ve nadie
-</div>
-
-<header>
-
-<h1 class="logo">Saneas</h1>
-
-<div class="subtitle">
-ice cream Healthy
-</div>
-
-</header>
-
-
-<!-- CREMA SANEAS -->
-
-<section class="cream">
-
-<div class="cream-grid">
-
+<div class="aviso-pruebas">Página en pruebas · todavía no la ve nadie</div>
+<header class="cab"><div class="env cab-fila">
+<div class="marca"><b>Saneas</b><span>ice cream Healthy</span></div>
+<div class="lema"><b>Helado real.<br>Nutrición de verdad.</b><span>Disfruta · Cuida · Repite</span></div>
+</div></header>
+<main>
+<section class="hero"><div class="env hero-grid">
 <div>
-
-<h2>Nuestra crema</h2>
-
-<h3>
-Simplemente natural.
-</h3>
-
-<div class="ingredients">
-
-<strong>60%</strong> Yogur griego natural 0%<br>
-
-<strong>24,5%</strong> Leche desnatada<br>
-
-<strong>6,5%</strong> Proteína de suero aislada<br>
-
-<strong>3,5%</strong> Leche desnatada en polvo<br>
-
-<strong>3,5%</strong> Inulina de achicoria<br>
-
-<strong>1,8%</strong> Miel<br>
-
-<strong>0,2%</strong> Vainilla natural
-
+<span class="pastilla">100 % ingredientes reales</span>
+<h1 class="t-display">Nuestra crema<br><em>simplemente natural</em></h1>
+<p class="lead t-body-lg">Un helado cremoso, saludable y delicioso elaborado solo con ingredientes reales.</p>
+<ul class="ingredientes">
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Yogur griego natural</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Leche desnatada</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Proteína de suero de leche</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Miel</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Inulina (fibra natural)</span></li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Vainilla natural</span></li>
+</ul></div>
+<div class="hero-foto">
+<div class="foto"><img src="/assets/img/helados/natural.jpg" alt="Helado Natural, la crema Saneas de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="capsula cap-1"><i style="background:var(--naranja)"></i><div><b>9 g proteína</b><span>por 100 g</span></div></div>
+<div class="capsula cap-2"><i style="background:var(--teal)"></i><div><b>70 kcal</b><span>por 100 g</span></div></div>
+<div class="capsula cap-3"><i style="background:var(--menta)"></i><div><b>3 g fibra</b><span>inulina</span></div></div>
 </div>
-
-<div class="benefits">
-
-<div class="benefit">
-PROTEÍNA
-</div>
-
-<div class="benefit">
-FIBRA
-</div>
-
-<div class="benefit">
-CALCIO
-</div>
-
-</div>
-
-</div>
-
-
-<div class="cream-image">
-
-<img src="/assets/img/helados/natural.jpg"
-alt="Crema helada Saneas, natural">
-
-</div>
-
-</div>
-
-
-<!-- DATOS POR 100G -->
-
 <div class="macros">
-
-<div class="macro">
-<strong>93</strong>
-<span>kcal</span>
+<div class="macros-t"><b>Por 100 g de crema Saneas</b><span>aprox.</span></div>
+<div class="macros-fila">
+<div class="macro"><b>70</b><span>kcal</span></div>
+<div class="macro destaca"><b>9 g</b><span>proteína</span></div>
+<div class="macro"><b>0,7 g</b><span>grasas</span></div>
+<div class="macro"><b>5 g</b><span>hidratos</span><small>de los cuales 3 g azúcares</small></div>
+<div class="macro"><b>3 g</b><span>fibra</span><small>(inulina)</small></div>
+</div></div>
+<div class="micros">
+<h3 class="t-h3">Rica en micronutrientes</h3>
+<div class="micro-grid">
+<div class="micro"><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 12 6a4.5 4.5 0 0 0-10 2.5C2 13 12 21 12 21s3.5-2.8 7-7Z"/></svg></span><div><b>Omega 3</b><span>contribuye al funcionamiento normal del corazón</span></div></div>
+<div class="micro"><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><div><b>Vitamina D</b><span>contribuye al mantenimiento de huesos y sistema inmune</span></div></div>
+<div class="micro"><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8a7 7 0 0 1-7 7Z"/><path d="M2 21c0-3 1.9-5.8 5-7"/></svg></span><div><b>Fibra</b><span>favorece tu microbiota intestinal</span></div></div>
 </div>
-
-<div class="macro">
-<strong>13,7 g</strong>
-<span>proteína</span>
-</div>
-
-<div class="macro">
-<strong>7,0 g</strong>
-<span>hidratos</span>
-</div>
-
-<div class="macro">
-<strong>6,6 g</strong>
-<span>azúcares</span>
-</div>
-
-<div class="macro">
-<strong>0,4 g</strong>
-<span>grasas</span>
-</div>
-
-<div class="macro">
-<strong>3,2 g</strong>
-<span>fibra</span>
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- HELADOS 4.50 -->
-
-<h2 class="section-title">
-Nuestros helados
-</h2>
-
-<div style="text-align:center">
-
-<div class="price">
-DESDE 4,50 €
-</div>
-
-</div>
-
-
-<section class="products">
-
-
-<!-- RED -->
-
-<article class="product">
-
-<img src="/assets/img/helados/red.jpg" alt="Helado Red: fresa, frutos del bosque y chía">
-
-<div class="product-content">
-
+<h3 class="t-h3" style="margin-top:var(--md)">También aporta de forma natural</h3>
+<div class="micro-grid">
+<div class="micro calido"><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 10c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3c0 .6-.4 1-1 1h-2c-.6 0-1-.4-1-1 0-1.7-1.3-3-3-3S4 5.3 4 7s1.3 3 3 3c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3c0-.6.4-1 1-1h2c.6 0 1 .4 1 1 0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1Z"/></svg></span><div><b>Calcio</b><span>huesos fuertes</span></div></div>
+<div class="micro calido"><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/></svg></span><div><b>Magnesio</b><span>energía y función muscular</span></div></div>
+<div class="micro calido"><span class="pip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7 2 14h6L5 7Zm14 0-3 7h6l-3-7Z"/></svg></span><div><b>Potasio</b><span>equilibrio y rendimiento</span></div></div>
+</div></div>
+</div></section><section id="helados"><div class="env">
+<div class="sec-cab"><span class="t-tag" style="color:var(--menta)">Nuestros helados</span>
+<h2 class="t-h1">Combinaciones pensadas para tu salud y tu disfrute</h2></div>
+<div class="helados">
+<article class="helado">
+<div class="foto"><img src="/assets/img/helados/natural.jpg" alt="Helado Natural de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
+<h3>Natural</h3>
+<p class="sub">el equilibrio perfecto</p>
+<p class="ing">crema Saneas</p>
+<p class="claim">alto en proteína y calcio</p>
+</div></article>
+<article class="helado">
+<div class="foto"><img src="/assets/img/helados/red.jpg" alt="Helado Red de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
 <h3>Red</h3>
-
-<p>
-Fresa · frutos del bosque · chía
-</p>
-
-<div class="micros">
-Vitamina C · Fibra · Omega 3
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<!-- TROPICAL -->
-
-<article class="product">
-
-<img src="/assets/img/helados/tropical.jpg" alt="Helado Tropical: plátano, kiwi y chía">
-
-<div class="product-content">
-
+<p class="sub">frutos que cuidan</p>
+<p class="ing">fresa, frutos del bosque, chía</p>
+<p class="claim">rico en vitamina C, fibra y antioxidantes</p>
+</div></article>
+<article class="helado">
+<div class="foto"><img src="/assets/img/helados/tropical.jpg" alt="Helado Tropical de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
 <h3>Tropical</h3>
-
-<p>
-Plátano · kiwi · chía
-</p>
-
-<div class="micros">
-Potasio · Vitamina C · Fibra
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<!-- CHOCO BANANA -->
-
-<article class="product">
-
-<img src="/assets/img/helados/choco-banana.jpg" alt="Helado Choco Banana: plátano, chocolate puro y crema de cacahuete">
-
-<div class="product-content">
-
-<h3>Choco Banana</h3>
-
-<p>
-Plátano · chocolate puro · crema de cacahuete
-</p>
-
-<div class="micros">
-Potasio · Magnesio · Proteína
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<!-- CHOCO BERRY -->
-
-<article class="product">
-
-<img src="/assets/img/helados/choco-berry.jpg" alt="Helado Choco Berry: fresa, frutos del bosque y chocolate puro">
-
-<div class="product-content">
-
-<h3>Choco Berry</h3>
-
-<p>
-Fresa · frutos del bosque · chocolate puro
-</p>
-
-<div class="micros">
-Vitamina C · Fibra · Magnesio
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<!-- COFFEE -->
-
-<article class="product">
-
-<img src="/assets/img/helados/coffee-crunch.jpg" alt="Helado Coffee Crunch: crema de café, almendra y chocolate puro">
-
-<div class="product-content">
-
-<h3>Coffee Crunch</h3>
-
-<p>
-Crema de café · almendra · chocolate puro
-</p>
-
-<div class="micros">
-Magnesio · Proteína · Cacao
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-</section>
-
-
-
-<!-- PREMIUM -->
-
-<h2 class="section-title">
-Combinaciones premium
-</h2>
-
-<div style="text-align:center">
-
-<div class="price">
-DESDE 4,90 €
-</div>
-
-</div>
-
-
-<section class="products">
-
-
-<article class="product">
-
-<img src="/assets/img/helados/omega.jpg" alt="Helado Omega: nuez, chía y frutos del bosque">
-
-<div class="product-content">
-
+<p class="sub">energía natural</p>
+<p class="ing">plátano, kiwi, chía</p>
+<p class="claim">rico en potasio, vitamina C y fibra</p>
+</div></article>
+<article class="helado premium">
+<span class="cinta">premium</span>
+<div class="foto"><img src="/assets/img/helados/omega.jpg" alt="Helado Omega de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
 <h3>Omega</h3>
-
-<p>
-Nuez · chía · frutos del bosque
-</p>
-
-<div class="micros">
-OMEGA 3 · Fibra · Magnesio
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="product">
-
-<img src="/assets/img/helados/magnesium.jpg" alt="Helado Magnesium: pistacho, almendra y chocolate puro">
-
-<div class="product-content">
-
+<p class="sub">pequeños grandes nutrientes</p>
+<p class="ing">nuez, chía, frutos del bosque</p>
+<p class="claim">fuente de omega 3, fibra y magnesio</p>
+</div></article>
+<article class="helado premium">
+<span class="cinta">premium</span>
+<div class="foto"><img src="/assets/img/helados/magnesium.jpg" alt="Helado Magnesium de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
 <h3>Magnesium</h3>
-
-<p>
-Pistacho · almendra · chocolate puro
-</p>
-
-<div class="micros">
-MAGNESIO · Vitamina E · Grasas insaturadas
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="product">
-
-<img src="/assets/img/helados/protein.jpg" alt="Helado Protein: pistacho, crema de cacahuete y chía">
-
-<div class="product-content">
-
+<p class="sub">fuerza natural</p>
+<p class="ing">pistacho, almendra, chocolate puro</p>
+<p class="claim">alto en magnesio y grasas saludables</p>
+</div></article>
+<article class="helado premium">
+<span class="cinta">premium</span>
+<div class="foto"><img src="/assets/img/helados/protein.jpg" alt="Helado Protein de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
 <h3>Protein</h3>
-
-<p>
-Pistacho · crema de cacahuete · chía
-</p>
-
-<div class="micros">
-PROTEÍNA · Magnesio · Fibra
+<p class="sub">más que un capricho</p>
+<p class="ing">pistacho, crema de cacahuete, chía</p>
+<p class="claim">alto en proteína, fibra y magnesio</p>
+</div></article>
+<article class="helado">
+<div class="foto"><img src="/assets/img/helados/choco-banana.jpg" alt="Helado Choco banana de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
+<h3>Choco banana</h3>
+<p class="sub">clásicos que siempre funcionan</p>
+<p class="ing">plátano, chocolate puro, crema de cacahuete</p>
+<p class="claim">rico en potasio, magnesio y proteína</p>
+</div></article>
+<article class="helado">
+<div class="foto"><img src="/assets/img/helados/choco-berry.jpg" alt="Helado Choco berry de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
+<h3>Choco berry</h3>
+<p class="sub">intenso y natural</p>
+<p class="ing">fresa, frutos del bosque, chocolate puro</p>
+<p class="claim">rico en antioxidantes y magnesio</p>
+</div></article>
+<article class="helado">
+<div class="foto"><img src="/assets/img/helados/coffee-crunch.jpg" alt="Helado Coffee crunch de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
+<h3>Coffee crunch</h3>
+<p class="sub">energía con sabor</p>
+<p class="ing">crema de café, almendra, chocolate puro</p>
+<p class="claim">fuente de energía, magnesio y antioxidantes</p>
+</div></article>
+<article class="helado premium">
+<span class="cinta">premium</span>
+<div class="foto"><img src="/assets/img/helados/honey-nuts.jpg" alt="Helado Honey nuts de Saneas" loading="lazy" width="600" height="600"></div>
+<div class="helado-cuerpo">
+<h3>Honey nuts</h3>
+<p class="sub">dulzura natural</p>
+<p class="ing">miel, nuez, pistacho</p>
+<p class="claim">energía natural, magnesio y grasas saludables</p>
+</div></article>
+</div></div></section>
+<section id="tamanos"><div class="env">
+<div class="sec-cab"><span class="t-tag" style="color:var(--menta)">Tamaños</span>
+<h2 class="t-h1">Elige tu tamaño, después tu helado o crea el tuyo</h2></div>
+<div class="tamanos">
+<div class="tamano"><svg class="copa" viewBox="0 0 48 60" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 32c0-6 4.6-10 11-10s11 4 11 10"/><path d="M9 42h30l-3.4 14a4 4 0 0 1-4 3.4H16.4a4 4 0 0 1-4-3.4L9 42Z"/></svg><b>S</b><span>120 g</span><span class="precio">3,90 €</span></div>
+<div class="tamano"><svg class="copa" viewBox="0 0 48 60" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 26c0-6 4.6-10 11-10s11 4 11 10"/><path d="M9 36h30l-3.4 20a4 4 0 0 1-4 3.4H16.4a4 4 0 0 1-4-3.4L9 36Z"/></svg><b>M</b><span>160 g</span><span class="precio">4,90 €</span></div>
+<div class="tamano"><svg class="copa" viewBox="0 0 48 60" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 20c0-6 4.6-10 11-10s11 4 11 10"/><path d="M9 30h30l-3.4 26a4 4 0 0 1-4 3.4H16.4a4 4 0 0 1-4-3.4L9 30Z"/></svg><b>L</b><span>200 g</span><span class="precio">5,90 €</span></div>
 </div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="product">
-
-<img src="/assets/img/helados/honey-nuts.jpg" alt="Helado Honey Nuts: miel, nuez y pistacho">
-
-<div class="product-content">
-
-<h3>Honey Nuts</h3>
-
-<p>
-Miel · nuez · pistacho
-</p>
-
-<div class="micros">
-Omega 3 · Magnesio · Grasas insaturadas
-</div>
-
-<div class="qr">
-▣ Ver información nutricional
-</div>
-
-</div>
-
-</article>
-
-</section>
-
-
-
-<!-- CREA EL TUYO -->
-
-<section class="custom">
-
-<h2>
-Crea el tuyo
-</h2>
-
-<div class="custom-price">
-Desde 3,90 €
-</div>
-
-<p>
-Nuestra crema Saneas + tus toppings favoritos.
-</p>
-
-<strong>
-Añade los toppings que quieras
-</strong>
-
-</section>
-
-
-
-<!-- TOPPINGS -->
-
-<h2 class="section-title">
-12 toppings
-</h2>
-
+<div class="precio-bloque" style="margin-top:var(--md)">
+<span class="et">Helados desde</span><span class="nm">4,50 €</span>
+<div class="sep"></div>
+<span class="et">Helados premium desde</span><span class="nm">4,90 €</span>
+</div></div></section>
+<section id="crea-el-tuyo"><div class="env">
+<div class="sec-cab"><span class="t-tag" style="color:var(--menta)">Crea el tuyo</span>
+<h2 class="t-h1">Tú eliges, nosotros lo hacemos posible</h2></div>
+<div class="pasos">
+<div class="paso"><span class="num">1</span><div><b>Elige tu tamaño base</b><span>Tres medidas, para el antojo pequeño o para compartir.</span><div class="tallas"><span class="talla">S <em style="font-style:normal;opacity:.75">3,90 €</em></span><span class="talla">M <em style="font-style:normal;opacity:.75">4,90 €</em></span><span class="talla">L <em style="font-style:normal;opacity:.75">5,90 €</em></span></div></div></div>
+<div class="paso"><span class="num">2</span><div><b>Añade tus toppings favoritos</b><span>+ 0,50 € por topping. Los doce están debajo.</span></div></div>
+<div class="paso"><span class="num">3</span><div><b>Disfruta de tu combinación única</b><span>Nadie se lleva el mismo helado dos veces.</span></div></div>
+</div></div></section>
+<section id="toppings"><div class="env">
+<div class="sec-cab"><span class="t-tag" style="color:var(--menta)">Nuestros 12 toppings</span>
+<h2 class="t-h1">Fruta fresca, frutos secos, semillas y cremas</h2></div>
 <div class="toppings">
-
-<div class="topping">Fresa</div>
-<div class="topping">Frutos del bosque</div>
-<div class="topping">Plátano</div>
-<div class="topping">Kiwi</div>
-
-<div class="topping">Pistacho</div>
-<div class="topping">Almendra</div>
-<div class="topping">Nuez</div>
-<div class="topping">Chía</div>
-
-<div class="topping">Chocolate puro</div>
-<div class="topping">Crema de cacahuete</div>
-<div class="topping">Crema de café</div>
-<div class="topping">Miel</div>
-
-</div>
-
-
-
-<!-- TAMAÑOS -->
-
-<h2 class="section-title">
-Elige tu tamaño
-</h2>
-
-<div class="sizes">
-
-<div class="size">
-<strong>S</strong>
-120 g
-</div>
-
-<div class="size">
-<strong>M</strong>
-160 g
-</div>
-
-<div class="size">
-<strong>L</strong>
-200 g
-</div>
-
-</div>
-
-
-<footer>
-
-Saneas<br>
-
-<span style="font-weight:500">
-Un pequeño gesto. Grandes beneficios.
-</span>
-
-</footer>
-
-
-</div>
-
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-fresa.jpg" alt="Fresa" loading="lazy" width="200" height="200"></span><span>Fresa</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-frutos-del-bosque.jpg" alt="Frutos del bosque" loading="lazy" width="200" height="200"></span><span>Frutos del bosque</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-platano.jpg" alt="Plátano" loading="lazy" width="200" height="200"></span><span>Plátano</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-kiwi.jpg" alt="Kiwi" loading="lazy" width="200" height="200"></span><span>Kiwi</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-pistacho.jpg" alt="Pistacho" loading="lazy" width="200" height="200"></span><span>Pistacho</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-almendra.jpg" alt="Almendra" loading="lazy" width="200" height="200"></span><span>Almendra</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-nuez.jpg" alt="Nuez" loading="lazy" width="200" height="200"></span><span>Nuez</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-chia.jpg" alt="Chía" loading="lazy" width="200" height="200"></span><span>Chía</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-chocolate-puro.jpg" alt="Chocolate puro" loading="lazy" width="200" height="200"></span><span>Chocolate puro</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-crema-de-cacahuete.jpg" alt="Crema de cacahuete" loading="lazy" width="200" height="200"></span><span>Crema de cacahuete</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-crema-de-cafe.jpg" alt="Crema de café" loading="lazy" width="200" height="200"></span><span>Crema de café</span></div>
+<div class="topping"><span class="bola"><img src="/assets/img/helados/topping-miel.jpg" alt="Miel" loading="lazy" width="200" height="200"></span><span>Miel</span></div>
+</div></div></section>
+</main>
+<footer class="pie"><div class="env pie-fila">
+<div class="marca"><b>Saneas</b><span>ice cream Healthy</span></div>
+<p>Un pequeño gesto. Grandes beneficios.</p>
+<p class="cierre">Helado hoy. Bienestar siempre.</p>
+</div></footer>
 <script>
-/* Las fotos de los helados todavía no existen (Óscar las manda luego). Mientras
-   tanto, en vez del icono de imagen rota se pinta un hueco limpio con el nombre
-   del sabor, para poder ver la página entera tal como quedará. Este bloque se
-   puede borrar el día que estén todas las fotos. */
+/* Las fotos todavía no existen (Óscar las manda luego). En vez del icono de imagen
+   rota se pinta un hueco limpio con el nombre del sabor, para poder ver la página
+   entera tal como quedará. Este bloque se borra el día que estén todas. */
 (function(){
+  var CAMARA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"'
+    + ' stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L8 6H4a2 2 0 0 0-2 2v10a2 2'
+    + ' 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4l-1.5-2Z"/><circle cx="12" cy="13" r="3.5"/></svg>';
   function hueco(im){
-    if(!im.parentNode) return;
+    var caja = im.parentNode; if(!caja) return;
+    var nombre = (im.getAttribute('alt')||'Foto').replace(/^Helado\s+/,'').replace(/\s+de Saneas$/,'');
     var d = document.createElement('div');
-    d.setAttribute('style',
-      'width:100%;aspect-ratio:1/1;background:#f6fafb;border:1px dashed #b9d6dc;'
-      + 'border-radius:14px;display:flex;align-items:center;justify-content:center;'
-      + 'text-align:center;padding:14px;color:#5d7d85;font:600 14px Quicksand,sans-serif');
-    d.textContent = 'Foto pendiente';
-    im.replaceWith(d);
+    d.className = 'foto-vacia';
+    d.innerHTML = CAMARA + '<span style="font-size:12px;line-height:16px;font-weight:700">'
+                + nombre.replace(/[<>&]/g,'') + '</span>'
+                + '<span style="font-size:10px;line-height:13px;font-weight:600;opacity:.75">Foto pendiente</span>';
+    im.remove();
+    caja.appendChild(d);
   }
-  document.querySelectorAll('img').forEach(function(im){
-    // Ojo: si la foto ya ha fallado antes de llegar aquí, el evento «error» no
-    // vuelve a dispararse. Por eso se mira también el estado ya terminado.
+  document.querySelectorAll('.foto img, .bola img').forEach(function(im){
+    // Si la foto ya falló antes de llegar aquí, el evento «error» no vuelve a saltar:
+    // por eso se mira también el estado ya terminado.
     if(im.complete && im.naturalWidth === 0){ hueco(im); return; }
     im.addEventListener('error', function(){ hueco(im); }, { once:true });
   });
 })();
 </script>
-
 </body>
 </html>
