@@ -61,6 +61,7 @@ img{display:block; max-width:100%}
    móvil de 360 px que para una pantalla de 27 pulgadas. */
 .centro{width:100%; max-width:var(--ancho); margin-inline:auto;
         padding-inline:var(--lado); text-align:center}
+.ancho{max-width:1120px}
 
 /* ---------- TIPOGRAFÍA ----------
    Quicksand solo tiene el peso 700 en la web, así que los titulares van todos en
@@ -151,6 +152,18 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
                background:var(--linea); overflow:hidden}
 .receta .barra i{display:block; height:100%; background:var(--teal); border-radius:99px}
 
+/* fichas de dato: el patrón «True Tone / Más comodidad para la vista» */
+.fichas{display:grid; grid-template-columns:1fr; gap:clamp(24px,6vw,40px);
+        margin-top:clamp(36px,8vw,58px); text-align:center}
+@media (min-width:700px){ .fichas{grid-template-columns:repeat(3,1fr)} }
+.fichas + .fichas{margin-top:clamp(26px,6vw,38px)}
+.ficha b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
+         font-size:clamp(22px,5.5vw,30px); letter-spacing:-.025em; line-height:1.1;
+         color:var(--tinta)}
+.ficha span{display:block; margin-top:9px; font-size:clamp(13px,3.4vw,15px); line-height:1.45;
+            color:var(--tinta-70); max-width:24ch; margin-inline:auto}
+.ficha.marca b{color:var(--teal)}
+
 /* ---------- AVISO DE PÁGINA OCULTA ---------- */
 .pruebas{background:#15191a; color:#fff; text-align:center; padding:7px var(--lado);
          font-size:11.5px; line-height:16px; font-weight:600; letter-spacing:.04em}
@@ -221,6 +234,38 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <div class="fila"><span class="pc">1,8 %</span><span class="qu">Miel</span><span class="barra"><i style="width:1.8%"></i></span></div>
 <div class="fila"><span class="pc">0,2 %</span><span class="qu">Vainilla natural</span><span class="barra"><i style="width:0.2%"></i></span></div>
 </div></div>
+</section>
+<!-- ACTO 3 · lámina de Óscar (saneas-acto3-aporta-2900px). Mismo trato: entera en
+     escritorio, y en móvil los seis micronutrientes en HTML, en dos filas de tres. -->
+<section class="tema" id="micronutrientes">
+<div class="solo-pc lamina">
+<picture>
+  <source type="image/webp" sizes="100vw"
+          srcset="/assets/img/helados/aporta-1200.webp 1200w,
+                  /assets/img/helados/aporta-2000.webp 2000w,
+                  /assets/img/helados/aporta-2900.webp 2900w">
+  <img src="/assets/img/helados/aporta-1200.jpg" width="2900" height="1933" loading="lazy"
+       sizes="100vw"
+       srcset="/assets/img/helados/aporta-1200.jpg 1200w,
+               /assets/img/helados/aporta-2000.jpg 2000w,
+               /assets/img/helados/aporta-2900.jpg 2900w"
+       alt="No solo alimenta, aporta: omega 3 para el corazón, vitamina D para los huesos y el sistema inmune, fibra para la microbiota, y calcio, magnesio y potasio">
+</picture>
+</div>
+<div class="centro ancho solo-movil">
+<h2>No solo alimenta.<br>Aporta.</h2>
+<p class="intro">Si vas a tomarte un helado, <b>que al menos sume</b>.</p>
+<div class="fichas">
+<div class="ficha marca"><b>Omega 3</b><span>Contribuye al funcionamiento normal del corazón.</span></div>
+<div class="ficha marca"><b>Vitamina D</b><span>Contribuye al mantenimiento de los huesos y del sistema inmune.</span></div>
+<div class="ficha marca"><b>Fibra</b><span>Favorece tu microbiota intestinal.</span></div>
+</div>
+<div class="fichas">
+<div class="ficha"><b>Calcio</b><span>Huesos fuertes.</span></div>
+<div class="ficha"><b>Magnesio</b><span>Energía y función muscular.</span></div>
+<div class="ficha"><b>Potasio</b><span>Equilibrio y rendimiento.</span></div>
+</div>
+</div>
 </section>
 </main>
 </body>
