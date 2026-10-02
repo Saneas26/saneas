@@ -147,7 +147,8 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
    es limpio. En móvil no se tocan estas reglas: allí no hay láminas sino texto, y
    el texto necesita su aire. */
 @media (min-width:768px){
-  .tema{padding-block:0; border-top:0}
+  .tema{border-top:0}
+  .tema.lam{padding-block:0}
   .lamina{margin-top:0}
   /* la apertura también suelta su relleno de abajo, que son 150 px de blanco */
   .bienvenida{padding-bottom:0}
@@ -178,6 +179,21 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 .ficha span{display:block; margin-top:9px; font-size:clamp(13px,3.4vw,15px); line-height:1.45;
             color:var(--tinta-70); max-width:24ch; margin-inline:auto}
 .ficha.marca b{color:var(--teal)}
+
+/* ---------- TAMAÑOS ----------
+   La estructura es la del selector de Stitch: rejilla de tres, y en cada una la
+   letra grande, el peso debajo y el precio debajo. Sin pastillas ni recuadros,
+   que es la regla de la casa, y **en monocromo**: ni teal ni naranja, solo tinta
+   y gris. */
+.tallas{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,5vw,34px);
+        margin-top:clamp(36px,8vw,58px); text-align:center}
+.talla b{display:block; font-family:'Quicksand',sans-serif; font-weight:700;
+         font-size:clamp(34px,9vw,56px); letter-spacing:-.03em; line-height:1;
+         color:var(--tinta)}
+.talla .g{display:block; margin-top:10px; font-size:clamp(12px,3.2vw,15px); font-weight:600;
+          letter-spacing:.06em; color:var(--tinta-40)}
+.talla .eur{display:block; margin-top:14px; font-family:'Quicksand',sans-serif; font-weight:700;
+            font-size:clamp(18px,4.6vw,26px); letter-spacing:-.02em; color:var(--tinta)}
 
 /* ---------- AVISO DE PÁGINA OCULTA ---------- */
 .pruebas{background:#15191a; color:#fff; text-align:center; padding:7px var(--lado);
@@ -223,7 +239,7 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 <!-- ACTO 2 · la lámina es de Óscar (saneas-la-crema-2900px). En escritorio va ella
      sola, que ya lleva dentro el titular, el texto y las barras. En móvil esa letra
      se queda en 7 px, así que ahí se pinta lo mismo en HTML. -->
-<section class="tema" id="la-crema">
+<section class="tema lam" id="la-crema">
 <div class="solo-pc lamina">
 <picture>
   <source type="image/webp" sizes="100vw"
@@ -252,7 +268,7 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 </section>
 <!-- ACTO 3 · lámina de Óscar (saneas-acto3-aporta-2900px). Mismo trato: entera en
      escritorio, y en móvil los seis micronutrientes en HTML, en dos filas de tres. -->
-<section class="tema" id="micronutrientes">
+<section class="tema lam" id="micronutrientes">
 <div class="solo-pc lamina">
 <picture>
   <source type="image/webp" sizes="100vw"
@@ -282,6 +298,16 @@ h3{font-size:clamp(22px, 5vw, 34px); letter-spacing:-.018em; line-height:1.14}
 </div>
 </div>
 </section>
+<!-- ACTO 4 · los tres tamaños. Estructura del selector de Stitch (rejilla de tres:
+     letra, peso, precio), en monocromo y sin nada más. -->
+<section class="tema" id="tamanos"><div class="centro">
+<h2>Tres tamaños.</h2>
+<div class="tallas">
+<div class="talla"><b>S</b><span class="g">120 g</span><span class="eur">3,90 €</span></div>
+<div class="talla"><b>M</b><span class="g">160 g</span><span class="eur">4,90 €</span></div>
+<div class="talla"><b>L</b><span class="g">200 g</span><span class="eur">5,90 €</span></div>
+</div>
+</div></section>
 </main>
 </body>
 </html>
