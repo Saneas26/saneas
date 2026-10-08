@@ -1,0 +1,71 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gpt-thin-border-wide-shadow",
+        "value": "*",
+        "files": [
+          "**/casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:17:36.596Z",
+        "reason": "mockup de teléfono y tarjeta destacada: elevación deliberada (variante de ruta absoluta)"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "**/casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:17:36.629Z",
+        "reason": "variante de ruta absoluta"
+      },
+      {
+        "rule": "extreme-negative-tracking",
+        "value": "*",
+        "files": [
+          "**/casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:17:36.659Z",
+        "reason": "variante de ruta absoluta"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "**/casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:17:36.689Z",
+        "reason": "variante de ruta absoluta"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "**/casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:17:36.718Z",
+        "reason": "variante de ruta absoluta"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "**/casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:20:36.317Z",
+        "reason": "Óscar confirma el naranja #d87628 original: solo se usa en titulares/cifras ≥28px peso 900, texto grande WCAG donde 3,2:1 cumple el mínimo de 3:1"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "casactiva-work/saneas-repo/index.html"
+        ],
+        "createdAt": "2026-08-28T16:20:36.350Z",
+        "reason": "variante de ruta relativa"
+      }
+    ]
+  }
+}
