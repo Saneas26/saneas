@@ -47,13 +47,26 @@ var GrupoSaneas = (function(){
       texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' }
   ];
   var CFG = { actual:'', logos:'img/', extras:[], barra:'.appbar,header' };
+  // ¿Estamos DENTRO de una app de iPhone/iPad (Saneas, Loro, Acumula, Academia
+  // van envueltas con Capacitor)? Ahí Apple rechaza dos cosas: hablar de otra
+  // plataforma (norma 2.3.10: nada de «Android» ni «Google Play») y enlazar a
+  // algo que se paga fuera de la App Store (norma 3.1.1: Academia y Asesorías).
+  function enAppIOS(){
+    try {
+      var C = window.Capacitor;
+      if(C && typeof C.getPlatform==='function' && C.getPlatform()==='ios') return true;
+      if(C && C.platform==='ios') return true;
+      if(/AcademiaApp/i.test(navigator.userAgent) && /iPhone|iPad|Macintosh/.test(navigator.userAgent)) return true;
+    } catch(e) {}
+    return false;
+  }
   var CSS_PUESTO = false;
 
   function esc(s){ return String(s==null?'':s)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function todas(){
     var result = MARCAS.slice();
-    if(CFG.extras && CFG.extras.length > 0){
+    if(CFG.extras && CFG.extras.length > 0 && !enAppIOS()){
       // Orden del grupo (Óscar, 13/10/2026): Saneas · APP Saneas · Academia ·
       // Asesorías · Trivial · Loro · ¿Qué me dices? · Acumula · Pordondevoy ·
       // Activala
@@ -304,6 +317,13 @@ var GrupoSaneas = (function(){
   // (campo play). Lo que no tiene ninguna tienda (paginas web del grupo) se
   // queda con el boton de siempre: no hay nada que descargar de dos sitios.
   function descargas(m, aqui){
+    if(enAppIOS()){
+      // Dentro de una app de iPhone: solo la App Store, o la web. Ni rastro de Android.
+      if(aqui) return '';
+      return m.ios
+        ? '<a class="gs-ir" href="'+esc(m.ios)+'" target="_blank" rel="noopener">Ver en la App Store</a>'
+        : '<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>';
+    }
     if(!m.play && !m.ios){
       return aqui ? '' : '<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>';
     }
