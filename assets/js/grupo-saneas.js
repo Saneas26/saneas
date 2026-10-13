@@ -55,25 +55,38 @@ var GrupoSaneas = (function(){
     var result = MARCAS.slice();
     if(CFG.extras && CFG.extras.length > 0){
       // Orden del grupo (Óscar, 13/10/2026): Saneas · APP Saneas · Academia ·
-      // Trivial · Loro · ¿Qué me dices? · Acumula · Pordondevoy · Activala
+      // Asesorías · Trivial · Loro · ¿Qué me dices? · Acumula · Pordondevoy ·
+      // Activala
       var ex = CFG.extras[0];
-      // La Academia lleva su icono propio (el birrete) en todas las casas, lo
-      // pase o no la casa en su init: así basta con tener app-academia.png.
       if(ex && ex.id==='academia'){
-        var c={}; for(var k in ex) c[k]=ex[k]; c.logo='app-academia.png'; ex=c;
+        // La Academia y Asesorías van juntas y salen de aquí, no del init de
+        // cada casa (el init solo dice si se enseñan): mismo icono, nombre y
+        // texto en todas. Donde no se enseña la Academia (la app de la
+        // Academia en las tiendas) tampoco sale Asesorías: las dos se pagan
+        // fuera y Apple no deja enlazar a eso (norma 3.1.1).
+        var c={}; for(var k in ex) c[k]=ex[k];
+        c.nombre='Academia Saneas'; c.logo='app-academia.png'; c.tipo='un programa';
+        c.texto='Aprende a asesorar en nutrición: clases cortas, media hora al día, con el respaldo del equipo Saneas.';
+        result.splice(2, 0, c, {
+          id:'asesorias', nombre:'Asesorías Saneas', logo:'app-asesorias.png',
+          url:'https://saneas.es/asesorias', tipo:'un programa',
+          texto:'Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca.'
+        });
+      } else {
+        result.splice(2, 0, ex);
       }
-      result.splice(2, 0, ex);
     }
     return result;
   }
   // ---- códigos QR de cada casa, ya calculados ----
-  // Se generan con herramientas/qr_grupo.py (segno) y se pegan aquí: son nueve
+  // Se generan con herramientas/qr_grupo.py (segno) y se pegan aquí: son diez
   // direcciones fijas, así que no hace falta un codificador en la app. Cada uno
   // es la matriz en binario, empaquetada en base64, fila a fila.
   var QRS = {
     'saneas': {t:25, d:'/i+/wSBQboOrt1AV26ci7BS1B/qq/gEpAGIVtDZY2set+b0QeIh26gpE+Y/KFBpSAnj2cfkAV8R/jaowQXErpX+d0Spa6q93BeWw/jSkgA=='},
     'saneas-app': {t:29, d:'/m/D/BGOkG6u0Lt0aUXbqcouwVnZB/qqr+AJmABKit2iQQQcy+17Wpip2L329JTyPtFVqCs6YpfqaJcUvQdt0V5L+1IyccfCn+fl/YB/xF/4t2owT4sZups/ldClCK6Dpw8FbNK/5VaJAA=='},
     'academia': {t:25, d:'/lQ/wRfQbq6Lt1j126kK7BaNB/qq/gGHAL5vPkjQSL7dT2o2XBnn579iQKpqh3drFDGnD/oAaEY/gKrwWRGLqf+l1oN+64wbBMf5/p5/gA=='},
+    'asesorias': {t:29, d:'/h/7/BAqkG6yFLt0ZUXbqKouwVfZB/qqr+AOuABK8rWjzekc8pF7OypnyrGkNZTuBnFV7XqifSEyKKpynQWLAT9FxlISG1/AjfEE+IBoxF/4n2owSU8Zur0/ldBUC66fJx8FHN6/5RatAA=='},
     'pordondevoy': {t:29, d:'/qr7/BeREG6bJLt1Y4XboD0uwQYdB/qqr+ARTwC3BPpcYWX8TeURzYvyeho2pQZQeb0cvZNy+JRw0pMLFNMtWkumvfJIUE2hRXBu/gB4RH/6KutQU/EbuklPpdXOLm6zqEsExDGv7evVAA=='},
     'activala': {t:25, d:'/me/wSIQbqaLt0nV26tS7BcVB/qq/gDnAEqmWiZvxoS6dZkoJGm3d35m3kjMRHhzu7brWv4AdUQ/iKoQRpHbq+/t0qee6SuVBdD+/mNjgA=='},
     'acumula': {t:25, d:'/iW/wTFQbrbLt0A126r67BTxB/qq/gDwAErHWhClhpan1Y+qtGOhR3+L3kj45nggkjby8f4Ab0Q/kCoQQJH7rw/t0Nue6JOVBWx+/itjgA=='},
