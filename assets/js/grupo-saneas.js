@@ -25,6 +25,7 @@ var GrupoSaneas = (function(){
       texto:'El método de nutrición con 87% de éxito que ha ayudado a más de 1700 personas, sin pastillas, sin batidos y sin inyecciones. Solo cambiando tus hábitos poco a poco. El GPS de la nutrición que te muestra el camino.' },
     { id:'saneas-app', nombre:'APP Saneas', logo:'app-saneas-s.png', url:'https://saneas.es/instala-app', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.app',
+      ios:'https://apps.apple.com/app/id6809389820',
       texto:'Probablemente la mejor APP de nutrición del mercado.' },
     { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.pordondevoy',
@@ -33,11 +34,13 @@ var GrupoSaneas = (function(){
       texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' },
     { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.acumula',
+      ios:'https://apps.apple.com/app/id6815290405',
       texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' },
     { id:'quemedices', nombre:'¿Qué me dices?', logo:'app-quemedices.png', url:'https://quemedices.vercel.app', tipo:'una aplicación',
       texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' },
     { id:'loro', nombre:'Loro', logo:'app-loro.png', url:'https://loro.saneas.es', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.loro',
+      ios:'https://apps.apple.com/app/id6813617562',
       texto:'Tu profe de inglés en el móvil. Media hora al día hablando en voz alta: te escucha, te corrige la pronunciación y te explica cómo se construye cada frase.' },
     { id:'trivial', nombre:'Trivial Saneas', logo:'app-trivial.png', url:'https://gajos-saneas26s-projects.vercel.app', tipo:'un juego',
       play:'https://play.google.com/store/apps/details?id=es.saneas.gajos',
@@ -276,19 +279,19 @@ var GrupoSaneas = (function(){
   }
 
   // ---- como se instala cada app ----
-  // En iPhone no hay tienda: la PWA se anade desde la propia web. En Android
-  // hay ficha de Google Play para Saneas, Pordondevoy y Acumula. Las apps que
-  // aun no estan en Play (¿Que me dices?) y las paginas web del grupo se
-  // quedan con el boton de siempre: no hay nada que descargar de dos sitios.
+  // iPhone: si la app tiene ficha en la App Store (campo ios), a la tienda; si
+  // no, la PWA se anade desde la propia web. Android: ficha de Google Play
+  // (campo play). Lo que no tiene ninguna tienda (paginas web del grupo) se
+  // queda con el boton de siempre: no hay nada que descargar de dos sitios.
   function descargas(m, aqui){
-    if(!m.play){
+    if(!m.play && !m.ios){
       return aqui ? '' : '<a class="gs-ir" href="'+esc(m.url)+'" target="_blank" rel="noopener">Ir a '+esc(m.nombre)+'</a>';
     }
     return '<div class="gs-dos">'
-      + '<a class="gs-baja gs-baja-web" href="'+esc(m.url)+'" target="_blank" rel="noopener">'
-        + '<b>iPhone</b><span>Desde la web</span></a>'
-      + '<a class="gs-baja gs-baja-play" href="'+esc(m.play)+'" target="_blank" rel="noopener">'
-        + '<b>Android</b><span>Google Play</span></a>'
+      + '<a class="gs-baja gs-baja-web" href="'+esc(m.ios||m.url)+'" target="_blank" rel="noopener">'
+        + '<b>iPhone</b><span>'+(m.ios?'App Store':'Desde la web')+'</span></a>'
+      + '<a class="gs-baja gs-baja-play" href="'+esc(m.play||m.url)+'" target="_blank" rel="noopener">'
+        + '<b>Android</b><span>'+(m.play?'Google Play':'Desde la web')+'</span></a>'
       + '</div>';
   }
 
