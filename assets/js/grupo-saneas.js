@@ -35,7 +35,13 @@ var GrupoSaneas = (function(){
       play:'https://play.google.com/store/apps/details?id=es.saneas.acumula',
       texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' },
     { id:'quemedices', nombre:'¿Qué me dices?', logo:'app-quemedices.png', url:'https://quemedices.vercel.app', tipo:'una aplicación',
-      texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' }
+      texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' },
+    { id:'loro', nombre:'Loro', logo:'app-loro.png', url:'https://loro.saneas.es', tipo:'una aplicación',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.loro',
+      texto:'Tu profe de inglés en el móvil. Media hora al día hablando en voz alta: te escucha, te corrige la pronunciación y te explica cómo se construye cada frase.' },
+    { id:'trivial', nombre:'Trivial Saneas', logo:'app-trivial.png', url:'https://gajos-saneas26s-projects.vercel.app', tipo:'un juego',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.gajos',
+      texto:'Preguntas de nutrición para aprender jugando: qué hace tu cuerpo con la comida, cómo leer una etiqueta y cómo montar tu plato. Seis quesitos que ganar.' }
   ];
   var CFG = { actual:'', logos:'img/', extras:[], barra:'.appbar,header' };
   var CSS_PUESTO = false;
@@ -51,7 +57,7 @@ var GrupoSaneas = (function(){
     return result;
   }
   // ---- códigos QR de cada casa, ya calculados ----
-  // Se generan con herramientas/qr_grupo.py (segno) y se pegan aquí: son siete
+  // Se generan con herramientas/qr_grupo.py (segno) y se pegan aquí: son nueve
   // direcciones fijas, así que no hace falta un codificador en la app. Cada uno
   // es la matriz en binario, empaquetada en base64, fila a fila.
   var QRS = {
@@ -61,7 +67,9 @@ var GrupoSaneas = (function(){
     'pordondevoy': {t:29, d:'/qr7/BeREG6bJLt1Y4XboD0uwQYdB/qqr+ARTwC3BPpcYWX8TeURzYvyeho2pQZQeb0cvZNy+JRw0pMLFNMtWkumvfJIUE2hRXBu/gB4RH/6KutQU/EbuklPpdXOLm6zqEsExDGv7evVAA=='},
     'activala': {t:25, d:'/me/wSIQbqaLt0nV26tS7BcVB/qq/gDnAEqmWiZvxoS6dZkoJGm3d35m3kjMRHhzu7brWv4AdUQ/iKoQRpHbq+/t0qee6SuVBdD+/mNjgA=='},
     'acumula': {t:25, d:'/iW/wTFQbrbLt0A126r67BTxB/qq/gDwAErHWhClhpan1Y+qtGOhR3+L3kj45nggkjby8f4Ab0Q/kCoQQJH7rw/t0Nue6JOVBWx+/itjgA=='},
-    'quemedices': {t:29, d:'/h0b/BZbEG6ljLt0AoXbp1UuwRYNB/qqr+AMKAB2PHA3Swr8dPR69cBYUJ7wddP+O6m/2pRvcgg0WHPFzNKLNAkk0ODoUSTM5ynu+wB+XG/5Y2rQVtESugQv9de2h66jalsFhVGv45PRAA=='}
+    'quemedices': {t:29, d:'/h0b/BZbEG6ljLt0AoXbp1UuwRYNB/qqr+AMKAB2PHA3Swr8dPR69cBYUJ7wddP+O6m/2pRvcgg0WHPFzNKLNAkk0ODoUSTM5ynu+wB+XG/5Y2rQVtESugQv9de2h66jalsFhVGv45PRAA=='},
+    'loro': {t:25, d:'/ls/wU7QbpALt0tl26mS7BGJB/qq/gAtAKpHiX44cFqdEvCRpS5zzlnt5SZpYM6qHNKTtPwAe0b/ketwStG7rq/d0ezy6uwjBBta/trRgA=='},
+    'trivial': {t:33, d:'/tuOv8F+ohBump3rt07hldulKhLsEe4VB/qqqv4AYUcAQ9dKQexQjIef7WuSwi1CY8d3B4IepfALnk98gaRwEVCdqpOq2LgL3pPRihV9s4KsPev1DJndrAiY4lv9kxU7bAbv3gIZ/QBq7kV/tprqkEp8ceug1q/F0Rzuxulix3cFrkL8/kNjsQA='}
   };
 
   function qrSVG(id, lado){
@@ -238,9 +246,10 @@ var GrupoSaneas = (function(){
   }
 
   // ---- parrilla del pie: iconos; al tocar, la ficha con su OK ----
+  // No incluye la propia casa (ya estas en ella): el desplegable si la lleva.
   function gridHTML(){
     ponerCSS();
-    return '<div class="gs-grid">' + todas().map(function(m){
+    return '<div class="gs-grid">' + todas().filter(function(m){ return m.id!==CFG.actual; }).map(function(m){
       var ico = icono(m,'gs-svg gs-svg-item');
       return '<button type="button" class="gs-item" onclick="GrupoSaneas.ficha(\''+esc(m.id)+'\')">'
            + ico + '<b>'+esc(m.nombre)+'</b></button>';
@@ -284,6 +293,8 @@ var GrupoSaneas = (function(){
   }
 
   function ficha(id){
+    // La app de Saneas mide qué icono se toca; las demás casas no tienen trackEvento.
+    if(typeof trackEvento==='function') trackEvento('grupo_icono_click',{marca:id});
     var m=porId(id); if(!m) return;
     var aqui=(m.id===CFG.actual);
     mostrar('<div class="gs-ficha">'
