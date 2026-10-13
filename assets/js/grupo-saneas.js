@@ -56,7 +56,13 @@ var GrupoSaneas = (function(){
     if(CFG.extras && CFG.extras.length > 0){
       // Orden del grupo (Óscar, 13/10/2026): Saneas · APP Saneas · Academia ·
       // Trivial · Loro · ¿Qué me dices? · Acumula · Pordondevoy · Activala
-      result.splice(2, 0, CFG.extras[0]);
+      var ex = CFG.extras[0];
+      // La Academia lleva su icono propio (el birrete) en todas las casas, lo
+      // pase o no la casa en su init: así basta con tener app-academia.png.
+      if(ex && ex.id==='academia'){
+        var c={}; for(var k in ex) c[k]=ex[k]; c.logo='app-academia.png'; ex=c;
+      }
+      result.splice(2, 0, ex);
     }
     return result;
   }
