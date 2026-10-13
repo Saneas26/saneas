@@ -27,24 +27,24 @@ var GrupoSaneas = (function(){
       play:'https://play.google.com/store/apps/details?id=es.saneas.app',
       ios:'https://apps.apple.com/app/id6809389820',
       texto:'Probablemente la mejor APP de nutrición del mercado.' },
-    { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app', tipo:'una aplicación',
-      play:'https://play.google.com/store/apps/details?id=es.saneas.pordondevoy',
-      texto:'En un avión no hay datos ni wifi. Ahora puedes entretenerte y saber por dónde vas, de manera gratuita. Las 20 noticias más importantes del día te acompañan, junto a los principales podcast en español. Con itinerarios a las principales ciudades europeas.' },
-    { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es', tipo:'una página web',
-      texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' },
+    { id:'trivial', nombre:'Trivial Saneas', logo:'app-trivial.png', url:'https://gajos-saneas26s-projects.vercel.app', tipo:'un juego',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.gajos',
+      texto:'Preguntas de nutrición para aprender jugando: qué hace tu cuerpo con la comida, cómo leer una etiqueta y cómo montar tu plato. Seis quesitos que ganar.' },
+    { id:'loro', nombre:'Loro Habla Inglés', logo:'app-loro.png', url:'https://loro.saneas.es', tipo:'una aplicación',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.loro',
+      ios:'https://apps.apple.com/app/id6813617562',
+      texto:'Tu profe de inglés en el móvil. Media hora al día hablando en voz alta: te escucha, te corrige la pronunciación y te explica cómo se construye cada frase.' },
+    { id:'quemedices', nombre:'¿Qué me dices?', logo:'app-quemedices.png', url:'https://quemedices.vercel.app', tipo:'una aplicación',
+      texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' },
     { id:'acumula', nombre:'Acumula', logo:'app-acumula.png', url:'https://acumula.es', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.acumula',
       ios:'https://apps.apple.com/app/id6815290405',
       texto:'Una ayuda para controlar tu economía casera, totalmente gratuita. Todas tus cuentas en un solo sitio.' },
-    { id:'quemedices', nombre:'¿Qué me dices?', logo:'app-quemedices.png', url:'https://quemedices.vercel.app', tipo:'una aplicación',
-      texto:'Si viajar era una inseguridad, con esta aplicación dejará de serlo. Traducción simultánea de varios idiomas al español.' },
-    { id:'loro', nombre:'Loro', logo:'app-loro.png', url:'https://loro.saneas.es', tipo:'una aplicación',
-      play:'https://play.google.com/store/apps/details?id=es.saneas.loro',
-      ios:'https://apps.apple.com/app/id6813617562',
-      texto:'Tu profe de inglés en el móvil. Media hora al día hablando en voz alta: te escucha, te corrige la pronunciación y te explica cómo se construye cada frase.' },
-    { id:'trivial', nombre:'Trivial Saneas', logo:'app-trivial.png', url:'https://gajos-saneas26s-projects.vercel.app', tipo:'un juego',
-      play:'https://play.google.com/store/apps/details?id=es.saneas.gajos',
-      texto:'Preguntas de nutrición para aprender jugando: qué hace tu cuerpo con la comida, cómo leer una etiqueta y cómo montar tu plato. Seis quesitos que ganar.' }
+    { id:'pordondevoy', nombre:'Pordondevoy', logo:'app-pordondevoy.png', url:'https://pordondevoy-saneas.vercel.app', tipo:'una aplicación',
+      play:'https://play.google.com/store/apps/details?id=es.saneas.pordondevoy',
+      texto:'En un avión no hay datos ni wifi. Ahora puedes entretenerte y saber por dónde vas, de manera gratuita. Las 20 noticias más importantes del día te acompañan, junto a los principales podcast en español. Con itinerarios a las principales ciudades europeas.' },
+    { id:'activala', nombre:'Activala', logo:'app-activala.png', url:'https://activala.es', tipo:'una página web',
+      texto:'Alquileres de casas en el sur de Gran Canaria, sin intermediarios.' }
   ];
   var CFG = { actual:'', logos:'img/', extras:[], barra:'.appbar,header' };
   var CSS_PUESTO = false;
@@ -54,7 +54,8 @@ var GrupoSaneas = (function(){
   function todas(){
     var result = MARCAS.slice();
     if(CFG.extras && CFG.extras.length > 0){
-      // Orden del grupo: Saneas.es · APP Saneas · Asesorias · Pordondevoy · …
+      // Orden del grupo (Óscar, 13/10/2026): Saneas · APP Saneas · Academia ·
+      // Trivial · Loro · ¿Qué me dices? · Acumula · Pordondevoy · Activala
       result.splice(2, 0, CFG.extras[0]);
     }
     return result;
