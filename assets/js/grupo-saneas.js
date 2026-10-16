@@ -122,7 +122,9 @@ var GrupoSaneas = (function(){
   }
 
   function porId(id){ var l=todas(); for(var i=0;i<l.length;i++) if(l[i].id===id) return l[i]; return null; }
-  function src(m){ return m.logo ? (CFG.logos+m.logo) : ''; }
+  // ?v= en los iconos: al cambiar uno (16/10/2026, iconos a sangre) nadie se queda con el viejo en caché
+  var LOGOS_V = '2';
+  function src(m){ return m.logo ? (CFG.logos+m.logo+'?v='+LOGOS_V) : ''; }
   // Marcas sin PNG (los sub-productos): baldosa naranja con dos figuras,
   // una detrás de otra — se entiende de un vistazo que son personas.
   var SVG_PERSONAS = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" '
@@ -173,7 +175,7 @@ var GrupoSaneas = (function(){
       '.gs-qr-pie{font-size:14px;color:#3d4f59;margin:0 6px 16px}',
       '.gs-ir.gs-wa{background:#25D366}',
       '.gs-fila img{width:52px;height:52px;border-radius:14px;object-fit:cover;flex:none;background:#fff;',
-        'box-shadow:0 3px 10px rgba(16,40,48,.12)}',
+        'box-shadow:0 1px 2px rgba(16,40,48,.18),0 4px 12px rgba(16,40,48,.14);outline:1px solid rgba(16,40,48,.10);outline-offset:-1px}',
       '.gs-tx{min-width:0;text-align:left}',
       '.gs-tx b{display:block;font-size:17px;font-weight:800;color:#22313a;line-height:1.25}',
       '.gs-tx span{display:block;font-size:16px;color:#3d4f59;line-height:1.55;margin-top:5px}',
@@ -183,11 +185,11 @@ var GrupoSaneas = (function(){
       '.gs-item{display:flex;flex-direction:column;align-items:center;gap:7px;background:none;border:0;',
         'padding:0;cursor:pointer;font-family:inherit}',
       '.gs-item img{width:60px;height:60px;border-radius:16px;object-fit:cover;background:#fff;',
-        'box-shadow:0 4px 12px rgba(16,40,48,.16)}',
+        'box-shadow:0 1px 2px rgba(16,40,48,.2),0 5px 14px rgba(16,40,48,.16);outline:1px solid rgba(16,40,48,.10);outline-offset:-1px}',
       '.gs-item b{font-size:14px;font-weight:700;color:#22313a;line-height:1.25;text-align:center}',
       '.gs-ficha{text-align:center;padding:6px 4px 2px}',
       '.gs-ficha img{width:96px;height:96px;border-radius:24px;object-fit:cover;background:#fff;',
-        'box-shadow:0 8px 22px rgba(16,40,48,.2)}',
+        'box-shadow:0 2px 4px rgba(16,40,48,.2),0 10px 24px rgba(16,40,48,.2);outline:1px solid rgba(16,40,48,.10);outline-offset:-1px}',
       '.gs-ficha h3{font-size:24px;font-weight:800;color:#22313a;margin:14px 0 8px}',
       '.gs-ficha p{font-size:17px;color:#3d4f59;line-height:1.55;margin:0 6px 18px}',
       '.gs-ir{display:block;background:#3890a4;color:#fff;border:0;border-radius:14px;padding:14px;',
