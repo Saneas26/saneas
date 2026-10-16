@@ -29,6 +29,7 @@ var GrupoSaneas = (function(){
       texto:'Probablemente la mejor APP de nutrición del mercado.' },
     { id:'trivial', nombre:'Trivial Saneas', logo:'app-trivial.png', url:'https://trivial.saneas.es', tipo:'un juego',
       play:'https://play.google.com/store/apps/details?id=es.saneas.gajos',
+      ios:'https://apps.apple.com/app/id6819000618',
       texto:'Preguntas de nutrición para aprender jugando: qué hace tu cuerpo con la comida, cómo leer una etiqueta y cómo montar tu plato. Seis quesitos que ganar.' },
     { id:'loro', nombre:'Loro Habla Inglés', logo:'app-loro.png', url:'https://loro.saneas.es', tipo:'una aplicación',
       play:'https://play.google.com/store/apps/details?id=es.saneas.loro',
