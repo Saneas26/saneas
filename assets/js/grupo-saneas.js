@@ -233,6 +233,11 @@ var GrupoSaneas = (function(){
       '.gs-baja-play b{color:#fff}',
       '.gs-baja-play span{color:#f2fafc}',
       '.gs-baja-play:active{background:#26697a}',
+      '.gs-canal{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px auto 4px;max-width:420px;',
+        'background:#11753f;color:#fff;border-radius:14px;padding:13px 16px;font:600 16px/1.2 inherit;text-decoration:none;',
+        'box-shadow:0 1px 2px rgba(16,40,48,.18),0 4px 12px rgba(16,40,48,.14)}',
+      '.gs-canal:hover{background:#0d6233}',
+      '.gs-canal:focus-visible{outline:3px solid #13292f;outline-offset:2px}',
       '@media (prefers-reduced-motion:reduce){.gs-panel,.gs-fondo{transition:none}}'
     ].join('');
     document.head.appendChild(c);
@@ -263,6 +268,14 @@ var GrupoSaneas = (function(){
     var f=document.getElementById('gs-fondo'); if(f) f.classList.remove('abierto');
   }
 
+  // ---- canal de WhatsApp del Grupo (21/10/2026): seguirlo es voluntario, nunca se escribe a nadie ----
+  var CANAL = 'https://whatsapp.com/channel/0029Vaw9zFi0bIdmalcGlr2I';
+  function canalHTML(){
+    return '<a class="gs-canal" href="'+CANAL+'" target="_blank" rel="noopener">'
+      + '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>'
+      + '<span>Síguenos en el canal de WhatsApp</span></a>';
+  }
+
   // ---- desplegable del logo: logotipo + explicación de cada una ----
   function menuHTML(){
     return '<div class="gs-tit">Grupo <b>Saneas</b></div>' + todas().map(function(m){
@@ -276,7 +289,7 @@ var GrupoSaneas = (function(){
       return '<div class="gs-fila">' + dentro
         + '<button type="button" class="gs-comp" onclick="GrupoSaneas.compartir(\''+esc(m.id)+'\')">Compartir</button>'
         + '</div>';
-    }).join('');
+    }).join('') + canalHTML();
   }
   function abrirMenu(){
     var p=document.getElementById('gs-panel');
@@ -292,7 +305,7 @@ var GrupoSaneas = (function(){
       var ico = icono(m,'gs-svg gs-svg-item');
       return '<button type="button" class="gs-item" onclick="GrupoSaneas.ficha(\''+esc(m.id)+'\')">'
            + ico + '<b>'+esc(m.nombre)+'</b></button>';
-    }).join('') + '</div>';
+    }).join('') + '</div>' + canalHTML();
   }
   // ---- compartir: el QR para que lo escaneen delante, o WhatsApp ----
   function compartir(id){
