@@ -271,6 +271,18 @@ details.compra[open] summary:after{transform:rotate(45deg)}
 .pie-redes a{display:inline-flex;align-items:center;gap:8px;min-height:40px}
 .pie-redes .ico{width:20px;height:20px}
 
+/* En marcha y fin de campaña */
+.ya-empezado{display:none}
+html.en-marcha .ya-empezado{display:block}
+html.en-marcha .closing .antes{display:none}
+.hero .ya-empezado{font-size:18px;color:var(--verde);background:var(--calabaza-suave);border-radius:10px;padding:12px 18px;max-width:560px;margin:0 auto 26px}
+.fin-sec{display:none;text-align:center}
+html.fin .fin-sec{display:block}
+html.fin main>:not(.fin-sec),html.fin dialog,html.fin header nav>a:not(.nav-cta){display:none !important}
+.fin-sec h1{font-size:clamp(40px,5.5vw,76px);max-width:900px;margin-left:auto;margin-right:auto}
+.fin-sec>p{max-width:560px;margin-left:auto;margin-right:auto}
+.fin-sec .button{margin-top:10px}
+
 /* Cierre */
 .closing{text-align:center;padding-top:90px;padding-bottom:0}
 .closing h2{margin-bottom:22px}
@@ -404,7 +416,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
   .descargas-grupo.fila{flex-direction:column}
   .descargas-grupo.fila .btn-dl{min-width:0;width:100%}
   .num-caja strong{font-size:76px}
-  .redes .button,.closing>.button{width:100%;justify-content:space-between}
+  .redes{flex-direction:column;align-items:center}
+  .redes .button,.closing>.button,.fin-sec>.button{width:100%;max-width:420px;justify-content:space-between}
   .redes .btn-red{justify-content:flex-start}
   .pie-redes{width:100%}
   .section.comunidad{padding:72px 16px}
@@ -422,14 +435,33 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
   .pasos li{padding-left:56px}
 }
 </style></head><body>
-<script>document.documentElement.className+=' js'</script>
+<script>
+/* Fechas de la campaña, en hora de Madrid. Empieza el lunes 26/10 a las 00:00 (CET) y la
+   página se apaga sola el lunes 9/11 a las 00:00. ?fin=1 fuerza el final para revisarlo. */
+(function(){
+  var h = document.documentElement, ahora = new Date(); h.className += ' js';
+  try {
+    if(ahora >= new Date('2026-11-08T23:00:00Z') || /[?&]fin=1(&|$)/.test(location.search)) h.className += ' fin';
+    else if(ahora >= new Date('2026-10-25T23:00:00Z')) h.className += ' en-marcha';
+  } catch(e){}
+})();
+</script>
 <header><a href="/" class="brand" aria-label="Saneas, ir al inicio">Saneas<span>DIETA EN GRUPO</span></a><nav aria-label="Secciones"><a href="#dieta">La dieta</a><a href="#recetas">Recetas</a><a href="#compra">La compra</a><a class="nav-cta js-grupo" href="https://chat.whatsapp.com/BBASrKB4J2c8FBuZum0TaN" target="_blank" rel="noopener">Únete al grupo <span aria-hidden="true">&#8599;</span></a></nav></header>
 
 <main>
+<section class="section fin-sec" id="fin" aria-labelledby="fin-tit">
+  <div class="eyebrow">Dieta de Otoño</div>
+  <h1 id="fin-tit">La Dieta de Otoño en grupo ha terminado.</h1>
+  <p class="lead">Gracias a todos los que la habéis hecho.</p>
+  <p>Únete al grupo de WhatsApp para enterarte de la próxima.</p>
+  <a class="button js-grupo" href="https://chat.whatsapp.com/BBASrKB4J2c8FBuZum0TaN" target="_blank" rel="noopener">Únete al grupo de WhatsApp <span aria-hidden="true">&#8599;</span></a>
+  <div class="redes"><a class="button button-borde btn-red" href="https://www.instagram.com/saneas.es/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg><span>Síguenos en Instagram</span></a><a class="button button-borde btn-red" href="https://www.tiktok.com/@saneas25" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 3.5v11.2a3.3 3.3 0 1 1-3.3-3.3M13.5 3.5c.4 2.7 2.3 4.6 5 4.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Síguenos en TikTok</span></a></div>
+</section>
 <section class="hero">
   <div class="eyebrow">Dieta de Otoño</div>
   <h1>La misma dieta.<br>A la vez.<br><span class="otono">En grupo.</span></h1>
   <p class="fechas">Del 26 de octubre al 8 de noviembre</p>
+  <p class="ya-empezado">Ya hemos empezado: aún puedes unirte y <b>empezar hoy mismo</b>.</p>
   <p>200 personas comiendo lo mismo durante dos semanas, con los mismos objetivos. Cuatro comidas al día y recetas de supermercado.</p>
   <a class="button js-grupo" href="https://chat.whatsapp.com/BBASrKB4J2c8FBuZum0TaN" target="_blank" rel="noopener">Únete al grupo de WhatsApp <span aria-hidden="true">&#8599;</span></a>
   <a class="secundario" href="https://wa.me/34689806987?text=Hola%20%C3%93scar%2C%20quiero%20hacer%20la%20dieta%20de%20oto%C3%B1o%20en%20grupo" target="_blank" rel="noopener">¿Dudas? Escríbeme por WhatsApp</a>
@@ -581,7 +613,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 
 <section class="section closing">
   <h2 class="cierre-h rv">¿Te apuntas?</h2>
-  <p class="rv">Cuantos más seamos, más fácil. Entra en el grupo y empezamos juntos el lunes 26 de octubre.</p>
+  <p class="rv antes">Cuantos más seamos, más fácil. Entra en el grupo y empezamos juntos el lunes 26 de octubre.</p>
+  <p class="rv ya-empezado">Cuantos más seamos, más fácil. Aún estás a tiempo: entra en el grupo y empieza hoy mismo, con el menú de hoy.</p>
   <a class="button js-grupo" href="https://chat.whatsapp.com/BBASrKB4J2c8FBuZum0TaN" target="_blank" rel="noopener">Únete al grupo de WhatsApp <span aria-hidden="true">&#8599;</span></a>
   <div class="redes"><a class="button button-borde btn-red" href="https://www.instagram.com/saneas.es/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg><span>Síguenos en Instagram</span></a><a class="button button-borde btn-red" href="https://www.tiktok.com/@saneas25" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 3.5v11.2a3.3 3.3 0 1 1-3.3-3.3M13.5 3.5c.4 2.7 2.3 4.6 5 4.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Síguenos en TikTok</span></a></div>
   <span class="cliente">¿Ya eres cliente de Saneas? Entra en tu <a href="https://app.saneas.es">app.saneas.es</a></span>
@@ -1211,6 +1244,7 @@ var COMUNIDAD_URL = 'https://chat.whatsapp.com/BBASrKB4J2c8FBuZum0TaN';
   }
 
   /* ---------- Carga ---------- */
+  if(document.documentElement.classList.contains('fin')) return;
   fetch('/assets/dietagrupo/dieta-otono.json').then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
     DATOS = d;
     pintaDias();
