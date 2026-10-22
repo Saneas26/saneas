@@ -337,7 +337,7 @@ var GrupoSaneas = (function(){
   // Menú a pantalla completa -> vídeo de texto animado de cada casa -> al terminar, sus botones.
   // Los vídeos viven en saneas.es y solo se descargan al tocar una casa.
   var VIDEO_BASE = 'https://saneas.es/assets/video/grupo/';
-  var VIDEO_V = '1';
+  var VIDEO_V = '1';  // subirlo al cambiar algún vídeo
   var VIDEOS = { saneas:1, 'saneas-app':1, academia:1, asesorias:1, trivial:1, loro:1,
                  quemedices:1, acumula:1, pordondevoy:1, activala:1 };
   var GAL = { abierta:false, foco:null };
@@ -401,7 +401,7 @@ var GrupoSaneas = (function(){
       + '<button type="button" class="gs-x gs-x-vid" aria-label="Volver al menú" onclick="GrupoSaneas.galeria()">✕</button>'
       + '<video id="gs-vid-v" playsinline muted autoplay preload="auto" poster="'+VIDEO_BASE+esc(id)+'.jpg?v='+VIDEO_V+'"'
       + ' src="'+VIDEO_BASE+esc(id)+'.mp4?v='+VIDEO_V+'"></video>'
-      + '<button type="button" class="gs-saltar" onclick="GrupoSaneas.final(\''+esc(id)+'\')">Saltar</button>'
+      + '<button type="button" class="gs-saltar" onclick="GrupoSaneas.final(\''+esc(id)+'\', false)">Saltar</button>'
       + '<div id="gs-vid-fin"></div></div>';
     var v=document.getElementById('gs-vid-v'), pr=document.getElementById('gs-vid-pr');
     v.muted=true;
@@ -420,10 +420,10 @@ var GrupoSaneas = (function(){
   function final(id, conVideo){
     var m=porId(id); if(!m) return;
     var aqui=(m.id===CFG.actual);
-    var html = '<div class="gs-fin">'
-      + icono(m,'gs-svg gs-svg-ficha')
-      + '<h3>'+esc(m.nombre)+'</h3>'
-      + (conVideo ? '' : '<p>'+esc(m.texto)+'</p>')
+    // Con vídeo, el cierre ya enseña icono y nombre en grande: aquí solo los botones.
+    var cab = conVideo ? '' : icono(m,'gs-svg gs-svg-ficha').replace(' loading="lazy"','')
+      + '<h3>'+esc(m.nombre)+'</h3><p>'+esc(m.texto)+'</p>';
+    var html = '<div class="gs-fin">' + cab
       + botonesFinal(m, aqui)
       + '<div class="gs-fin-mas"><button type="button" class="gs-fin-l" onclick="GrupoSaneas.galeria()">Ver otra</button>'
       + '<button type="button" class="gs-fin-l" onclick="GrupoSaneas.compartirDesdeGaleria(\''+esc(m.id)+'\')">Compartir</button></div>'
