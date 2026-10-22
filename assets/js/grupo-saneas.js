@@ -238,6 +238,62 @@ var GrupoSaneas = (function(){
         'box-shadow:0 1px 2px rgba(16,40,48,.18),0 4px 12px rgba(16,40,48,.14)}',
       '.gs-canal:hover{background:#0d6233}',
       '.gs-canal:focus-visible{outline:3px solid #13292f;outline-offset:2px}',
+      '.gs-sin-scroll,.gs-sin-scroll body{overflow:hidden!important}',
+      '.gs-conoce{background:#0f151a;color:#fff;border-radius:22px;padding:22px 18px;text-align:center;max-width:460px;margin:8px auto 0;',
+        'box-shadow:0 2px 4px rgba(16,40,48,.2),0 10px 28px rgba(16,40,48,.18)}',
+      '.gs-conoce-t{margin:0 0 14px;font:600 19px/1.3 inherit;color:#fff;text-wrap:balance}',
+      '.gs-conoce-t b{color:#43eff5;font-weight:800}',
+      '.gs-conoce-ic{display:flex;justify-content:center;margin:0 0 16px}',
+      '.gs-conoce-ic img,.gs-conoce-ic .gs-svg-mini{width:40px;height:40px;border-radius:11px;object-fit:cover;flex:none;margin:0 -5px;',
+        'box-shadow:0 0 0 2px #0f151a,0 2px 6px rgba(0,0,0,.35);background:#fff}',
+      '.gs-conoce-ic .gs-word{width:40px;height:40px;border-radius:11px;font-size:8px;flex:none;margin:0 -5px;box-shadow:0 0 0 2px #0f151a}',
+      '.gs-conoce-b{appearance:none;border:0;background:#01888f;color:#fff;font:700 17px/1 inherit;padding:15px 26px;border-radius:999px;cursor:pointer}',
+      '.gs-conoce-b:hover{background:#017379}',
+      '.gs-conoce-b:focus-visible,.gs-gal button:focus-visible,.gs-gal a:focus-visible{outline:3px solid #43eff5;outline-offset:2px}',
+      '.gs-gal{position:fixed;inset:0;z-index:10000;background:#0f151a;color:#fff;overflow-y:auto;-webkit-overflow-scrolling:touch;',
+        'display:none;padding:calc(18px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}',
+      '.gs-gal.abierta{display:block}',
+      '.gs-gal-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;max-width:560px;margin:0 auto 18px}',
+      '.gs-gal-tit{font:800 28px/1.1 inherit;letter-spacing:-.5px}',
+      '.gs-gal-tit b{color:#43eff5}',
+      '.gs-gal-sub{margin:6px 0 0;font-size:16px;color:#c3d3d6}',
+      '.gs-x{appearance:none;border:0;background:#1d2a32;color:#fff;width:44px;height:44px;border-radius:50%;font:700 18px/1 inherit;cursor:pointer;flex:none}',
+      '.gs-gal-lista{display:flex;flex-direction:column;gap:10px;max-width:560px;margin:0 auto}',
+      '.gs-gal-it{appearance:none;border:1px solid #24343d;background:#17222a;color:#fff;border-radius:18px;padding:14px;display:flex;align-items:center;gap:14px;',
+        'text-align:left;cursor:pointer;width:100%;font:inherit}',
+      '.gs-gal-it:hover{background:#1c2a33}',
+      '.gs-gal-it img,.gs-gal-it .gs-svg-fila{width:56px;height:56px;border-radius:15px;flex:none;object-fit:cover;background:#fff}',
+      '.gs-gal-tx{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}',
+      '.gs-gal-tx b{font-size:18px}',
+      '.gs-gal-et{font-size:13px;font-weight:700;color:#43eff5}',
+      '.gs-gal-de{font-size:14px;line-height:1.4;color:#c3d3d6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}',
+      '.gs-gal-play{flex:none;width:38px;height:38px;border-radius:50%;background:#01888f;display:grid;place-items:center;font-size:14px;padding-left:2px}',
+      '.gs-gal .gs-canal{margin-top:20px}',
+      '.gs-vid{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center}',
+      '.gs-vid video{width:100%;height:100%;object-fit:contain;background:#000}',
+      '.gs-vid-sin{background:#0f151a}',
+      '.gs-vid-barra{position:absolute;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));top:calc(10px + env(safe-area-inset-top,0px));height:4px;border-radius:4px;background:rgba(255,255,255,.25);z-index:2}',
+      '.gs-vid-barra i{display:block;height:100%;width:0;border-radius:4px;background:#fff}',
+      '.gs-x-vid{position:absolute;top:calc(24px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:3;background:rgba(15,21,26,.7)}',
+      '.gs-saltar{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:3;appearance:none;border:0;',
+        'background:rgba(15,21,26,.75);color:#fff;font:700 16px/1 inherit;padding:13px 20px;border-radius:999px;cursor:pointer}',
+      '#gs-vid-fin{position:absolute;left:0;right:0;bottom:0;z-index:4;display:none;padding:28px max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));',
+        'background:linear-gradient(to top,#0f151a 72%,rgba(15,21,26,0))}',
+      '#gs-vid-fin.abierto{display:block}',
+      '.gs-vid-sin #gs-vid-fin{position:static;background:none;max-width:460px;margin:0 auto}',
+      '.gs-fin{max-width:460px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}',
+      '.gs-fin img,.gs-fin .gs-svg-ficha,.gs-fin .gs-word{width:84px;height:84px;border-radius:20px;object-fit:cover;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.35)}',
+      '.gs-fin h3{margin:0;font:800 24px/1.15 inherit;color:#fff}',
+      '.gs-fin p{margin:0;font-size:16px;line-height:1.45;color:#c3d3d6}',
+      '.gs-fin .gs-ir{width:100%;box-sizing:border-box}',
+      '.gs-fin-aqui{font-size:16px;color:#c3d3d6}',
+      '.gs-fin-dos{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}',
+      '.gs-fin-b{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;color:#0f151a;text-decoration:none;border-radius:16px;padding:12px 8px;font:800 17px/1.1 inherit}',
+      '.gs-fin-b small{font-size:13px;font-weight:600;color:#3b4b52}',
+      '.gs-fin-dos .gs-fin-b:first-child{background:#01888f;color:#fff}',
+      '.gs-fin-dos .gs-fin-b:first-child small{color:#e3f6f7}',
+      '.gs-fin-mas{display:flex;gap:10px;width:100%}',
+      '.gs-fin-l{flex:1;appearance:none;border:1px solid #3a4b54;background:transparent;color:#fff;font:700 16px/1 inherit;padding:13px;border-radius:14px;cursor:pointer}',
       '@media (prefers-reduced-motion:reduce){.gs-panel,.gs-fondo{transition:none}}'
     ].join('');
     document.head.appendChild(c);
@@ -276,6 +332,112 @@ var GrupoSaneas = (function(){
       + '<span>Síguenos en el canal de WhatsApp</span></a>';
   }
 
+
+  // ---- galería «¿Conoces todas las apps y webs del Grupo Saneas?» (22/10/2026) ----
+  // Menú a pantalla completa -> vídeo de texto animado de cada casa -> al terminar, sus botones.
+  // Los vídeos viven en saneas.es y solo se descargan al tocar una casa.
+  var VIDEO_BASE = 'https://saneas.es/assets/video/grupo/';
+  var VIDEO_V = '1';
+  var VIDEOS = { saneas:1, 'saneas-app':1, academia:1, asesorias:1, trivial:1, loro:1,
+                 quemedices:1, acumula:1, pordondevoy:1, activala:1 };
+  var GAL = { abierta:false, foco:null };
+  function esApple(){ return /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1); }
+  function esApp(m){ return !!(m.play || m.ios); }
+  function tarjetaHTML(){
+    var lista = todas().slice(0,8);
+    return '<div class="gs-conoce">'
+      + '<p class="gs-conoce-t">¿Conoces todas las apps y webs del <b>Grupo Saneas</b>?</p>'
+      + '<div class="gs-conoce-ic" aria-hidden="true">' + lista.map(function(m){ return icono(m,'gs-svg gs-svg-mini'); }).join('') + '</div>'
+      + '<button type="button" class="gs-conoce-b" onclick="GrupoSaneas.galeria()">Descúbrelas <span aria-hidden="true">▶</span></button>'
+      + '</div>';
+  }
+  function capa(){
+    ponerCSS();
+    var c=document.getElementById('gs-gal');
+    if(!c){
+      c=document.createElement('div'); c.id='gs-gal'; c.className='gs-gal';
+      c.setAttribute('role','dialog'); c.setAttribute('aria-modal','true'); c.setAttribute('aria-label','Apps y webs del Grupo Saneas');
+      document.body.appendChild(c);
+      document.addEventListener('keydown', function(e){ if(GAL.abierta && e.key==='Escape') cerrarGaleria(); });
+    }
+    return c;
+  }
+  function galeria(){
+    cerrar();
+    if(!GAL.abierta){ GAL.foco=document.activeElement; }
+    GAL.abierta=true;
+    var c=capa();
+    document.documentElement.classList.add('gs-sin-scroll');
+    c.innerHTML = '<div class="gs-gal-cab"><div><div class="gs-gal-tit">Grupo <b>Saneas</b></div>'
+      + '<p class="gs-gal-sub">Toca una para verla en un minuto.</p></div>'
+      + '<button type="button" class="gs-x" aria-label="Cerrar" onclick="GrupoSaneas.cerrarGaleria()">✕</button></div>'
+      + '<div class="gs-gal-lista">' + todas().map(function(m){
+          var aqui=(m.id===CFG.actual);
+          return '<button type="button" class="gs-gal-it" onclick="GrupoSaneas.ver(\''+esc(m.id)+'\')">'
+            + icono(m,'gs-svg gs-svg-fila')
+            + '<span class="gs-gal-tx"><b>'+esc(m.nombre)+'</b>'
+            + '<span class="gs-gal-et">'+(esApp(m)?'App':'Web')+(aqui?' · estás aquí':'')+'</span>'
+            + '<span class="gs-gal-de">'+esc(m.texto)+'</span></span>'
+            + (VIDEOS[m.id] ? '<span class="gs-gal-play" aria-hidden="true">▶</span>' : '')
+            + '</button>';
+        }).join('') + '</div>' + canalHTML();
+    c.scrollTop=0; c.classList.add('abierta');
+    var x=c.querySelector('.gs-x'); if(x) x.focus();
+  }
+  function cerrarGaleria(){
+    var c=document.getElementById('gs-gal'); if(!c) return;
+    var v=c.querySelector('video'); if(v){ try{ v.pause(); }catch(e){} }
+    c.classList.remove('abierta'); c.innerHTML=''; GAL.abierta=false;
+    document.documentElement.classList.remove('gs-sin-scroll');
+    if(GAL.foco && GAL.foco.focus) { try{ GAL.foco.focus(); }catch(e){} }
+  }
+  function ver(id){
+    var m=porId(id); if(!m) return;
+    if(typeof trackEvento==='function') trackEvento('grupo_video',{marca:id});
+    if(!VIDEOS[id]) return final(id, false);
+    var c=capa();
+    c.innerHTML = '<div class="gs-vid">'
+      + '<div class="gs-vid-barra"><i id="gs-vid-pr"></i></div>'
+      + '<button type="button" class="gs-x gs-x-vid" aria-label="Volver al menú" onclick="GrupoSaneas.galeria()">✕</button>'
+      + '<video id="gs-vid-v" playsinline muted autoplay preload="auto" poster="'+VIDEO_BASE+esc(id)+'.jpg?v='+VIDEO_V+'"'
+      + ' src="'+VIDEO_BASE+esc(id)+'.mp4?v='+VIDEO_V+'"></video>'
+      + '<button type="button" class="gs-saltar" onclick="GrupoSaneas.final(\''+esc(id)+'\')">Saltar</button>'
+      + '<div id="gs-vid-fin"></div></div>';
+    var v=document.getElementById('gs-vid-v'), pr=document.getElementById('gs-vid-pr');
+    v.muted=true;
+    v.addEventListener('timeupdate', function(){ if(v.duration) pr.style.width=(100*v.currentTime/v.duration)+'%'; });
+    v.addEventListener('ended', function(){ final(id, true); });
+    v.addEventListener('error', function(){ final(id, false); });
+    var p=v.play(); if(p && p.catch) p.catch(function(){ /* sin autoplay: el usuario lo pulsa */ v.controls=true; });
+  }
+  function botonesFinal(m, aqui){
+    if(aqui) return '<p class="gs-fin-aqui">Ya estás en '+esc(m.nombre)+'.</p>';
+    if(enAppIOS() || !esApp(m)) return descargas(m, false);
+    var ios = '<a class="gs-fin-b" href="'+esc(m.ios||m.url)+'" target="_blank" rel="noopener"><small>iPhone</small>'+(m.ios?'App Store':'Desde la web')+'</a>';
+    var and = '<a class="gs-fin-b" href="'+esc(m.play||m.url)+'" target="_blank" rel="noopener"><small>Android</small>'+(m.play?'Google Play':'Desde la web')+'</a>';
+    return '<div class="gs-fin-dos">' + (esApple() ? ios+and : and+ios) + '</div>';
+  }
+  function final(id, conVideo){
+    var m=porId(id); if(!m) return;
+    var aqui=(m.id===CFG.actual);
+    var html = '<div class="gs-fin">'
+      + icono(m,'gs-svg gs-svg-ficha')
+      + '<h3>'+esc(m.nombre)+'</h3>'
+      + (conVideo ? '' : '<p>'+esc(m.texto)+'</p>')
+      + botonesFinal(m, aqui)
+      + '<div class="gs-fin-mas"><button type="button" class="gs-fin-l" onclick="GrupoSaneas.galeria()">Ver otra</button>'
+      + '<button type="button" class="gs-fin-l" onclick="GrupoSaneas.compartirDesdeGaleria(\''+esc(m.id)+'\')">Compartir</button></div>'
+      + '</div>';
+    var f=document.getElementById('gs-vid-fin');
+    if(f){ var v=document.getElementById('gs-vid-v'); if(v){ try{ v.pause(); }catch(e){} }
+      var s=document.querySelector('.gs-saltar'); if(s) s.hidden=true;
+      f.innerHTML=html; f.classList.add('abierto'); return; }
+    var c=capa(); c.innerHTML='<div class="gs-vid gs-vid-sin">'
+      + '<button type="button" class="gs-x gs-x-vid" aria-label="Volver al menú" onclick="GrupoSaneas.galeria()">✕</button>'
+      + '<div id="gs-vid-fin" class="abierto">'+html+'</div></div>';
+  }
+  function compartirDesdeGaleria(id){ cerrarGaleria(); compartir(id); }
+
   // ---- desplegable del logo: logotipo + explicación de cada una ----
   function menuHTML(){
     return '<div class="gs-tit">Grupo <b>Saneas</b></div>' + todas().map(function(m){
@@ -292,20 +454,16 @@ var GrupoSaneas = (function(){
     }).join('') + canalHTML();
   }
   function abrirMenu(){
-    var p=document.getElementById('gs-panel');
-    if(p && p.classList.contains('abierto')){ cerrar(); return; }
-    mostrar(menuHTML());
+    if(GAL.abierta){ cerrarGaleria(); return; }
+    galeria();
   }
 
   // ---- parrilla del pie: iconos; al tocar, la ficha con su OK ----
   // No incluye la propia casa (ya estas en ella): el desplegable si la lleva.
+  // Desde el 22/10/2026 el pie ya no lleva la parrilla: lleva la tarjeta que abre la galería.
   function gridHTML(){
     ponerCSS();
-    return '<div class="gs-grid">' + todas().filter(function(m){ return m.id!==CFG.actual; }).map(function(m){
-      var ico = icono(m,'gs-svg gs-svg-item');
-      return '<button type="button" class="gs-item" onclick="GrupoSaneas.ficha(\''+esc(m.id)+'\')">'
-           + ico + '<b>'+esc(m.nombre)+'</b></button>';
-    }).join('') + '</div>' + canalHTML();
+    return tarjetaHTML() + canalHTML();
   }
   // ---- compartir: el QR para que lo escaneen delante, o WhatsApp ----
   function compartir(id){
@@ -373,5 +531,6 @@ var GrupoSaneas = (function(){
     ponerCSS();
   }
   return { init:init, abrirMenu:abrirMenu, cerrar:cerrar, ficha:ficha, compartir:compartir,
+           galeria:galeria, cerrarGaleria:cerrarGaleria, ver:ver, final:final, compartirDesdeGaleria:compartirDesdeGaleria,
            gridHTML:gridHTML, menuHTML:menuHTML, marcas:todas };
 })();
