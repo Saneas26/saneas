@@ -251,7 +251,7 @@ var GrupoSaneas = (function(){
       '.gs-conoce-b:hover{background:#017379}',
       '.gs-conoce-b:focus-visible,.gs-gal button:focus-visible,.gs-gal a:focus-visible{outline:3px solid #43eff5;outline-offset:2px}',
       '.gs-gal{position:fixed;inset:0;z-index:10000;background:#0f151a;color:#fff;overflow-y:auto;-webkit-overflow-scrolling:touch;',
-        'display:none;padding:calc(18px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}',
+        'display:none;padding:calc(18px + var(--zona-arriba, env(safe-area-inset-top,0px))) max(16px,env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}',
       '.gs-gal.abierta{display:block}',
       '.gs-gal-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;max-width:560px;margin:0 auto 18px}',
       '.gs-gal-tit{font:800 28px/1.1 inherit;letter-spacing:-.5px}',
@@ -272,9 +272,9 @@ var GrupoSaneas = (function(){
       '.gs-vid{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center}',
       '.gs-vid video{width:100%;height:100%;object-fit:contain;background:#000}',
       '.gs-vid-sin{background:#0f151a}',
-      '.gs-vid-barra{position:absolute;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));top:calc(10px + env(safe-area-inset-top,0px));height:4px;border-radius:4px;background:rgba(255,255,255,.25);z-index:2}',
+      '.gs-vid-barra{position:absolute;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));top:calc(10px + var(--zona-arriba, env(safe-area-inset-top,0px)));height:4px;border-radius:4px;background:rgba(255,255,255,.25);z-index:2}',
       '.gs-vid-barra i{display:block;height:100%;width:0;border-radius:4px;background:#fff}',
-      '.gs-x-vid{position:absolute;top:calc(24px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:3;background:rgba(15,21,26,.7)}',
+      '.gs-x-vid{position:absolute;top:calc(24px + var(--zona-arriba, env(safe-area-inset-top,0px)));right:max(16px,env(safe-area-inset-right,0px));z-index:3;background:rgba(15,21,26,.7)}',
       '.gs-saltar{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:3;appearance:none;border:0;',
         'background:rgba(15,21,26,.75);color:#fff;font:700 16px/1 inherit;padding:13px 20px;border-radius:999px;cursor:pointer}',
       '#gs-vid-fin{position:absolute;left:0;right:0;bottom:0;z-index:4;display:none;padding:28px max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));',
@@ -334,6 +334,9 @@ var GrupoSaneas = (function(){
 
 
   // ---- galería «¿Conoces todas las apps y webs del Grupo Saneas?» (22/10/2026) ----
+  // 27/10/2026: el hueco de arriba usa --zona-arriba (lo MIDE la app de Saneas, js/52-zona-segura.js)
+  // y, donde no existe, env() de siempre: en las apps instaladas env() puede llegar a 0 y la X
+  // quedaba debajo del reloj. En las webs no cambia nada.
   // Menú a pantalla completa -> vídeo de texto animado de cada casa -> al terminar, sus botones.
   // Los vídeos viven en saneas.es y solo se descargan al tocar una casa.
   var VIDEO_BASE = 'https://saneas.es/assets/video/grupo/';
