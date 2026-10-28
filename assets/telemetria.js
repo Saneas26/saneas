@@ -5,6 +5,7 @@
    se ve desde el panel privado de Saneas.
    Además, aquí se cuenta el clic en "Instala la app Saneas" (app saneas_instalar)
    para medir el embudo web → instalación. Mismo anonimato: solo el identificador.
+   Y los segundos que la página ha estado a la vista (apartado 3).
    Documentación: github.com/Saneas26/pordondevoy → TELEMETRIA.md */
 (function () {
   var APP = "saneas_web";
@@ -66,4 +67,21 @@
     if (h.indexOf("/instala-app") !== 0 && h.indexOf("https://app.saneas.es") !== 0) return;
     ping("saneas_instalar");
   }, true);
+
+  // 3) Tiempo a la vista: solo cuenta mientras se ve la página y se manda al
+  //    ocultarla o cerrarla con sendBeacon, que llega aunque la página muera.
+  if (!navigator.sendBeacon) return;
+  var visto = 0, desde = document.visibilityState === "visible" ? Date.now() : 0;
+  function mandaTiempo() {
+    if (desde) { visto += Date.now() - desde; desde = 0; }
+    var s = Math.round(visto / 1000);
+    visto = 0;
+    if (s < 1) return;
+    navigator.sendBeacon(URL_PING, JSON.stringify({ app: APP, dispositivo: id, segundos: s }));
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") desde = Date.now();
+    else mandaTiempo();
+  });
+  window.addEventListener("pagehide", mandaTiempo);
 })();
