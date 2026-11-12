@@ -555,6 +555,18 @@ body>nav{
 }
 .p-card.featured{position:relative}
 
+/* ── RESERVA DE CITAS (Cal.com, 12/11/2026) ── */
+.cita-wrap{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;align-items:stretch;
+}
+@media(max-width:760px){.cita-wrap{grid-template-columns:1fr}}
+.cita-wrap .p-card{display:flex;flex-direction:column;position:relative}
+.cita-wrap .p-card.featured{transform:none}
+.cita-wrap .p-desc{flex:1}
+.cita-nota{text-align:center;font-size:var(--fs-sm);color:var(--gray);margin-top:28px;line-height:1.6}
+
 /* ── FAQ ── */
 .faq-list{max-width:700px;margin:0 auto}
 details{
@@ -1172,6 +1184,42 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- RESERVA DE CITAS -->
+<section class="section" id="cita">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:64px;">
+      <h2 class="section-title">Reserva<br>una llamada.</h2>
+      <p class="section-sub centrado" style="margin-bottom:0;">Elige el día y la hora que mejor te vengan. Óscar te llama al número que dejes.</p>
+    </div>
+    <div class="cita-wrap reveal reveal-delay-1">
+
+      <div class="p-card">
+        <span class="p-tier">Información</span>
+        <div><span class="p-price">5</span><span class="p-per">min</span></div>
+        <p class="p-desc">¿Tienes dudas sobre cómo funciona <span class="saneas">Saneas</span>? Te lo contamos en una llamada corta.</p>
+        <a href="https://cal.com/saneas/informacion" target="_blank" rel="noopener" class="p-btn outline">Elegir día y hora →</a>
+      </div>
+
+      <div class="p-card featured">
+        <span class="p-badge">Para empezar</span>
+        <span class="p-tier">Primera consulta</span>
+        <div><span class="p-price">1 h 30</span><span class="p-per">min</span></div>
+        <p class="p-desc">Conocemos tu caso, tus hábitos y tu objetivo, y preparamos tu plan.</p>
+        <a href="https://cal.com/saneas/primera-consulta" target="_blank" rel="noopener" class="p-btn orange">Reservar mi consulta →</a>
+      </div>
+
+      <div class="p-card">
+        <span class="p-tier">Reunión de evolución</span>
+        <div><span class="p-price">30</span><span class="p-per">min</span></div>
+        <p class="p-desc">Para clientes de <span class="saneas">Saneas</span>: repasamos cómo vas y ajustamos lo que haga falta.</p>
+        <a href="https://cal.com/saneas/evolucion" target="_blank" rel="noopener" class="p-btn outline">Elegir día y hora →</a>
+      </div>
+
+    </div>
+    <p class="cita-nota">De lunes a viernes, de 10:00 a 17:30 (hora de Canarias).</p>
   </div>
 </section>
 
