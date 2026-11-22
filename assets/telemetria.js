@@ -57,6 +57,8 @@
   //    del pie (→ /instala-app) y el botón y enlaces de instala-app
   //    (→ app.saneas.es). Se avisa en cada clic; el servidor ya deja como mucho
   //    un apunte por dispositivo y día. keepalive: no frena la navegación.
+  //    Igual con los botones que piden información (22/11/2026): WhatsApp
+  //    (saneas_whatsapp) y la reserva de llamada o consulta en Cal.com (saneas_cita).
   document.addEventListener("click", function (ev) {
     var el = ev.target;
     while (el && el.getAttribute && !(el.tagName === "A" && el.getAttribute("href"))) {
@@ -64,8 +66,9 @@
     }
     if (!el || !el.getAttribute) return;
     var h = el.getAttribute("href");
-    if (h.indexOf("/instala-app") !== 0 && h.indexOf("https://app.saneas.es") !== 0) return;
-    ping("saneas_instalar");
+    if (h.indexOf("/instala-app") === 0 || h.indexOf("https://app.saneas.es") === 0) ping("saneas_instalar");
+    else if (/^https:\/\/(api\.whatsapp\.com|wa\.me)\//.test(h)) ping("saneas_whatsapp");
+    else if (h.indexOf("https://cal.com/saneas") === 0) ping("saneas_cita");
   }, true);
 
   // 3) Tiempo a la vista: solo cuenta mientras se ve la página y se manda al
