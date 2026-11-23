@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Saneas — Tu nutricionista online. Sin permanencia, sin bonos, sin suplementos. Tan fácil como Netflix.">
+<meta name="description" content="Saneas — Tu nutricionista online. Sin bonos obligatorios ni permanencia: pagas mes a mes y te vas cuando quieras. Sin suplementos.">
 <meta property="og:title" content="Saneas® — Tu nutricionista. Tan fácil como Netflix.">
 <meta property="og:description" content="Nutrición por suscripción. Desde 30€/mes. Sin permanencia. Sin suplementos.">
 <meta property="og:url" content="https://saneas.es">
@@ -207,6 +207,7 @@ body>nav{
   line-height:1.7;font-weight:500;
 }
 .hero-sub strong{color:var(--text);display:block}
+.hero-sub-nota{display:block;font-size:.9em;line-height:1.5;margin:2px 0 4px}
 
 .btn-orange{
   display:inline-flex;align-items:center;gap:10px;
@@ -555,6 +556,31 @@ body>nav{
 }
 .p-card.featured{position:relative}
 
+/* ── RESERVA ENERO (mesa 23/11/2026) ──
+   Plazas reales: 3 por día de consulta y semana de inicio. La web solo
+   enseña las libres; el total no se muestra. Datos por RPC de Supabase
+   (reserva_enero_estado / reserva_enero_crear) con la clave pública. */
+.enero-wrap{max-width:760px;margin:0 auto;display:grid;gap:22px}
+.enero-caja{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius);padding:28px 26px;display:grid;gap:14px}
+.enero-paso{font-size:var(--fs-xs);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--teal-ui)}
+.enero-h{font-size:var(--fs-xl);font-weight:800;color:var(--text);line-height:1.3}
+.enero-txt{font-size:var(--fs-base);color:var(--text);line-height:1.6}
+.enero-opciones{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.enero-op{min-height:64px;border-radius:18px;border:2px solid #cfdfe3;background:#fff;color:var(--text);font:inherit;font-size:var(--fs-md);font-weight:800;padding:12px 16px;text-align:left;cursor:pointer;display:grid;gap:2px}
+.enero-op small{font-size:var(--fs-sm);font-weight:600;color:var(--teal-dark)}
+.enero-op[aria-pressed="true"]{border-color:var(--teal-ui);background:#eaf5f7;box-shadow:0 0 0 2px var(--teal-ui) inset}
+.enero-op:disabled{cursor:not-allowed;background:#f2f4f5;color:#55656a;border-color:#e1e6e8}
+.enero-op:disabled small{color:#55656a}
+.enero-op:focus-visible,.enero-campo input:focus-visible,.enero-btn:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.enero-campo{display:grid;gap:6px}
+.enero-campo label{font-size:var(--fs-sm);font-weight:700;color:var(--text)}
+.enero-campo input{min-height:52px;border-radius:14px;border:2px solid #cfdfe3;padding:0 14px;font:inherit;font-size:var(--fs-md);color:var(--text);background:#fff}
+.enero-btn{min-height:56px;border:0;border-radius:999px;background:var(--orange);color:var(--text);font:inherit;font-size:var(--fs-md);font-weight:800;cursor:pointer;padding:0 24px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.enero-btn:disabled{opacity:.6;cursor:wait}
+.enero-err{font-size:var(--fs-base);font-weight:700;color:#a32a1c;background:#fdecea;border-radius:12px;padding:10px 14px}
+.enero-ok{background:#eaf5f7;border:2px solid var(--teal-ui)}
+.enero-nota{font-size:var(--fs-sm);color:#4a5a5f;line-height:1.5}
+
 /* ── RESERVA DE CITAS (Cal.com, 12/11/2026) ── */
 .cita-wrap{
   max-width:1000px;margin:0 auto;
@@ -772,7 +798,7 @@ footer p{font-size:var(--fs-xs);color:#727272;margin-top:30px}
 }
 
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HealthAndBeautyBusiness", "name": "Saneas", "url": "https://saneas.es/", "logo": "https://saneas.es/assets/img/app-saneas-web.png", "image": "https://saneas.es/assets/og-saneas.png", "description": "Nutrición online por suscripción, en español y desde cualquier país. Sin permanencia, sin bonos y sin suplementos.", "areaServed": [{"@type": "Country", "name": "España"}, {"@type": "Country", "name": "México"}, {"@type": "Country", "name": "Colombia"}, {"@type": "Country", "name": "Argentina"}, {"@type": "Country", "name": "Chile"}, {"@type": "Country", "name": "Perú"}, {"@type": "Country", "name": "Venezuela"}, {"@type": "Country", "name": "Ecuador"}, {"@type": "Country", "name": "Estados Unidos"}, {"@type": "Country", "name": "Reino Unido"}, {"@type": "Country", "name": "Alemania"}, {"@type": "Country", "name": "Noruega"}, {"@type": "Country", "name": "Suiza"}, {"@type": "Country", "name": "Francia"}, {"@type": "Country", "name": "Países Bajos"}, {"@type": "Country", "name": "Bélgica"}], "availableLanguage": "es", "sameAs": ["https://www.instagram.com/saneas.es/", "https://facebook.com/SaneasEs", "https://www.youtube.com/@saneas"], "makesOffer": [{"@type": "Offer", "name": "Automático", "price": "30", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "30", "priceCurrency": "EUR", "unitCode": "MON"}}, {"@type": "Offer", "name": "Completo", "price": "60", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "60", "priceCurrency": "EUR", "unitCode": "MON"}}, {"@type": "Offer", "name": "Premium", "price": "120", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "120", "priceCurrency": "EUR", "unitCode": "MON"}}], "knowsLanguage": "es", "paymentAccepted": "Visa, Mastercard, American Express", "currenciesAccepted": "EUR"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Hay permanencia?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cancelas cuando quieras, sin explicaciones y sin penalizaciones."}}, {"@type": "Question", "name": "¿Tengo que comprar suplementos?", "acceptedAnswer": {"@type": "Answer", "text": "No. En Saneas trabajamos únicamente con alimentación real. Sin pastillas, batidos ni inyecciones."}}, {"@type": "Question", "name": "¿Cómo se paga?", "acceptedAnswer": {"@type": "Answer", "text": "Suscripción mensual, sin permanencia. Mes a mes: si no te convence, te vas sin dar explicaciones. Así de seguros estamos. Si prefieres pagar de una vez, también hay bonos trimestrales, semestrales y anuales. El mismo precio en todos los países, en euros. Se paga con tarjeta: Visa, Mastercard o American Express."}}, {"@type": "Question", "name": "¿Necesito ir a ningún sitio?", "acceptedAnswer": {"@type": "Answer", "text": "No. Todo es 100% online. El seguimiento semanal es por WhatsApp y tu plan llega a tu móvil."}}, {"@type": "Question", "name": "¿Puedo hacerlo si vivo fuera de España?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Hay clientes de Saneas en Londres, Berlín, Oslo, Texas, Colombia, Venezuela y Ecuador. Todo es online y en español, no hay que coincidir en horario: mandas tus datos cuando puedes y Óscar te responde. El pago es con tarjeta, en euros."}}, {"@type": "Question", "name": "¿Cuánto tiempo hasta ver resultados?", "acceptedAnswer": {"@type": "Answer", "text": "La mayoría de pacientes nota cambios en las primeras 2-3 semanas: más energía, menos hinchazón, mejor digestión."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HealthAndBeautyBusiness", "name": "Saneas", "url": "https://saneas.es/", "logo": "https://saneas.es/assets/img/app-saneas-web.png", "image": "https://saneas.es/assets/og-saneas.png", "description": "Nutrición online por suscripción, en español y desde cualquier país. Sin bonos obligatorios ni permanencia. Pagas mes a mes y te vas cuando quieras. Si prefieres pagar un trimestre o un semestre, también puedes. Sin suplementos.", "areaServed": [{"@type": "Country", "name": "España"}, {"@type": "Country", "name": "México"}, {"@type": "Country", "name": "Colombia"}, {"@type": "Country", "name": "Argentina"}, {"@type": "Country", "name": "Chile"}, {"@type": "Country", "name": "Perú"}, {"@type": "Country", "name": "Venezuela"}, {"@type": "Country", "name": "Ecuador"}, {"@type": "Country", "name": "Estados Unidos"}, {"@type": "Country", "name": "Reino Unido"}, {"@type": "Country", "name": "Alemania"}, {"@type": "Country", "name": "Noruega"}, {"@type": "Country", "name": "Suiza"}, {"@type": "Country", "name": "Francia"}, {"@type": "Country", "name": "Países Bajos"}, {"@type": "Country", "name": "Bélgica"}], "availableLanguage": "es", "sameAs": ["https://www.instagram.com/saneas.es/", "https://facebook.com/SaneasEs", "https://www.youtube.com/@saneas"], "makesOffer": [{"@type": "Offer", "name": "Automático", "price": "30", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "30", "priceCurrency": "EUR", "unitCode": "MON"}}, {"@type": "Offer", "name": "Completo", "price": "60", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "60", "priceCurrency": "EUR", "unitCode": "MON"}}, {"@type": "Offer", "name": "Premium", "price": "120", "priceCurrency": "EUR", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "120", "priceCurrency": "EUR", "unitCode": "MON"}}], "knowsLanguage": "es", "paymentAccepted": "Visa, Mastercard, American Express", "currenciesAccepted": "EUR"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Hay permanencia?", "acceptedAnswer": {"@type": "Answer", "text": "No. Cancelas cuando quieras, sin explicaciones y sin penalizaciones."}}, {"@type": "Question", "name": "¿Tengo que comprar suplementos?", "acceptedAnswer": {"@type": "Answer", "text": "No. En Saneas trabajamos únicamente con alimentación real. Sin pastillas, batidos ni inyecciones."}}, {"@type": "Question", "name": "¿Cómo se paga?", "acceptedAnswer": {"@type": "Answer", "text": "Suscripción mensual, sin permanencia. Mes a mes: si no te convence, te vas sin dar explicaciones. Así de seguros estamos. Si prefieres pagar de una vez, también hay bonos trimestrales, semestrales y anuales. El mismo precio en todos los países, en euros. Se paga con tarjeta: Visa, Mastercard o American Express."}}, {"@type": "Question", "name": "¿Necesito ir a ningún sitio?", "acceptedAnswer": {"@type": "Answer", "text": "No. Todo es 100% online. El seguimiento semanal es por WhatsApp y tu plan llega a tu móvil."}}, {"@type": "Question", "name": "¿Puedo hacerlo si vivo fuera de España?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Hay clientes de Saneas en Londres, Berlín, Oslo, Texas, Colombia, Venezuela y Ecuador. Todo es online y en español, no hay que coincidir en horario: mandas tus datos cuando puedes y Óscar te responde. El pago es con tarjeta, en euros."}}, {"@type": "Question", "name": "¿Cuánto tiempo hasta ver resultados?", "acceptedAnswer": {"@type": "Answer", "text": "La mayoría de pacientes nota cambios en las primeras 2-3 semanas: más energía, menos hinchazón, mejor digestión."}}]}</script>
 
 </head>
 <body>
@@ -792,6 +818,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
 <nav>
   <div class="nav-izq"><div class="nav-logo saneas">Saneas®</div><button type="button" class="gs-boton" onclick="GrupoSaneas.abrirMenu()" aria-label="Ver las apps del Grupo Saneas"><span class="gs-b-marca">Grupo <b>Saneas</b> &#9656;</span><span class="gs-b-accion">despliega</span></button></div>
   <nav class="nav-links" aria-label="Secciones de Saneas">
+    <a href="#enero">Plaza de enero</a>
     <a href="/instala-app">Instala la APP</a>
     <a href="/academia">La Academia</a>
     <a href="/asesorias">Tu propia consulta</a>
@@ -810,8 +837,9 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
       <span class="badge"><span class="badge-dot"></span>Nutrición por suscripción</span>
       <h1>Tu nutricionista.<br><em>Tan fácil<br>como Netflix.</em></h1>
       <div class="hero-sub">
-        Sin permanencia.<br>
-        Sin bonos.<br>
+        Sin bonos obligatorios ni permanencia.<br>
+        Pagas mes a mes y te vas cuando quieras.<br>
+        <span class="hero-sub-nota">Si prefieres pagar un trimestre o un semestre, también puedes.</span>
         Sin suplementos.
       </div>
       <a class="btn-orange" href="#planes">
@@ -936,7 +964,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
           <div class="historia-cuerpo">
             <p>Nanny llegó a Saneas con un objetivo que muchas personas comparten: <strong>dejar atrás el sobrepeso y volver a sentirse bien consigo misma</strong>. Lo que consiguió va mucho más allá de un número en la báscula.</p>
             <p>No solo perdió 13 kilos: transformó su <strong>composición corporal</strong>, salió del rango de sobrepeso según su <strong>grasa visceral</strong>, y mejoró de dentro hacia fuera —más hidratación celular, más proteína y más masa muscular.</p>
-            <p>Y lo más importante: <strong>aprendió a mantenerse</strong>. Hoy Nanny disfruta de un punto de salud y una calidad de vida que muchas personas desean, sostenido por hábitos que la acompañan cada día —sin permanencia, sin bonos, sin suplementos.</p>
+            <p>Y lo más importante: <strong>aprendió a mantenerse</strong>. Hoy Nanny disfruta de un punto de salud y una calidad de vida que muchas personas desean, sostenido por hábitos que la acompañan cada día —sin bonos obligatorios ni permanencia, y sin suplementos.</p>
             <div class="historia-cita">
               <strong>Oscar:</strong> «El proceso es lento, pero efectivo. Un cuerpo tarda meses en cambiar.»<br>
               <strong>Nanny:</strong> «Claro que confío en ti, eres la persona que ha cambiado mi vida.»
@@ -1132,6 +1160,22 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
   </div>
 </section>
 
+<!-- RESERVA ENERO (mesa 23/11/2026) -->
+<section class="section" id="enero">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <h2 class="section-title">Tu plaza<br>de enero.</h2>
+      <p class="section-sub centrado" style="margin-bottom:0;">En diciembre se disfruta y se llega a enero sin haber cogido nada. La plaza para empezar en enero se reserva ahora.</p>
+    </div>
+    <div class="enero-wrap reveal reveal-delay-1" id="eneroApp">
+      <div class="enero-caja">
+        <p class="enero-txt"><b>60 € al mes</b>, o si lo prefieres, 170 € el trimestre o 300 € el semestre. Sin permanencia. Hay pocas plazas cada semana. <b>Reservas hasta el 20 de diciembre.</b></p>
+      </div>
+      <div class="enero-caja" id="eneroCuerpo"><p class="enero-txt">Cargando las plazas libres…</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="section" id="planes" style="background:#f7f9fa;">
   <div class="container">
@@ -1262,7 +1306,7 @@ window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo(0,
 <section class="cta-final">
   <div class="reveal">
     <h2>¿Y si esta fuera<br>la última vez<br>que empiezas?</h2>
-    <p>Empieza hoy. Sin permanencia. Sin bonos. Sin suplementos.</p>
+    <p>Empieza hoy. Sin bonos obligatorios ni permanencia. Pagas mes a mes y te vas cuando quieras. Si prefieres pagar un trimestre o un semestre, también puedes. Sin suplementos.</p>
     <a class="btn-white" href="https://api.whatsapp.com/send?phone=34689806987&text=Hola%20Oscar%2C%20quiero%20empezar%20con%20Saneas.">
       <svg viewBox="0 0 24 24" class="wa-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.134.558 4.133 1.533 5.868L.057 23.887a.75.75 0 0 0 .917.972l6.195-1.597A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.523-5.168-1.43l-.34-.208-3.677.947.983-3.594-.229-.363A9.98 9.98 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Hablar por WhatsApp
@@ -1412,6 +1456,121 @@ const counterObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 </script>
 
+<script>
+/* RESERVA ENERO · saneas.es (mesa 23/11/2026). Elige semana → día → datos → reserva.
+   La reserva guarda la plaza; el pago lo cierra Óscar por WhatsApp. */
+(function(){
+  var URL_SB = 'https://uisrxztowgdpkxeuznfh.supabase.co/rest/v1/rpc/';
+  var CLAVE = 'sb_publishable_8ybOGHnn9rsMDf57mx-Igw_AVvWK30D';
+  var WA = 'https://api.whatsapp.com/send?phone=34689806987&text=';
+  var DIAS = ['', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+  var caja = document.getElementById('eneroCuerpo');
+  if (!caja) return;
+  var st = { datos: null, semana: null, dia: null };
+
+  function rpc(fn, body){
+    return fetch(URL_SB + fn, { method: 'POST', headers: { 'apikey': CLAVE, 'Authorization': 'Bearer ' + CLAVE, 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) })
+      .then(function(r){ return r.json(); });
+  }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+  function diaMes(semana, dia){ var d = new Date(semana + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + dia - 1); return d.getUTCDate(); }
+  function nombreSemana(s){ return 'Semana del ' + diaMes(s, 1) + ' de enero'; }
+  function plazas(n){ return n === 1 ? 'Queda 1 plaza' : 'Quedan ' + n + ' plazas'; }
+  function waTexto(nombre, s, d){
+    return WA + encodeURIComponent('Hola Óscar, he reservado plaza en Saneas para empezar el ' + DIAS[d].toLowerCase() + ' ' + diaMes(s, d) + ' de enero. Me llamo ' + nombre + '. ¿Cómo la pago?');
+  }
+
+  function pintar(){
+    var d = st.datos;
+    if (!d || !d.ok){ caja.innerHTML = '<p class="enero-err">No se han podido cargar las plazas. Escríbele a Óscar y te la reserva él.</p><a class="enero-btn" href="' + WA + encodeURIComponent('Hola Óscar, quiero reservar plaza para empezar en enero.') + '">Escribir a Óscar</a>'; return; }
+    if (!d.abierta){ caja.innerHTML = '<p class="enero-h">Las reservas de enero ya están cerradas.</p><p class="enero-txt">Escríbele a Óscar y te dice cuándo puedes empezar.</p><a class="enero-btn" href="' + WA + encodeURIComponent('Hola Óscar, quiero empezar con Saneas.') + '">Escribir a Óscar</a>'; return; }
+    var h = st.aviso ? '<p class="enero-err">' + esc(st.aviso) + '</p>' : ''; st.aviso = null;
+    h += '<p class="enero-paso">Paso 1 · ¿Qué semana quieres empezar?</p><div class="enero-opciones">';
+    d.semanas.forEach(function(s){
+      var llena = s.libres <= 0;
+      h += '<button type="button" class="enero-op" data-semana="' + s.semana + '"' + (llena ? ' disabled' : '') + ' aria-pressed="' + (st.semana === s.semana) + '">' + nombreSemana(s.semana) + '<small>' + (llena ? 'Completa' : plazas(s.libres)) + '</small></button>';
+    });
+    h += '</div>';
+    var sem = d.semanas.filter(function(s){ return s.semana === st.semana; })[0];
+    if (sem){
+      h += '<p class="enero-paso" style="margin-top:10px">Paso 2 · ¿Qué día te viene mejor? Ese será tu día de consulta cada semana.</p><div class="enero-opciones">';
+      sem.dias.forEach(function(x){
+        var llena = x.libres <= 0;
+        h += '<button type="button" class="enero-op" data-dia="' + x.dia + '"' + (llena ? ' disabled' : '') + ' aria-pressed="' + (st.dia === x.dia) + '">' + DIAS[x.dia] + ' ' + diaMes(sem.semana, x.dia) + '<small>' + (llena ? 'Completo' : plazas(x.libres)) + '</small></button>';
+      });
+      h += '</div>';
+    }
+    if (sem && st.dia){
+      h += '<p class="enero-paso" style="margin-top:10px">Paso 3 · Tus datos</p>'
+        + '<form id="eneroForm" class="enero-caja" style="padding:0;border:0;gap:12px" novalidate>'
+        + '<div class="enero-campo"><label for="eneroNombre">Nombre y apellido</label><input id="eneroNombre" autocomplete="name" required maxlength="80"></div>'
+        + '<div class="enero-campo"><label for="eneroTel">Teléfono (con WhatsApp)</label><input id="eneroTel" type="tel" autocomplete="tel" inputmode="tel" required></div>'
+        + '<div class="enero-campo"><label for="eneroMail">Correo (si quieres)</label><input id="eneroMail" type="email" autocomplete="email"></div>'
+        + '<p class="enero-err" id="eneroErr" hidden></p>'
+        + '<button class="enero-btn" id="eneroBtn" type="submit">Reservar mi plaza del ' + DIAS[st.dia].toLowerCase() + ' ' + diaMes(sem.semana, st.dia) + '</button>'
+        + '<p class="enero-nota">Guardamos tu plaza y después le escribes a Óscar por WhatsApp para pagarla. Usamos tus datos solo para eso.</p>'
+        + '</form>';
+    }
+    caja.innerHTML = h;
+  }
+
+  function errorTexto(e){
+    return ({ llena: 'Ese día se acaba de llenar. Elige otro.', cerrada: 'Las reservas de enero ya están cerradas.',
+      nombre: 'Escribe tu nombre y apellido.', telefono: 'Revisa el teléfono: tiene que tener al menos 9 cifras.',
+      email: 'Revisa el correo o déjalo en blanco.', semana_o_dia: 'Elige una semana y un día.' })[e] || 'No se ha podido reservar. Inténtalo otra vez o escríbele a Óscar.';
+  }
+
+  caja.addEventListener('click', function(ev){
+    var b = ev.target.closest('button.enero-op'); if (!b || b.disabled) return;
+    if (b.dataset.semana){ st.semana = b.dataset.semana; st.dia = null; }
+    if (b.dataset.dia){ st.dia = +b.dataset.dia; }
+    pintar();
+    var f = document.getElementById(b.dataset.dia ? 'eneroNombre' : 'eneroCuerpo');
+    if (b.dataset.dia && f) f.focus();
+  });
+
+  caja.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var nombre = document.getElementById('eneroNombre').value.trim();
+    var tel = document.getElementById('eneroTel').value.trim();
+    var mail = document.getElementById('eneroMail').value.trim();
+    var err = document.getElementById('eneroErr'), btn = document.getElementById('eneroBtn');
+    err.hidden = true; btn.disabled = true; btn.textContent = 'Reservando…';
+    rpc('reserva_enero_crear', { p_nombre: nombre, p_telefono: tel, p_email: mail || null, p_semana: st.semana, p_dia: st.dia })
+      .then(function(r){
+        if (r && r.ok){
+          caja.classList.add('enero-ok');
+          caja.innerHTML = '<p class="enero-paso">Plaza reservada</p>'
+            + '<p class="enero-h">' + esc(nombre.split(' ')[0]) + ', empiezas el ' + DIAS[r.dia].toLowerCase() + ' ' + diaMes(r.semana, r.dia) + ' de enero.</p>'
+            + '<p class="enero-txt">Ahora escríbele a Óscar por WhatsApp para pagarla y dejarla cerrada. Hasta entonces, disfruta de diciembre.</p>'
+            + '<a class="enero-btn" href="' + waTexto(nombre, r.semana, r.dia) + '">Escribir a Óscar para pagarla</a>';
+          return;
+        }
+        if (r && r.error === 'ya_reservada'){
+          err.innerHTML = 'Ya hay una plaza reservada con este teléfono' + (r.semana ? ' (' + DIAS[r.dia].toLowerCase() + ' ' + diaMes(r.semana, r.dia) + ' de enero)' : '') + '. Si quieres cambiarla, escríbele a Óscar.';
+        } else {
+          err.textContent = errorTexto(r && r.error);
+        }
+        if (r && r.error === 'llena'){ st.aviso = errorTexto('llena'); cargar(); return; }
+        err.hidden = false; btn.disabled = false; btn.textContent = 'Reservar mi plaza';
+      })
+      .catch(function(){ err.textContent = errorTexto(); err.hidden = false; btn.disabled = false; btn.textContent = 'Reservar mi plaza'; });
+  });
+
+  function cargar(){
+    rpc('reserva_enero_estado').then(function(d){
+      st.datos = d;
+      if (d && d.ok && st.semana){
+        var s = d.semanas.filter(function(x){ return x.semana === st.semana; })[0];
+        if (!s || s.libres <= 0){ st.semana = null; st.dia = null; }
+        else if (st.dia && s.dias[st.dia - 1].libres <= 0){ st.dia = null; }
+      }
+      pintar();
+    }).catch(function(){ st.datos = null; pintar(); });
+  }
+  cargar();
+})();
+</script>
 <script src="/assets/telemetria.js?v=2" defer></script>
 <script src="/assets/js/grupo-saneas.js?v=1.22"></script>
 <script>GrupoSaneas.init({actual:"saneas",logos:"/assets/img/",barra:"nav",extras:[{id:"academia",nombre:"Academia Saneas",url:"/academia",tipo:"un programa",texto:"Si te gusta el mundo de la nutrición, ahora tú también puedes. Más fácil que nunca."}]});
